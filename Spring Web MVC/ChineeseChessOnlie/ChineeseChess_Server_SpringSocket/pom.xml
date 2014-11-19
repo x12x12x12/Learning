@@ -8,10 +8,12 @@
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<properties>
-		<java-version>1.6</java-version>
-		<org.springframework-version>3.1.1.RELEASE</org.springframework-version>
-		<org.aspectj-version>1.6.10</org.aspectj-version>
-		<org.slf4j-version>1.6.6</org.slf4j-version>
+		<java-version>1.7</java-version>
+        <org.springframework-version>4.1.2.RELEASE</org.springframework-version>
+        <org.aspectj-version>1.7.4</org.aspectj-version>
+        <org.slf4j-version>1.7.5</org.slf4j-version>
+        <jackson.databind-version>2.2.3</jackson.databind-version>
+        <spring.security.version>3.2.5.RELEASE</spring.security.version>
 	</properties>
 	<dependencies>
 		<!-- Tomcat Embed Core -->
@@ -21,7 +23,33 @@
 			<version>7.0.54</version>
 			<scope>compile</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.velocity</groupId>
+			<artifactId>velocity</artifactId>
+			<version>1.7</version>
+		</dependency>
+		<dependency>
+		    <groupId>javax.mail</groupId>
+		    <artifactId>mail</artifactId>
+		    <version>1.4.3</version>
+    	</dependency>
+		 <!-- Jackson -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.databind-version}</version>
+        </dependency>
 		<!-- Spring -->
+		<dependency>
+			  <groupId>org.springframework</groupId>
+			  <artifactId>spring-core</artifactId>
+			  <version>${org.springframework.version}</version>
+		</dependency>
+		<dependency>
+			  <groupId>org.springframework</groupId>
+			  <artifactId>spring-beans</artifactId>
+			  <version>${org.springframework.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
@@ -35,19 +63,55 @@
 			</exclusions>
 		</dependency>
 		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-context-support</artifactId>
+		    <version>3.1.1.RELEASE</version>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
 		<dependency>
-			 <groupId>org.springframework</groupId>
-			 <artifactId>spring-messaging</artifactId>
-			 <version>4.0.0.RELEASE</version>
+	        <groupId>org.springframework.data</groupId>
+	        <artifactId>spring-data-mongodb</artifactId>
+	        <version>1.5.2.RELEASE</version>
+    	</dependency>	
+    	<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>4.0.6.RELEASE</version>
+		</dependency>
+		<!-- Spring Security -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${spring.security.version}</version>
 		</dependency>
 		<dependency>
-			 <groupId>org.springframework</groupId>
-			 <artifactId>spring-websocket</artifactId>
-			 <version>4.0.0.RELEASE</version>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${spring.security.version}</version>
+		</dependency>
+ 
+		<!-- Spring Security JSP Taglib -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
+			<version>${spring.security.version}</version>
+		</dependency>
+ 
+		 <!-- Apache Commons file upload  -->
+	    <dependency>
+	        <groupId>commons-fileupload</groupId>
+	        <artifactId>commons-fileupload</artifactId>
+	        <version>1.3.1</version>
+	    </dependency>
+	    <!-- Apache Commons IO -->
+		 <dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.4</version>
 		</dependency>		
 		<!-- AspectJ -->
 		<dependency>
@@ -55,6 +119,7 @@
 			<artifactId>aspectjrt</artifactId>
 			<version>${org.aspectj-version}</version>
 		</dependency>	
+			
 		
 		<!-- Logging -->
 		<dependency>

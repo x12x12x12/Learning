@@ -1,11 +1,25 @@
-package com.server.model;
+package com.cotuong.model;
 
-public class User {
+public class Account {
 	private String id;
 	private String name;
 	private String email;
+	private String password;
 	private int point;
+	private int status;
 	
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
+	}
 	public String getId() {
 		return id;
 	}

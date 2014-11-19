@@ -19,6 +19,7 @@ public class ServerEndPoint {
 	
 	   private static Set<Session> list = Collections.synchronizedSet(new HashSet<Session>());
 	   private static HashMap<String,Session> list_user = new HashMap<String,Session>();
+	   
 	   @OnOpen
 	   public void onOpen(Session session) throws IOException{
 		   System.out.println(session.getId() + " : connected ... ");
@@ -28,12 +29,12 @@ public class ServerEndPoint {
 	   }
 	   
 	   @OnClose
-	   public void onClose(Session session, CloseReason closeReason) {
+	   public void onClose(Session session, CloseReason closeReason) throws IOException{
 		   System.out.printf("Session %s closed because of %s", session.getId(), closeReason.getReasonPhrase());
-		   for (Session session2 : list) {
-//			   session2.getBasicRemote().sendObject(arg0);
-		   }
 		   list.remove(session);
+		   for (Session session2 : list) {
+			   session2.getBasicRemote().sendText("LOGOUT-|-"+session.getId());
+		   }
 	   }
 	   
 	   @OnMessage
