@@ -30,6 +30,9 @@ public class ServerEndPoint {
 	   @OnClose
 	   public void onClose(Session session, CloseReason closeReason) {
 		   System.out.printf("Session %s closed because of %s", session.getId(), closeReason.getReasonPhrase());
+		   for (Session session2 : list) {
+//			   session2.getBasicRemote().sendObject(arg0);
+		   }
 		   list.remove(session);
 	   }
 	   
@@ -45,7 +48,11 @@ public class ServerEndPoint {
 						System.out.println(data[2]);
 						session_to.getBasicRemote().sendText("CHAT-|-"+data[2]);
 					break;
+				case "":
 					
+					break;
+				case "REG": 
+					break;
 				default:
 					break;
 				}
