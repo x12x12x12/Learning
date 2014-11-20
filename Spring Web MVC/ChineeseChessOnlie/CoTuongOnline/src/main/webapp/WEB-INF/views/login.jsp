@@ -104,7 +104,7 @@
 					                            <fieldset>
 					                           		<div class="form-group">
 					                                   <form:label path="name">Display name</form:label>
-					     							   <form:input path="name"  cssClass="form-control" placeholder="Restaurant name" id="nameReg"/>
+					     							   <form:input path="name"  cssClass="form-control" placeholder="Display name" id="nameReg"/>
 					                                </div>
 					                                <div class="form-group">
 					                                   <form:label path="email">Email</form:label>

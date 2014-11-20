@@ -20,7 +20,7 @@
 		*	@onClose
 		*	0: OK ----- 1: ERROR
 	    **/
-		var ws=new WebSocket("ws://localhost:8080/chessgame/game");
+		var ws=new WebSocket("ws://localhost:8080/cotuong/game");
 		ws.onopen=function(message){
 			var id_player=1;
 			ws.send("REG-"+id_player);

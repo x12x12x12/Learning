@@ -54,14 +54,20 @@ public class LoginController {
 						result.addError(error);
 						return "login";
 					}
+					if(result_login.getStatus()==2){   // 2 : not activated , 0 : online , 1 : offline
+						ObjectError error=new ObjectError("account.email", "Your account is not activated, Pls check your email ! ");
+						result.addError(error);
+						return "login";
+					}
+					result_login.setPassword("");
+					result_login.setStatus(0);
+					httpSession.setAttribute("account", result_login);
+					return "redirect:main";
 				}else{
 					ObjectError error=new ObjectError("account.email", "Email not in database ! ");
 					result.addError(error);
 					return "login";
 				}
-				account.setPassword("");
-				httpSession.setAttribute("account", result_login);
-				return "redirect:order";
 			}
 		}
 		model.addAttribute("account",account);
@@ -79,7 +85,6 @@ public class LoginController {
 	@RequestMapping(value = {"/main*"}, method = RequestMethod.GET)
 	public String main(Model model,HttpSession httpSession) {
 		if(validateSession(httpSession)){
-			
 			return "game";
 		}
 		model.addAttribute("sessionExpired","User session expired please login again !!!!");

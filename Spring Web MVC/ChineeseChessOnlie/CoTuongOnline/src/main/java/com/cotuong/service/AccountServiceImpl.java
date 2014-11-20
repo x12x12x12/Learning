@@ -28,7 +28,7 @@ public class AccountServiceImpl implements AccountService{
 			mongoTemplate.createCollection(Account.class);
 		}
 		account.setPoint(10);
-		account.setStatus(1);
+		account.setStatus(2);
 		mongoTemplate.insert(account);
 	}
 
