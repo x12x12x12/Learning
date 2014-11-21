@@ -14,7 +14,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 import android.net.Uri;
 
-import java.io.Console;
 
 
 public class SendSMSActivity extends Activity {
