@@ -1,6 +1,7 @@
 package com.quan616.contactlist;
 
 import android.app.Activity;
+import android.content.ContentUris;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -36,12 +37,12 @@ public class SendSMSActivity extends Activity {
         Intent intent=getIntent();
         if(intent!=null){
             String data=intent.getStringExtra("contact");
-//            textSMS.setText(data);
-//            Uri contactData=intent.getData();
-//            Cursor cursor=getContentResolver().query(contactData, null, null, null, null);
-//            cursor.moveToFirst();
-//            String phone=cursor.getString(cursor.getColumnIndexOrThrow(ContactsContract.Contacts.DISPLAY_NAME_PRIMARY));
-//            cursor.close();
+            Uri uri= ContentUris.withAppendedId(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,Long.parseLong(data));
+            Cursor cursor=getContentResolver().query(uri, null, null, null, null);
+            cursor.moveToFirst();
+            String phone=cursor.getString(cursor.getColumnIndexOrThrow(ContactsContract.CommonDataKinds.Phone.NUMBER));
+            textPhoneNo.setText(phone);
+            cursor.close();
         }
 
         buttonSend.setOnClickListener(new OnClickListener() {
