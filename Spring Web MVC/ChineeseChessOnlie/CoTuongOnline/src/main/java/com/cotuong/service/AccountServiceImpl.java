@@ -47,7 +47,6 @@ public class AccountServiceImpl implements AccountService{
 
 	@Override
 	public void delete(Account account) {
-		// TODO Auto-generated method stub
 		
 	}
 	
