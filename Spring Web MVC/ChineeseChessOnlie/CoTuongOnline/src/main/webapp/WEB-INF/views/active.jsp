@@ -1,19 +1,19 @@
-<!DOCTYPE html>
-<html>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
 <head lang="en">
     <meta charset="UTF-8">
     <title> Code Validate</title>
-    <link rel="stylesheet" type="text/css" href="Style.css">
-    <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="resources/extra/Style.css">
+    <link rel="stylesheet" type="text/css" href="resources/extra/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="resources/extra/bootstrap-theme.min.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
-    <script src="jquery-1.11.0.min.js"></script>
-    <script src="bootstrap.min.js"></script>
-    <script src="soundmanager2.js"></script>
-    <script src="Chess.js"></script>
-    <script src="Board.js"></script>
-    <script src="control.js"></script>
+    <script src="resources/extra/jquery-1.11.0.min.js"></script>
+    <script src="resources/extra/bootstrap.min.js"></script>
 </head>
 <body>
     <div class="col-md-4"></div>
@@ -40,16 +40,6 @@
                     <label for="inputCapcha" class="col-md-3 control-label">Capcha</label>
                     <div class="col-md-8">
                         <input type="password" class="form-control" id="inputCapcha" placeholder="Capcha">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-3"></div>
-                    <div class="col-md-9">
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox"> Remember me
-                            </label>
-                        </div>
                     </div>
                 </div>
                 <div class="form-group">

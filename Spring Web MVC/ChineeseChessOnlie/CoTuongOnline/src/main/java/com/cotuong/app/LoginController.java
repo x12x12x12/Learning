@@ -38,6 +38,11 @@ public class LoginController {
 		return "login";
 	}
 	
+	@RequestMapping(value = {"/active*"}, method = RequestMethod.GET)
+	public String activeAccount() {
+		return "active";
+	}
+	
 	@RequestMapping(value ={"/","/login*"}, method=RequestMethod.POST)
 	public String login_submit(@ModelAttribute("account") Account account,BindingResult result,HttpSession httpSession,Model model){
 		if(account !=null ){
