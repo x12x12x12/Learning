@@ -50,4 +50,8 @@ public class Account {
 		this.img_url = img_url;
 	}
 	
+	@Override
+	public String toString() {
+		return " Name :"+name+",Email :"+email+",Password :"+password+",Img URL :"+img_url+",Point :"+point+",Status :"+status;
+	}
 }

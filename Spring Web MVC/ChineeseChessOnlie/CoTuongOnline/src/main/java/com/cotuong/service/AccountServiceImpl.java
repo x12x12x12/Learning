@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.cotuong.model.Account;
@@ -14,7 +15,7 @@ public class AccountServiceImpl implements AccountService{
 	@Autowired
 	private MongoTemplate mongoTemplate;
 	private Query query;
-	
+	private Update update;
 	@Autowired
 	PasswordEncoder passwordEncoder;
 	
@@ -40,7 +41,7 @@ public class AccountServiceImpl implements AccountService{
 
 	@Override
 	public void update(Account account) {
-		// TODO Auto-generated method stub
+//		update=new Update();
 		
 	}
 
@@ -49,5 +50,12 @@ public class AccountServiceImpl implements AccountService{
 		// TODO Auto-generated method stub
 		
 	}
-
+	
+	@Override
+	public void activateAccount(String email){
+		query=new Query(Criteria.where("email").is(email));
+		update=new Update();
+		update.set("status",0);
+		mongoTemplate.updateFirst(query, update, Account.class);
+	}
 }

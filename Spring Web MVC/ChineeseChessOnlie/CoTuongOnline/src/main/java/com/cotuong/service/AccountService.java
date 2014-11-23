@@ -7,4 +7,5 @@ public interface AccountService {
 	Account getAccount(String email);
 	void update(Account account);
 	void delete(Account account);
+	void activateAccount(String email);
 }
