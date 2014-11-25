@@ -42,38 +42,41 @@ canvas {
 }
 
 .conversation {
-    width: 270px;
-    height: 300px;
+    /*width: 270px;*/
+    /*height: 300px;*/
+    width: 20vw;
+    height: 50vh;
     border: solid 1px;
 }
 
 .conversation .title {
-    background-color: #5bc0de;
+    background-color: #428bca;
     width: 100%;
-    height: 10%;
+    height: 7%;
 }
 
 .conversation #talks {
     width: 100%;
-    height: 78%;
+    height: 83%;
     overflow-y: scroll;
     overflow-x: hidden;
+    background-color: #e9eaed;
 }
 
 .conversation .send-message {
     width: 100%;
-    height: 12%;
+    height: 10%;
     border-top: solid 1px;
     border-top: solid 1px;
 }
 
 .conversation .send-message .write-message {
-    width: 95%;
-    height: 75%;
-    margin: 5px 5px;
-    background-color: #c7cbd5;
-    color: #eee;
-    float: left;
+    width: 100%;
+    height: 100%;
+    /*margin: 5px 5px;*/
+    background-color: #ffffff;
+    color: #000000;
+    /*float: left;*/
 }
 
 .userInListUsers {
