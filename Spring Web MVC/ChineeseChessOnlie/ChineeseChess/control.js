@@ -1,6 +1,6 @@
 var myApp = angular.module('myApp', []);
 
-myApp.controller('MyAppController', function ($scope) {
+myApp.controller('MyAppController', function ($scope, $http) {
 
     $scope.messages = ["a", "b"];
     $scope.yourMessage = "";
@@ -67,6 +67,16 @@ myApp.controller('MyAppController', function ($scope) {
             "image": "images/player2.jpg"
         }
     ];
+
+    /*----------Get list user from an URL-------------- */
+    $scope.userOnline=null; // arrays of user online
+    $http.get("http://www.w3schools.com//website/Customers_JSON.php")
+        .success(function(data) {
+            $scope.userOnline = data;
+            console.log(data);
+        });
+    /*------------------------------------------------*/
+
     var soundForClick = null;
     soundManager.setup({
         onready: function () {
