@@ -13,7 +13,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Bootstrap Admin Theme</title>
+    <title>Cờ tướng Online - Login</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="resources/css/bootstrap.min.css" rel="stylesheet">
@@ -82,6 +82,13 @@
   							 <div class="alert alert-danger alert-dismissable">
                               	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 								<c:out value="${sessionExpired}"/>
+                           	 </div>
+						</c:forEach>
+						<c:forEach items="${activeOK}" var="activeOK">  
+  							 <br>   
+  							 <div class="alert alert-success alert-dismissable">
+                              	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+								<c:out value="${activeOK}"/>
                            	 </div>
 						</c:forEach>
                     </div>

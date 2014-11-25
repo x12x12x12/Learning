@@ -8,18 +8,18 @@ myApp.controller('MyAppController', function ($scope) {
     $scope.users = [
         {
             "name": "Nguyen Van Teo",
-            "score": "80",
-            "image": "images/player1.jpg"
+            "score": "100",
+            "image": "http://i.imgur.com/euNuShD.jpg"
         },
         {
             "name": "Nguyen Van A",
             "score": "80",
-            "image": "images/player2.jpg"
+            "image": "http://i.imgur.com/4llobMm.jpg"
         },
         {
             "name": "Nguyen Van B",
             "score": "80",
-            "image": "images/player1.jpg"
+            "image": "http://i.imgur.com/FMlQpFn.jpg"
         },
         {
             "name": "Nguyen Van C",

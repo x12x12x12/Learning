@@ -11,6 +11,7 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.support.SessionStatus;
 
 import com.cotuong.model.Account;
@@ -54,7 +55,7 @@ public class LoginController {
 						result.addError(error);
 						return "login";
 					}
-					if(result_login.getStatus()==2){   // 2 : not activated , 0 : online , 1 : offline
+					if(result_login.getStatus()==2){   // 2 : not activated , 0 : offline , 1 : online
 						ObjectError error=new ObjectError("account.email", "Your account is not activated, Pls check your email ! ");
 						result.addError(error);
 						return "login";
@@ -62,6 +63,7 @@ public class LoginController {
 					result_login.setPassword("");
 					result_login.setStatus(0);
 					httpSession.setAttribute("account", result_login);
+					accountService.setStatusOnline(account.getEmail());
 					return "redirect:main";
 				}else{
 					ObjectError error=new ObjectError("account.email", "Email not in database ! ");
@@ -75,9 +77,11 @@ public class LoginController {
 	}
 	
 
-	@RequestMapping(value = {"/active*"}, method = RequestMethod.GET)
-	public String activeAccount(Model model) {
-		model.addAttribute("account",new Account());
+	@RequestMapping(value = {"/active*"}, method = RequestMethod.GET,params={"ref"})
+	public String activeAccount(@RequestParam(value="ref") String email,Model model) {
+		Account account=new Account();
+		account.setEmail(email);
+		model.addAttribute("account",account);
 		return "active_account";
 	}
 	
@@ -89,6 +93,7 @@ public class LoginController {
 				if(passwordEncoder.matches(account.getEmail(),account.getPassword())){
 					accountService.activateAccount(account.getEmail());	
 					model.addAttribute("account",new Account());
+					model.addAttribute("activeOK","Your account has been activated !!!!");
 					return "login";
 				}else{
 					ObjectError error=new ObjectError("account.password", "Invalid Code ! ");
@@ -119,7 +124,7 @@ public class LoginController {
 	@RequestMapping(value = {"/main*"}, method = RequestMethod.GET)
 	public String main(Model model,HttpSession httpSession) {
 		if(validateSession(httpSession)){
-			return "game";
+			return "board";
 		}
 		model.addAttribute("sessionExpired","User session expired please login again !!!!");
 		model.addAttribute("account",new Account());
@@ -128,7 +133,11 @@ public class LoginController {
 	
 	
 	
-	
+	/**
+	 * Validate Account Session
+	 * @param httpSession
+	 * @return true || false
+	 */
 	public boolean validateSession(HttpSession httpSession){
 		Account account= ((httpSession.getAttribute("account")!=null) ? (Account) httpSession.getAttribute("account")  :new Account());
 		if(account.getEmail()==null || account.getEmail().equalsIgnoreCase("")){
