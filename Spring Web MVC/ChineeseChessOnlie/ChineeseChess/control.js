@@ -70,11 +70,13 @@ myApp.controller('MyAppController', function ($scope, $http) {
 
     /*----------Get list user from an URL-------------- */
     $scope.userOnline=null; // arrays of user online
-    $http.get("http://www.w3schools.com//website/Customers_JSON.php")
+    $http.get("http://www.w3schools.com/website/Customers_JSON.php")
         .success(function(data) {
             $scope.userOnline = data;
             console.log(data);
+            alert(data);
         });
+
     /*------------------------------------------------*/
 
     var soundForClick = null;
