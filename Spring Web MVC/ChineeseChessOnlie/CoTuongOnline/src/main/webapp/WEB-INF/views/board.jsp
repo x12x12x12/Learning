@@ -44,7 +44,7 @@
 
         </div>
 
-        <div class="modal fade" id="modalListUser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+         <div class="modal fade" id="modalListUser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content" style="height: 100vh; width: 150%; margin-left: -22%; overflow-y: scroll;" >
                     <div class="modal-header" style="background-color: #5bc0de;">
@@ -52,11 +52,11 @@
                         <h4 class="modal-title" id="myModalLabel">List User Online</h4>
                     </div>
                     <div class="modal-body">
-                        <div ng-repeat="user in users" class="col-md-2 userInListUsers" ng-click="clickUser()" >
+                        <div ng-repeat="user in userOnline" class="col-md-2 userInListUsers" ng-click="clickUser()" >
                             <br/>
-                            <img src="{{user.image}}" height="80px" style="border-radius: 30px; margin-left: 10%;"/>
+                            <img src="{{user.img_url}}" height="80px" style="border-radius: 30px; margin-left: 10%;"/>
                             <span ng-bind-template="{{user.name}}"></span>
-                            <span ng-bind-template="Score: {{user.score}}"></span>
+                            <span ng-bind-template="Score: {{user.point}}"></span>
                             <button class="btn btn-success" style="width: 100%; border-radius: 10px;" ng-click="addFriend()">
                                 Add Friend
                             </button>

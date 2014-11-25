@@ -68,12 +68,10 @@ myApp.controller('MyAppController', function ($scope) {
         }
     ];
     /*----------Get list user from an URL-------------- */
+    $scope.userOnline=null; // arrays of user online
     $.getJSON("http://localhost:8080/cotuong/rest/online",function(result){
-        var data = [];
-       	$.each(result, function() {
-       		var element = [];
-       		console.log(this);
-       	});
+    	 $scope.userOnline = result;
+    	 console.log(result);
     });
     /*------------------------------------------------*/
     var soundForClick = null;
