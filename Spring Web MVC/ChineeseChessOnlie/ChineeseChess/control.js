@@ -81,13 +81,17 @@ myApp.controller('MyAppController', function ($scope) {
 
 
     $scope.sendMessage = function () {
+
         if (window.event.keyCode == 13) {
             if ($scope.yourMessage != null & $scope.yourMessage != "") {
                 $scope.messages.push($scope.yourMessage);
                 soundForClick.play();
                 $scope.yourMessage = "";
 
-                document.getElementById("talks").scrollTop = document.getElementById("talks").scrollHeight;
+
+                $("#talks").animate({ scrollTop: $(document).height() }, "slow");
+//                $("#talks").scrollTop = $("#talks").height();
+                return false;
             }
         }
     };
@@ -104,7 +108,7 @@ myApp.controller('MyAppController', function ($scope) {
         soundForClick.play();
     };
 
-    $scope.validateYourCode=function(){
+    $scope.validateYourCode = function () {
 
     }
 });
