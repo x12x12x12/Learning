@@ -57,7 +57,7 @@
      							  	  <form:password path="password" cssClass="form-control" placeholder="Code ( recieve from email )" />
                                 </div>
                                 <!-- Change this to a button or input when using this as a form -->
-                                <button type="submit" class="btn btn-primary btn-lg btn-block">Sign in</button>
+                                <button type="submit" class="btn btn-primary btn-lg btn-block">Activate </button>
                              <input type="hidden" name="${_csrf.parameterName}"value="${_csrf.token}" />
                             </fieldset>
                        	</form:form>	
@@ -80,7 +80,6 @@
                            	 </div>
 						</c:forEach>
                     </div>
-                    <button data-toggle="modal" data-target="#myModal" type="button" class="btn btn-link ">Sign Up ?</button>
                 </div>
             </div>
         </div>
