@@ -47,6 +47,9 @@ canvas {
     width: 20vw;
     height: 50vh;
     border: solid 1px;
+    position: fixed;
+    bottom: 0;
+
 }
 
 .conversation .title {
