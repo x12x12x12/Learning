@@ -74,6 +74,40 @@ public class LoginController {
 		return "login";
 	}
 	
+
+	@RequestMapping(value = {"/active*"}, method = RequestMethod.GET)
+	public String activeAccount(Model model) {
+		model.addAttribute("account",new Account());
+		return "active_account";
+	}
+	
+	@RequestMapping(value = {"/active*"}, method = RequestMethod.POST)
+	public String activeAccount_Post(@ModelAttribute("account") Account account,BindingResult result,Model model) {
+		try {
+			Account check=accountService.getAccount(account.getEmail());
+			if(check!=null){
+				if(passwordEncoder.matches(account.getEmail(),account.getPassword())){
+					accountService.activateAccount(account.getEmail());	
+					model.addAttribute("account",new Account());
+					return "login";
+				}else{
+					ObjectError error=new ObjectError("account.password", "Invalid Code ! ");
+					result.addError(error);
+					return "active_account";
+				}
+			}
+			ObjectError error=new ObjectError("account.email", "Email not in database ! ");
+			result.addError(error);
+			return "active_account";
+		} catch (Exception e) {
+			ObjectError error=new ObjectError("account.email", "Can't connect to server ! ");
+			result.addError(error);
+			return "active_account";
+		}
+		
+	}
+	
+	
 	@RequestMapping(value = {"/logout*"}, method = RequestMethod.GET)
 	public String logout(Model model,SessionStatus sessionStatus,HttpSession httpSession) {
 		httpSession.removeAttribute("account");

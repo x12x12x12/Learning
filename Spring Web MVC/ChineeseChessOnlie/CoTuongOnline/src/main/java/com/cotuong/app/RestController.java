@@ -44,5 +44,20 @@ public class RestController {
 		return account;
 	}
 	
+	@RequestMapping(value=AppRestUri.active_account,method=RequestMethod.POST)
+	public @ResponseBody Account activeAccount(@RequestBody Account account){
+		Account check=accountService.getAccount(account.getEmail());
+		if(check!=null){
+			System.out.println(account.toString());
+			if(passwordEncoder.matches(account.getEmail(),account.getPassword())){
+				accountService.activateAccount(account.getEmail());	
+				account.setPassword("ok");
+				return account;
+			}
+		}
+		account.setPassword("fail");
+		return account;
+	}
+	
 	
 }
