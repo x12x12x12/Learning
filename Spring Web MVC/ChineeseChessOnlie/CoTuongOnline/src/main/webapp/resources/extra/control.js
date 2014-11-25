@@ -67,11 +67,20 @@ myApp.controller('MyAppController', function ($scope) {
             "image": "images/player2.jpg"
         }
     ];
+    /*----------Get list user from an URL-------------- */
+    $.getJSON("http://localhost:8080/cotuong/rest/online",function(result){
+        var data = [];
+       	$.each(result, function() {
+       		var element = [];
+       		console.log(this);
+       	});
+    });
+    /*------------------------------------------------*/
     var soundForClick = null;
     soundManager.setup({
         onready: function () {
             soundForClick = soundManager.createSound({
-                url: 'sounds/click-button.mp3'
+                url: 'resources/extra/sounds/click-button.mp3'
             });
         },
         ontimeout: function () {

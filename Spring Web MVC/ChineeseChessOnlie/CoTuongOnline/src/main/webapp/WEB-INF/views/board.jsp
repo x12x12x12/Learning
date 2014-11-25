@@ -83,7 +83,6 @@
             chessGame.init();
             document.getElementById("newGame").onclick=function(){chessGame.init()};
             document.getElementById("restore").onclick=function(){chessGame.restore()};
-
         </script>
     </body>
 </html>

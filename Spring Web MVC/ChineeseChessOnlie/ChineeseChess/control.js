@@ -70,7 +70,7 @@ myApp.controller('MyAppController', function ($scope, $http) {
 
     /*----------Get list user from an URL-------------- */
     $scope.userOnline=null; // arrays of user online
-    $http.get("http://www.w3schools.com//website/Customers_JSON.php")
+    $http.get("http://localhost:8080/cotuong/rest/online")
         .success(function(data) {
             $scope.userOnline = data;
             console.log(data);
