@@ -3,6 +3,8 @@ package com.cotuong.app;
 //import java.util.Date;
 //import java.util.List;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -38,7 +40,8 @@ public class RestController {
 		}else{
 			accountService.add(account);
 			String validate=passwordEncoder.encode(account.getEmail());
-			mailService.sendMail("appgame.cotuong@gmail.com",account.getEmail(), "Account Activation Code","Your code :"+validate);
+			mailService.sendMail("appgame.cotuong@gmail.com",account.getEmail(), "Account Activation Code","Your code :"+validate 
+											+"<br> Link active : http://localhost:8080/cotuong/active?ref="+account.getEmail());
 		}
 		account.setPassword("");
 		return account;
@@ -59,5 +62,10 @@ public class RestController {
 		return account;
 	}
 	
-	
+	@RequestMapping(value=AppRestUri.player_Online,method=RequestMethod.GET)
+	public @ResponseBody List<Account> listOnline(){
+		List<Account> list =accountService.getListOnline();
+		return list;
+	}
+
 }

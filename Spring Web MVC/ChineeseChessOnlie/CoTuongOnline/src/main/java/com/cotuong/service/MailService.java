@@ -31,10 +31,11 @@ public class MailService {
 	      this.velocityEngine = velocityEngine;
 	}
 	
-	public void regAccount(Account account){
-		
-	}
-	
+	/**
+	 * 
+	 * @param account
+	 * @param from
+	 */
 	public void sendActivationEmail(final Account account,final String from){
 		 MimeMessagePreparator preparator = new MimeMessagePreparator() {
 	         @SuppressWarnings("unchecked")
@@ -45,13 +46,20 @@ public class MailService {
 	            @SuppressWarnings("rawtypes")
 				Map model = new HashMap();
 	            model.put("account", account);
-	            String text = VelocityEngineUtils.mergeTemplateIntoString( velocityEngine,"templates/mail.vm", "UTF-8", null);
+	            String text = VelocityEngineUtils.mergeTemplateIntoString( velocityEngine,"/mail.vm", "UTF-8", null);
 	            message.setText(text, true);
 	         }
 	      };
 	      this.mailSender.send(preparator);
 	}
 	
+	/**
+	 * 
+	 * @param from
+	 * @param to
+	 * @param subject
+	 * @param msg
+	 */
 	public void sendMail(String from,String to,String subject,String msg){
 		SimpleMailMessage message = new SimpleMailMessage();
 		message.setFrom(from);

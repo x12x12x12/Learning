@@ -98,10 +98,11 @@
     <!-- Custom Theme JavaScript -->
     <script src="resources/js/sb-admin-2.js"></script>
 	<script>
+		var data=<c:out value="${account.email}"/>;
+			$("email").val(data);
             $("#email").attr('required', ''); 
             $("#email").prop('type', 'email');
             $("#password").attr('required', ''); 
-            $("#password").attr('pattern','.{4,10}'); 
     </script>
 </body>
 

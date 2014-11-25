@@ -1,5 +1,7 @@
 package com.cotuong.service;
 
+import java.util.List;
+
 import com.cotuong.model.Account;
 
 public interface AccountService {
@@ -7,5 +9,7 @@ public interface AccountService {
 	Account getAccount(String email);
 	void update(Account account);
 	void delete(Account account);
+	void setStatusOnline(String email);
 	void activateAccount(String email);
+	List<Account> getListOnline();
 }
