@@ -51,7 +51,6 @@ public class RestController {
 	public @ResponseBody Account activeAccount(@RequestBody Account account){
 		Account check=accountService.getAccount(account.getEmail());
 		if(check!=null){
-			System.out.println(account.toString());
 			if(passwordEncoder.matches(account.getEmail(),account.getPassword())){
 				accountService.activateAccount(account.getEmail());	
 				account.setPassword("ok");

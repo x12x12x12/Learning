@@ -34,7 +34,6 @@ public class AccountServiceImpl implements AccountService{
 		}
 		account.setPoint(10);
 		account.setStatus(2);
-		account.setImg_url("");
 		mongoTemplate.insert(account);
 	}
 

@@ -84,5 +84,79 @@
             document.getElementById("newGame").onclick=function(){chessGame.init()};
             document.getElementById("restore").onclick=function(){chessGame.restore()};
         </script>
+        <script>
+		
+	  /**
+		*	The code below is basic function to receive data from game's server
+		*	@onOpen
+		*	@onMessage
+		*	@onClose
+		*	0: OK ----- 1: ERROR
+	    **/
+		var ws=new WebSocket("ws://localhost:8080/cotuong/game");
+		ws.onopen=function(message){
+			var id_player=1;
+			ws.send("REG-"+id_player);
+		};
+		ws.onmessage=function(message){
+			var data=message.data.split("-|-");
+			switch(data[0]){
+				case "HANDSHAKE":
+					var id_requestHandShake=data[1];
+					break;
+				case "ACCEPT_HANDSHAKE":
+					break;
+				case "PAUSE":
+					var id_requestPause=1;
+					
+					break;
+				case "ACCEPT_PAUSE":
+					var accept=data[1];
+					if(accept=="1"){
+						console.log("continue");
+					}
+					break;
+				case "CHAT":
+					console.log(data[1]);
+					break;
+				case "LOGIN":
+					break;
+				case "LOGOUT":
+					break;
+			}
+		}
+		ws.onclose=function(message){
+			ws.close();
+		}
+		/**
+		 *
+		 *
+		 *
+		 **/
+		function postMessage(){
+			var to_client_id=2;
+			var text=$("#msg").val();
+			ws.send("CHAT-"+to_client_id+"-"+text);
+			$("#msg").val("");
+		}
+		function acceptHandShake(){
+			var id_requestHandshake=1;
+			ws.send("HANDSHAKE-0-"+id_requestHandshake);
+		}
+		function declineHandShake(){
+			var id_requestHandshake=1;
+			ws.send("HANDSHAKE-1-"+id_requestHandshake);
+		}
+		function requestPause(){
+			var id_requestPause=1;
+			ws.send("PAUSE-1-"+id_requestHandshake);
+		}
+		function acceptLose(){
+			
+		}
+		function requestDrawGame(){
+			
+		}
+	</script>
     </body>
 </html>

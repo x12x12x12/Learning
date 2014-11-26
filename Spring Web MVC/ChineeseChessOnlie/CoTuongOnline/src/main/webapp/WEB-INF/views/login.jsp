@@ -118,12 +118,16 @@
 					     							   <form:input path="email"  cssClass="form-control" placeholder="E-mail" id="emailReg"/>
 					                                </div>
 					                                <div class="form-group">
-					                                      <form:label path="password"  >Password </form:label>
+					                                      <form:label path="password">Password </form:label>
 					     							  	  <form:password path="password" cssClass="form-control" placeholder="Password (greater than 4 character)" id="passwordReg"/>
 					                                </div>
 					                               <div class="form-group">
 			                                    		<input class="form-control" placeholder="Confirm Password" name="password" type="password" value="" id="passwordRegConFirm">
 			                              		  </div>
+			                              		  <div class="form-group">
+					                                      <form:label path="img_url">Link Avatar </form:label>
+					     							  	  <form:input path="img_url" cssClass="form-control" placeholder="Image URL" id="imgReg"/>
+					                               </div>
 					                             <input type="hidden" name="${_csrf.parameterName}"value="${_csrf.token}" />
 					                            </fieldset>
                       					 </form:form>	
@@ -164,8 +168,9 @@
 				  var name=$("#nameReg").val();
 				  var password=$("#passwordReg").val();
 				  var passconfirm=$("#passwordRegConFirm").val();
+				  var img_url=$("#imgReg").val();
             	  var url= "http://localhost:8080/cotuong/rest/check/";
-            	  var json = {"name":name,"email":email,"password":password};
+            	  var json = {"name":name,"email":email,"password":password,"img_url":img_url};
             	  if ($.trim(email).length == 0) {
                       alert('Please enter email address');
                       e.preventDefault();
