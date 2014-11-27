@@ -18,14 +18,13 @@ import javax.websocket.Session;
 public class ServerEndPoint {
 	
 	   private static Set<Session> list = Collections.synchronizedSet(new HashSet<Session>());
-	   private static HashMap<String,Session> list_user = new HashMap<String,Session>();
+	   private static HashMap<String,String> list_user = new HashMap<String,String>();
 	   
 	   @OnOpen
 	   public void onOpen(Session session) throws IOException{
 		   System.out.println(session.getId() + " : connected ... ");
 		   session.getBasicRemote().sendText("Session id "+session.getId());
 		   list.add(session);
-		   list_user.put(session.getId(),session);
 	   }
 	   
 	   @OnClose
@@ -38,22 +37,49 @@ public class ServerEndPoint {
 	   }
 	   
 	   @OnMessage
-	   public void onMessage(Session session,String msg) throws IOException,SQLException{
-		   String[] data=msg.split("-");
-		   System.out.println(msg);
+	   public void onMessage(Session session,String data_receive) throws IOException,SQLException{
+		   String[] data=data_receive.split("-");
 		   switch (data[0]) {
-				case "CHAT":
-						String send_to=data[1];
-						Session session_to=list_user.get(send_to);
-						System.out.println(session_to.getId());
-						System.out.println(data[2]);
-						session_to.getBasicRemote().sendText("CHAT-|-"+data[2]);
-					break;
-				case "":
-					
-					break;
 				case "REG": 
+					/**
+					 *  Every client whom connect to server have to post their email to the socket server
+					 *  Then save user's email into list_user
+					 *  List<SessionId,EmailPlayerConnect> (String,String)
+					 */
+					list_user.put(session.getId(),data[1]);
 					break;
+				case "REQHANDSHAKE":
+					/**
+					 * 
+					 * 
+					 */
+					break;
+				case "REPHANDSHAKE":
+					/**
+					 * Reply the handshake to player who send the request.
+					 * Data    :  HANDSHAKE-BOOL-ID
+					 *  - BOOL 
+					 * 		+ Accept  : 0
+					 * 		+ Decline : 1
+					 *  - ID 	: Session id of player to response the request handshake
+					 */
+					break;
+				case "CHAT":
+					/**
+					 * Data : CHAT-ID-MESSAGE
+					 * 	- ID 		: Session id player receive the message
+					 * 	- MESSAGE   : Message data
+					 */
+						String send_to=data[1];
+						try {
+							System.out.println("Client nhận message:"+send_to);
+							System.out.println("Nội dung message :"+data[2]);
+//							session_to.getBasicRemote().sendText("CHAT-|-"+data[2]);
+						} catch (Exception ex) {
+							System.out.println("Client không online");
+						}
+					break;
+			
 				default:
 					break;
 				}

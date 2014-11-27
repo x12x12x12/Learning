@@ -5,8 +5,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection="account")
 public class Account {
-	@Id
 	private String name;
+	@Id
 	private String email;
 	private String password;
 	private String img_url;
