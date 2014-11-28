@@ -29,14 +29,22 @@ myApp.controller('MyAppController', function ($scope, $http) {
      * Title of chat conversation. Example : "TO : John"
      *
      **/
-    $scope.titleOfChatConversation="TO : ";
+    $scope.titleOfChatConversation = "TO : ";
+
+    /**
+     *
+     * Count down 15 second
+     *
+     **/
+    $scope.countDown = 15;
+
 
     /**
      *
      * Profile of opponent
      *
      **/
-    $scope.opponent={};
+    $scope.opponent = {};
 
     /**
      *
@@ -186,6 +194,18 @@ myApp.controller('MyAppController', function ($scope, $http) {
         soundForClick.play();
         $('#modalListUser').modal("hide");
         $('#modalWaitingAcceptChallenge').modal("show");
+
+        $scope.countDown=15;
+        var timeCountDown = setInterval(function(){
+            if($scope.countDown>0){
+                $scope.countDown--;
+                $scope.$apply();
+            }else{
+                clearInterval(timeCountDown);
+                $('#modalWaitingAcceptChallenge').modal("hide");
+            }
+        },1000);
+
     };
 
     /**
