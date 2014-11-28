@@ -120,20 +120,41 @@
         });
  	    var add=$('#dataTables-example').DataTable();
  	    $('#dataTables-example tbody').on('click','tr',function(){
- 	    	alert(add.row(this).data());
+ 	    	console.log(add.row(this).data());
+ 	    	var url="http://localhost:8080/app/rest/store/Restaurant";
+ 	    	
  	    });
-//        for (var i = 0; i < 8; i++) {
-//			add.row.add([
-//			          'a',
-//			          'b',
-//			          'c',
-//			          'd',
-//			          'e',
-//			          'g',
-//			          'h'
-//			]).draw();
-//		}
-      
+ 	    function postData(){
+ 	    	var id=$("#idItem").val();
+ 	    	var name=$("#nameItem").val();
+ 	    	var restaurant=$("#restaurantItem").val();
+ 	    	var price=$("#priceItem").val();
+ 	    	var img_url=$("#imgItem").val();	
+ 	    	var json = {"id":id,"name":name,"restaurant":restaurant,"price":price,"img_url":img_url};
+ 	    	
+ 	    	$.ajax({
+    	        url: url,
+    	        data: JSON.stringify(json),
+    	        type: "POST",
+    	        beforeSend: function(xhr) {
+    	            xhr.setRequestHeader("Accept", "application/json");
+    	            xhr.setRequestHeader("Content-Type", "application/json");
+    	        },
+    	        success: function(result) {
+    	        	if(result.id=='fail'){
+        	            alert("Update bị lỗi !! ");
+    	        	}else{
+    	        		alert("Update thành công !! ");
+    	        		$("#idItem").val("");
+    	        		$("#nameItem").val("");
+    	        		$("#restaurantItem").val("");
+    	        		$("#priceItem").val("");
+    	        		$("#imgItem").val("");
+        	            $("#myModal").modal("hide"); 
+    	        	}    
+    	        }
+    	    });
+ 	    }   
         $('#dataTables-example tbody').on('click', 'tr', function () {
             var id = this.id;
             var index = $.inArray(id, selected);
