@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>List </title>
+    <title>List món ăn hiện có</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="resources/css/bootstrap.min.css" rel="stylesheet">
@@ -33,7 +33,7 @@
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <! [endif]-->
 
 </head>
 
@@ -43,7 +43,7 @@
 		<div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">List food -  <c:out value="${data.name}"/> restaurant</h1>
+                    <h1 class="page-header"><c:out value="${data.name}"/> Restaurant</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -238,7 +238,5 @@
             clearModal();
         }
     </script>
-
 </body>
-
 </html>
