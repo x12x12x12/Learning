@@ -46,7 +46,7 @@
                         <h3 class="panel-title">Please Sign In</h3>
                     </div>
                     <div class="panel-body">
-                       <form:form modelAttribute="account" action="/app/">
+                       <form:form modelAttribute="account" action="/login">
                             <fieldset>
                                 <div class="form-group">
                                    <form:label path="email"  >Email</form:label>
