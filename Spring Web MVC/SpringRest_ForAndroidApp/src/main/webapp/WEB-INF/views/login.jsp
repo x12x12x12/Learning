@@ -51,10 +51,12 @@
                                 <div class="form-group">
                                    <form:label path="email"  >Email</form:label>
      							   <form:input path="email"  cssClass="form-control" placeholder="E-mail" />
+                                   <form:errors path="email" cssClass="error" />
                                 </div>
                                 <div class="form-group">
                                       <form:label path="password"  >Password </form:label>
      							  	  <form:password path="password" cssClass="form-control" placeholder="Password (greater than 4 character)" />
+                                    <form:errors path="password" cssClass="error" />
                                 </div>
                                 <div class="checkbox">
                                     <label>

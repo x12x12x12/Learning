@@ -26,9 +26,6 @@ public class LoginController {
 	@Autowired
 	PasswordEncoder passwordEncoder;
 	
-	@Autowired
-	private MailService mailService;
-	
 	@RequestMapping(value = {"/*","/login*"}, method = RequestMethod.GET)
 	public String home(Model model,HttpSession httpSession) {
 		if(validateSession(httpSession)){
@@ -38,7 +35,7 @@ public class LoginController {
 		return "login";
 	}
 	
-	@RequestMapping(value ={"/","/login*"}, method=RequestMethod.POST)
+	@RequestMapping(value ={"/login"}, method=RequestMethod.POST)
 	public String login_submit(@ModelAttribute("account") Account account,BindingResult result,HttpSession httpSession,Model model){
 		if(account !=null ){
 			model.addAttribute("account",account);
@@ -61,7 +58,7 @@ public class LoginController {
 				}
 				account.setPassword("");
 				httpSession.setAttribute("account", result_login);
-				return "redirect:order";
+				return "redirect:item";
 			}
 		}
 		model.addAttribute("account",account);

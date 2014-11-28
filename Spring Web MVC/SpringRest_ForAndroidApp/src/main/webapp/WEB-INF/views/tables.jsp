@@ -72,7 +72,60 @@
         <!-- /#page-wrapper -->
     </div>
     <!-- /#wrapper -->
-<input type="hidden" value="<c:out value="${data.name}"/>" id="res_name">
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Update food</h4>
+                </div>
+                <div class="modal-body">
+                    <form:form modelAttribute="item" action="" id="formUpdateItem">
+                        <fieldset>
+                            <div class="form-group">
+                                <form:label path="id">Id món ăn</form:label>
+                                <form:input path="id"  cssClass="form-control" id="idUpdate" disabled="true"/>
+                            </div>
+                            <div class="form-group">
+                                <form:label path="name">Tên món ăn</form:label>
+                                <form:input path="name"  cssClass="form-control" placeholder="Food name" id="nameUpdate"/>
+                            </div>
+                            <div class="form-group">
+                                <form:label path="restaurant_name">Tên nhà hàng</form:label>
+                                <form:input path="restaurant_name"  cssClass="form-control" id="restaurantUpdate" disabled="true"/>
+                            </div>
+                            <div class="form-group">
+                                <form:label path="price">Giá </form:label>
+                                <form:input path="price" cssClass="form-control" placeholder="Price (number) " id="priceUpdate"/>
+                            </div>
+                            <div class="form-group">
+                                <form:label path="status">Tình trạng </form:label>
+                                <form:select path="status" cssClass="form-control" id="statusUpdate" items="${status}"/>
+                            </div>
+                            <div class="form-group">
+                                <form:label path="img_url">Link hình ảnh </form:label>
+                                <form:input path="img_url" cssClass="form-control" placeholder="Food Image URL " id="imgUpdate"/>
+                            </div>
+                            <div class="form-group">
+                                <form:label path="img_ico">Link Icon </form:label>
+                                <form:input path="img_ico" cssClass="form-control" placeholder="Food Image URL " id="img_icoUpdate"/>
+                            </div>
+                            <input type="hidden" name="${_csrf.parameterName}"value="${_csrf.token}" />
+                        </fieldset>
+                    </form:form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="updateButton" >Update</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+    <input type="hidden" value="<c:out value="${data.name}"/>" id="res_name">
     <!-- jQuery Version 1.11.0 -->
     <script src="resources/js/jquery-1.11.0.js"></script>
     <!-- Bootstrap Core JavaScript -->
@@ -84,14 +137,13 @@
     <script src="resources/js/plugins/dataTables/dataTables.bootstrap.js"></script>
     <!-- Custom Theme JavaScript -->
     <script src="resources/js/sb-admin-2.js"></script>
+    <!-- My JavaScript -->
     <script>
-    var res_name=$("#res_name").val();
-    $(document).ready(function() {
-    	$.getJSON("http://localhost:8080/app/rest/store/Restaurant",function(result){
+        var res_name=$("#res_name").val();
+    	$.getJSON("http://localhost:8080/rest/store/"+res_name,function(result){
             var data = [];
            	$.each(result, function() {
            		var element = [];
-           		console.log(this);
            		for (var property in this) {
            		    if (this.hasOwnProperty(property)) {
                			if(property=="createDate" || property=="updateDate"){
@@ -103,71 +155,88 @@
            		}
            		data.push(element);
            	});
-        var table=$('#dataTables-example').dataTable({
-            "data": data,
-            "columns": [
-                { "title": "Id" },
-                { "title": "Name","class": "center" },
-                { "title": "Restaurant Name" },
-                { "title": "Create Date", "class": "center" },
-                { "title": "Update Date", "class": "center" },
-                { "title": "Price", "class": "center" },
-                { "title": "Status", "class": "center" },
-            ],
-            "columnDefs":[
-                {"targets":[0],"visible":false,"searchable":false}
-            ]
-        });
- 	    var add=$('#dataTables-example').DataTable();
- 	    $('#dataTables-example tbody').on('click','tr',function(){
- 	    	console.log(add.row(this).data());
- 	    	var url="http://localhost:8080/app/rest/store/Restaurant";
- 	    	
- 	    });
- 	    function postData(){
- 	    	var id=$("#idItem").val();
- 	    	var name=$("#nameItem").val();
- 	    	var restaurant=$("#restaurantItem").val();
- 	    	var price=$("#priceItem").val();
- 	    	var img_url=$("#imgItem").val();	
- 	    	var json = {"id":id,"name":name,"restaurant":restaurant,"price":price,"img_url":img_url};
- 	    	
- 	    	$.ajax({
-    	        url: url,
-    	        data: JSON.stringify(json),
-    	        type: "POST",
-    	        beforeSend: function(xhr) {
-    	            xhr.setRequestHeader("Accept", "application/json");
-    	            xhr.setRequestHeader("Content-Type", "application/json");
-    	        },
-    	        success: function(result) {
-    	        	if(result.id=='fail'){
-        	            alert("Update bị lỗi !! ");
-    	        	}else{
-    	        		alert("Update thành công !! ");
-    	        		$("#idItem").val("");
-    	        		$("#nameItem").val("");
-    	        		$("#restaurantItem").val("");
-    	        		$("#priceItem").val("");
-    	        		$("#imgItem").val("");
-        	            $("#myModal").modal("hide"); 
-    	        	}    
-    	        }
-    	    });
- 	    }   
-        $('#dataTables-example tbody').on('click', 'tr', function () {
-            var id = this.id;
-            var index = $.inArray(id, selected);
-            if ( index === -1 ) {
-                selected.push( id );
-            } else {
-                selected.splice( index, 1 );
-            }
-            $(this).toggleClass('selected');
-        } );
+            var table=$('#dataTables-example').dataTable({
+                "data": data,
+                "columns": [
+                    { "title": "Id" },
+                    { "title": "Tên món ăn","class": "center" },
+                    { "title": "Tên nhà hàng" },
+                    { "title": "Ngày tạo", "class": "center" },
+                    { "title": "Ngày cập nhật", "class": "center" },
+                    { "title": "Giá", "class": "center" },
+                    { "title": "Tình trạng", "class": "center" },
+                    { "title": "Link hình", "class": "center" },
+                    { "title": "Link icon", "class": "center" }
+                ],
+                "columnDefs":[
+                    {"targets":[0],"visible":false,"searchable":false},
+                    {"targets":[2],"visible":false,"searchable": false},
+                    {"targets":[7],"visible":false,"searchable": false},
+                    {"targets":[8],"visible":false,"searchable": false}
+                ]
+            });
+            var add=$('#dataTables-example').DataTable();
+            $('#dataTables-example tbody').on('click','tr',function(){
+                var item_data=add.row(this).data();
+                var idUpdate=item_data[0];
+                var nameUpdate=item_data[1];
+                var restaurantUpdate=item_data[2];
+                var priceUpdate=item_data[5];
+                var statusUpdate=item_data[6];
+                var imgUpdate=item_data[7];
+                var img_icoUpdate=item_data[8];
+                $("#idUpdate").val(idUpdate);
+                $("#nameUpdate").val(nameUpdate);
+                $("#restaurantUpdate").val(restaurantUpdate);
+                $("#priceUpdate").val(priceUpdate);
+                $("#statusUpdate").val(statusUpdate);
+                $("#imgUpdate").val(imgUpdate);
+                $("#img_icoUpdate").val(img_icoUpdate);
+                $("#myModal").modal("show");
+            });
     	});
-    });
-
+        function clearModal(){
+            $("#idUpdate").val("");
+            $("#nameUpdate").val("");
+            $("#restaurantUpdate").val("");
+            $("#priceUpdate").val("");
+            $("#statusUpdate").val("");
+            $("#imgUpdate").val("");
+            $("#img_icoUpdate").val("");
+        }
+        function postData(){
+            var id=$("#idUpdate").val();
+            var name=$("#nameUpdate").val();
+            var restaurant=$("#restaurantUpdate").val();
+            var price=$("#priceUpdate").val();
+            var img_url=$("#imgUpdate").val();
+            var json = {"id":id,"name":name,"restaurant":restaurant,"price":price,"img_url":img_url};
+            console.log(json);
+// 	    	var url="http://localhost:8080/rest/store/Restaurant";
+// 	    	$.ajax({
+//    	        url: url,
+//    	        data: JSON.stringify(json),
+//    	        type: "POST",
+//    	        beforeSend: function(xhr) {
+//    	            xhr.setRequestHeader("Accept", "application/json");
+//    	            xhr.setRequestHeader("Content-Type", "application/json");
+//    	        },
+//    	        success: function(result) {
+//    	        	if(result.id=='fail'){
+//        	            alert("Update bị lỗi !! ");
+//    	        	}else{
+//    	        		alert("Update thành công !! ");
+//    	        		$("#idItem").val("");
+//    	        		$("#nameItem").val("");
+//    	        		$("#restaurantItem").val("");
+//    	        		$("#priceItem").val("");
+//    	        		$("#imgItem").val("");
+//        	            $("#myModal").modal("hide");
+//    	        	}
+//    	        }
+//    	    });
+            clearModal();
+        }
     </script>
 
 </body>
