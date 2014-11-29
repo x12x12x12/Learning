@@ -148,14 +148,27 @@
            		    if (this.hasOwnProperty(property)) {
                			if(property=="createDate" || property=="updateDate"){
                				var dateTime=new Date(this[property]);
-               				this[property]=dateTime.toString();
+               				this[property]=dateTime.toDateString();
                			}
+                        if(property=="status"){
+                            switch (this[property]){
+                                case 0:
+                                    this[property]="Hot";
+                                    break;
+                                case 1:
+                                    this[property]="Bình thường";
+                                    break;
+                                case 2:
+                                    this[property]="Đang giảm giá";
+                                    break;
+                            }
+                        }
            		        element.push(this[property]);
            		    }
            		}
            		data.push(element);
            	});
-            var table=$('#dataTables-example').dataTable({
+            $('#dataTables-example').dataTable({
                 "data": data,
                 "columns": [
                     { "title": "Id" },
@@ -185,6 +198,17 @@
                 var statusUpdate=item_data[6];
                 var imgUpdate=item_data[7];
                 var img_icoUpdate=item_data[8];
+                switch (statusUpdate){
+                    case "Hot":
+                        statusUpdate=0;
+                        break;
+                    case "Bình thường":
+                        statusUpdate=1;
+                        break;
+                    case "Đang giảm giá":
+                        statusUpdate=2;
+                        break;
+                }
                 $("#idUpdate").val(idUpdate);
                 $("#nameUpdate").val(nameUpdate);
                 $("#restaurantUpdate").val(restaurantUpdate);
@@ -209,34 +233,33 @@
             var name=$("#nameUpdate").val();
             var restaurant=$("#restaurantUpdate").val();
             var price=$("#priceUpdate").val();
+            var status=$("#statusUpdate").val();
             var img_url=$("#imgUpdate").val();
-            var json = {"id":id,"name":name,"restaurant":restaurant,"price":price,"img_url":img_url};
+            var json = {"id":id,"name":name,"restaurant_name":restaurant,"price":price,"status":status,"img_url":img_url};
             console.log(json);
-// 	    	var url="http://localhost:8080/rest/store/Restaurant";
-// 	    	$.ajax({
-//    	        url: url,
-//    	        data: JSON.stringify(json),
-//    	        type: "POST",
-//    	        beforeSend: function(xhr) {
-//    	            xhr.setRequestHeader("Accept", "application/json");
-//    	            xhr.setRequestHeader("Content-Type", "application/json");
-//    	        },
-//    	        success: function(result) {
-//    	        	if(result.id=='fail'){
-//        	            alert("Update bị lỗi !! ");
-//    	        	}else{
-//    	        		alert("Update thành công !! ");
-//    	        		$("#idItem").val("");
-//    	        		$("#nameItem").val("");
-//    	        		$("#restaurantItem").val("");
-//    	        		$("#priceItem").val("");
-//    	        		$("#imgItem").val("");
-//        	            $("#myModal").modal("hide");
-//    	        	}
-//    	        }
-//    	    });
+	    	var url="http://localhost:8080/rest/updateitem";
+	    	$.ajax({
+    	        url: url,
+    	        data: JSON.stringify(json),
+    	        type: "POST",
+    	        beforeSend: function(xhr) {
+    	            xhr.setRequestHeader("Accept", "application/json");
+    	            xhr.setRequestHeader("Content-Type", "application/json");
+    	        },
+    	        success: function(result) {
+    	        	if(result.id=='fail'){
+        	            alert("Update bị lỗi !! ");
+    	        	}else{
+    	        		alert("Update thành công !! ");
+        	            $("#myModal").modal("hide");
+    	        	}
+    	        }
+    	    });
             clearModal();
         }
+        $("#updateButton").click(function(){
+            postData();
+        });
     </script>
 </body>
 </html>

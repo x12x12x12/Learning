@@ -1,5 +1,6 @@
 package com.dominhquan.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -12,18 +13,21 @@ import org.springframework.data.mongodb.core.query.Query;
 
 import com.dominhquan.model.Item;
 import com.mongodb.MongoException;
+import org.springframework.data.mongodb.core.query.Update;
 
 public class ItemServiceImpl implements ItemService{
 	
 	private static final Logger logger = LoggerFactory.getLogger(ItemServiceImpl.class);
 	
-	@Autowired
+//	@Autowired
 	private MongoTemplate mongoTemplate;
+
 	private Query query;
 	
 	public ItemServiceImpl (MongoTemplate mongoTemplate){
 		this.mongoTemplate=mongoTemplate;
 	}
+
 	@Override
 	public void createItem(Item item) throws MongoException{
 		if(!mongoTemplate.collectionExists(Item.class)){
@@ -42,13 +46,21 @@ public class ItemServiceImpl implements ItemService{
 	@Override
 	public Item removeItem(String id) throws MongoException{
 		query=new Query(Criteria.where("_id").is(id));
-		Item item=mongoTemplate.findAndRemove(query, Item.class);
-		
+		return mongoTemplate.findAndRemove(query, Item.class);
 	}
 
 	@Override
 	public void updateItem(Item item) throws MongoException{
-		mongoTemplate.save(item);
+		query=new Query();
+		query.addCriteria(Criteria.where("_id").is(item.getId()));
+		Update update=new Update();
+		update.set("name",item.getName());
+		update.set("price",item.getPrice());
+		update.set("updateDate",new Date());
+		update.set("status",item.getStatus());
+		update.set("img_url",item.getImg_url());
+		update.set("img_ico",item.getImg_ico());
+		mongoTemplate.updateFirst(query,update,Item.class);
 		logger.info("Save item successfully, Details : "+ item.toString());
 	}
 	@Override
@@ -65,6 +77,7 @@ public class ItemServiceImpl implements ItemService{
 	
 	public int countItem() throws MongoException{
 //		query=new Query(Criteria.where("_id").)
+		return 0;
 	}
 }
 
