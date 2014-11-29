@@ -79,5 +79,42 @@ public class RestController {
 		return account;
 	}
 	
+	@RequestMapping(value=AppRestUri.update_item,method=RequestMethod.POST)
+	public @ResponseBody Item updateItem(@RequestBody Item item){
+		logger.info("Update item :"+item.getId());
+		item.setUpdateDate(new Date());
+		itemService.updateItem(item);
+		return item;
+	}
+	
+	@RequestMapping(value=AppRestUri.create_item,method=RequestMethod.POST)
+	public @ResponseBody Item createItem(@RequestBody Item item){
+		logger.info("Create item :"+item.getId());
+		item.setCreateDate(new Date());
+		item.setUpdateDate(new Date());
+		try{
+			itemService.createItem(item);	
+		}catch(Exception ex){
+			item.setId("fail");
+		}
+		return item;
+	}
+	
+	@RequestMapping(value=AppRestUri.create_item,method=RequestMethod.PUT)
+	public @ResponeBody Item deleteItem(@PathVariable("id") String id){
+		logger.info("User request to delete item :"+ id);
+		Item item=new Item();
+			try{
+				item=itemService.removeItem(id);
+				if(item.getName()!=null){
+					logger.info("Delete item " + item.getName() + " successful");
+				}
+			}catch(Exception ex){
+				item.setId("fail");
+			}
+		return item;
+	}
+	
+	
 	
 }
