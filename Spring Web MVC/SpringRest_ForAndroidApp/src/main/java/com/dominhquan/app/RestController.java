@@ -100,7 +100,7 @@ public class RestController {
 		return item;
 	}
 	
-	@RequestMapping(value=AppRestUri.create_item,method=RequestMethod.PUT)
+	@RequestMapping(value=AppRestUri.create_item,method=RequestMethod.POST)
 	public @ResponeBody Item deleteItem(@PathVariable("id") String id){
 		logger.info("User request to delete item :"+ id);
 		Item item=new Item();
