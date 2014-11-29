@@ -2,6 +2,7 @@ package com.dominhquan.uri;
 
 public class AppRestUri {
 	public static final String get_item="/rest/item/{id}";
+	public static final String update_item="/rest/updateitem";
 	public static final String get_all_items="rest/items";
 	public static final String get_restaurant="rest/restaurant/{id}";
 	public static final String get_all_restaurant="rest/restaurants";
