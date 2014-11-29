@@ -8,16 +8,14 @@
         <link rel="stylesheet" type="text/css" href="resources/extra/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="resources/extra/bootstrap-theme.min.css">
     </head>
-   <body ng-controller="MyAppController">
+  <body ng-controller="MyAppController">
         <div id="main">
-            <div id="debug" style="float:left;display:none">
-            </div>
-
-            <div style="float:left" class="col-md-8">
+            <div id="debug" style="float:left;display:none"></div>
+            <div style="float:left">
                 <canvas id="board" width="460" height="510" ></canvas>
             </div>
-            <div style="float: right" class="col-md-4">
-                <div class="row">
+            <div style="float:right">
+               <div class="row">
                     <div class="col-md-6">
                         <div id="newGame" class="button" >New Game</div>
                         <div id="restore" class="button" >Turn back</div>
@@ -31,9 +29,8 @@
                         <div ng-bind="opponent.name" align="center"></div>
                         <div ng-bind-template="Score: {{opponent.point}}"></div>
                     </div>
-
                 </div>
-                <br/>
+                 <br/>
                 <div class="row">
                     <div class="conversation">
                         <div class="title">
@@ -52,12 +49,17 @@
                     </div>
                 </div>
             </div>
-
         </div>
-
-        <!--
-        ------------START: Popup show user online--------------------
-        -->
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <!--------------START: Popup show user online---------------------->
         <div class="modal fade" id="modalListUser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content" style="height: 100vh; width: 150%; margin-left: -22%; overflow-y: scroll;" >
@@ -82,14 +84,9 @@
                 </div>
             </div>
         </div>
-        <!--
-        ------------END :Popup show user online--------------------
-        -->
-
-
-        <!--
-        //------------START: Popup for Waiting opponent accept your challenge--------------------
-        -->
+        <!--------------END :Popup show user online---------------------->
+        
+        <!--------------START: Popup for Waiting opponent accept your challenge---------------------->
         <div class="modal fade" id="modalWaitingAcceptChallenge" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content" align="center" style="height: 20vh; width: 80vh; margin-top: 40vh;">
@@ -107,13 +104,9 @@
                 </div>
             </div>
         </div>
-        <!--
-        ------------END :Popup for Waiting opponent accept your challenge--------------------
-        -->
-
-        <!--
-        //------------START: Popup for Accept challenge from opponent--------------------
-        -->
+        <!--------------END :Popup for Waiting opponent accept your challenge---------------------->
+        
+        <!--------------START: Popup for Accept challenge from opponent---------------------->
         <div class="modal fade" id="modalAcceptChallenge" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content" align="center" style="height: 20vh; width: 80vh; margin-top: 40vh;">
@@ -132,24 +125,25 @@
                 </div>
             </div>
         </div>
-        <!--
-        ------------END :Popup for Accept challenge from opponent--------------------
-        -->
+        <!--------------END :Popup for Accept challenge from opponent---------------------->
+        
+        
+        
 
-  		<script src="resources/extra/angular.min.js"></script>
-        <script src="resources/extra/jquery-1.11.0.min.js"></script>
-        <script src="resources/extra/bootstrap.min.js"></script>
-        <script src="resources/extra/soundmanager2.js"></script>
-        <script src="resources/extra/Chess.js"></script>
-        <script src="resources/extra/Board.js"></script>
-        <script src="resources/extra/control.js"></script>
-
+        
         <div id="debug" style="position:absolut;top:0px;left:0px;width:400px;"></div>
+        <script src="resources/extra/Board.js"></script>
+        <script src="resources/extra/Chess.js"></script>
         <script type='text/javascript'>
             var chessGame=new ChessGame("board");
             chessGame.init();
             document.getElementById("newGame").onclick=function(){chessGame.init()};
             document.getElementById("restore").onclick=function(){chessGame.restore()};
         </script>
-    </body>
+        <script src="resources/extra/jquery-1.11.0.min.js"></script>
+  		<script src="resources/extra/angular.min.js"></script>
+        <script src="resources/extra/bootstrap.min.js"></script>
+        <script src="resources/extra/soundmanager2.js"></script>
+        <script src="resources/extra/control.js"></script>
+</body>
 </html>

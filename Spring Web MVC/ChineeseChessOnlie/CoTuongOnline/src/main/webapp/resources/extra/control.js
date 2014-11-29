@@ -10,8 +10,8 @@ myApp.controller('MyAppController', function ($scope, $http) {
     $scope.userOnline = [
         {
             "name": "Fuck you",
-            "point": "20",
-            "img_url": "http://i.imgur.com/euNuShD.jpg"
+            "point": "110",
+            "img_url": "images/player1.jpg"
         }
     ];
 //    console.log($scope.userOnline);
@@ -29,14 +29,22 @@ myApp.controller('MyAppController', function ($scope, $http) {
      * Title of chat conversation. Example : "TO : John"
      *
      **/
-    $scope.titleOfChatConversation="TO : ";
+    $scope.titleOfChatConversation = "TO : ";
+
+    /**
+     *
+     * Count down 15 second
+     *
+     **/
+    $scope.countDown = 15;
+
 
     /**
      *
      * Profile of opponent
      *
      **/
-    $scope.opponent={};
+    $scope.opponent = {};
 
     /**
      *
@@ -47,7 +55,7 @@ myApp.controller('MyAppController', function ($scope, $http) {
     soundManager.setup({
         onready: function () {
             soundForClick = soundManager.createSound({
-                url: 'resources/extra/sounds/click-button.mp3'
+                url: 'sounds/click-button.mp3'
             });
         },
         ontimeout: function () {
@@ -165,9 +173,7 @@ myApp.controller('MyAppController', function ($scope, $http) {
                  *
                  */
                 var to_client_id = 2;
-                console.log("User send : "+$scope.yourMessage);
                 ws.send("CHAT-" + to_client_id + "-" + $scope.yourMessage);
-                
 
                 /**
                  *
@@ -188,6 +194,17 @@ myApp.controller('MyAppController', function ($scope, $http) {
         soundForClick.play();
         $('#modalListUser').modal("hide");
         $('#modalWaitingAcceptChallenge').modal("show");
+        $scope.countDown=15;
+        var timeCountDown = setInterval(function(){
+            if($scope.countDown>0){
+                $scope.countDown--;
+                $scope.$apply();
+            }else{
+                clearInterval(timeCountDown);
+                $('#modalWaitingAcceptChallenge').modal("hide");
+            }
+        },1000);
+
     };
 
     /**
