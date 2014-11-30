@@ -77,7 +77,7 @@ myApp.controller('MyAppController', function ($scope, $http) {
     ws.onmessage = function (message) {
         var data = message.data.split("-|-");
         switch (data[0]) {
-            case "HANDSHAKE":
+            case "REQHANDSHAKE":
                 var id_requestHandShake = data[1];
 
                 break;

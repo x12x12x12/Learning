@@ -40,8 +40,12 @@ public class RestController {
 		}else{
 			accountService.add(account);
 			String validate=passwordEncoder.encode(account.getEmail());
-			mailService.sendMail("appgame.cotuong@gmail.com",account.getEmail(), "Account Activation Code","Your code :"+validate 
-											+"<br> Link active : http://localhost:8080/cotuong/active?ref="+account.getEmail());
+			try {
+				mailService.sendMail("appgame.cotuong@gmail.com",account.getEmail(), "Account Activation Code","Your code :"+validate 
+												+" Link active : http://localhost:8080/cotuong/active?ref="+account.getEmail());
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 		}
 		account.setPassword("");
 		return account;
