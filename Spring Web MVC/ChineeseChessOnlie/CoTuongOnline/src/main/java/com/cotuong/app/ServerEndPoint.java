@@ -39,120 +39,124 @@ public class ServerEndPoint {
 	   @OnMessage
 	   public void onMessage(Session session,String data_receive) throws IOException,SQLException{
 		   String[] data=data_receive.split("-");
-		   if(data[0].equalsIgnoreCase("REG")){
-			   /**
-				*  Every client whom connect to server have to post their email to the socket server
-				*  Then save user's email into list_user
-				*  List<SessionId,EmailPlayerConnect> (String,String)
-				*  Client send : REG-ID_Client
-				*/
-			   list_user.put(session.getId(),data[1]);
-		   }else if(data[0].equalsIgnoreCase("REQHANDSHAKE")){
-			   /**
-				* User A wanna play with B
-				* User A : Send "REQHANDSHAKE-ID_B" to server
-				* Server : Find ID_B in list_user -> session of user's B -> send to B
-				* User B : Receive "REQHANDSHAKE-|-ID_A"
-				*/
-			   checkAndSendMsgToUser(data, session, "REQHANDSHAKE-|-");
-		   }else if(data[0].equalsIgnoreCase("REPHANDSHAKE")){
-			   /**
-				* Reply the handshake to player who send the request.
-				* User A : Send "REPHANDSHAKE-ID_B-BOOL"
-				*  - BOOL
-				* 		+ Accept  : 0
-				* 		+ Decline : 1
-				*  - ID 	: Session id of player to response the request handshake
-				* Server : Find ID_B in list_user -> session of user's B -> send to B
-				* User B : Receive "REPHANDSHAKE-BOOL-ID_A"
-				*/
-			   checkAndSendMsgToUser(data,session,"REPHANDSHAKE-|-"+data[1]+"-|-");
-		   }else if(data[0].equalsIgnoreCase("REQPAUSE")){
-			   /**
-				* User A request pause game to user B
-				* User A : Send "REQPAUSE-ID_B"
-				* Server : Find ID_B in list_user -> session of user's B -> send to B
-				* User B : Receive "REQPAUSE-ID_A"
-				*/
-			   checkAndSendMsgToUser(data,session,"REQPAUSE-|-");
-		   }else if(data[0].equalsIgnoreCase("REPPAUSE")){
 
-		   }else if(data[0].equalsIgnoreCase("CHAT")){
-			   /**
-				* Data : CHAT-ID-MESSAGE
-				* 	- ID 		: Session id player receive the message
-				* 	- MESSAGE   : Message data
-				*/
-			   String send_to=data[1];
-			   try {
-				   System.out.println("Client nhận message:"+send_to);
-				   System.out.println("Nội dung message :"+data[2]);
-//							session_to.getBasicRemote().sendText("CHAT-|-"+data[2]);
-			   } catch (Exception ex) {
-				   System.out.println("Client không online");
-			   }
-		   }
-//		   switch (data[0]) {
-//				case "REG":
+		   switch (data[0]) {
+			   case "REG":
 					/**
 					 *  Every client whom connect to server have to post their email to the socket server
 					 *  Then save user's email into list_user
 					 *  List<SessionId,EmailPlayerConnect> (String,String)
+					 *  Client send : REG-ID_Client
 					 */
-//					list_user.put(session.getId(),data[1]);
-//					break;
-//				case "REQHANDSHAKE":
-//					/**
-//					 *
-//					 *
-//					 */
-//					break;
-//				case "REPHANDSHAKE":
+					list_user.put(session.getId(),data[1]);
+					break;
+			   case "REQHANDSHAKE":
+					/**
+					 * User A wanna play with B
+					 * User A : Send "REQHANDSHAKE-ID_B" to server
+					 * Server : Find ID_B in list_user -> session of user's B -> send to B
+					 * User B : Receive "REQHANDSHAKE-|-ID_A"
+					 */
+					checkAndSendMsgToUser(data, session, "REQHANDSHAKE-|-");
+					break;
+			   case "REPHANDSHAKE":
 					/**
 					 * Reply the handshake to player who send the request.
-					 * Data    :  HANDSHAKE-BOOL-ID
+					 * User A : Send "REPHANDSHAKE-ID_B-BOOL"
 					 *  - BOOL
 					 * 		+ Accept  : 0
 					 * 		+ Decline : 1
 					 *  - ID 	: Session id of player to response the request handshake
+					 * Server : Find ID_B in list_user -> session of user's B -> send to B
+					 * User B : Receive "REPHANDSHAKE-BOOL-ID_A"
 					 */
-//					break;
-//				case "CHAT":
+					checkAndSendMsgToUser(data,session,"REPHANDSHAKE-|-"+data[1]+"-|-");
+					break;
+			   case "REQPAUSE":
 					/**
-					 * Data : CHAT-ID-MESSAGE
+					 * User A request pause game to user B
+					 * User A : Send "REQPAUSE-ID_B"
+					 * Server : Find ID_B in list_user -> session of user's B -> send to B
+					 * User B : Receive "REQPAUSE-ID_A"
+					 */
+					checkAndSendMsgToUser(data,session,"REQPAUSE-|-");
+				   break;
+			   case "REPPAUSE":
+					/**
+					 * Reply the handshake to player who send the request.
+					 * User A : Send "REPPAUSE-ID_B-BOOL"
+					 *  - BOOL
+					 * 		+ Accept  : 0
+					 * 		+ Decline : 1
+					 *  - ID 	: Session id of player to response the request handshake
+					 * Server : Find ID_B in list_user -> session of user's B -> send to B
+					 * User B : Receive "REPPAUSE-BOOL-ID_A"
+					 */
+					checkAndSendMsgToUser(data,session,"REPAUSE-|-"+data[1]+"-|-");
+				   break;
+			   case "REQNEWGAME":
+				   /**
+					*
+					*
+					*/
+				   break;
+			   case "REPNEWGAME":
+				   break;
+			   case "LOSE":
+					/**
+					 * User A accept lose this current game
+					 * User A : Send "LOSE-ID_B"
+					 * Server : Find ID_B in list_user -> session of user's B -> send to B
+					 * User B : Receive "LOSE-ID_A"
+					 */
+					checkAndSendMsgToUser(data,session,"LOSE-|-");
+				   break;
+			   case "CHAT":
+					/**
+					 * Handle message between 2 player in current match
+					 * User A : Send "CHAT-ID_B-MESSAGE"
 					 * 	- ID 		: Session id player receive the message
 					 * 	- MESSAGE   : Message data
 					 */
-//						String send_to=data[1];
-//						try {
-//							System.out.println("Client nhận message:"+send_to);
-//							System.out.println("Nội dung message :"+data[2]);
-////							session_to.getBasicRemote().sendText("CHAT-|-"+data[2]);
-//						} catch (Exception ex) {
-//							System.out.println("Client không online");
-//						}
-//					break;
-//
-//				default:
-//					break;
-//				}
+						String send_to=data[1];
+						try {
+							System.out.println("Client nhận message:"+send_to);
+							System.out.println("Nội dung message :"+data[2]);
+//							session_to.getBasicRemote().sendText("CHAT-|-"+data[2]);
+						} catch (Exception ex) {
+							System.out.println("Client không online");
+						}
+					break;
+
+			   default:
+					break;
+		   }
 	   }
-	public void checkAndSendMsgToUser(String[] data,Session session,String msg) throws IOException{
-		if(list_user.containsValue(data[1])){
-			String session_id="";
-			for (String key : list_user.keySet()){
-				if(list_user.get(key)==data[1]){
-					session_id=key;
+
+	   /**
+	    *
+	    * @param data
+	    * @param session
+	    * @param msg
+	 	* @throws IOException
+	 	*/
+	   public void checkAndSendMsgToUser(String[] data,Session session,String msg) throws IOException{
+		    if(list_user.containsValue(data[1])){
+				String session_id="";
+				for (String key : list_user.keySet()){
+					if(list_user.get(key)==data[1]){
+						session_id=key;
+					}
 				}
-			}
-			for(Session sess : list){
-				if(sess.getId().equalsIgnoreCase(session_id)){
-					String id_a=list_user.get(session.getId());
-					sess.getBasicRemote().sendText(msg+id_a);
+				for(Session sess : list){
+					if(sess.getId().equalsIgnoreCase(session_id)){
+						String id_a=list_user.get(session.getId());
+						sess.getBasicRemote().sendText(msg+id_a);
+					}
 				}
+				return ;
 			}
-			return ;
-		}
-		session.getBasicRemote().sendText("RESULT-|-User không tồn tại");
-	}
+			session.getBasicRemote().sendText("RESULT-|-User không tồn tại");
+	   }
+
 }
