@@ -72,7 +72,15 @@ public class AccountServiceImpl implements AccountService{
 		update.set("status",1);
 		mongoTemplate.updateFirst(query, update, Account.class);
 	}
-	
+
+	@Override
+	public void setStatusOffline(String email) throws  MongoException{
+		query=new Query(Criteria.where("email").is(email));
+		update=new Update();
+		update.set("status",0);
+		mongoTemplate.updateFirst(query, update, Account.class);
+	}
+
 	@Override
 	public List<Account> getListOnline() throws MongoException{
 		query=new Query(Criteria.where("status").is(1));

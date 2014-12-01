@@ -10,6 +10,7 @@ public interface AccountService {
 	void update(Account account);
 	void delete(Account account);
 	void setStatusOnline(String email);
+	void setStatusOffline(String email);
 	void activateAccount(String email);
 	List<Account> getListOnline();
 }

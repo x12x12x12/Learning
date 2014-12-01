@@ -2,7 +2,11 @@
   <dictionary name="F.U.C.K">
     <words>
       <w>rephandshake</w>
+      <w>repnewgame</w>
+      <w>reppause</w>
       <w>reqhandshake</w>
+      <w>reqnewgame</w>
+      <w>reqpause</w>
     </words>
   </dictionary>
 </component>
