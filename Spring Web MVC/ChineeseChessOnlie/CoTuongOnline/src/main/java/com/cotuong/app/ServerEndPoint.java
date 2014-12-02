@@ -181,32 +181,39 @@ public class ServerEndPoint {
 		   }
 	   }
 
-	   /**
-	    *
-	    * @param data
-	    * @param session
-	    * @param msg
-	 	* @throws IOException
-	 	*/
-	   public void checkAndSendMsgToUser(String[] data,Session session,String msg) throws IOException{
-		    if(list_user.containsValue(data[1])){
-				String session_id="";
-				for (String key : list_user.keySet()){
-					if(list_user.get(key)==data[1]){
-						session_id=key;
-					}
+	/**
+	 *
+	 * @param data
+	 * @param session
+	 * @param msg
+	 * @throws IOException
+	 */
+	public void checkAndSendMsgToUser(String[] data,Session session,String msg) throws IOException{
+		if(list_user.containsValue(data[1])){
+			String session_id="";
+			for (String key : list_user.keySet()){
+				if(list_user.get(key)==data[1]){
+					session_id=key;
 				}
-				for(Session sess : list){
-					if(sess.getId().equalsIgnoreCase(session_id)){
-						String id_a=list_user.get(session.getId());
-						sess.getBasicRemote().sendText(msg+id_a);
-						return;
-					}
-				}
-				return ;
 			}
+			for(Session sess : list){
+				if(sess.getId().equalsIgnoreCase(session_id)){
+					String id_a=list_user.get(session.getId());
+					sess.getBasicRemote().sendText(msg+id_a);
+					return;
+				}
+			}
+			return ;
+		}
 			session.getBasicRemote().sendText("RESULT-|-User is offline");
-	   }
+	}
+
+	/**
+	 *
+	 * @param session
+	 * @param userID
+	 * @param list
+	 */
 	public void removeCurrentUserInList(Session session,String userID,HashMap<String,String> list){
 		if(list.get(session.getId())==userID){
 			list.remove(session.getId()); // if found then delete
