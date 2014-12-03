@@ -243,7 +243,7 @@ myApp.controller('MyAppController', function ($scope, $http) {
      * User wanna end game with opponent
      *
      **/
-    $scope.requestPause = function (opponent) {
+    $scope.requestEnd = function (opponent) {
         soundForClick.play();
         //
         //User A wanna end game with opponent B, send request end to server
