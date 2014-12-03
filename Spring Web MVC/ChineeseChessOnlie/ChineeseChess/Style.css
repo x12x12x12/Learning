@@ -15,7 +15,8 @@ body {
 }
 
 canvas {
-    margin: 0 50px;
+    /*margin: 0 50px;*/
+    margin:  0 50px 10% 0%;
     width: auto;
     border: 2px solid #ddd
 }

@@ -22,25 +22,40 @@
             <div id="debug" style="float:left;display:none">
             </div>
 
-            <div style="float:left" class="col-md-8">
+            <div style="float:left;" class="col-md-6">
                 <canvas id="board" width="460" height="510" ></canvas>
             </div>
-            <div style="float: right" class="col-md-4">
+            <div style="float:left;" class="col-md-1">
+            </div>
+            <div style="float: right" class="col-md-5">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div id="newGame" class="button" >New Game</div>
                         <div id="restore" class="button" >Turn back</div>
                         <div id="listUser" class="button" ng-click="showListUser()">List User</div>
                         <div class="info" >Time：<span id="TimeCost">0</span></div>
                         <div class="info" >Depth：<span id="depth">0</span></div>
                     </div>
-                    <div class="col-md-6" style="height: 200px; border: solid 1px; float: right;" ng-hide="opponent==null">
-                        <div style="font-weight: bold" align="center">Your Opponent</div>
-                        <img src="opponent.img_url" style="border-radius: 2px;" height="50%;"/>
+                    <div class="col-md-4" style="height: 200px; border: solid 1px; float: left;" ng-hide="myProfile==null">
+                        <div style="font-weight: bold" align="center">You</div>
+                        <img src="{{myProfile.img_url}}" style="border-radius: 5px;" height="50%;"/>
+                        <div ng-bind="myProfile.name" align="center"></div>
+                        <div ng-bind-template="Score: {{myProfile.point}}"></div>
+                    </div>
+                    <div class="col-md-4" style="height: 200px; border: solid 1px; float: left;" ng-hide="opponent==null">
+                        <div style="font-weight: bold" align="center">Opponent</div>
+                        <img src="{{opponent.img_url}}" style="border-radius: 5px;" height="50%;"/>
                         <div ng-bind="opponent.name" align="center"></div>
                         <div ng-bind-template="Score: {{opponent.point}}"></div>
                     </div>
-
+                    <div ng-hide="opponent==null">
+                        <button class="btn btn-lg btn-warning" style="margin-right: 10px;" ng-click="requestPause(opponent)">
+                            Pause
+                        </button>
+                        <button class="btn btn-lg btn-danger" ng-click="requestEnd()">
+                            End
+                        </button>
+                    </div>
                 </div>
                 <br/>
                 <div class="row">
@@ -75,7 +90,7 @@
                         <h4 class="modal-title" id="myModalLabel">List User Online</h4>
                     </div>
                     <div class="modal-body">
-                        <div ng-repeat="user in userOnline" class="col-md-2 userInListUsers">
+                        <div ng-repeat="user in listUserOnline" class="col-md-2 userInListUsers">
                             <br/>
                             <img src="{{user.img_url}}" height="80px" style="border-radius: 30px; margin-left: 10%;"/><br/>
                             <span ng-bind="user.name"></span><br/>
@@ -83,7 +98,7 @@
                             <button class="btn btn-success" style="width: 100%; border-radius: 10px;" ng-click="addFriend()">
                                 Add Friend
                             </button>
-                            <button class="btn btn-primary" style="width: 100%; margin-top: 5%; border-radius: 10px;" ng-click="challengeUser()">
+                            <button class="btn btn-primary" style="width: 100%; margin-top: 5%; border-radius: 10px;" ng-click="challengeUser(user)">
                                 Chalenge
                             </button>
                         </div>

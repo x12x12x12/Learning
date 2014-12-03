@@ -3,13 +3,30 @@ var myApp = angular.module('myApp', []);
 myApp.controller('MyAppController', function ($scope, $http) {
     /**
      *
+     * Object save my profile
+     *
+     **/
+    $scope.myProfile = {
+        "name": "My Name",
+        "email": "myEmail@gmail.com",
+        "point": "110",
+        "img_url": "images/player2.jpg"
+    };
+    /**
+     *
+     * Object save opponent profile
+     *
+     **/
+    $scope.opponent =null;
+    /**
+     *
      * Show popup list user online when starting
      *
      **/
-
-    $scope.userOnline = [
+    $scope.listUserOnline = [
         {
             "name": "Fuck you",
+            "email": "fuckyou@gmail.com",
             "point": "110",
             "img_url": "images/player1.jpg"
         }
@@ -37,14 +54,6 @@ myApp.controller('MyAppController', function ($scope, $http) {
      *
      **/
     $scope.countDown = 15;
-
-
-    /**
-     *
-     * Profile of opponent
-     *
-     **/
-    $scope.opponent = {};
 
     /**
      *
@@ -77,7 +86,7 @@ myApp.controller('MyAppController', function ($scope, $http) {
     ws.onmessage = function (message) {
         var data = message.data.split("-|-");
         switch (data[0]) {
-            case "HANDSHAKE":
+            case "REQHANDSHAKE":
                 var id_requestHandShake = data[1];
 
                 break;
@@ -147,7 +156,7 @@ myApp.controller('MyAppController', function ($scope, $http) {
      **/
 //    $scope.userOnline = [];
     $.getJSON("http://localhost:8080/cotuong/rest/online", function (result) {
-        $scope.userOnline = result;
+        $scope.listUserOnline = result;
     });
 
     /**
@@ -190,11 +199,21 @@ myApp.controller('MyAppController', function ($scope, $http) {
      * CHALLENGE user in list user online
      *
      **/
-    $scope.challengeUser = function () {
+    $scope.challengeUser = function (opponent) {
         soundForClick.play();
+        $scope.opponent=opponent;
+        console.log(opponent);
+        $scope.$apply();
+        //
+        //User A wanna play with B, send request handshake to server
+        //
+        ws.send("REQHANDSHAKE-"+opponent.email);
+
         $('#modalListUser').modal("hide");
         $('#modalWaitingAcceptChallenge').modal("show");
-
+        //
+        //Processing countdown
+        //
         $scope.countDown=15;
         var timeCountDown = setInterval(function(){
             if($scope.countDown>0){
@@ -206,6 +225,30 @@ myApp.controller('MyAppController', function ($scope, $http) {
             }
         },1000);
 
+    };
+    /**
+     *
+     * User wanna pause game with opponent
+     *
+     **/
+    $scope.requestPause = function (opponent) {
+        soundForClick.play();
+        //
+        //User A wanna pause game with opponent B, send request pause to server
+        //
+        ws.send("REQPAUSE-"+$scope.opponent.email);
+    };
+    /**
+     *
+     * User wanna end game with opponent
+     *
+     **/
+    $scope.requestPause = function (opponent) {
+        soundForClick.play();
+        //
+        //User A wanna end game with opponent B, send request end to server
+        //
+        ws.send("END-"+opponent.email);
     };
 
     /**
