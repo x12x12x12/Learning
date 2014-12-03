@@ -6,16 +6,19 @@ myApp.controller('MyAppController', function ($scope, $http) {
      * Show popup list user online when starting
      *
      **/
-
-    $scope.userOnline = [
-        {
-            "name": "Fuck you",
-            "point": "20",
-            "img_url": "http://i.imgur.com/euNuShD.jpg"
-        }
-    ];
-//    console.log($scope.userOnline);
-//    $('#modalListUser').modal("show");
+    $scope.userOnline = [{
+        "name": "${account.name}",
+        "email":"${account.email}",
+        "img_url":"${account.img_url}",
+        "point": "${account.point}"
+    }];
+    console.log($scope.userOnline);
+    $scope.myProfile ={
+      "name": "${account.name}",
+      "email":"${account.email}",
+      "img_url":"${account.img_url}",
+      "point": "${account.point}"
+    };
     /**
      *
      * Arrays saved all message
@@ -29,14 +32,22 @@ myApp.controller('MyAppController', function ($scope, $http) {
      * Title of chat conversation. Example : "TO : John"
      *
      **/
-    $scope.titleOfChatConversation="TO : ";
+    $scope.titleOfChatConversation = "TO : ";
+
+    /**
+     *
+     * Count down 15 second
+     *
+     **/
+    $scope.countDown = 15;
+
 
     /**
      *
      * Profile of opponent
      *
      **/
-    $scope.opponent={};
+    $scope.opponent = {};
 
     /**
      *
@@ -47,7 +58,7 @@ myApp.controller('MyAppController', function ($scope, $http) {
     soundManager.setup({
         onready: function () {
             soundForClick = soundManager.createSound({
-                url: 'resources/extra/sounds/click-button.mp3'
+                url: 'sounds/click-button.mp3'
             });
         },
         ontimeout: function () {
@@ -61,15 +72,16 @@ myApp.controller('MyAppController', function ($scope, $http) {
      *    @onClose
      *    0: OK ----- 1: ERROR
      **/
-    var ws = new WebSocket("ws://localhost:8080/cotuong/game");
+    var ws = new WebSocket("ws://localhost:8080/game");
     ws.onopen = function (message) {
-        var id_player = 1;
+        var id_player = $scope.myProfile.email;
+        console.log(id_player);
         ws.send("REG-" + id_player);
     };
     ws.onmessage = function (message) {
         var data = message.data.split("-|-");
         switch (data[0]) {
-            case "HANDSHAKE":
+            case "REQHANDSHAKE":
                 var id_requestHandShake = data[1];
 
                 break;
@@ -99,10 +111,10 @@ myApp.controller('MyAppController', function ($scope, $http) {
             case "LOGOUT":
                 break;
         }
-    }
+    };
     ws.onclose = function (message) {
         ws.close();
-    }
+    };
     /**
      *
      *
@@ -138,7 +150,7 @@ myApp.controller('MyAppController', function ($scope, $http) {
      *
      **/
 //    $scope.userOnline = [];
-    $.getJSON("http://localhost:8080/cotuong/rest/online", function (result) {
+    $.getJSON("http://localhost:8080/rest/online", function (result) {
         $scope.userOnline = result;
     });
 
@@ -164,10 +176,8 @@ myApp.controller('MyAppController', function ($scope, $http) {
                 /**
                  *
                  */
-                var to_client_id = 2;
-                console.log("User send : "+$scope.yourMessage);
+                var to_client_id = "11520616@gm.uit.edu.vn";
                 ws.send("CHAT-" + to_client_id + "-" + $scope.yourMessage);
-                
 
                 /**
                  *
@@ -188,6 +198,17 @@ myApp.controller('MyAppController', function ($scope, $http) {
         soundForClick.play();
         $('#modalListUser').modal("hide");
         $('#modalWaitingAcceptChallenge').modal("show");
+        $scope.countDown=15;
+        var timeCountDown = setInterval(function(){
+            if($scope.countDown>0){
+                $scope.countDown--;
+                $scope.$apply();
+            }else{
+                clearInterval(timeCountDown);
+                $('#modalWaitingAcceptChallenge').modal("hide");
+            }
+        },1000);
+
     };
 
     /**

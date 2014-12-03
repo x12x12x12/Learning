@@ -11,6 +11,7 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.mail.javamail.MimeMessagePreparator;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.ui.velocity.VelocityEngineUtils;
 
 import com.cotuong.model.Account;
@@ -60,7 +61,8 @@ public class MailService {
 	 * @param subject
 	 * @param msg
 	 */
-	public void sendMail(String from,String to,String subject,String msg){
+	@Async
+	public void sendMail(String from,String to,String subject,String msg) throws InterruptedException{
 		SimpleMailMessage message = new SimpleMailMessage();
 		message.setFrom(from);
 		message.setTo(to);

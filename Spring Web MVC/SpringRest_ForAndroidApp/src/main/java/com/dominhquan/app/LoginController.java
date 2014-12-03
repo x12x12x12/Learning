@@ -2,6 +2,7 @@ package com.dominhquan.app;
 
 import javax.servlet.http.HttpSession;
 
+import com.dominhquan.model.Item;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -58,7 +59,7 @@ public class LoginController {
 				}
 				account.setPassword("");
 				httpSession.setAttribute("account", result_login);
-				return "redirect:item";
+				return "index";
 			}
 		}
 		model.addAttribute("account",account);

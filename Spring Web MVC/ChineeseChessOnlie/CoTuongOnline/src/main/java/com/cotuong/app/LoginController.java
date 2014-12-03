@@ -33,13 +33,13 @@ public class LoginController {
 	@RequestMapping(value = {"/*","/login*"}, method = RequestMethod.GET)
 	public String home(Model model,HttpSession httpSession) {
 		if(validateSession(httpSession)){
-			return "redirect:order";
+			return "redirect:main";
 		}
 		model.addAttribute("account",new Account());
 		return "login";
 	}
 	
-	@RequestMapping(value ={"/","/login*"}, method=RequestMethod.POST)
+	@RequestMapping(value ={"/login*"}, method=RequestMethod.POST)
 	public String login_submit(@ModelAttribute("account") Account account,BindingResult result,HttpSession httpSession,Model model){
 		if(account !=null ){
 			model.addAttribute("account",account);
@@ -48,25 +48,31 @@ public class LoginController {
 				result.addError(error1);
 				return "login";
 			}else{
-				Account result_login=accountService.getAccount(account.getEmail());
-				if(result_login!=null){
-					if(!passwordEncoder.matches(account.getPassword(),result_login.getPassword())){
-						ObjectError error=new ObjectError("account.password", "Wrong password ! ");
+				try{
+					Account result_login=accountService.getAccount(account.getEmail());
+					if(result_login!=null){
+						if(!passwordEncoder.matches(account.getPassword(),result_login.getPassword())){
+							ObjectError error=new ObjectError("account.password", "Wrong password ! ");
+							result.addError(error);
+							return "login";
+						}
+						if(result_login.getStatus()==2){   // 2 : not activated , 0 : offline , 1 : online
+							ObjectError error=new ObjectError("account.email", "Your account is not activated, Pls check your email ! ");
+							result.addError(error);
+							return "login";
+						}
+						result_login.setPassword("");
+						result_login.setStatus(0);
+						httpSession.setAttribute("account", result_login);
+						accountService.setStatusOnline(account.getEmail());
+						return "redirect:main";
+					}else{
+						ObjectError error=new ObjectError("account.email", "Email not in database ! ");
 						result.addError(error);
 						return "login";
 					}
-					if(result_login.getStatus()==2){   // 2 : not activated , 0 : offline , 1 : online
-						ObjectError error=new ObjectError("account.email", "Your account is not activated, Pls check your email ! ");
-						result.addError(error);
-						return "login";
-					}
-					result_login.setPassword("");
-					result_login.setStatus(0);
-					httpSession.setAttribute("account", result_login);
-					accountService.setStatusOnline(account.getEmail());
-					return "redirect:main";
-				}else{
-					ObjectError error=new ObjectError("account.email", "Email not in database ! ");
+				}catch(Exception ex){
+					ObjectError error=new ObjectError("account.email", "Can't connect to server ! ");
 					result.addError(error);
 					return "login";
 				}
@@ -124,6 +130,9 @@ public class LoginController {
 	@RequestMapping(value = {"/main*"}, method = RequestMethod.GET)
 	public String main(Model model,HttpSession httpSession) {
 		if(validateSession(httpSession)){
+			Account account=(Account)httpSession.getAttribute("account");
+			account.setPassword("");
+			model.addAttribute("account",account);
 			return "board";
 		}
 		model.addAttribute("sessionExpired","User session expired please login again !!!!");

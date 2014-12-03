@@ -36,8 +36,8 @@ public class RestController {
 	
 	@Autowired
 	private MailService mailService;
-	private static final Logger logger = LoggerFactory.getLogger(RestController.class);
 
+	private static final Logger logger = LoggerFactory.getLogger(RestController.class);
 	
 	@RequestMapping(value=AppRestUri.get_item,method=RequestMethod.GET)
 	public @ResponseBody Item getItem(@PathVariable("id") String id){
@@ -78,6 +78,52 @@ public class RestController {
 		account.setPassword("");
 		return account;
 	}
+	
+	@RequestMapping(value=AppRestUri.update_item,method=RequestMethod.POST)
+	public @ResponseBody Item updateItem(@RequestBody Item item){
+		logger.info("Update item :" + item.getId());
+		item.setUpdateDate(new Date());
+		try{
+			if(item.getId()!=null && item.getName()!=null &&item.getPrice()!=null && item.getImg_url()!=null){
+				if(item.getImg_ico()==null){
+					item.setImg_ico("");
+				}
+				itemService.updateItem(item);
+			}
+		}catch (Exception ex){
+			item.setId("fail");
+		}
+		return item;
+	}
+	
+	@RequestMapping(value=AppRestUri.create_item,method=RequestMethod.POST)
+	public @ResponseBody Item createItem(@RequestBody Item item){
+		logger.info("Create item :"+item.getId());
+		item.setCreateDate(new Date());
+		item.setUpdateDate(new Date());
+		try{
+			itemService.createItem(item);	
+		}catch(Exception ex){
+			item.setId("fail");
+		}
+		return item;
+	}
+	
+	@RequestMapping(value=AppRestUri.delete_item,method=RequestMethod.POST)
+	public @ResponseBody Item deleteItem(@PathVariable("id") String id){
+		logger.info("User request to delete item :"+ id);
+		Item item=new Item();
+			try{
+				item=itemService.removeItem(id);
+				if(item.getName()!=null){
+					logger.info("Delete item " + item.getName() + " successful");
+				}
+			}catch(Exception ex){
+				item.setId("fail");
+			}
+		return item;
+	}
+	
 	
 	
 }
