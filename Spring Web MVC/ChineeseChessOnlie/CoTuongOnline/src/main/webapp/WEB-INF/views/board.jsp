@@ -153,7 +153,6 @@
                 "img_url":"${account.img_url}",
                 "point": "${account.point}"
             };
-            console.log(user_data);
         </script>
         <script src="resources/extra/control.js"></script>
 </body>

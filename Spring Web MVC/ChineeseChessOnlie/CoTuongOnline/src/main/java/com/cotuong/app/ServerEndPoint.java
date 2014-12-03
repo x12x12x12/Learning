@@ -9,6 +9,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.Map;
 
 import javax.websocket.CloseReason;
 import javax.websocket.OnClose;
@@ -32,8 +33,6 @@ public class ServerEndPoint {
 
 	@OnOpen
 	public void onOpen(Session session) throws IOException{
-		System.out.println(session.getId() + " : connected ... ");
-		session.getBasicRemote().sendText("Session id "+session.getId());
 		list.add(session);
 	}
 	   
@@ -167,11 +166,30 @@ public class ServerEndPoint {
 					 * 	Server : Find ID_B in list_user -> session of user's B -> send to B
 					 * 	User B : Receive "CHAT-MESSAGE-ID_A
 					 */
-						String send_to=data[1];
 						try {
-							System.out.println("Client nhận message:"+send_to);
-							System.out.println("Nội dung message :"+data[2]);
-							checkAndSendMsgToUser(data,session,"CHAT-|-"+data[2]+"-|-");
+							System.out.println("Client receive message :"+data[1]);
+							System.out.println("Message data :"+data[2]);
+							for(Session session1 : list){
+								System.out.println("Session ID: "+session1.getId()+"---Email : "+list_user.get(session1.getId()));
+							}
+							if(list_user.containsValue(data[1])){
+								for(Map.Entry<String,String> entry : list_user.entrySet()){
+									if(entry.getValue().equalsIgnoreCase(data[1])){
+										String session_id=entry.getKey();
+										System.out.println("Session ID of client receive message :"+session_id);
+										for(Session session_1 : list){
+											if(session_1.getId()==session_id){
+												System.out.println("Session ID Receive Message: "+session_1.getId());
+												System.out.println("Email receive data: "+list_user.get(session_1.getId()));
+												String data_send="CHAT-|-"+data[2]+"-|-"+list_user.get(session.getId());
+												System.out.println("Data server send to client: "+data_send);
+												session_1.getBasicRemote().sendText(data_send);
+											}
+										}
+										return;
+									}
+								}
+							}
 						} catch (Exception ex) {
 							System.out.println("Client không online");
 						}

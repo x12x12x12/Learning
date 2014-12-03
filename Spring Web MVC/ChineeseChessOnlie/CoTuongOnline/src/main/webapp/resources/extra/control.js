@@ -6,19 +6,10 @@ myApp.controller('MyAppController', function ($scope, $http) {
      * Show popup list user online when starting
      *
      **/
-    $scope.userOnline = [{
-        "name": "${account.name}",
-        "email":"${account.email}",
-        "img_url":"${account.img_url}",
-        "point": "${account.point}"
-    }];
-    console.log($scope.userOnline);
-    $scope.myProfile ={
-      "name": "${account.name}",
-      "email":"${account.email}",
-      "img_url":"${account.img_url}",
-      "point": "${account.point}"
-    };
+    $scope.userOnline = [{ }];
+
+    $scope.myProfile =user_data;
+    console.log($scope.myProfile);
     /**
      *
      * Arrays saved all message
@@ -100,8 +91,7 @@ myApp.controller('MyAppController', function ($scope, $http) {
                 }
                 break;
             case "CHAT":
-                console.log(data[1]);
-                //CHAT-|-TEXT"
+                console.log(data);
                 var text = data[1].replace("CHAT-|-", ""); // cut 'CHAT-|-' out data[1]
                 $scope.messages.push({'text': text, 'yours': false});
                 soundForClick.play();
@@ -177,7 +167,7 @@ myApp.controller('MyAppController', function ($scope, $http) {
                  *
                  */
                 var to_client_id = "11520616@gm.uit.edu.vn";
-                ws.send("CHAT-" + to_client_id + "-" + $scope.yourMessage);
+                ws.send("CHAT-"+ to_client_id + "-" + $scope.yourMessage);
 
                 /**
                  *
