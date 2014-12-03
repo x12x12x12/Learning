@@ -17,10 +17,10 @@ public class AccountServiceImpl implements AccountService{
 	
 	@Autowired
 	private MongoTemplate mongoTemplate;
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 	private Query query;
 	private Update update;
-	@Autowired
-	PasswordEncoder passwordEncoder;
 	
 	public AccountServiceImpl (MongoTemplate mongoTemplate){
 		this.mongoTemplate=mongoTemplate;

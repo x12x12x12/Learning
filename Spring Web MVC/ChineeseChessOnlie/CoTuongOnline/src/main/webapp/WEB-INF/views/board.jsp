@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="zh-CN" ng-app="myApp">
     <head>
@@ -8,7 +10,7 @@
         <link rel="stylesheet" type="text/css" href="resources/extra/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="resources/extra/bootstrap-theme.min.css">
     </head>
-  <body ng-controller="MyAppController">
+    <body ng-controller="MyAppController">
         <div id="main">
             <div id="debug" style="float:left;display:none"></div>
             <div style="float:left">
@@ -126,7 +128,7 @@
             </div>
         </div>
         <!--------------END :Popup for Accept challenge from opponent---------------------->
-        
+        <div><input type="hidden"/></div>
         
         
 
@@ -144,6 +146,15 @@
   		<script src="resources/extra/angular.min.js"></script>
         <script src="resources/extra/bootstrap.min.js"></script>
         <script src="resources/extra/soundmanager2.js"></script>
+        <script type="text/javascript">
+            var user_data={
+                "name": "${account.name}",
+                "email":"${account.email}",
+                "img_url":"${account.img_url}",
+                "point": "${account.point}"
+            };
+            console.log(user_data);
+        </script>
         <script src="resources/extra/control.js"></script>
 </body>
 </html>

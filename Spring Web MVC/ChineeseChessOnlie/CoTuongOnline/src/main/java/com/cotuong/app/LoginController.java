@@ -39,7 +39,7 @@ public class LoginController {
 		return "login";
 	}
 	
-	@RequestMapping(value ={"/","/login*"}, method=RequestMethod.POST)
+	@RequestMapping(value ={"/login*"}, method=RequestMethod.POST)
 	public String login_submit(@ModelAttribute("account") Account account,BindingResult result,HttpSession httpSession,Model model){
 		if(account !=null ){
 			model.addAttribute("account",account);
@@ -130,6 +130,9 @@ public class LoginController {
 	@RequestMapping(value = {"/main*"}, method = RequestMethod.GET)
 	public String main(Model model,HttpSession httpSession) {
 		if(validateSession(httpSession)){
+			Account account=(Account)httpSession.getAttribute("account");
+			account.setPassword("");
+			model.addAttribute("account",account);
 			return "board";
 		}
 		model.addAttribute("sessionExpired","User session expired please login again !!!!");

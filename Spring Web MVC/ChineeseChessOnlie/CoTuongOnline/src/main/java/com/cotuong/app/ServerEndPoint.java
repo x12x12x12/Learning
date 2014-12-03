@@ -69,6 +69,7 @@ public class ServerEndPoint {
 				removeCurrentUserInList(session,data[1],list_user);
 				list_user.put(session.getId(),data[1]);
 				session.getBasicRemote().sendText("REG-|-OK");
+				System.out.println(data[1]);
 				break;
 			case "REQHANDSHAKE":
 				/**
@@ -163,12 +164,14 @@ public class ServerEndPoint {
 					 * User A : Send "CHAT-ID_B-MESSAGE"
 					 * 	- ID 		: Session id player receive the message
 					 * 	- MESSAGE   : Message data
+					 * 	Server : Find ID_B in list_user -> session of user's B -> send to B
+					 * 	User B : Receive "CHAT-MESSAGE-ID_A
 					 */
 						String send_to=data[1];
 						try {
 							System.out.println("Client nhận message:"+send_to);
 							System.out.println("Nội dung message :"+data[2]);
-//							session_to.getBasicRemote().sendText("CHAT-|-"+data[2]);
+							checkAndSendMsgToUser(data,session,"CHAT-|-"+data[2]+"-|-");
 						} catch (Exception ex) {
 							System.out.println("Client không online");
 						}
