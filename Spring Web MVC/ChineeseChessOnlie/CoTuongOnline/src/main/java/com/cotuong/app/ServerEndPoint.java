@@ -1,7 +1,10 @@
 package com.cotuong.app;
 
 import com.cotuong.service.AccountService;
+import com.cotuong.service.AccountServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -23,13 +26,12 @@ public class ServerEndPoint {
 	
 	private static Set<Session> list = Collections.synchronizedSet(new HashSet<Session>());
 	private static HashMap<String,String> list_user = new HashMap<String,String>();
-	/**
-	 * 1 entry list_match (ID_A,ID_B)
-	 */
+	// 1 entry list_match (ID_A,ID_B)
 	private static HashMap<String, String> list_match = new HashMap<String,String>();
 
-	@Autowired
-	AccountService accountService;
+	@SuppressWarnings("resource")
+	ApplicationContext context=new ClassPathXmlApplicationContext("servlet-context.xml");
+	AccountServiceImpl accountServiceImpl=(AccountServiceImpl) context.getBean("accountService");
 
 	@OnOpen
 	public void onOpen(Session session) throws IOException{
@@ -38,16 +40,23 @@ public class ServerEndPoint {
 	   
 	@OnClose
 	public void onClose(Session session, CloseReason closeReason) throws IOException{
-		System.out.printf("Session %s closed because of %s", session.getId(), closeReason.getReasonPhrase());
 		list.remove(session);
 		String clientId=list_user.get(session.getId());
-		removeCurrentUserInList(session,clientId,list_user);
-		accountService.setStatusOffline(clientId);
-		if(list_match.containsKey(clientId)){
-
-		}else if(list_match.containsValue(clientId)){
-
+		System.out.println("Client ID Exit : "+clientId);
+		for(Map.Entry<String,String> entry : list_user.entrySet()){
+			System.out.println("Key :"+entry.getKey()+",Value :"+entry.getValue());
 		}
+		removeCurrentUserInList(session,clientId,list_user);
+		System.out.println("Done removed");
+		for(Map.Entry<String,String> entry : list_user.entrySet()){
+			System.out.println("Key :"+entry.getKey()+",Value :"+entry.getValue());
+		}
+		accountServiceImpl.setStatusOffline(clientId);
+//		if(list_match.containsKey(clientId)){
+//
+//		}else if(list_match.containsValue(clientId)){
+//
+//		}
 	}
 	   
 	@OnMessage
@@ -138,64 +147,64 @@ public class ServerEndPoint {
 			case "REPNEWGAME":
 				/**
 				 * User B reply to user A : play new game or not
-					* User B : Send "REPHANDSHAKE-ID_A-BOOL"
-					*  - BOOL
-					* 		+ Accept  : 0
-					* 		+ Decline : 1
-					*  - ID 	: Session id of player to response the request handshake
-					* Server : Find ID_A in list_user -> session of user's A -> send to A
-					* User A : Receive "REPHANDSHAKE-BOOL-ID_B"
-					*/
+				 * User B : Send "REPHANDSHAKE-ID_A-BOOL"
+				 * - BOOL
+				 * 		+ Accept  : 0
+				 * 		+ Decline : 1
+				 * - ID 	: Session id of player to response the request handshake
+				 * 	Server : Find ID_A in list_user -> session of user's A -> send to A
+				 * 	 User A : Receive "REPHANDSHAKE-BOOL-ID_B"
+				 **/
 				checkAndSendMsgToUser(data,session,"REPNEWGAME-|-"+data[1]+"-|-");
 				break;
 			case "LOSE":
-					/**
-					 * User A accept lose this current game
-					 * User A : Send "LOSE-ID_B"
-					 * Server : Find ID_B in list_user -> session of user's B -> send to B
-					 * User B : Receive "LOSE-ID_A" . (B no need to return any message)
-					 */
+				/**
+				 * User A accept lose this current game
+				 * User A : Send "LOSE-ID_B"
+				 * Server : Find ID_B in list_user -> session of user's B -> send to B
+				 * User B : Receive "LOSE-ID_A" . (B no need to return any message)
+				 */
 				checkAndSendMsgToUser(data,session,"LOSE-|-");
 				break;
 			case "CHAT":
-					/**
-					 * Handle message between 2 player in current match
-					 * User A : Send "CHAT-ID_B-MESSAGE"
-					 * 	- ID 		: Session id player receive the message
-					 * 	- MESSAGE   : Message data
-					 * 	Server : Find ID_B in list_user -> session of user's B -> send to B
-					 * 	User B : Receive "CHAT-MESSAGE-ID_A
-					 */
-						try {
-							System.out.println("Client receive message :"+data[1]);
-							System.out.println("Message data :"+data[2]);
-							for(Session session1 : list){
-								System.out.println("Session ID: "+session1.getId()+"---Email : "+list_user.get(session1.getId()));
-							}
-							if(list_user.containsValue(data[1])){
-								for(Map.Entry<String,String> entry : list_user.entrySet()){
-									if(entry.getValue().equalsIgnoreCase(data[1])){
-										String session_id=entry.getKey();
-										System.out.println("Session ID of client receive message :"+session_id);
-										for(Session session_1 : list){
-											if(session_1.getId()==session_id){
-												System.out.println("Session ID Receive Message: "+session_1.getId());
-												System.out.println("Email receive data: "+list_user.get(session_1.getId()));
-												String data_send="CHAT-|-"+data[2]+"-|-"+list_user.get(session.getId());
-												System.out.println("Data server send to client: "+data_send);
-												session_1.getBasicRemote().sendText(data_send);
-											}
-										}
-										return;
-									}
-								}
-							}
-						} catch (Exception ex) {
-							System.out.println("Client không online");
-						}
-				break;
+				/**
+				 * Handle message between 2 player in current match
+				 * User A : Send "CHAT-ID_B-MESSAGE"
+				 * 	- ID 		: Session id player receive the message
+				 * 	- MESSAGE   : Message data
+				 * 	Server : Find ID_B in list_user -> session of user's B -> send to B
+				 * 	User B : Receive "CHAT-MESSAGE-ID_A
+				 */
+				 try {
+					 System.out.println("Client receive message :"+data[1]);
+					 System.out.println("Message data :"+data[2]);
+					 for(Session session1 : list){
+						 System.out.println("Session ID: "+session1.getId()+"---Email : "+list_user.get(session1.getId()));
+					 }
+					 if(list_user.containsValue(data[1])){
+						 for(Map.Entry<String,String> entry : list_user.entrySet()){
+							 if(entry.getValue().equalsIgnoreCase(data[1])){
+								 String session_id=entry.getKey();
+								 System.out.println("Session ID of client receive message :"+session_id);
+								 for(Session session_1 : list){
+									 if(session_1.getId()==session_id){
+										 System.out.println("Session ID Receive Message: "+session_1.getId());
+										 System.out.println("Email receive data: "+list_user.get(session_1.getId()));
+										 String data_send="CHAT-|-"+data[2]+"-|-"+list_user.get(session.getId());
+										 System.out.println("Data server send to client: "+data_send);
+										 session_1.getBasicRemote().sendText(data_send);
+									 }
+								 }
+								 return;
+							 }
+						 }
+					 }
+				 } catch (Exception ex) {
+					 System.out.println("Client không online");
+				 }
+				 break;
 			case "MOVE":
-				break;
+				 break;
 //			   case ""
 			default:
 				break;

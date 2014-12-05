@@ -84,7 +84,7 @@ public class AccountServiceImpl implements AccountService{
 	@Override
 	public List<Account> getListOnline() throws MongoException{
 		query=new Query(Criteria.where("status").is(1));
-		query.fields().include("email").include("img_url").include("point");
+		query.fields().include("email").include("img_url").include("point").include("name");
 		return mongoTemplate.find(query, Account.class);
 	}
 }

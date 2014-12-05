@@ -49,7 +49,7 @@ myApp.controller('MyAppController', function ($scope, $http) {
     soundManager.setup({
         onready: function () {
             soundForClick = soundManager.createSound({
-                url: 'sounds/click-button.mp3'
+                url: 'resources/extra/sounds/click-button.mp3'
             });
         },
         ontimeout: function () {
@@ -167,6 +167,9 @@ myApp.controller('MyAppController', function ($scope, $http) {
                  *
                  */
                 var to_client_id = "11520616@gm.uit.edu.vn";
+                if($scope.myProfile.email=="11520616@gm.uit.edu.vn"){
+                    to_client_id="dominhquan.uit@gmail.com";
+                }
                 ws.send("CHAT-"+ to_client_id + "-" + $scope.yourMessage);
 
                 /**

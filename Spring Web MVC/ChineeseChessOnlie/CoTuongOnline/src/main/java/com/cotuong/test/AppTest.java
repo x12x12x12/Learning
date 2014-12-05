@@ -42,6 +42,8 @@ public class AppTest {
 		for (Account account : list) {
 			System.out.println(account.getName()+"-"+account.getEmail()+"-"+account.getPoint());
 		}
+//		accountServiceImpl.setStatusOffline("dominhquan.uit@gmail.com");
+//		accountServiceImpl.setStatusOnline("dominhquan.uit@gmail.com");
 	}
 
 }
