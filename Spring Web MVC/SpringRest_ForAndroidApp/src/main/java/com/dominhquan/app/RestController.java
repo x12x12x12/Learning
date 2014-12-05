@@ -58,6 +58,12 @@ public class RestController {
 		return list;
 	}
 	
+	@RequestMapping(value=AppRestUri.get_all_items_in_restaurant,method=RequestMethod.GET)
+	public @ResponseBody List<Item> getListOrderByRestaurant(@PathVariable("name") String name){
+		List<Item> list=itemService.getListItem(name);
+		return list;
+	}
+	
 	@RequestMapping(value=AppRestUri.order_menu,method=RequestMethod.POST)
 	public @ResponseBody Item orderItem(@RequestBody Item item){
 		logger.info("New order : " + item.getId());

@@ -2,7 +2,6 @@ package com.dominhquan.app;
 
 import javax.servlet.http.HttpSession;
 
-import com.dominhquan.model.Item;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.support.SessionStatus;
 
 import com.dominhquan.model.Account;
 import com.dominhquan.service.AccountService;
-import com.dominhquan.service.MailService;
 
 @Controller
 public class LoginController {
