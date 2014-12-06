@@ -25,19 +25,15 @@ import com.dominhquan.uri.AppRestUri;
 @Controller
 public class RestController {
 	
+	private static final Logger logger = LoggerFactory.getLogger(RestController.class);
 	@Autowired
 	ItemService itemService;
-	
 	@Autowired
 	PasswordEncoder passwordEncoder;
-	
 	@Autowired
 	AccountService accountService;
-	
 	@Autowired
 	private MailService mailService;
-
-	private static final Logger logger = LoggerFactory.getLogger(RestController.class);
 	
 	@RequestMapping(value=AppRestUri.get_item,method=RequestMethod.GET)
 	public @ResponseBody Item getItem(@PathVariable("id") String id){
@@ -58,11 +54,11 @@ public class RestController {
 		return list;
 	}
 	
-	@RequestMapping(value=AppRestUri.get_all_items_in_restaurant,method=RequestMethod.GET)
-	public @ResponseBody List<Item> getListOrderByRestaurant(@PathVariable("name") String name){
-		List<Item> list=itemService.getListItem(name);
-		return list;
-	}
+//	@RequestMapping(value=AppRestUri.get_all_items_in_restaurant,method=RequestMethod.GET)
+//	public @ResponseBody List<Item> getListOrderByRestaurant(@PathVariable("name") String name){
+//		List<Item> list=itemService.getListItem(name);
+//		return list;
+//	}
 	
 	@RequestMapping(value=AppRestUri.order_menu,method=RequestMethod.POST)
 	public @ResponseBody Item orderItem(@RequestBody Item item){

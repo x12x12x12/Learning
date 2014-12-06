@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../../SpringRest_ForAndroidApp/app.iml" filepath="$PROJECT_DIR$/../../SpringRest_ForAndroidApp/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/cotuong.iml" filepath="$PROJECT_DIR$/cotuong.iml" />
     </modules>
   </component>
