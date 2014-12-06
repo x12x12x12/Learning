@@ -17,31 +17,23 @@ myApp.controller('MyAppController', function ($scope, $http) {
     $scope.yourMessage = "";
 
     /**
-     *
      * Title of chat conversation. Example : "TO : John"
-     *
      **/
     $scope.titleOfChatConversation = "TO : ";
 
     /**
-     *
      * Count down 15 second
-     *
      **/
     $scope.countDown = 15;
 
 
     /**
-     *
      * Profile of opponent
-     *
      **/
     $scope.opponent = {};
 
     /**
-     *
      * Play sound when event click happen
-     *
      **/
     var soundForClick = null;
     soundManager.setup({
