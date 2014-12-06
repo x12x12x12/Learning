@@ -189,7 +189,7 @@ public class ServerEndPoint {
 								 for(Session session_1 : list){
 									 if(session_1.getId()==session_id){
 										 System.out.println("Session ID Receive Message: "+session_1.getId());
-										 System.out.println("Email receive data: "+list_user.get(session_1.getId()));
+										 System.out.println("Email receive : "+list_user.get(session_1.getId()));
 										 String data_send="CHAT-|-"+data[2]+"-|-"+list_user.get(session.getId());
 										 System.out.println("Data server send to client: "+data_send);
 										 session_1.getBasicRemote().sendText(data_send);

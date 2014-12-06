@@ -6,10 +6,8 @@ myApp.controller('MyAppController', function ($scope, $http) {
      * Show popup list user online when starting
      *
      **/
-    $scope.userOnline = [{ }];
-
+    $scope.userOnline = [];
     $scope.myProfile =user_data;
-    console.log($scope.myProfile);
     /**
      *
      * Arrays saved all message
@@ -76,15 +74,15 @@ myApp.controller('MyAppController', function ($scope, $http) {
                 var id_requestHandShake = data[1];
 
                 break;
-            case "ACCEPT_HANDSHAKE":
+            case "REPHANDSHAKE":
                 // đóng lại
 
                 break;
-            case "PAUSE":
+            case "REQPAUSE":
                 var id_requestPause = 1;
 
                 break;
-            case "ACCEPT_PAUSE":
+            case "REPPAUSE":
                 var accept = data[1];
                 if (accept == "1") {
                     console.log("continue");
@@ -93,13 +91,19 @@ myApp.controller('MyAppController', function ($scope, $http) {
             case "CHAT":
                 console.log(data);
                 var text = data[1].replace("CHAT-|-", ""); // cut 'CHAT-|-' out data[1]
-                $scope.messages.push({'text': text, 'yours': false});
+                $scope.messages.push({'text': text, 'yours': true});
+                document.getElementById("talks").scrollTop = document.getElementById("talks").scrollHeight;
                 soundForClick.play();
                 break;
-            case "LOGIN":
+            case "REQNEWGAME":
                 break;
-            case "LOGOUT":
+            case "REPNEWGAME":
                 break;
+            case "LOSE":
+                break;
+            case "PLAY":
+                break;
+
         }
     };
     ws.onclose = function (message) {
@@ -133,13 +137,12 @@ myApp.controller('MyAppController', function ($scope, $http) {
 
     }
 
-
     /**
      *
      * GET list user online from server
      *
      **/
-//    $scope.userOnline = [];
+    $scope.userOnline.clear();
     $.getJSON("http://localhost:8080/rest/online", function (result) {
         $scope.userOnline = result;
     });
@@ -150,6 +153,11 @@ myApp.controller('MyAppController', function ($scope, $http) {
      *
      **/
     $scope.showListUser = function () {
+        $scope.userOnline.clear();
+        $.getJSON("http://localhost:8080/rest/online", function (result) {
+            $scope.userOnline = result;
+        });
+        console.log($scope.userOnline);
         soundForClick.play();
         $('#modalListUser').modal("show");
     };
@@ -162,7 +170,7 @@ myApp.controller('MyAppController', function ($scope, $http) {
     $scope.sendMessage = function () {
         if (window.event.keyCode == 13) {
             if ($scope.yourMessage != null & $scope.yourMessage != "") {
-                $scope.messages.push({'text': $scope.yourMessage, 'yours': true});
+                $scope.messages.push({'text': $scope.yourMessage, 'yours': false});
                 /**
                  *
                  */
