@@ -47,6 +47,7 @@ ws.onmessage = function (message) {
 ws.onclose = function (message) {
     ws.close("User :"+user_data.email+" exit");
 };
+
 /**
  *
  *
@@ -77,8 +78,12 @@ function requestDrawGame() {
 
 }
 function getEmailCurrentPlayer(){
-    var id="";
+    var id="11520616@gm.uit.edu.vn";
     return id;
+}
+function playerMove(data){
+    console.log(data);
+    ws.send("PLAY-"+getEmailCurrentPlayer()+"-"+data);
 }
 myApp.controller('MyAppController', function ($scope, $http) {
     /**

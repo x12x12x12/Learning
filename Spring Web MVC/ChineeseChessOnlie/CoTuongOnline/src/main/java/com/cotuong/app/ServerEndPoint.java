@@ -204,8 +204,10 @@ public class ServerEndPoint {
 				 }
 				 break;
 			case "MOVE":
-				 break;
-//			   case ""
+				break;
+			case "PLAY":
+				System.out.println(data[2]);
+				break;
 			default:
 				break;
 		   }
