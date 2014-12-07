@@ -1,5 +1,85 @@
 var myApp = angular.module('myApp', []);
+var ws = new WebSocket("ws://localhost:8080/game");
+ws.onopen = function (message) {
+    var id_player = user_data.email;
+    console.log(id_player);
+    ws.send("REG-" + id_player);
+};
+ws.onmessage = function (message) {
+    var data = message.data.split("-|-");
+    switch (data[0]) {
+        case "REQHANDSHAKE":
+            var id_requestHandShake = data[1];
 
+            break;
+        case "REPHANDSHAKE":
+            // đóng lại
+
+            break;
+        case "REQPAUSE":
+            var id_requestPause = 1;
+
+            break;
+        case "REPPAUSE":
+            var accept = data[1];
+            if (accept == "1") {
+                console.log("continue");
+            }
+            break;
+        case "CHAT":
+            console.log(data);
+            var text = data[1].replace("CHAT-|-", ""); // cut 'CHAT-|-' out data[1]
+            $scope.messages.push({'text': text, 'yours': true});
+            document.getElementById("talks").scrollTop = document.getElementById("talks").scrollHeight;
+            soundForClick.play();
+            break;
+        case "REQNEWGAME":
+            break;
+        case "REPNEWGAME":
+            break;
+        case "LOSE":
+            break;
+        case "PLAY":
+            break;
+
+    }
+};
+ws.onclose = function (message) {
+    ws.close("User :"+user_data.email+" exit");
+};
+/**
+ *
+ *
+ *
+ **/
+function acceptHandShake() {
+    var id_requestHandshake = 1;
+    ws.send("REPHANDSHAKE-0-" + getEmailCurrentPlayer());
+}
+
+function declineHandShake() {
+    ws.send("REPHANDSHAKE-1-" + getEmailCurrentPlayer());
+}
+
+function requestPause() {
+    ws.send("REQPAUSE-" + getEmailCurrentPlayer());
+}
+function acceptPause(){
+    var id_requestPause = 1;
+    ws.send("REQPAUSE-" + getEmailCurrentPlayer());
+}
+function acceptLose() {
+    var id_requestPause = 1;
+    ws.send("LOSE-" + getEmailCurrentPlayer());
+}
+
+function requestDrawGame() {
+
+}
+function getEmailCurrentPlayer(){
+    var id="";
+    return id;
+}
 myApp.controller('MyAppController', function ($scope, $http) {
     /**
      *
@@ -53,88 +133,13 @@ myApp.controller('MyAppController', function ($scope, $http) {
      *    @onClose
      *    0: OK ----- 1: ERROR
      **/
-    var ws = new WebSocket("ws://localhost:8080/game");
-    ws.onopen = function (message) {
-        var id_player = $scope.myProfile.email;
-        console.log(id_player);
-        ws.send("REG-" + id_player);
-    };
-    ws.onmessage = function (message) {
-        var data = message.data.split("-|-");
-        switch (data[0]) {
-            case "REQHANDSHAKE":
-                var id_requestHandShake = data[1];
 
-                break;
-            case "REPHANDSHAKE":
-                // đóng lại
-
-                break;
-            case "REQPAUSE":
-                var id_requestPause = 1;
-
-                break;
-            case "REPPAUSE":
-                var accept = data[1];
-                if (accept == "1") {
-                    console.log("continue");
-                }
-                break;
-            case "CHAT":
-                console.log(data);
-                var text = data[1].replace("CHAT-|-", ""); // cut 'CHAT-|-' out data[1]
-                $scope.messages.push({'text': text, 'yours': true});
-                document.getElementById("talks").scrollTop = document.getElementById("talks").scrollHeight;
-                soundForClick.play();
-                break;
-            case "REQNEWGAME":
-                break;
-            case "REPNEWGAME":
-                break;
-            case "LOSE":
-                break;
-            case "PLAY":
-                break;
-
-        }
-    };
-    ws.onclose = function (message) {
-        ws.close();
-    };
-    /**
-     *
-     *
-     *
-     **/
-    function acceptHandShake() {
-        var id_requestHandshake = 1;
-        ws.send("HANDSHAKE-0-" + id_requestHandshake);
-    }
-
-    function declineHandShake() {
-        var id_requestHandshake = 1;
-        ws.send("HANDSHAKE-1-" + id_requestHandshake);
-    }
-
-    function requestPause() {
-        var id_requestPause = 1;
-        ws.send("PAUSE-1-" + id_requestHandshake);
-    }
-
-    function acceptLose() {
-
-    }
-
-    function requestDrawGame() {
-
-    }
 
     /**
      *
      * GET list user online from server
      *
      **/
-    $scope.userOnline.clear();
     $.getJSON("http://localhost:8080/rest/online", function (result) {
         $scope.userOnline = result;
     });
@@ -145,7 +150,6 @@ myApp.controller('MyAppController', function ($scope, $http) {
      *
      **/
     $scope.showListUser = function () {
-        $scope.userOnline.clear();
         $.getJSON("http://localhost:8080/rest/online", function (result) {
             $scope.userOnline = result;
         });
@@ -212,13 +216,4 @@ myApp.controller('MyAppController', function ($scope, $http) {
     $scope.addFriend = function () {
         soundForClick.play();
     };
-
-    /**
-     *
-     * VALIDATE code
-     *
-     **/
-    $scope.validateYourCode = function () {
-
-    }
 });

@@ -29,7 +29,6 @@ public class ServerEndPoint {
 	// 1 entry list_match (ID_A,ID_B)
 	private static HashMap<String, String> list_match = new HashMap<String,String>();
 
-	@SuppressWarnings("resource")
 	ApplicationContext context=new ClassPathXmlApplicationContext("servlet-context.xml");
 	AccountServiceImpl accountServiceImpl=(AccountServiceImpl) context.getBean("accountService");
 
@@ -39,8 +38,9 @@ public class ServerEndPoint {
 	}
 	   
 	@OnClose
-	public void onClose(Session session, CloseReason closeReason) throws IOException{
+	public void onClose(Session session, CloseReason closeReason) throws  IOException{
 		list.remove(session);
+		System.out.println(closeReason.getCloseCode());
 		String clientId=list_user.get(session.getId());
 		System.out.println("Client ID Exit : "+clientId);
 		for(Map.Entry<String,String> entry : list_user.entrySet()){
@@ -52,11 +52,11 @@ public class ServerEndPoint {
 			System.out.println("Key :"+entry.getKey()+",Value :"+entry.getValue());
 		}
 		accountServiceImpl.setStatusOffline(clientId);
-//		if(list_match.containsKey(clientId)){
-//
-//		}else if(list_match.containsValue(clientId)){
-//
-//		}
+		if(list_match.containsKey(clientId)){
+
+		}else if(list_match.containsValue(clientId)){
+
+		}
 	}
 	   
 	@OnMessage
