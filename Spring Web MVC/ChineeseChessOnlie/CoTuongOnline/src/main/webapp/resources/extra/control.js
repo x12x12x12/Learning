@@ -54,7 +54,6 @@ ws.onclose = function (message) {
  *
  **/
 function acceptHandShake() {
-    var id_requestHandshake = 1;
     ws.send("REPHANDSHAKE-0-" + getEmailCurrentPlayer());
 }
 
@@ -70,12 +69,14 @@ function acceptPause(){
     ws.send("REQPAUSE-" + getEmailCurrentPlayer());
 }
 function acceptLose() {
-    var id_requestPause = 1;
     ws.send("LOSE-" + getEmailCurrentPlayer());
 }
-
 function requestDrawGame() {
-
+    ws.send("REQDRAW-" + getEmailCurrentPlayer());
+}
+function repDrawGame(){
+    var response=0; // or 1
+    ws.send("REPDRAW-"+response+"-"+ getEmailCurrentPlayer());
 }
 function getEmailCurrentPlayer(){
     var id="11520616@gm.uit.edu.vn";
