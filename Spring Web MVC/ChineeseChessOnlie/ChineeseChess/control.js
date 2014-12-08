@@ -1,38 +1,100 @@
 var myApp = angular.module('myApp', []);
+var ws = new WebSocket("ws://localhost:8080/game");
+ws.onopen = function (message) {
+    var id_player = user_data.email;
+    console.log(id_player);
+    ws.send("REG-" + id_player);
+};
+ws.onmessage = function (message) {
+    var data = message.data.split("-|-");
+    switch (data[0]) {
+        case "REQHANDSHAKE":
+            var id_requestHandShake = data[1];
 
+            break;
+        case "REPHANDSHAKE":
+            var accept = data[1];
+            break;
+        case "REQPAUSE":
+            var id_requestPause = 1;
+
+            break;
+        case "REPPAUSE":
+            var accept = data[1];
+            if (accept == "1") {
+                console.log("continue");
+            }
+            break;
+        case "CHAT":
+            console.log(data);
+            var text = data[1].replace("CHAT-|-", ""); // cut 'CHAT-|-' out data[1]
+            //myApp.$scope.messages.push({'text': text, 'yours': true});
+            document.getElementById("talks").scrollTop = document.getElementById("talks").scrollHeight;
+            soundForClick.play();
+            break;
+        case "REQNEWGAME":
+            break;
+        case "REPNEWGAME":
+            break;
+        case "LOSE":
+            break;
+        case "PLAY":
+            console.log(data[1]);
+            break;
+
+    }
+};
+ws.onclose =function(message){ ws.close();};
+
+/**
+ *
+ *
+ *
+ **/
+function acceptHandShake() {
+    ws.send("REPHANDSHAKE-0-" + getEmailCurrentPlayer());
+}
+
+function declineHandShake() {
+    ws.send("REPHANDSHAKE-1-" + getEmailCurrentPlayer());
+}
+
+function requestPause() {
+    ws.send("REQPAUSE-" + getEmailCurrentPlayer());
+}
+function acceptPause(){
+    var id_requestPause = 1;
+    ws.send("REQPAUSE-" + getEmailCurrentPlayer());
+}
+function acceptLose() {
+    ws.send("LOSE-" + getEmailCurrentPlayer());
+}
+function requestDrawGame() {
+    ws.send("REQDRAW-" + getEmailCurrentPlayer());
+}
+function repDrawGame(){
+    var response=0; // or 1
+    ws.send("REPDRAW-"+response+"-"+ getEmailCurrentPlayer());
+}
+function getEmailCurrentPlayer(){
+    var id="11520616@gm.uit.edu.vn";
+    return id;
+}
+function playerMove(data){
+    console.log(data);
+    ws.send("PLAY-"+getEmailCurrentPlayer()+"-"+data);
+}
+function sendChat(data){
+    ws.send(data);
+}
 myApp.controller('MyAppController', function ($scope, $http) {
-    /**
-     *
-     * Object save my profile
-     *
-     **/
-    $scope.myProfile = {
-        "name": "My Name",
-        "email": "myEmail@gmail.com",
-        "point": "110",
-        "img_url": "images/player2.jpg"
-    };
-    /**
-     *
-     * Object save opponent profile
-     *
-     **/
-    $scope.opponent =null;
     /**
      *
      * Show popup list user online when starting
      *
      **/
-    $scope.listUserOnline = [
-        {
-            "name": "Fuck you",
-            "email": "fuckyou@gmail.com",
-            "point": "110",
-            "img_url": "images/player1.jpg"
-        }
-    ];
-//    console.log($scope.userOnline);
-//    $('#modalListUser').modal("show");
+    $scope.userOnline = [];
+    $scope.myProfile =user_data;
     /**
      *
      * Arrays saved all message
@@ -42,29 +104,29 @@ myApp.controller('MyAppController', function ($scope, $http) {
     $scope.yourMessage = "";
 
     /**
-     *
      * Title of chat conversation. Example : "TO : John"
-     *
      **/
     $scope.titleOfChatConversation = "TO : ";
 
     /**
-     *
      * Count down 15 second
-     *
      **/
     $scope.countDown = 15;
 
+
     /**
-     *
+     * Profile of opponent
+     **/
+    $scope.opponent = {};
+
+    /**
      * Play sound when event click happen
-     *
      **/
     var soundForClick = null;
     soundManager.setup({
         onready: function () {
             soundForClick = soundManager.createSound({
-                url: 'sounds/click-button.mp3'
+                url: 'resources/extra/sounds/click-button.mp3'
             });
         },
         ontimeout: function () {
@@ -78,75 +140,6 @@ myApp.controller('MyAppController', function ($scope, $http) {
      *    @onClose
      *    0: OK ----- 1: ERROR
      **/
-    var ws = new WebSocket("ws://localhost:8080/cotuong/game");
-    ws.onopen = function (message) {
-        var id_player = 1;
-        ws.send("REG-" + id_player);
-    };
-    ws.onmessage = function (message) {
-        var data = message.data.split("-|-");
-        switch (data[0]) {
-            case "REQHANDSHAKE":
-                var id_requestHandShake = data[1];
-
-                break;
-            case "ACCEPT_HANDSHAKE":
-                // đóng lại
-
-                break;
-            case "PAUSE":
-                var id_requestPause = 1;
-
-                break;
-            case "ACCEPT_PAUSE":
-                var accept = data[1];
-                if (accept == "1") {
-                    console.log("continue");
-                }
-                break;
-            case "CHAT":
-                console.log(data[1]);
-                //CHAT-|-TEXT"
-                var text = data[1].replace("CHAT-|-", ""); // cut 'CHAT-|-' out data[1]
-                $scope.messages.push({'text': text, 'yours': false});
-                soundForClick.play();
-                break;
-            case "LOGIN":
-                break;
-            case "LOGOUT":
-                break;
-        }
-    }
-    ws.onclose = function (message) {
-        ws.close();
-    }
-    /**
-     *
-     *
-     *
-     **/
-    function acceptHandShake() {
-        var id_requestHandshake = 1;
-        ws.send("HANDSHAKE-0-" + id_requestHandshake);
-    }
-
-    function declineHandShake() {
-        var id_requestHandshake = 1;
-        ws.send("HANDSHAKE-1-" + id_requestHandshake);
-    }
-
-    function requestPause() {
-        var id_requestPause = 1;
-        ws.send("PAUSE-1-" + id_requestHandshake);
-    }
-
-    function acceptLose() {
-
-    }
-
-    function requestDrawGame() {
-
-    }
 
 
     /**
@@ -154,9 +147,8 @@ myApp.controller('MyAppController', function ($scope, $http) {
      * GET list user online from server
      *
      **/
-//    $scope.userOnline = [];
-    $.getJSON("http://localhost:8080/cotuong/rest/online", function (result) {
-        $scope.listUserOnline = result;
+    $.getJSON("http://localhost:8080/rest/online", function (result) {
+        $scope.userOnline = result;
     });
 
     /**
@@ -165,6 +157,10 @@ myApp.controller('MyAppController', function ($scope, $http) {
      *
      **/
     $scope.showListUser = function () {
+        $.getJSON("http://localhost:8080/rest/online", function (result) {
+            $scope.userOnline = result;
+        });
+        console.log($scope.userOnline);
         soundForClick.play();
         $('#modalListUser').modal("show");
     };
@@ -177,13 +173,15 @@ myApp.controller('MyAppController', function ($scope, $http) {
     $scope.sendMessage = function () {
         if (window.event.keyCode == 13) {
             if ($scope.yourMessage != null & $scope.yourMessage != "") {
-                $scope.messages.push({'text': $scope.yourMessage, 'yours': true});
+                $scope.messages.push({'text': $scope.yourMessage, 'yours': false});
                 /**
                  *
                  */
-                var to_client_id = 2;
-                ws.send("CHAT-" + to_client_id + "-" + $scope.yourMessage);
-
+                var to_client_id = "11520616@gm.uit.edu.vn";
+                if($scope.myProfile.email=="11520616@gm.uit.edu.vn"){
+                    to_client_id="dominhquan.uit@gmail.com";
+                }
+                sendChat("CHAT-"+ to_client_id + "-" + $scope.yourMessage);
                 /**
                  *
                  */
@@ -199,21 +197,10 @@ myApp.controller('MyAppController', function ($scope, $http) {
      * CHALLENGE user in list user online
      *
      **/
-    $scope.challengeUser = function (opponent) {
+    $scope.challengeUser = function () {
         soundForClick.play();
-        $scope.opponent=opponent;
-        console.log(opponent);
-        $scope.$apply();
-        //
-        //User A wanna play with B, send request handshake to server
-        //
-        ws.send("REQHANDSHAKE-"+opponent.email);
-
         $('#modalListUser').modal("hide");
         $('#modalWaitingAcceptChallenge').modal("show");
-        //
-        //Processing countdown
-        //
         $scope.countDown=15;
         var timeCountDown = setInterval(function(){
             if($scope.countDown>0){
@@ -226,30 +213,6 @@ myApp.controller('MyAppController', function ($scope, $http) {
         },1000);
 
     };
-    /**
-     *
-     * User wanna pause game with opponent
-     *
-     **/
-    $scope.requestPause = function (opponent) {
-        soundForClick.play();
-        //
-        //User A wanna pause game with opponent B, send request pause to server
-        //
-        ws.send("REQPAUSE-"+$scope.opponent.email);
-    };
-    /**
-     *
-     * User wanna end game with opponent
-     *
-     **/
-    $scope.requestEnd = function (opponent) {
-        soundForClick.play();
-        //
-        //User A wanna end game with opponent B, send request end to server
-        //
-        ws.send("END-"+opponent.email);
-    };
 
     /**
      *
@@ -259,13 +222,4 @@ myApp.controller('MyAppController', function ($scope, $http) {
     $scope.addFriend = function () {
         soundForClick.play();
     };
-
-    /**
-     *
-     * VALIDATE code
-     *
-     **/
-    $scope.validateYourCode = function () {
-
-    }
 });
