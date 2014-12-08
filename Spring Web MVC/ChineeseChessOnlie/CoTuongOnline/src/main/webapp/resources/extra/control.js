@@ -1,5 +1,5 @@
 var myApp = angular.module('myApp', []);
-var ws = new WebSocket("ws://localhost:8080/game");
+var ws = new WebSocket("ws://192.168.1.30:8080/game");
 ws.onopen = function (message) {
     var id_player = user_data.email;
     console.log(id_player);
@@ -13,8 +13,7 @@ ws.onmessage = function (message) {
 
             break;
         case "REPHANDSHAKE":
-            // đóng lại
-
+            var accept = data[1];
             break;
         case "REQPAUSE":
             var id_requestPause = 1;
@@ -29,7 +28,7 @@ ws.onmessage = function (message) {
         case "CHAT":
             console.log(data);
             var text = data[1].replace("CHAT-|-", ""); // cut 'CHAT-|-' out data[1]
-            $scope.messages.push({'text': text, 'yours': true});
+            //myApp.$scope.messages.push({'text': text, 'yours': true});
             document.getElementById("talks").scrollTop = document.getElementById("talks").scrollHeight;
             soundForClick.play();
             break;
@@ -40,13 +39,12 @@ ws.onmessage = function (message) {
         case "LOSE":
             break;
         case "PLAY":
+            console.log(data[1]);
             break;
 
     }
 };
-ws.onclose = function (message) {
-    ws.close("User :"+user_data.email+" exit");
-};
+ws.onclose =function(message){ ws.close();};
 
 /**
  *
@@ -85,6 +83,9 @@ function getEmailCurrentPlayer(){
 function playerMove(data){
     console.log(data);
     ws.send("PLAY-"+getEmailCurrentPlayer()+"-"+data);
+}
+function sendChat(data){
+    ws.send(data);
 }
 myApp.controller('MyAppController', function ($scope, $http) {
     /**
@@ -146,7 +147,7 @@ myApp.controller('MyAppController', function ($scope, $http) {
      * GET list user online from server
      *
      **/
-    $.getJSON("http://localhost:8080/rest/online", function (result) {
+    $.getJSON("http://192.168.1.30:8080/rest/online", function (result) {
         $scope.userOnline = result;
     });
 
@@ -156,7 +157,7 @@ myApp.controller('MyAppController', function ($scope, $http) {
      *
      **/
     $scope.showListUser = function () {
-        $.getJSON("http://localhost:8080/rest/online", function (result) {
+        $.getJSON("http://192.168.1.30:8080/rest/online", function (result) {
             $scope.userOnline = result;
         });
         console.log($scope.userOnline);
@@ -180,8 +181,7 @@ myApp.controller('MyAppController', function ($scope, $http) {
                 if($scope.myProfile.email=="11520616@gm.uit.edu.vn"){
                     to_client_id="dominhquan.uit@gmail.com";
                 }
-                ws.send("CHAT-"+ to_client_id + "-" + $scope.yourMessage);
-
+                sendChat("CHAT-"+ to_client_id + "-" + $scope.yourMessage);
                 /**
                  *
                  */

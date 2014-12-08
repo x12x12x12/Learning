@@ -2,6 +2,7 @@ package com.cotuong.app;
 
 import com.cotuong.service.AccountService;
 import com.cotuong.service.AccountServiceImpl;
+import org.apache.tomcat.websocket.WsSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -207,12 +208,29 @@ public class ServerEndPoint {
 				break;
 			case "PLAY":
 				System.out.println(data[2]);
+				String enemy_session_id=findUserSession(data[1]);
+				for(Session session_1 : list){
+					if(session_1.getId()==enemy_session_id){
+						session_1.getBasicRemote().sendText("PLAY-|-"+data[2]);
+					}
+				}
 				break;
 			default:
 				break;
 		   }
 	   }
-
+	public String findUserSession(String email){
+		String session_id="";
+		if(list_user.containsValue(email)){
+			for(Map.Entry<String,String> entry : list_user.entrySet()){
+				if(entry.getValue().equalsIgnoreCase(email)){
+					session_id=entry.getKey();
+					return session_id;
+				}
+			}
+		}
+		return session_id;
+	}
 	/**
 	 *
 	 * @param data
