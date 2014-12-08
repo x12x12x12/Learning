@@ -148,6 +148,10 @@ myApp.controller('MyAppController', function ($scope, $http) {
      *
      **/
     $.getJSON("http://localhost:8080/rest/online", function (result) {
+        result = result
+               .filter(function (el) {
+                        return el.name != $scope.myProfile.name;
+                       });
         $scope.userOnline = result;
     });
 
