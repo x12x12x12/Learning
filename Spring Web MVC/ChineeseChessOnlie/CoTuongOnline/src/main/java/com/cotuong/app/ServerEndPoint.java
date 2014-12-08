@@ -148,13 +148,13 @@ public class ServerEndPoint {
 			case "REPNEWGAME":
 				/**
 				 * User B reply to user A : play new game or not
-				 * User B : Send "REPHANDSHAKE-ID_A-BOOL"
+				 * User B : Send "REPNEWGAME-BOOL-ID_A"
 				 * - BOOL
 				 * 		+ Accept  : 0
 				 * 		+ Decline : 1
 				 * - ID 	: Session id of player to response the request handshake
 				 * 	Server : Find ID_A in list_user -> session of user's A -> send to A
-				 * 	 User A : Receive "REPHANDSHAKE-BOOL-ID_B"
+				 * 	 User A : Receive "REPNEWGAME-BOOL-ID_B"
 				 **/
 				checkAndSendMsgToUser(data,session,"REPNEWGAME-|-"+data[1]+"-|-");
 				break;

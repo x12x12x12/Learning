@@ -21,7 +21,7 @@
                     <div class="col-md-6">
                         <div id="newGame" class="button" >New Game</div>
                         <div id="restore" class="button" >Turn back</div>
-                        <div id="listUser" class="button" ng-click="showListUser()">List User</div>
+                        <div id="listUser" class="button" ng-click="showListUser()" >List User</div>
                         <div class="info" >Time：<span id="TimeCost">0</span></div>
                         <div class="info" >Depth：<span id="depth">0</span></div>
                     </div>
@@ -52,14 +52,7 @@
                 </div>
             </div>
         </div>
-        
-        
-        
-        
-        
-        
-        
-        
+
         
         <!--------------START: Popup show user online---------------------->
         <div class="modal fade" id="modalListUser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

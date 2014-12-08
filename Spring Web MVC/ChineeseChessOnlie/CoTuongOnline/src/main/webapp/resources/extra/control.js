@@ -1,8 +1,8 @@
 var myApp = angular.module('myApp', []);
-var ws = new WebSocket("ws://192.168.1.30:8080/game");
+var ws = new WebSocket("ws://localhost:8080/game");
 ws.onopen = function (message) {
     var id_player = user_data.email;
-    console.log(id_player);
+    //console.log(id_player);
     ws.send("REG-" + id_player);
 };
 ws.onmessage = function (message) {
@@ -10,33 +10,53 @@ ws.onmessage = function (message) {
     switch (data[0]) {
         case "REQHANDSHAKE":
             var id_requestHandShake = data[1];
-
+            // show form yes or no
             break;
         case "REPHANDSHAKE":
-            var accept = data[1];
+            var accept = data[1];  // 0 : yes , 1 : no
+            if (accept == "0") {
+                console.log("continue");
+            }else{
+                // the enemy decline to accept
+            }
             break;
         case "REQPAUSE":
             var id_requestPause = 1;
-
+            // show form yes or no
             break;
         case "REPPAUSE":
-            var accept = data[1];
-            if (accept == "1") {
+            var accept = data[1]; // 0 : yes , 1 : no
+            if (accept == "0") {
                 console.log("continue");
+            }else{
+                // the enemy decline to accept
             }
             break;
         case "CHAT":
-            console.log(data);
+            //console.log(data);
             var text = data[1].replace("CHAT-|-", ""); // cut 'CHAT-|-' out data[1]
-            //myApp.$scope.messages.push({'text': text, 'yours': true});
+            var scope = angular.element($(document.body)).scope();
+            scope.$apply(function(){
+                scope.messages.push({'text': text, 'yours': true});
+                scope.yourMessage = "";
+            });
             document.getElementById("talks").scrollTop = document.getElementById("talks").scrollHeight;
             soundForClick.play();
             break;
         case "REQNEWGAME":
+            var id_enemy=data[1]; // email enemy
+            // get enemy info then show form accept or not
             break;
         case "REPNEWGAME":
+            var accept = data[1];
+            if (accept == "0") {
+                console.log("continue");
+            }else{
+                // the enemy decline to accept
+            }
             break;
         case "LOSE":
+
             break;
         case "PLAY":
             console.log(data[1]);
@@ -87,6 +107,16 @@ function playerMove(data){
 function sendChat(data){
     ws.send(data);
 }
+var soundForClick = null;
+soundManager.setup({
+    onready: function () {
+        soundForClick = soundManager.createSound({
+            url: 'resources/extra/sounds/click-button.mp3'
+        });
+    },
+    ontimeout: function () {
+    }
+});
 myApp.controller('MyAppController', function ($scope, $http) {
     /**
      *
@@ -122,16 +152,7 @@ myApp.controller('MyAppController', function ($scope, $http) {
     /**
      * Play sound when event click happen
      **/
-    var soundForClick = null;
-    soundManager.setup({
-        onready: function () {
-            soundForClick = soundManager.createSound({
-                url: 'resources/extra/sounds/click-button.mp3'
-            });
-        },
-        ontimeout: function () {
-        }
-    });
+
 
     /**
      *    The code below is basic function to receive data from game's server
@@ -147,7 +168,11 @@ myApp.controller('MyAppController', function ($scope, $http) {
      * GET list user online from server
      *
      **/
-    $.getJSON("http://192.168.1.30:8080/rest/online", function (result) {
+    $.getJSON("http://localhost:8080/rest/online", function (result) {
+        result = result
+            .filter(function (el) {
+                return el.name != $scope.myProfile.name;
+            });
         $scope.userOnline = result;
     });
 
@@ -157,10 +182,13 @@ myApp.controller('MyAppController', function ($scope, $http) {
      *
      **/
     $scope.showListUser = function () {
-        $.getJSON("http://192.168.1.30:8080/rest/online", function (result) {
+        $.getJSON("http://localhost:8080/rest/online", function (result) {
+            result = result
+                .filter(function (el) {
+                    return el.name != $scope.myProfile.name;
+                });
             $scope.userOnline = result;
         });
-        console.log($scope.userOnline);
         soundForClick.play();
         $('#modalListUser').modal("show");
     };
