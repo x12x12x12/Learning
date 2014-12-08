@@ -1,3 +1,4 @@
+
 var myApp = angular.module('myApp', []);
 var ws = new WebSocket("ws://localhost:8080/game");
 ws.onopen = function (message) {
@@ -28,6 +29,10 @@ ws.onmessage = function (message) {
         case "CHAT":
             console.log(data);
             var text = data[1].replace("CHAT-|-", ""); // cut 'CHAT-|-' out data[1]
+            var scope = angular.element($(document.body)).scope();
+            scope.$apply(function(){
+                scope.messages.push({'text': text, 'yours': true});
+            });
             //myApp.$scope.messages.push({'text': text, 'yours': true});
             document.getElementById("talks").scrollTop = document.getElementById("talks").scrollHeight;
             soundForClick.play();
@@ -87,7 +92,8 @@ function playerMove(data){
 function sendChat(data){
     ws.send(data);
 }
-myApp.controller('MyAppController', function ($scope, $http) {
+myApp.controller('MyAppController', ['$scope','$http','$window',function ($scope, $http,$window) {
+    console.log($window.alert);
     /**
      *
      * Show popup list user online when starting
@@ -226,4 +232,4 @@ myApp.controller('MyAppController', function ($scope, $http) {
     $scope.addFriend = function () {
         soundForClick.play();
     };
-});
+}]);
