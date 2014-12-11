@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="app:war">
+    <output-path>$PROJECT_DIR$/../../SpringRest_ForAndroidApp/target</output-path>
+    <root id="archive" name="rest-webapp.war">
+      <element id="artifact" artifact-name="app:war exploded" />
+    </root>
+  </artifact>
+</component>
