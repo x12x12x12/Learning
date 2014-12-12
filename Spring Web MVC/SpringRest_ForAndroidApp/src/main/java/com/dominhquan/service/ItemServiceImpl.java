@@ -68,18 +68,27 @@ public class ItemServiceImpl implements ItemService{
 		query=new Query(Criteria.where("restaurant_name").regex(restaurant));
 		return mongoTemplate.find(query, Item.class);
 	}
-	
-	public List<Item> getListHotItem(String restaurant) throws MongoException{
-		query=new Query(Criteria.where("restaurant_name").is(restaurant).and("status").is(1));
+
+	@Override
+	public List<Item> getListHotItem() throws MongoException{
+		query=new Query(Criteria.where("status").is(1));
 		query.with(new Sort(Sort.Direction.DESC,"updateDate"));
 		return mongoTemplate.find(query, Item.class);
 	}
-	
+
+	@Override
 	public List<Order> getListOrderByRestaurant(String restaurant) throws MongoException{
 		query=new Query(Criteria.where("restaurant_name").is(restaurant));
 		return mongoTemplate.find(query, Order.class);
 	}
-	
+
+	@Override
+	public List<Order> getListOrderByUser(String userName) throws MongoException{
+		query=new Query(Criteria.where("userOrderName").is(userName));
+		return mongoTemplate.find(query, Order.class);
+	}
+
+	@Override
 	public int countItem() throws MongoException{
 //		query=new Query(Criteria.where("_id").)
 		return 0;

@@ -3,6 +3,7 @@ package com.dominhquan.app;
 import java.util.Date;
 import java.util.List;
 
+import com.dominhquan.model.Order;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,14 +38,7 @@ public class RestController {
 	
 	@RequestMapping(value=AppRestUri.get_item,method=RequestMethod.GET)
 	public @ResponseBody Item getItem(@PathVariable("id") String id){
-		Item item=new Item();
-		item.setId(id);
-		item.setName("Chả cá");
-		item.setCreateDate(new Date());
-		item.setUpdateDate(new Date());
-		item.setRestaurant_name("New World");
-		item.setPrice(new Double("125.50"));
-		logger.info("Request item "+ item.getId());
+		Item item=itemService.getItem(id);
 		return item;
 	}
 	
@@ -52,20 +46,30 @@ public class RestController {
 	public @ResponseBody List<Item> getListRestaurant(@PathVariable("name") String name){
 		List<Item> list=itemService.getListItem(name);
 		return list;
+
+	}
+	@RequestMapping(value=AppRestUri.get_all_orders_in_restaurant,method=RequestMethod.GET)
+	public @ResponseBody List<Order> getListOrderInRestaurant(@PathVariable("name") String name){
+		List<Order> list=itemService.getListOrderByRestaurant(name);
+		return list;
+	}
+
+	@RequestMapping(value=AppRestUri.get_all_orders_by_user,method=RequestMethod.GET)
+	public @ResponseBody List<Order> getListOrderByUser(@PathVariable("name") String name){
+		List<Order> list=itemService.getListOrderByUser(name);
+		return list;
+	}
+
+	@RequestMapping(value=AppRestUri.get_all_hot_items,method=RequestMethod.GET)
+	public @ResponseBody List<Item> getListItemByRestaurant(){
+		List<Item> list=itemService.getListHotItem();
+		return list;
 	}
 	
-//	@RequestMapping(value=AppRestUri.get_all_items_in_restaurant,method=RequestMethod.GET)
-//	public @ResponseBody List<Item> getListOrderByRestaurant(@PathVariable("name") String name){
-//		List<Item> list=itemService.getListItem(name);
-//		return list;
-//	}
-	
 	@RequestMapping(value=AppRestUri.order_menu,method=RequestMethod.POST)
-	public @ResponseBody Item orderItem(@RequestBody Item item){
-		logger.info("New order : " + item.getId());
-		item.setCreateDate(new Date());
-		item.setUpdateDate(new Date());
-		return item;
+	public @ResponseBody Order orderItem(@RequestBody Order order){
+		order.setStatus(0);
+		return order;
 	}
 	
 	@RequestMapping(value=AppRestUri.check_account,method=RequestMethod.POST)
@@ -104,7 +108,12 @@ public class RestController {
 		item.setCreateDate(new Date());
 		item.setUpdateDate(new Date());
 		try{
-			itemService.createItem(item);	
+			if(item.getId()!=null && item.getName()!=null &&item.getPrice()!=null && item.getImg_url()!=null){
+				if(item.getImg_ico()==null){
+					item.setImg_ico("");
+				}
+				itemService.createItem(item);
+			}
 		}catch(Exception ex){
 			item.setId("fail");
 		}

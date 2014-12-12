@@ -23,7 +23,7 @@ public class ServiceController {
 		if(validateSession(httpSession)){
 			Account account=(Account) httpSession.getAttribute("account");
 			model.addAttribute("data",account);
-			return "tables";
+			return "order";
 		}
 		model.addAttribute("sessionExpired","User session expired please login again !!!!");
 		model.addAttribute("account",new Account());
@@ -52,10 +52,10 @@ public class ServiceController {
 	public String dashboard(Model model,HttpSession httpSession){
 		if(validateSession(httpSession)){
 			Account account=(Account) httpSession.getAttribute("account");
-			System.out.println("-----------------------------");
-			System.out.println(account.getEmail());
-			System.out.println(account.getPassword());
-			System.out.println("-----------------------------");
+//			System.out.println("-----------------------------");
+//			System.out.println(account.getEmail());
+//			System.out.println(account.getPassword());
+//			System.out.println("-----------------------------");
 			return "index";
 		}
 		model.addAttribute("sessionExpired","User session expired please login again !!!!");
