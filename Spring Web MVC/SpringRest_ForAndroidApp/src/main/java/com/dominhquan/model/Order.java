@@ -2,6 +2,8 @@ package com.dominhquan.model;
 
 import org.springframework.data.annotation.Id;
 
+import java.util.Date;
+
 public class Order {
 	@Id
 	private String id;
@@ -10,6 +12,7 @@ public class Order {
 	private String phone;
 	private String address;
 	private String list_food;
+	private Date createDate;
 	private int status;
 	
 	
@@ -55,6 +58,12 @@ public class Order {
 	public void setStatus(int status) {
 		this.status = status;
 	}
-	
-	
+	public Date getCreateDate() {
+		return createDate;
+	}
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
+	}
+
+
 }

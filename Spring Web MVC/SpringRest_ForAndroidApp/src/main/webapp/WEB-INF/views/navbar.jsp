@@ -7,7 +7,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="dashboard">SB Admin v2.0</a>
+                <a class="navbar-brand" href="dashboard">Admin-Dashboard</a>
             </div>
             <!-- /.navbar-header -->
 

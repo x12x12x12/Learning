@@ -3,6 +3,7 @@ package com.dominhquan.app;
 import javax.servlet.http.HttpSession;
 
 import com.dominhquan.model.Item;
+import com.dominhquan.model.Order;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +24,7 @@ public class ServiceController {
 		if(validateSession(httpSession)){
 			Account account=(Account) httpSession.getAttribute("account");
 			model.addAttribute("data",account);
+			model.addAttribute("order",new Order());
 			return "order";
 		}
 		model.addAttribute("sessionExpired","User session expired please login again !!!!");

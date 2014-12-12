@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>List món ăn hiện có</title>
+    <title>List các hóa đơn trong nhà hàng hiện có</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="resources/css/bootstrap.min.css" rel="stylesheet">
@@ -52,7 +52,7 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            List food in database
+                            List order in database
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -61,7 +61,6 @@
                             </div>
                             <!-- /.table-responsive -->
                         </div>
-                        <button type="button" style="margin: 10px" class="btn btn-primary" id="createButton" onclick="createItem()" >Create</button>
                         <!-- /.panel-body -->
                     </div>
                     <!-- /.panel -->
@@ -82,43 +81,11 @@
                     <h4 class="modal-title" id="myModalLabel">Update food</h4>
                 </div>
                 <div class="modal-body">
-                    <form:form modelAttribute="item" action="" id="formUpdateItem">
-                        <fieldset>
-                            <div class="form-group">
-                                <form:label path="id">Id món ăn</form:label>
-                                <form:input path="id"  cssClass="form-control" id="idUpdate" />
-                            </div>
-                            <div class="form-group">
-                                <form:label path="name">Tên món ăn</form:label>
-                                <form:input path="name"  cssClass="form-control" placeholder="Food name" id="nameUpdate"/>
-                            </div>
-                            <div class="form-group">
-                                <form:label path="restaurant_name">Tên nhà hàng</form:label>
-                                <form:input path="restaurant_name"  cssClass="form-control" id="restaurantUpdate" disabled="true"/>
-                            </div>
-                            <div class="form-group">
-                                <form:label path="price">Giá </form:label>
-                                <form:input path="price" cssClass="form-control" placeholder="Price (number) " id="priceUpdate"/>
-                            </div>
-                            <div class="form-group">
-                                <form:label path="status">Tình trạng </form:label>
-                                <form:select path="status" cssClass="form-control" id="statusUpdate" items="${status}"/>
-                            </div>
-                            <div class="form-group">
-                                <form:label path="img_url">Link hình ảnh </form:label>
-                                <form:input path="img_url" cssClass="form-control" placeholder="Food Image URL " id="imgUpdate"/>
-                            </div>
-                            <div class="form-group">
-                                <form:label path="img_ico">Link Icon </form:label>
-                                <form:input path="img_ico" cssClass="form-control" placeholder="Food Image URL " id="img_icoUpdate"/>
-                            </div>
-                            <input type="hidden" name="${_csrf.parameterName}"value="${_csrf.token}" />
-                        </fieldset>
-                    </form:form>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="updateButton" >Update</button>
+                    <button type="button" class="btn btn-primary" id="updateButton" >Order delivery!</button>
                 </div>
             </div>
             <!-- /.modal-content -->
@@ -147,7 +114,7 @@
            		var element = [];
            		for (var property in this) {
            		    if (this.hasOwnProperty(property)) {
-               			if(property=="createDate" || property=="updateDate"){
+               			if(property=="createDate"){
                				var dateTime=new Date(this[property]);
                				this[property]=dateTime.toDateString();
                			}
