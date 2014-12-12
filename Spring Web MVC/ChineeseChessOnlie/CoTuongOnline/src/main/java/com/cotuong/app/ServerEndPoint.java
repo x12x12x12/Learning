@@ -166,6 +166,9 @@ public class ServerEndPoint {
 				 * User B : Receive "LOSE-ID_A" . (B no need to return any message)
 				 */
 				checkAndSendMsgToUser(data,session,"LOSE-|-");
+				// update point for 2 player
+				String player_win="";
+				String player_lose;
 				break;
 			case "CHAT":
 				/**

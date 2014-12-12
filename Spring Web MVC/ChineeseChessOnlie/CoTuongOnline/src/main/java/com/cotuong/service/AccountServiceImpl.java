@@ -64,7 +64,21 @@ public class AccountServiceImpl implements AccountService{
 		update.set("status",0);
 		mongoTemplate.updateFirst(query, update, Account.class);
 	}
-	
+
+	@Override
+	public void updatePoint(String player_win, String player_lose) {
+		query=new Query(Criteria.where("email").is(player_win));
+		Account account=(Account)mongoTemplate.find(query, Account.class);
+		update=new Update();
+		update.set("point",account.getPoint()+10);
+		mongoTemplate.updateFirst(query, update, Account.class);
+		query=new Query(Criteria.where("email").is(player_lose));
+		account=(Account)mongoTemplate.find(query, Account.class);
+		update=new Update();
+		update.set("point",account.getPoint()-10);
+		mongoTemplate.updateFirst(query, update, Account.class);
+	}
+
 	@Override
 	public void setStatusOnline(String email)throws MongoException{
 		query=new Query(Criteria.where("email").is(email));

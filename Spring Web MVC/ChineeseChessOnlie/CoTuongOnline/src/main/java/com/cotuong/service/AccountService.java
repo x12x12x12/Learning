@@ -12,5 +12,6 @@ public interface AccountService {
 	void setStatusOnline(String email);
 	void setStatusOffline(String email);
 	void activateAccount(String email);
+	void updatePoint(String player_win,String player_lose);
 	List<Account> getListOnline();
 }

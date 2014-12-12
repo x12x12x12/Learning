@@ -56,7 +56,8 @@ ws.onmessage = function (message) {
             }
             break;
         case "LOSE":
-
+            var id_enemy=data[1]; // email enemy
+            // alert enemy accept lose, then increase your point
             break;
         case "PLAY":
             console.log(data[1]);
