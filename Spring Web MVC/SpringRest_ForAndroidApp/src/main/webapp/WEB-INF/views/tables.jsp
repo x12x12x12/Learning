@@ -126,7 +126,7 @@
         <!-- /.modal-dialog -->
     </div>
     <!-- /.modal -->
-    <input type="hidden" value="<c:out value="${data.name}"/>" id="res_name">
+    <input type="hidden" value="<c:out value="${data.name}"/>" id="user_data.name">
     <!-- jQuery Version 1.11.0 -->
     <script src="resources/js/jquery-1.11.0.js"></script>
     <!-- Bootstrap Core JavaScript -->
@@ -140,8 +140,12 @@
     <script src="resources/js/sb-admin-2.js"></script>
     <!-- My JavaScript -->
     <script>
-        var res_name=$("#res_name").val();
-    	$.getJSON("http://localhost:8080/rest/store/"+res_name,function(result){
+        var user_data={
+            "name": "${data.name}",
+            "email":"${data.email}",
+            "code":"${data.code}"
+        };
+    	$.getJSON("http://localhost:8080/rest/store/"+user_data.name,function(result){
             var data = [];
            	$.each(result, function() {
            		var element = [];
@@ -222,7 +226,7 @@
             });
     	});
         function createItem(){
-            $("#restaurantUpdate").val(res_name+"-new");
+            $("#restaurantUpdate").val(user_data.name+"-new");
             $("#myModal").modal("show");
         }
         function clearModal(){
@@ -242,7 +246,7 @@
             var status=$("#statusUpdate").val();
             var img_url=$("#imgUpdate").val();
             var json = {"id":id,"name":name,"restaurant_name":restaurant,"price":price,"status":status,"img_url":img_url};
-	    	var url="http://localhost:8080/rest/updateitem";
+	    	var url="http://localhost:8080/rest/update_item";
             var checkUpdateOrCreate=restaurant.split('-');
             if(checkUpdateOrCreate[1]!=null){
                 url="http://localhost:8080/rest/item/create";

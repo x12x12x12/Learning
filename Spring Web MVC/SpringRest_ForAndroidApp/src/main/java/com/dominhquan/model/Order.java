@@ -13,6 +13,7 @@ public class Order {
 	private Double totalPrice;
 	private String list_food;
 	private Date createDate;
+	private String restaurant_code;
 	private int status;
 	
 	
@@ -64,5 +65,10 @@ public class Order {
 	public void setTotalPrice(Double totalPrice) {
 		this.totalPrice = totalPrice;
 	}
-
+	public String getRestaurant_code() {
+		return restaurant_code;
+	}
+	public void setRestaurant_code(String restaurant_code) {
+		this.restaurant_code = restaurant_code;
+	}
 }

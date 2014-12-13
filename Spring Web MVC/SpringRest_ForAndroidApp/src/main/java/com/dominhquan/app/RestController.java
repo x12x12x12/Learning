@@ -1,6 +1,8 @@
 package com.dominhquan.app;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import com.dominhquan.model.Order;
@@ -75,7 +77,30 @@ public class RestController {
 	
 	@RequestMapping(value=AppRestUri.order_menu,method=RequestMethod.POST)
 	public @ResponseBody Order orderItem(@RequestBody Order order){
-		order.setStatus(0);
+		if(order.getPhone().equalsIgnoreCase("") || order.getAddress().equalsIgnoreCase("") || order.getList_food().equalsIgnoreCase("")){
+			order.setId("fail");
+			return order;
+		}else{
+			try {
+				HashMap<String,String> data_send=new HashMap<String, String>();
+				String[] array_food=order.getList_food().split(",");
+				for(String food : array_food){
+					String[] food_data=food.split("-");
+					System.out.println(food);
+					System.out.println(food_data[0]);
+					System.out.println(food_data[1]);
+					if(!data_send.containsKey(food_data[0])){
+						data_send.put(food_data[0],food_data[1]);
+					}else{
+						food_data[1]=data_send.get(food_data[0])+","+food_data[1];
+						data_send.put(food_data[0],food_data[1]);
+					}
+				}
+//				itemService.createOrder(order);
+			}catch (Exception ex){
+				order.setId("fail");
+			}
+		}
 		return order;
 	}
 	

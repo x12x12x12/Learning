@@ -10,6 +10,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.dominhquan.model.Account;
 
+import java.sql.Timestamp;
+import java.util.Calendar;
+import java.util.Date;
+
 public class AccountServiceImpl implements AccountService{
 	
 	private static final Logger logger = LoggerFactory.getLogger(ItemServiceImpl.class);
@@ -25,6 +29,9 @@ public class AccountServiceImpl implements AccountService{
 	@Override
 	public void add(Account account) {
 		account.setPassword(passwordEncoder.encode(account.getPassword()));
+		Date now= Calendar.getInstance().getTime();
+		Timestamp currTimestamp=new Timestamp(now.getTime());
+		account.setCode(account.getName().toLowerCase()+currTimestamp.toString());
 		if(!mongoTemplate.collectionExists(Account.class)){
 			mongoTemplate.createCollection(Account.class);
 		}

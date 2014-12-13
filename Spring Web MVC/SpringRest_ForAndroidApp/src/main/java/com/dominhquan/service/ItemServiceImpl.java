@@ -91,6 +91,12 @@ public class ItemServiceImpl implements ItemService{
 	}
 
 	@Override
+	public List<Order> getListOrderByRestaurantCode(String code) {
+		query=new Query(Criteria.where("restaurant_code").is(code));
+		return mongoTemplate.find(query, Order.class);
+	}
+
+	@Override
 	public List<Order> getListOrderByUser(String userName) throws MongoException{
 		query=new Query(Criteria.where("userOrderName").is(userName));
 		return mongoTemplate.find(query, Order.class);
@@ -98,6 +104,9 @@ public class ItemServiceImpl implements ItemService{
 
 	@Override
 	public void createOrder(Order order) throws MongoException{
+		// 0 : done, 1: pending, 2:abort
+		order.setStatus(1);
+		order.setCreateDate(new Date());
 		if(!mongoTemplate.collectionExists(Order.class)){
 			mongoTemplate.createCollection(Order.class);
 		}
@@ -108,6 +117,12 @@ public class ItemServiceImpl implements ItemService{
 	public int countItem() throws MongoException{
 //		query=new Query(Criteria.where("_id").)
 		return 0;
+	}
+
+	@Override
+	public List<Item> getAllItem() throws MongoException{
+		query=new Query();
+		return mongoTemplate.find(query, Item.class);
 	}
 }
 
