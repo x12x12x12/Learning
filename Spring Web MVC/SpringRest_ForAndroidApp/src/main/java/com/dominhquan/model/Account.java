@@ -5,10 +5,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection="account")
 public class Account {
-	
-	private String name;
+
 	@Id
 	private String email;
+	private String name;
 	private String password;
 	
 	public String getName() {

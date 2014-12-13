@@ -42,6 +42,13 @@ public class RestController {
 		return item;
 	}
 	
+	@RequestMapping(value=AppRestUri.get_all_restaurant,method=RequestMethod.GET)
+	public @ResponseBody List<Account> getListRestaurant(){
+		List<Account> list=itemService.getListRestaurants();
+		return list;
+
+	}
+
 	@RequestMapping(value=AppRestUri.get_all_items_in_restaurant,method=RequestMethod.GET)
 	public @ResponseBody List<Item> getListRestaurant(@PathVariable("name") String name){
 		List<Item> list=itemService.getListItem(name);

@@ -13,13 +13,11 @@ import com.dominhquan.model.Account;
 public class AccountServiceImpl implements AccountService{
 	
 	private static final Logger logger = LoggerFactory.getLogger(ItemServiceImpl.class);
-	
+	@Autowired
+	PasswordEncoder passwordEncoder;
 	@Autowired
 	private MongoTemplate mongoTemplate;
 	private Query query;
-	
-	@Autowired
-	PasswordEncoder passwordEncoder;
 	
 	public AccountServiceImpl (MongoTemplate mongoTemplate){
 		this.mongoTemplate=mongoTemplate;

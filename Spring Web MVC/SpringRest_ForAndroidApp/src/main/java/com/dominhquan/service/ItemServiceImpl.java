@@ -3,6 +3,7 @@ package com.dominhquan.service;
 import java.util.Date;
 import java.util.List;
 
+import com.dominhquan.model.Account;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Sort;
@@ -74,6 +75,11 @@ public class ItemServiceImpl implements ItemService{
 		query=new Query(Criteria.where("status").is(1));
 		query.with(new Sort(Sort.Direction.DESC,"updateDate"));
 		return mongoTemplate.find(query, Item.class);
+	}
+
+	@Override
+	public List<Account> getListRestaurants() throws MongoException{
+		return mongoTemplate.find(query, Account.class);
 	}
 
 	@Override

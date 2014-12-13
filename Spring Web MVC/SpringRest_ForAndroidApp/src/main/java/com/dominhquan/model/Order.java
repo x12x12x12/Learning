@@ -8,7 +8,6 @@ public class Order {
 	@Id
 	private String id;
 	private String userOrderName;
-	private String restaurant_name;
 	private String phone;
 	private String address;
 	private String list_food;
@@ -27,12 +26,6 @@ public class Order {
 	}
 	public void setUserOrderName(String userOrderName) {
 		this.userOrderName = userOrderName;
-	}
-	public String getRestaurant_name() {
-		return restaurant_name;
-	}
-	public void setRestaurant_name(String restaurant_name) {
-		this.restaurant_name = restaurant_name;
 	}
 	public String getPhone() {
 		return phone;

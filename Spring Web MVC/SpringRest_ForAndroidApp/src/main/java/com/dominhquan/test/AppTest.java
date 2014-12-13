@@ -1,26 +1,26 @@
 package com.dominhquan.test;
 
-import java.util.Date;
-
+import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.dominhquan.model.Account;
-import com.dominhquan.model.Item;
 import com.dominhquan.service.AccountServiceImpl;
-import com.dominhquan.service.ItemServiceImpl;
 import com.dominhquan.service.MailService;
 
 public class AppTest {
 	
-	
 	public static void main(String args[]){
 
-		@SuppressWarnings("resource")
-		ApplicationContext context=new ClassPathXmlApplicationContext("servlet-context.xml");
-//		AccountServiceImpl accountServiceImpl=(AccountServiceImpl) context.getBean("accountService");
+            ApplicationContext context= new ClassPathXmlApplicationContext("templates/servlet-context.xml");
+            try {
+                    context = new ClassPathXmlApplicationContext("servlet-context.xml");
+            } catch (BeansException e) {
+                    e.printStackTrace();
+            }
+            AccountServiceImpl accountServiceImpl=(AccountServiceImpl) context.getBean("accountService");
 //		ItemServiceImpl itemServiceImpl= (ItemServiceImpl) context.getBean("itemService");
-//		MailService mailService=(MailService) context.getBean("mailService");
+		MailService mailService=(MailService) context.getBean("mailService");
 
 		/**
 		 *
@@ -30,12 +30,12 @@ public class AppTest {
 		  /**
 		   * Account
 		   */
-//		Account account=new Account();
-//		account.setEmail("dominhquan.uit@gmail.com");
-//		account.setName("Đỗ Minh Quân");
-//		account.setPassword("123456");
-//		accountServiceImpl.add(account);
-//		mailService.sendActivationEmail(account, "appgame.cotuong@gmail.com");
+		Account account=new Account();
+		account.setEmail("11520616@gmail.com");
+		account.setName("Lotteria");
+		account.setPassword("123456");
+		accountServiceImpl.add(account);
+		mailService.sendActivationEmail(account, "appgame.cotuong@gmail.com");
 //
 //		account=accountServiceImpl.getAccount("dominhquan.uit@gmail.com");
 //		if(account!=null){

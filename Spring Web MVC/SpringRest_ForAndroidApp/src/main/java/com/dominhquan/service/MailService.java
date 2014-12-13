@@ -31,18 +31,13 @@ public class MailService {
 	      this.velocityEngine = velocityEngine;
 	}
 	
-	public void regAccount(Account account){
-		
-	}
-	
 	public void sendActivationEmail(final Account account,final String from){
 		 MimeMessagePreparator preparator = new MimeMessagePreparator() {
 	         @SuppressWarnings("unchecked")
 			public void prepare(MimeMessage mimeMessage) throws Exception {
 	            MimeMessageHelper message = new MimeMessageHelper(mimeMessage);
 	            message.setTo(account.getEmail());
-	            message.setFrom(from); 
-	            @SuppressWarnings("rawtypes")
+	            message.setFrom(from);
 				Map model = new HashMap();
 	            model.put("account", account);
 	            String text = VelocityEngineUtils.mergeTemplateIntoString( velocityEngine,"templates/mail.vm", "UTF-8", null);
