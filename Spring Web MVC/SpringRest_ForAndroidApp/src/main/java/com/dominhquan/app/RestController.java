@@ -25,17 +25,17 @@ import com.dominhquan.uri.AppRestUri;
 
 @Controller
 public class RestController {
-	
+
 	private static final Logger logger = LoggerFactory.getLogger(RestController.class);
 	@Autowired
-	ItemService itemService;
+	private ItemService itemService;
 	@Autowired
-	PasswordEncoder passwordEncoder;
+	private PasswordEncoder passwordEncoder;
 	@Autowired
-	AccountService accountService;
+	private AccountService accountService;
 	@Autowired
 	private MailService mailService;
-	
+
 	@RequestMapping(value=AppRestUri.get_item,method=RequestMethod.GET)
 	public @ResponseBody Item getItem(@PathVariable("id") String id){
 		Item item=itemService.getItem(id);
@@ -141,7 +141,47 @@ public class RestController {
 			}
 		return item;
 	}
-	
-	
+
+	@RequestMapping(value=AppRestUri.import_test_data,method=RequestMethod.GET)
+	public void import_food_data(){
+		String [][] food_data=new String[][]{
+				{"food01","Chả cá","New World","100","0","http://i.imgur.com/w93vQqOb.jpg","http://i.imgur.com/w93vQqOb.jpg"},
+				{"food02","Bánh bao","New World","100","0","http://i.imgur.com/w93vQqOb.jpg","http://i.imgur.com/w93vQqOb.jpg"},
+				{"food03","Bánh ướt","New World","100","0","http://i.imgur.com/w93vQqOb.jpg","http://i.imgur.com/w93vQqOb.jpg"},
+				{"food04","Bánh mì","New World","100","0","http://i.imgur.com/w93vQqOb.jpg","http://i.imgur.com/w93vQqOb.jpg"},
+				{"food05","Bánh tầm","New World","100","0","http://i.imgur.com/w93vQqOb.jpg","http://i.imgur.com/w93vQqOb.jpg"},
+				{"food06","Bánh giò","New World","100","0","http://i.imgur.com/w93vQqOb.jpg","http://i.imgur.com/w93vQqOb.jpg"},
+				{"food07","Bánh canh","New World","100","0","http://i.imgur.com/w93vQqOb.jpg","http://i.imgur.com/w93vQqOb.jpg"},
+				{"food08","Bún riêu","New World","100","0","http://i.imgur.com/w93vQqOb.jpg","http://i.imgur.com/w93vQqOb.jpg"},
+				{"food09","Bún cá","New World","100","0","http://i.imgur.com/w93vQqOb.jpg","http://i.imgur.com/w93vQqOb.jpg"},
+				{"food10","Bún cua","New World","100","0","http://i.imgur.com/w93vQqOb.jpg","http://i.imgur.com/w93vQqOb.jpg"},
+				{"food11","Bún mắm","New World","100","0","http://i.imgur.com/w93vQqOb.jpg","http://i.imgur.com/w93vQqOb.jpg"},
+				{"food12","Bún đậu","New World","100","0","http://i.imgur.com/w93vQqOb.jpg","http://i.imgur.com/w93vQqOb.jpg"},
+				{"food13","Bún thịt nướng","New World","100","0","http://i.imgur.com/w93vQqOb.jpg","http://i.imgur.com/w93vQqOb.jpg"},
+				{"food14","Bánh xèo ","New World","100","0","http://i.imgur.com/w93vQqOb.jpg","http://i.imgur.com/w93vQqOb.jpg"},
+				{"food15","Chả giò","New World","100","0","http://i.imgur.com/w93vQqOb.jpg","http://i.imgur.com/w93vQqOb.jpg"},
+				{"food16","Chả chiên","New World","100","0","http://i.imgur.com/w93vQqOb.jpg","http://i.imgur.com/w93vQqOb.jpg"},
+				{"food17","Bánh tráng trộn","New World","100","0","http://i.imgur.com/w93vQqOb.jpg","http://i.imgur.com/w93vQqOb.jpg"},
+				{"food18","Cơm tấm","New World","100","0","http://i.imgur.com/w93vQqOb.jpg","http://i.imgur.com/w93vQqOb.jpg"},
+				{"food19","Bún bò huế","New World","100","0","http://i.imgur.com/w93vQqOb.jpg","http://i.imgur.com/w93vQqOb.jpg"},
+				{"food20","Bún chả","New World","100","0","http://i.imgur.com/w93vQqOb.jpg","http://i.imgur.com/w93vQqOb.jpg"},
+		};
+		for(String[] row :food_data){
+			int length=row.length;
+			for (int i=0;i<length-1;i++){
+				Item item=new Item();
+				item.setId(row[0]);
+				item.setName(row[1]);
+				item.setRestaurant_name(row[2]);
+				item.setPrice(Double.parseDouble(row[3]));
+				item.setStatus(Integer.parseInt(row[4]));
+				item.setImg_url(row[5]);
+				item.setImg_ico(row[6]);
+				item.setCreateDate(new Date());
+				item.setUpdateDate(new Date());
+				itemService.createItem(item);
+			}
+		}
+	}
 	
 }

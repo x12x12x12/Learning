@@ -108,7 +108,7 @@
     <!-- My JavaScript -->
     <script>
         var res_name=$("#res_name").val();
-    	$.getJSON("http://localhost:8080/rest/store/"+res_name,function(result){
+    	$.getJSON("http://localhost:8080/rest/store/order/"+res_name,function(result){
             var data = [];
            	$.each(result, function() {
            		var element = [];
@@ -121,13 +121,13 @@
                         if(property=="status"){
                             switch (this[property]){
                                 case 0:
-                                    this[property]="Hot";
+                                    this[property]="Đã giao";
                                     break;
                                 case 1:
-                                    this[property]="Bình thường";
+                                    this[property]="Đang chờ";
                                     break;
                                 case 2:
-                                    this[property]="Đang giảm giá";
+                                    this[property]="Hủy";
                                     break;
                             }
                         }
@@ -140,20 +140,16 @@
                 "data": data,
                 "columns": [
                     { "title": "Id" },
-                    { "title": "Tên món ăn","class": "center" },
-                    { "title": "Tên nhà hàng" },
-                    { "title": "Ngày tạo", "class": "center" },
-                    { "title": "Ngày cập nhật", "class": "center" },
-                    { "title": "Giá", "class": "center" },
-                    { "title": "Tình trạng", "class": "center" },
-                    { "title": "Link hình", "class": "center" },
-                    { "title": "Link icon", "class": "center" }
+                    { "title": "User order","class": "center" },
+                    { "title": "Phone", "class": "center" },
+                    { "title": "Địa chỉ giao hàng", "class": "center" },
+                    { "title": "Giá đơn hàng", "class": "center" },
+                    { "title": "List", "class": "center" },
+                    { "title": "Ngày đặt", "class": "center" },
+                    { "title": "Tình trạng", "class": "center" }
                 ],
                 "columnDefs":[
-                    {"targets":[0],"visible":false,"searchable":false},
-                    {"targets":[2],"visible":false,"searchable": false},
-                    {"targets":[7],"visible":false,"searchable": false},
-                    {"targets":[8],"visible":false,"searchable": false}
+                    {"targets":[5],"visible":false,"searchable": false}
                 ]
             });
             var add=$('#dataTables-example').DataTable();

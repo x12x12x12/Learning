@@ -79,6 +79,8 @@ public class ItemServiceImpl implements ItemService{
 
 	@Override
 	public List<Account> getListRestaurants() throws MongoException{
+		query=new Query();
+		query.fields().include("name");
 		return mongoTemplate.find(query, Account.class);
 	}
 
@@ -92,6 +94,14 @@ public class ItemServiceImpl implements ItemService{
 	public List<Order> getListOrderByUser(String userName) throws MongoException{
 		query=new Query(Criteria.where("userOrderName").is(userName));
 		return mongoTemplate.find(query, Order.class);
+	}
+
+	@Override
+	public void createOrder(Order order) throws MongoException{
+		if(!mongoTemplate.collectionExists(Order.class)){
+			mongoTemplate.createCollection(Order.class);
+		}
+		mongoTemplate.insert(order);
 	}
 
 	@Override

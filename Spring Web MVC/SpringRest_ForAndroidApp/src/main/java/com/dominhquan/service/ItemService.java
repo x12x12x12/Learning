@@ -8,6 +8,7 @@ import com.dominhquan.model.Order;
 
 public interface ItemService {
 	void createItem(Item item);
+	void createOrder(Order order);
 	Item getItem(String id);
 	Item removeItem(String id);
 	void updateItem(Item item);

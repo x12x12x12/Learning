@@ -10,6 +10,7 @@ public class Order {
 	private String userOrderName;
 	private String phone;
 	private String address;
+	private Double totalPrice;
 	private String list_food;
 	private Date createDate;
 	private int status;
@@ -57,6 +58,11 @@ public class Order {
 	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
 	}
-
+	public Double getTotalPrice() {
+		return totalPrice;
+	}
+	public void setTotalPrice(Double totalPrice) {
+		this.totalPrice = totalPrice;
+	}
 
 }
