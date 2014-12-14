@@ -6,14 +6,7 @@
   <component name="ChangeListManager">
     <list id="8b8c420c-b3d7-4321-b275-2a347a70f317" name="IDEA change" comment="no need to update" />
     <list default="true" id="e8621721-671f-4392-a7a0-2436a85c7c1b" name="Default file change" comment="Need commit to git">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../SpringRest_ForAndroidApp/src/main/java/com/dominhquan/service/AccountServiceImpl.java" afterPath="$PROJECT_DIR$/../../SpringRest_ForAndroidApp/src/main/java/com/dominhquan/service/AccountServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../SpringRest_ForAndroidApp/src/main/java/com/dominhquan/uri/AppRestUri.java" afterPath="$PROJECT_DIR$/../../SpringRest_ForAndroidApp/src/main/java/com/dominhquan/uri/AppRestUri.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../SpringRest_ForAndroidApp/src/main/java/com/dominhquan/service/ItemService.java" afterPath="$PROJECT_DIR$/../../SpringRest_ForAndroidApp/src/main/java/com/dominhquan/service/ItemService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../SpringRest_ForAndroidApp/src/main/java/com/dominhquan/service/ItemServiceImpl.java" afterPath="$PROJECT_DIR$/../../SpringRest_ForAndroidApp/src/main/java/com/dominhquan/service/ItemServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../SpringRest_ForAndroidApp/src/main/java/com/dominhquan/app/RestController.java" afterPath="$PROJECT_DIR$/../../SpringRest_ForAndroidApp/src/main/java/com/dominhquan/app/RestController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../SpringRest_ForAndroidApp/src/main/webapp/WEB-INF/views/login.jsp" afterPath="$PROJECT_DIR$/../../SpringRest_ForAndroidApp/src/main/webapp/WEB-INF/views/login.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../SpringRest_ForAndroidApp/src/main/webapp/WEB-INF/views/order.jsp" afterPath="$PROJECT_DIR$/../../SpringRest_ForAndroidApp/src/main/webapp/WEB-INF/views/order.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../SpringRest_ForAndroidApp/src/main/webapp/WEB-INF/views/tables.jsp" afterPath="$PROJECT_DIR$/../../SpringRest_ForAndroidApp/src/main/webapp/WEB-INF/views/tables.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="cotuong.iws" />
@@ -56,14 +49,14 @@
     <favorites_list name="cotuong" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.6619217">
+    <splitter split-orientation="horizontal" split-proportion="0.70747334">
       <split-first>
         <leaf>
-          <file leaf-file-name="RestController.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="RestController.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/../../SpringRest_ForAndroidApp/src/main/java/com/dominhquan/app/RestController.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-0.43564355" vertical-offset="1290" max-vertical-offset="4122">
-                  <caret line="57" column="57" selection-start-line="57" selection-start-column="57" selection-end-line="57" selection-end-column="57" />
+                <state vertical-scroll-proportion="0.0" vertical-offset="1452" max-vertical-offset="4122">
+                  <caret line="95" column="61" selection-start-line="95" selection-start-column="61" selection-end-line="95" selection-end-column="61" />
                   <folding>
                     <element signature="imports" expanded="true" />
                     <element signature="e#2959#2975#0" expanded="true" />
@@ -72,11 +65,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="order.jsp" pinned="false" current-in-tab="false">
+          <file leaf-file-name="order.jsp" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/../../SpringRest_ForAndroidApp/src/main/webapp/WEB-INF/views/order.jsp">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-5.703704" vertical-offset="2492" max-vertical-offset="3870">
-                  <caret line="147" column="64" selection-start-line="147" selection-start-column="64" selection-end-line="147" selection-end-column="64" />
+                <state vertical-scroll-proportion="0.63903284" vertical-offset="2906" max-vertical-offset="3996">
+                  <caret line="182" column="48" selection-start-line="182" selection-start-column="48" selection-end-line="182" selection-end-column="48" />
                   <folding />
                 </state>
               </provider>
@@ -86,11 +79,11 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="Order.java" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/../../SpringRest_ForAndroidApp/src/main/java/com/dominhquan/model/Order.java">
+          <file leaf-file-name="order.jsp" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/../../SpringRest_ForAndroidApp/src/main/webapp/WEB-INF/views/order.jsp">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.17821783" vertical-offset="0" max-vertical-offset="756">
-                  <caret line="8" column="9" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
+                <state vertical-scroll-proportion="0.21880998" vertical-offset="1326" max-vertical-offset="3996">
+                  <caret line="80" column="55" selection-start-line="80" selection-start-column="55" selection-end-line="80" selection-end-column="55" />
                   <folding />
                 </state>
               </provider>
@@ -1370,7 +1363,7 @@
       <workItem from="1418465430150" duration="2987000" />
       <workItem from="1418470592354" duration="16182000" />
       <workItem from="1418554424443" duration="4614000" />
-      <workItem from="1418562807701" duration="7267000" />
+      <workItem from="1418562807701" duration="11040000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1417370978988</created>
@@ -1504,11 +1497,17 @@
       <option name="project" value="LOCAL" />
       <updated>1418493149647</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Need commit to git">
+      <created>1418574440333</created>
+      <option name="number" value="00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1418574440333</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="135133000" />
+    <option name="totallyTimeSpent" value="138906000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1607,13 +1606,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/extra/control.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4176">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-33.290157" vertical-offset="19275" max-vertical-offset="19854">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
@@ -1860,6 +1852,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="936">
           <caret line="32" column="61" selection-start-line="32" selection-start-column="61" selection-end-line="32" selection-end-column="61" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1967,22 +1960,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../SpringRest_ForAndroidApp/src/main/webapp/WEB-INF/views/order.jsp">
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.703704" vertical-offset="2492" max-vertical-offset="3870">
-          <caret line="147" column="64" selection-start-line="147" selection-start-column="64" selection-end-line="147" selection-end-column="64" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="37728">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../../SpringRest_ForAndroidApp/src/main/java/com/dominhquan/app/RestController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.43564355" vertical-offset="1290" max-vertical-offset="4122">
-          <caret line="57" column="57" selection-start-line="57" selection-start-column="57" selection-end-line="57" selection-end-column="57" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1452" max-vertical-offset="4122">
+          <caret line="95" column="61" selection-start-line="95" selection-start-column="61" selection-end-line="95" selection-end-column="61" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2959#2975#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../SpringRest_ForAndroidApp/src/main/webapp/WEB-INF/views/order.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.63903284" vertical-offset="2906" max-vertical-offset="3996">
+          <caret line="182" column="48" selection-start-line="182" selection-start-column="48" selection-end-line="182" selection-end-column="48" />
+          <folding />
         </state>
       </provider>
     </entry>

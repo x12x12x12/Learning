@@ -78,9 +78,9 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="myModalLabel">Update food</h4>
+                    <h4 class="modal-title" id="myModalLabel">Thông tin order</h4>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body" id="my_modal-body">
 
                 </div>
                 <div class="modal-footer">
@@ -162,11 +162,18 @@
             var add=$('#dataTables-example').DataTable();
             $('#dataTables-example tbody').on('click','tr',function(){
                 select_order=add.row(this).data();
-                console.log(select_order);
+                var food_data=select_order[5].split(',');
+                for(var i=0;i<food_data.length;i++){
+                    var food_array=food_data[i].split('.');
+                    $("#my_modal-body").append("<pre>Tên món :"+food_array[0]+"- Số lượng : "+food_array[1]+"</pre>");
+//                    console.log(food_array[0]+"-"+food_array[1]);
+                }
                 $("#myModal").modal("show");
+                clearModal();
             });
     	});
         function clearModal(){
+            $("#modal-body").html("");
         }
         function postData(){
             var id=$("#idUpdate").val();
