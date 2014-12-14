@@ -64,6 +64,16 @@ public class ItemServiceImpl implements ItemService{
 		mongoTemplate.updateFirst(query,update,Item.class);
 		logger.info("Save item successfully, Details : "+ item.toString());
 	}
+
+	@Override
+	public void updateOrder(Order order) throws MongoException{
+		query=new Query();
+		query.addCriteria(Criteria.where("_id").is(order.getId()));
+		Update update=new Update();
+		update.set("status",order.getStatus());
+		mongoTemplate.updateFirst(query,update,Order.class);
+	}
+
 	@Override
 	public List<Item> getListItem(String restaurant) throws MongoException{
 		query=new Query(Criteria.where("restaurant_name").regex(restaurant));
@@ -85,13 +95,7 @@ public class ItemServiceImpl implements ItemService{
 	}
 
 	@Override
-	public List<Order> getListOrderByRestaurant(String restaurant) throws MongoException{
-		query=new Query(Criteria.where("restaurant_name").is(restaurant));
-		return mongoTemplate.find(query, Order.class);
-	}
-
-	@Override
-	public List<Order> getListOrderByRestaurantCode(String code) {
+	public List<Order> getListOrderByRestaurantCode(String code) throws MongoException{
 		query=new Query(Criteria.where("restaurant_code").is(code));
 		return mongoTemplate.find(query, Order.class);
 	}
@@ -103,14 +107,17 @@ public class ItemServiceImpl implements ItemService{
 	}
 
 	@Override
-	public void createOrder(Order order) throws MongoException{
+	public String createOrder(Order order) throws MongoException{
 		// 0 : done, 1: pending, 2:abort
+		String id_hashCode=order.getRestaurant_code()+order.getPhone()+new Date().toString();
+		order.setId(Integer.toString(id_hashCode.hashCode()));
 		order.setStatus(1);
 		order.setCreateDate(new Date());
 		if(!mongoTemplate.collectionExists(Order.class)){
 			mongoTemplate.createCollection(Order.class);
 		}
 		mongoTemplate.insert(order);
+		return order.getId();
 	}
 
 	@Override

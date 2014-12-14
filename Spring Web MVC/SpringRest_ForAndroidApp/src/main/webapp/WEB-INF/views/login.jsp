@@ -159,7 +159,7 @@
 				  var name=$("#nameReg").val();
 				  var password=$("#passwordReg").val();
 				  var passconfirm=$("#passwordRegConFirm").val();
-            	  var url= "http://localhost:8080/app/rest/check/";
+            	  var url= "http://localhost:8080/rest/check/";
             	  var json = {"name":name,"email":email,"password":password};
             	  if ($.trim(email).length == 0) {
                       alert('Please enter email address');

@@ -226,6 +226,8 @@
             });
     	});
         function createItem(){
+            clearModal();
+            $("#idUpdate").attr('disabled',false);
             $("#restaurantUpdate").val(user_data.name+"-new");
             $("#myModal").modal("show");
         }
@@ -245,12 +247,15 @@
             var price=$("#priceUpdate").val();
             var status=$("#statusUpdate").val();
             var img_url=$("#imgUpdate").val();
-            var json = {"id":id,"name":name,"restaurant_name":restaurant,"price":price,"status":status,"img_url":img_url};
 	    	var url="http://localhost:8080/rest/update_item";
             var checkUpdateOrCreate=restaurant.split('-');
             if(checkUpdateOrCreate[1]!=null){
                 url="http://localhost:8080/rest/item/create";
+                id=user_data.code+"-"+id;
+                restaurant=user_data.name;
             }
+            var json = {"id":id,"name":name,"restaurant_name":restaurant,"price":price,"status":status,"img_url":img_url};
+//            console.log(json);
 	    	$.ajax({
     	        url: url,
     	        data: JSON.stringify(json),

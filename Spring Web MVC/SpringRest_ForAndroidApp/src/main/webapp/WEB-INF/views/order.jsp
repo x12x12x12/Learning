@@ -107,8 +107,13 @@
     <script src="resources/js/sb-admin-2.js"></script>
     <!-- My JavaScript -->
     <script>
-        var res_name=$("#res_name").val();
-    	$.getJSON("http://localhost:8080/rest/store/order/"+res_name,function(result){
+        var user_data={
+            "name": "${data.name}",
+            "email":"${data.email}",
+            "code":"${data.code}"
+        };
+        var select_order=[];
+    	$.getJSON("http://localhost:8080/rest/store/order/"+user_data.code,function(result){
             var data = [];
            	$.each(result, function() {
            		var element = [];
@@ -146,56 +151,22 @@
                     { "title": "Giá đơn hàng", "class": "center" },
                     { "title": "List", "class": "center" },
                     { "title": "Ngày đặt", "class": "center" },
+                    { "title": "Restaurant Code", "class": "center" },
                     { "title": "Tình trạng", "class": "center" }
                 ],
                 "columnDefs":[
-                    {"targets":[5],"visible":false,"searchable": false}
+                    {"targets":[5],"visible":false,"searchable": false},
+                    {"targets":[7],"visible":false,"searchable": false}
                 ]
             });
             var add=$('#dataTables-example').DataTable();
             $('#dataTables-example tbody').on('click','tr',function(){
-                var item_data=add.row(this).data();
-                var idUpdate=item_data[0];
-                var nameUpdate=item_data[1];
-                var restaurantUpdate=item_data[2];
-                var priceUpdate=item_data[5];
-                var statusUpdate=item_data[6];
-                var imgUpdate=item_data[7];
-                var img_icoUpdate=item_data[8];
-                switch (statusUpdate){
-                    case "Hot":
-                        statusUpdate=0;
-                        break;
-                    case "Bình thường":
-                        statusUpdate=1;
-                        break;
-                    case "Đang giảm giá":
-                        statusUpdate=2;
-                        break;
-                }
-                $("#idUpdate").val(idUpdate);
-                $("#idUpdate").attr('disabled','true');
-                $("#nameUpdate").val(nameUpdate);
-                $("#restaurantUpdate").val(restaurantUpdate);
-                $("#priceUpdate").val(priceUpdate);
-                $("#statusUpdate").val(statusUpdate);
-                $("#imgUpdate").val(imgUpdate);
-                $("#img_icoUpdate").val(img_icoUpdate);
+                select_order=add.row(this).data();
+                console.log(select_order);
                 $("#myModal").modal("show");
             });
     	});
-        function createItem(){
-            $("#restaurantUpdate").val(res_name+"-new");
-            $("#myModal").modal("show");
-        }
         function clearModal(){
-            $("#idUpdate").val("");
-            $("#nameUpdate").val("");
-            $("#restaurantUpdate").val("");
-            $("#priceUpdate").val("");
-            $("#statusUpdate").val("");
-            $("#imgUpdate").val("");
-            $("#img_icoUpdate").val("");
         }
         function postData(){
             var id=$("#idUpdate").val();

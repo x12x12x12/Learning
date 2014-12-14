@@ -29,9 +29,7 @@ public class AccountServiceImpl implements AccountService{
 	@Override
 	public void add(Account account) {
 		account.setPassword(passwordEncoder.encode(account.getPassword()));
-		Date now= Calendar.getInstance().getTime();
-		Timestamp currTimestamp=new Timestamp(now.getTime());
-		account.setCode(account.getName().toLowerCase()+currTimestamp.toString());
+		account.setCode(Integer.toString(account.getEmail().hashCode()));
 		if(!mongoTemplate.collectionExists(Account.class)){
 			mongoTemplate.createCollection(Account.class);
 		}
