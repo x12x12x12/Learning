@@ -127,6 +127,12 @@ public class ItemServiceImpl implements ItemService{
 	}
 
 	@Override
+	public Double getMoneyForItem(String id, int quantity) {
+		Item item=getItem(id);
+		return item.getPrice()*quantity;
+	}
+
+	@Override
 	public List<Item> getAllItem() throws MongoException{
 		query=new Query();
 		return mongoTemplate.find(query, Item.class);

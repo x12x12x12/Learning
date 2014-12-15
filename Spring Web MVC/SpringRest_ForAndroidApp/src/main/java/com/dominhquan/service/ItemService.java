@@ -20,4 +20,5 @@ public interface ItemService {
 	List<Order> getListOrderByRestaurantCode(String code);
 	List<Order> getListOrderByUser(String userName);
 	int countItem();
+	Double getMoneyForItem(String id,int quantity);
 }

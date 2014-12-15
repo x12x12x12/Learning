@@ -92,10 +92,16 @@ public class RestController {
 					}
 				}
 				for(Map.Entry<String,String> entry : data_send.entrySet()){
+					Double totalMoney=0.00;
 					order.setRestaurant_code(entry.getKey());
 					order.setList_food(entry.getValue());
 					// todo : function getTotalMoney
-					order.setTotalPrice(0.00);
+					String[] single_food=entry.getValue().split(",");
+					for(String food_price : single_food){
+						String[] single_food_info=food_price.split("\\.");
+						totalMoney+=itemService.getMoneyForItem(single_food_info[0],Integer.parseInt(single_food_info[1]));
+					}
+					order.setTotalPrice(totalMoney);
 					id_order+=itemService.createOrder(order)+",";
 				}
 			}catch (Exception ex){
