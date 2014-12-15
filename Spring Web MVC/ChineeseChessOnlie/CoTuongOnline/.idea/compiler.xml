@@ -27,8 +27,8 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.7">
-      <module name="app" target="1.7" />
-      <module name="cotuong" target="1.7" />
+      <module name="app" target="1.6" />
+      <module name="cotuong" target="1.6" />
     </bytecodeTargetLevel>
   </component>
 </project>

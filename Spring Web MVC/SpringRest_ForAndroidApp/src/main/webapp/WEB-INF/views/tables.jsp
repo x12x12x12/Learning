@@ -187,7 +187,7 @@
                     { "title": "Link icon", "class": "center" }
                 ],
                 "columnDefs":[
-                    {"targets":[0],"visible":false,"searchable":false},
+//                    {"targets":[0],"visible":false,"searchable":true},
                     {"targets":[2],"visible":false,"searchable": false},
                     {"targets":[7],"visible":false,"searchable": false},
                     {"targets":[8],"visible":false,"searchable": false}
@@ -255,7 +255,6 @@
                 restaurant=user_data.name;
             }
             var json = {"id":id,"name":name,"restaurant_name":restaurant,"price":price,"status":status,"img_url":img_url};
-//            console.log(json);
 	    	$.ajax({
     	        url: url,
     	        data: JSON.stringify(json),
@@ -269,11 +268,12 @@
         	            alert("Update bị lỗi !! ");
     	        	}else{
     	        		alert("Update dữ liệu mới thành công !! ");
-        	            $("#myModal").modal("hide");
-                        location.reload();
+
     	        	}
     	        }
     	    });
+            $("#myModal").modal("hide");
+            location.reload();
             clearModal();
         }
         $("#updateButton").click(function(){

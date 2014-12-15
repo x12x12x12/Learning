@@ -110,7 +110,7 @@ public class ItemServiceImpl implements ItemService{
 	public String createOrder(Order order) throws MongoException{
 		// 0 : done, 1: pending, 2:abort
 		String id_hashCode=order.getRestaurant_code()+order.getPhone()+new Date().toString();
-		order.setId(Integer.toString(id_hashCode.hashCode()));
+		order.setId(Integer.toString(Math.abs(id_hashCode.hashCode())));
 		order.setStatus(1);
 		order.setCreateDate(new Date());
 		if(!mongoTemplate.collectionExists(Order.class)){

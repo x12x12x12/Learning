@@ -84,8 +84,9 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="updateButton" >Order delivery!</button>
+                    <button type="button" class="btn btn-primary" id="updateButton" >Đã giao hàng</button>
+                    <button type="button" class="btn btn-primary" id="abortButton" >Hủy đơn hàng</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Thoát</button>
                 </div>
             </div>
             <!-- /.modal-content -->
@@ -161,33 +162,26 @@
             });
             var add=$('#dataTables-example').DataTable();
             $('#dataTables-example tbody').on('click','tr',function(){
+                clearModal();
                 select_order=add.row(this).data();
+                $("#my_modal-body").append("<pre>Tên :"+select_order[1]+",Phone :"+select_order[2]+",Giá :"+select_order[4]+",To :"+select_order[3]+"</pre>");
                 var food_data=select_order[5].split(',');
                 for(var i=0;i<food_data.length;i++){
                     var food_array=food_data[i].split('.');
-                    $("#my_modal-body").append("<pre>Tên món :"+food_array[0]+"- Số lượng : "+food_array[1]+"</pre>");
-//                    console.log(food_array[0]+"-"+food_array[1]);
+                    $("#my_modal-body").append("<pre>Mã món :"+food_array[0]+"      Số lượng : "+food_array[1]+"</pre>");
                 }
                 $("#myModal").modal("show");
-                clearModal();
             });
     	});
         function clearModal(){
-            $("#modal-body").html("");
+            $("#my_modal-body").html("");
         }
-        function postData(){
-            var id=$("#idUpdate").val();
-            var name=$("#nameUpdate").val();
-            var restaurant=$("#restaurantUpdate").val();
-            var price=$("#priceUpdate").val();
-            var status=$("#statusUpdate").val();
-            var img_url=$("#imgUpdate").val();
-            var json = {"id":id,"name":name,"restaurant_name":restaurant,"price":price,"status":status,"img_url":img_url};
-	    	var url="http://localhost:8080/rest/updateitem";
-            var checkUpdateOrCreate=restaurant.split('-');
-            if(checkUpdateOrCreate[1]!=null){
-                url="http://localhost:8080/rest/item/create";
-            }
+        function postData(choice){
+            var json = {
+                "id":select_order[0],
+                "status":choice
+            };
+	    	var url="http://localhost:8080/rest/update_order";
 	    	$.ajax({
     	        url: url,
     	        data: JSON.stringify(json),
@@ -197,19 +191,23 @@
     	            xhr.setRequestHeader("Content-Type", "application/json");
     	        },
     	        success: function(result) {
-    	        	if(result.id=='fail'){
+                    console.log(result);
+    	        	if(result=="fail"){
         	            alert("Update bị lỗi !! ");
     	        	}else{
     	        		alert("Update dữ liệu mới thành công !! ");
-        	            $("#myModal").modal("hide");
-                        location.reload();
+
     	        	}
     	        }
     	    });
-            clearModal();
+            $("#myModal").modal("hide");
+            location.reload();
         }
         $("#updateButton").click(function(){
-            postData();
+            postData(0);
+        });
+        $("#abortButton").click(function(){
+            postData(2)
         });
     </script>
 </body>

@@ -92,13 +92,14 @@ public class RestController {
 					}
 				}
 				for(Map.Entry<String,String> entry : data_send.entrySet()){
-//					System.out.println("Key :"+entry.getKey()+",Value :"+entry.getValue());
 					order.setRestaurant_code(entry.getKey());
 					order.setList_food(entry.getValue());
+					// todo : function getTotalMoney
+					order.setTotalPrice(0.00);
 					id_order+=itemService.createOrder(order)+",";
 				}
 			}catch (Exception ex){
-				order.setId("fail");
+				return "fail";
 			}
 		}
 		return id_order;
@@ -106,11 +107,11 @@ public class RestController {
 
 	@RequestMapping(value=AppRestUri.update_order,method=RequestMethod.POST)
 	public @ResponseBody String updateOrder(@RequestBody Order order){
-		String result="fail";
+		String result="ok";
 		try{
 			itemService.updateOrder(order);
 		}catch (Exception ex){
-			return result;
+			result="fail";
 		}
 		return result;
 	}
