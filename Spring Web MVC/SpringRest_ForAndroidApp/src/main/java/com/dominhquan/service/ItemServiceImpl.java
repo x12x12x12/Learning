@@ -82,7 +82,7 @@ public class ItemServiceImpl implements ItemService{
 
 	@Override
 	public List<Item> getListHotItem() throws MongoException{
-		query=new Query(Criteria.where("status").is(1));
+		query=new Query(Criteria.where("status").is(0));
 		query.with(new Sort(Sort.Direction.DESC,"updateDate"));
 		return mongoTemplate.find(query, Item.class);
 	}
@@ -90,7 +90,7 @@ public class ItemServiceImpl implements ItemService{
 	@Override
 	public List<Account> getListRestaurants() throws MongoException{
 		query=new Query();
-		query.fields().include("name");
+		query.fields().include("name").include("img_url");
 		return mongoTemplate.find(query, Account.class);
 	}
 
