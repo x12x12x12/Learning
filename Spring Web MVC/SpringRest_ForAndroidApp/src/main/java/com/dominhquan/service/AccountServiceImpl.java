@@ -29,7 +29,7 @@ public class AccountServiceImpl implements AccountService{
 	@Override
 	public void add(Account account) {
 		account.setPassword(passwordEncoder.encode(account.getPassword()));
-		account.setCode(Integer.toString(account.getEmail().hashCode()));
+		account.setCode(Integer.toString(Math.abs(account.getEmail().hashCode())));
 		if(!mongoTemplate.collectionExists(Account.class)){
 			mongoTemplate.createCollection(Account.class);
 		}

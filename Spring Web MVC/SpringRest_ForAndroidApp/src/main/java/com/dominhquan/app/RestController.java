@@ -182,7 +182,7 @@ public class RestController {
 			account.setEmail("fail");
 		}else{
 			accountService.add(account);
-//			mailService.sendMail("appgame.cotuong@gmail.com",account.getEmail(), "Spring Mail Subject","https://www.facebook.com/");
+			mailService.sendMail("appgame.cotuong@gmail.com",account.getEmail(), "Spring Mail Subject","https://www.facebook.com/");
 		}
 		account.setPassword("");
 		return account;
