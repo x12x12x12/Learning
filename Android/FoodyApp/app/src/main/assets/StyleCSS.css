@@ -1,0 +1,19 @@
+.Image{float:left;height:128px;width:128px;margin-right:10px;margin-bottom:10px;}
+.RImage{float:left;height:100px;width:100px;margin-right:10px;}
+.Rdiv{clear:both;margin-top:30px;}
+.Rcdiv{margin-bottom:-5px;margin-left:150px;display:none;}
+.Resname{font-size:20px;margin-bottom:30px;}
+.divparent{ float:left;margin-left:10px;margin-bottom:10px;}
+.divorder{float:left;}
+.Name{font-size:25; color: red;}
+.divdetail{float:right;}
+.Detail{font-size:15; color:#a79f9f;margin-top:-25px;}
+.Error {color:red;}
+.divordert{clear:both;float:left;width:70%;}
+.horder{margin-top:-5px;margin-left:140px;}
+.divodetail{float:right;width:30%;}
+.btnsend{margin-top:5px;margin-right:2px;float:right;width:200px;}
+.modcart{display:none;margin-left:10px;}
+.atotal{float:right;clear:both;}
+.atotallabel{margin-right:10px;}
+.atotaldv{margin-left:10px;}
