@@ -74,10 +74,11 @@ public class RestController {
 	}
 	
 	@RequestMapping(value=AppRestUri.create_order,method=RequestMethod.POST)
-	public @ResponseBody String createOrder(@RequestBody Order order){
+	public @ResponseBody Order createOrder(@RequestBody Order order){
+		Order return_client=new Order();
 		String id_order="";
 		if(order.getPhone().equalsIgnoreCase("") || order.getAddress().equalsIgnoreCase("") || order.getList_food().equalsIgnoreCase("")){
-			return "fail";
+			return return_client;
 		}else{
 			try {
 				HashMap<String,String> data_send=new HashMap<String, String>();
@@ -105,10 +106,12 @@ public class RestController {
 					id_order+=itemService.createOrder(order)+",";
 				}
 			}catch (Exception ex){
-				return "fail";
+				return return_client;
 			}
 		}
-		return id_order;
+		return_client.setId(id_order);
+		return_client.setList_food("");
+		return return_client;
 	}
 
 	@RequestMapping(value=AppRestUri.update_order,method=RequestMethod.POST)
