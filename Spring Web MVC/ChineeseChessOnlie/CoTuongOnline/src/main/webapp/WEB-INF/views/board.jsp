@@ -71,7 +71,7 @@
                             <button class="btn btn-success" style="width: 100%; border-radius: 10px;" ng-click="addFriend()">
                                 Add Friend
                             </button>
-                            <button class="btn btn-primary" style="width: 100%; margin-top: 5%; border-radius: 10px;" ng-click="challengeUser()">
+                            <button class="btn btn-primary" style="width: 100%; margin-top: 5%; border-radius: 10px;" ng-click="challengeUser(user)">
                                 Chalenge
                             </button>
                         </div>

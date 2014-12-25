@@ -206,22 +206,32 @@ public class ServerEndPoint {
 				 } catch (Exception ex) {
 					 System.out.println("Client không online");
 				 }
-				 break;
+				break;
 			case "MOVE":
-				break;
+				 break;
 			case "PLAY":
-				System.out.println(data[2]);
-				String enemy_session_id=findUserSession(data[1]);
-				for(Session session_1 : list){
-					if(session_1.getId()==enemy_session_id){
-						session_1.getBasicRemote().sendText("PLAY-|-"+data[2]);
-					}
-				}
+				 System.out.println(data[2]);
+				 String enemy_session_id=findUserSession(data[1]);
+				 for(Session session_1 : list){
+				 	 if(session_1.getId()==enemy_session_id){
+						 session_1.getBasicRemote().sendText("PLAY-|-"+data[2]);
+					 }
+				 }
 				break;
+			case "REPDRAW":
+				 break;
+			case "REQDRAW":
+				/**
+				 * Handle message between 2 player in current match
+				 * User A : Send "REQDRAW-ID_B-ID_A"
+				 * Server : Find ID_B in list_user -> session of user's B -> send to B
+				 * User B : Receive "REQDRAW-ID_A"
+				 */
+				 break;
 			default:
-				break;
-		   }
-	   }
+				 break;
+		}
+	}
 	public String findUserSession(String email){
 		String session_id="";
 		if(list_user.containsValue(email)){

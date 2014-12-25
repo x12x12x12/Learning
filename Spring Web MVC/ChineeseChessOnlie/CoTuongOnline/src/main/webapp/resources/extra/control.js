@@ -91,7 +91,7 @@ function acceptLose() {
     ws.send("LOSE-" + getEmailCurrentPlayer());
 }
 function requestDrawGame() {
-    ws.send("REQDRAW-" + getEmailCurrentPlayer());
+    ws.send("REQDRAW-" + getEmailCurrentPlayer()+"-"+get);
 }
 function repDrawGame(){
     var response=0; // or 1
@@ -226,11 +226,14 @@ myApp.controller('MyAppController', function ($scope, $http) {
      * CHALLENGE user in list user online
      *
      **/
-    $scope.challengeUser = function () {
+    $scope.challengeUser = function (user) {
         soundForClick.play();
         $('#modalListUser').modal("hide");
         $('#modalWaitingAcceptChallenge').modal("show");
+        console.log(user);
+        $scope.opponent=user;
         $scope.countDown=15;
+        console.log($scope.opponent);
         var timeCountDown = setInterval(function(){
             if($scope.countDown>0){
                 $scope.countDown--;
