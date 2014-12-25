@@ -10,6 +10,7 @@ ws.onmessage = function (message) {
     switch (data[0]) {
         case "REQHANDSHAKE":
             var id_requestHandShake = data[1];
+            console.log(data);
             // show form yes or no
             break;
         case "REPHANDSHAKE":
@@ -72,6 +73,9 @@ ws.onclose =function(message){ ws.close();};
  *
  *
  **/
+function requestHandShake(email){
+    ws.send("REQHANDSHAKE-"+email);
+}
 function acceptHandShake() {
     ws.send("REPHANDSHAKE-0-" + getEmailCurrentPlayer());
 }
@@ -189,6 +193,7 @@ myApp.controller('MyAppController', function ($scope, $http) {
                     return el.name != $scope.myProfile.name;
                 });
             $scope.userOnline = result;
+            $scope.$apply();
         });
         soundForClick.play();
         $('#modalListUser').modal("show");
@@ -230,10 +235,10 @@ myApp.controller('MyAppController', function ($scope, $http) {
         soundForClick.play();
         $('#modalListUser').modal("hide");
         $('#modalWaitingAcceptChallenge').modal("show");
-        console.log(user);
         $scope.opponent=user;
         $scope.countDown=15;
-        console.log($scope.opponent);
+        console.log($scope.opponent.email);
+        requestHandShake($scope.opponent.email);
         var timeCountDown = setInterval(function(){
             if($scope.countDown>0){
                 $scope.countDown--;

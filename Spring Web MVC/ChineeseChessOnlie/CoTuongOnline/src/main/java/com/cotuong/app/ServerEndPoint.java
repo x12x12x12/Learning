@@ -255,8 +255,9 @@ public class ServerEndPoint {
 		if(list_user.containsValue(data[1])){
 			String session_id="";
 			for (String key : list_user.keySet()){
-				if(list_user.get(key)==data[1]){
+				if(list_user.get(key).equalsIgnoreCase(data[1])){
 					session_id=key;
+					return;
 				}
 			}
 			for(Session sess : list){
