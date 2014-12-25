@@ -207,10 +207,11 @@ myApp.controller('MyAppController', ['$scope','$http','$window',function ($scope
      * CHALLENGE user in list user online
      *
      **/
-    $scope.challengeUser = function () {
+    $scope.challengeUser = function (user) {
         soundForClick.play();
         $('#modalListUser').modal("hide");
         $('#modalWaitingAcceptChallenge').modal("show");
+        $scope.opponent=user;
         $scope.countDown=15;
         var timeCountDown = setInterval(function(){
             if($scope.countDown>0){
