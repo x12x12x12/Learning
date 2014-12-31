@@ -1,10 +1,24 @@
 var myApp = angular.module('myApp', []);
+var soundForClick = null;
+var email;
+var myBoard;
+/**
+ *    The code below is basic function to receive data from game's server
+ *    @onOpen
+ *    @onMessage
+ *    @onClose
+ *    0: OK ----- 1: ERROR
+ **/
 var ws = new WebSocket("ws://localhost:8080/game");
+
 ws.onopen = function (message) {
-    var id_player = user_data.email;
-    //console.log(id_player);
-    ws.send("REG-" + id_player);
+    email = user_data.email;
+    if(email=="11520616@gm.uit.edu.vn")
+        campOrder = 0;
+    else campOrder = 1;
+    ws.send("REG-" + email);
 };
+
 ws.onmessage = function (message) {
     var data = message.data.split("-|-");
     switch (data[0]) {
@@ -44,7 +58,6 @@ ws.onmessage = function (message) {
             }
             break;
         case "CHAT":
-            //console.log(data);
             var text = data[1].replace("CHAT-|-", ""); // cut 'CHAT-|-' out data[1]
             var scope = angular.element($(document.body)).scope();
             scope.$apply(function(){
@@ -71,21 +84,30 @@ ws.onmessage = function (message) {
             // alert enemy accept lose, then increase your point
             break;
         case "PLAY":
+            console.log("Receiver : "+email);
             console.log(data[1]);
+            var tmp = data[1].split(" ");
+            var pos1 = tmp[0].split(",");
+            var pos2 = tmp[1].split(",");
+            var chessPos1 = new Point(pos1[0],9-pos1[1]);
+            var chessPos2 = new Point(pos2[0],9-pos2[1]);
+            myBoard.MoveEnemyChess(chessPos1,chessPos2,tmp[3]);
+            //myBoard.changeMover(tmp[3]);
+            break;
+        case "MOVER":
+            myBoard.changeMover(data[1]);
             break;
         default :
             break;
     }
 };
+
 ws.onclose =function(message){ ws.close();};
-/**
- *
- *
- *
- **/
+
 function requestHandShake(email){
     ws.send("REQHANDSHAKE-"+email);
 }
+
 function acceptHandShake() {
     ws.send("REPHANDSHAKE-0-" + getEmailCurrentPlayer());
 }
@@ -97,92 +119,60 @@ function declineHandShake() {
 function requestPause() {
     ws.send("REQPAUSE-" + getEmailCurrentPlayer());
 }
+
 function acceptPause(){
     var id_requestPause = 1;
     ws.send("REQPAUSE-" + getEmailCurrentPlayer());
 }
+
 function acceptLose() {
     ws.send("LOSE-" + getEmailCurrentPlayer());
 }
+
 function requestDrawGame() {
     ws.send("REQDRAW-" + getEmailCurrentPlayer()+"-"+get);
 }
+
 function repDrawGame(){
     var response=0; // or 1
     ws.send("REPDRAW-"+response+"-"+ getEmailCurrentPlayer());
 }
+
 function getEmailCurrentPlayer(){
     var scope = angular.element($(document.body)).scope();
     return scope.opponent.email;
 }
+
 function playerMove(data){
-    console.log(data);
-    ws.send("PLAY-"+getEmailCurrentPlayer()+"-"+data);
+    ws.send("PLAY-"+getEmailCurrentPlayer()+","+email+"-"+data);
 }
+
 function sendChat(data){
     ws.send(data);
 }
-var soundForClick = null;
-soundManager.setup({
-    onready: function () {
-        soundForClick = soundManager.createSound({
-            url: 'resources/extra/sounds/click-button.mp3'
-        });
-    },
-    ontimeout: function () {
-    }
-});
+
 myApp.controller('MyAppController', function ($scope, $http) {
-    /**
-     *
-     * Show popup list user online when starting
-     *
-     **/
+
+    soundManager.setup({
+        onready: function () {
+            soundForClick = soundManager.createSound({
+                url: 'resources/extra/sounds/click-button.mp3'
+            });
+        },
+        ontimeout: function () {
+        }
+    });
     $scope.userOnline = [];
     $scope.myProfile =user_data;
-    /**
-     *
-     * Arrays saved all message
-     *
-     **/
     $scope.messages = [];
     $scope.yourMessage = "";
-
-    /**
-     * Title of chat conversation. Example : "TO : John"
-     **/
     $scope.titleOfChatConversation = "TO : ";
-
-    /**
-     * Count down 15 second
-     **/
     $scope.countDown = 15;
-
-
-    /**
-     * Profile of opponent
-     **/
     $scope.opponent = {};
 
     /**
-     * Play sound when event click happen
-     **/
-
-
-    /**
-     *    The code below is basic function to receive data from game's server
-     *    @onOpen
-     *    @onMessage
-     *    @onClose
-     *    0: OK ----- 1: ERROR
-     **/
-
-
-    /**
-     *
-     * GET list user online from server
-     *
-     **/
+    * GET list user online from server
+    **/
     $.getJSON("http://localhost:8080/rest/online", function (result) {
         result = result
             .filter(function (el) {
@@ -193,9 +183,7 @@ myApp.controller('MyAppController', function ($scope, $http) {
     });
 
     /**
-     *
      * SHOW list user online
-     *
      **/
     $scope.showListUser = function () {
         $.getJSON("http://localhost:8080/rest/online", function (result) {
@@ -211,21 +199,13 @@ myApp.controller('MyAppController', function ($scope, $http) {
     };
 
     /**
-     *
      * SEND message from CHAT conversation to server
-     *
+     * @param keyEvent
      **/
     $scope.sendMessage = function (keyEvent) {
         if (keyEvent.which == 13) {
             if ($scope.yourMessage != null & $scope.yourMessage != "") {
                 $scope.messages.push({'text': $scope.yourMessage, 'yours': false});
-                /**
-                 *
-                 */
-                //var to_client_id = "11520616@gm.uit.edu.vn";
-                //if($scope.myProfile.email=="11520616@gm.uit.edu.vn"){
-                //    to_client_id="dominhquan.uit@gmail.com";
-                //}
                 var to_client_id=getEmailCurrentPlayer();
                 sendChat("CHAT-"+ to_client_id + "-" + $scope.yourMessage);
                 /**
@@ -239,9 +219,8 @@ myApp.controller('MyAppController', function ($scope, $http) {
     };
 
     /**
-     *
      * CHALLENGE user in list user online
-     *
+     * @param user
      **/
     $scope.challengeUser = function (user) {
         soundForClick.play();
@@ -263,25 +242,19 @@ myApp.controller('MyAppController', function ($scope, $http) {
     };
 
     /**
-     *
      * ADD friend with user in list user online
-     *
      **/
     $scope.addFriend = function () {
         soundForClick.play();
     };
     /**
-     *
      * ACCEPT challenge from opponent
-     *
      **/
     $scope.acceptChallenge=function(){
         acceptHandShake();
     };
     /**
-     *
      * DISACCEPT challenge from opponent
-     *
      **/
     $scope.disAcceptChallenge=function(){
         declineHandShake();
