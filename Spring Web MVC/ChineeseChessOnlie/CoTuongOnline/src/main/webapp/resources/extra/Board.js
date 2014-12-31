@@ -1,6 +1,6 @@
-/**
- * Created by huy on 11/21/2014.
- */
+var campOrder =0;
+var movers =0;
+var isSent = false;
 function ChessGame(boardId) {
     // Size and location parameters
     var isAI = true;
@@ -37,6 +37,7 @@ function ChessGame(boardId) {
     };
     // Board assembly
     var Board = RootWidget.extend({
+        auto: false,
         campOrder: 1, //上黑下红 Red on Heixia
         mover: 0,
         isMoving:false,
@@ -73,6 +74,11 @@ function ChessGame(boardId) {
             this.searchEngine.setEvaluator(new Evaluation());
             this.searchEngine.setSearchDepth(10);
         },
+
+        changeMover: function (mover1){
+            this.mover= mover1;
+            console.log(" Mover change by Server : " +this.mover);
+        },
         // Find the pieces on the board
         findChess: function (pos) {
             //console.log(this.id+" findChess"+ func++);
@@ -84,7 +90,7 @@ function ChessGame(boardId) {
             return null;
         },
         isGameOver: function(){
-            console.log(this.id+" isGameOver"+ func++);
+            // console.log(this.id+" isGameOver"+ func++);
             var red=false,
                 black=false;
             for (var i = 0; i < this.children.length; i++) {
@@ -104,10 +110,17 @@ function ChessGame(boardId) {
             move.target=this.findChess(pos);
             this.history.push(move);
             //console.log("PLAY_ID"+" "+chess.pos.x+","+chess.pos.y+" "+pos.x+","+pos.y+" "+chess.type+" "+chess.camp);
-            playerMove(chess.pos.x+","+chess.pos.y+" "+pos.x+","+pos.y+" "+chess.type+" "+chess.camp);
+            if(!this.auto) {
+                playerMove(chess.pos.x + "," + chess.pos.y + " " + pos.x + "," + pos.y + " " + chess.type + " " + movers);
+                this.mover = 1- this.mover;
+                console.log("Mover Change auto : "+this.mover);
+            }
+            else {
+                this.auto = false;
+            }
         },
         restore:function(){
-            console.log(this.id+" restore"+ func++);
+            // console.log(this.id+" restore"+ func++);
             if(this.history.length%2==1 ||this.history.length==0)return;
             for(var i=0;i<2;++i){
                 var move=this.history.pop();
@@ -137,7 +150,7 @@ function ChessGame(boardId) {
         // Move the chess pieces, chess party line changed
         moveChess: function (chess, pos) {
 
-            console.log(this.id+" moveChess"+func++);
+            // console.log(this.id+" moveChess"+func++);
 
             this.recordMove(chess,pos);
             this.removeChess(pos);
@@ -145,8 +158,8 @@ function ChessGame(boardId) {
             this.boardMap[chess.pos.x][chess.pos.y]=null;
             chess.pos = pos;
             // change the mover turn mover = 0 - player, mover =1 - computer
-            this.mover=1-chess.camp;
-            this.computerMoveChess();
+            // this.mover=1-chess.camp;
+            //  this.computerMoveChess();
             // If the game ends
             if(this.isGameOver()){
                 if(this.mover==1) alert("恭喜，你赢啦！");
@@ -156,9 +169,17 @@ function ChessGame(boardId) {
             }
         },
 
+        MoveEnemyChess: function (from, to,camp) {
+            var Chess = this.findChess(from);
+            this.auto = true;
+            Chess.autoMoveTo(to);
+
+        },
+
+
         computerMoveChess:function(){
             // If you turn the computer side line chess
-            console.log(this.id+" computerMoveChess"+ func++);
+            //  console.log(this.id+" computerMoveChess"+ func++);
             if(this.mover==1){
 
                 var _this=this;
@@ -195,7 +216,7 @@ function ChessGame(boardId) {
         },
         // Invalid location, existing pieces or cross-border
         isValidPos: function (pos) {
-           // console.log(this.id+" isValidPos"+ func++);
+            // console.log(this.id+" isValidPos"+ func++);
             return pos != null && !this.isOutsideBoard(pos);
         },
         // In the river boundary
@@ -219,12 +240,12 @@ function ChessGame(boardId) {
         },
         // Out of bounds
         isOutsideBoard:function(pos){
-           // console.log(this.id+" isOutsideBoard"+ func++);
+            // console.log(this.id+" isOutsideBoard"+ func++);
             return pos.x<0 || pos.x>=9 || pos.y<0 || pos.y>=10;
         },
         // Drawing board
         onPaint: function () {
-          //  console.log(this.id+" onPaint"+ func++);
+            //  console.log(this.id+" onPaint"+ func++);
             str="<table cellspacing=0 border=1>";
             for(var j=0;j<10;j++){
                 str+="<tr>";
@@ -361,7 +382,7 @@ function ChessGame(boardId) {
         // Mouse click
         onMouseDown: function (point) {
             if(this.parent.isMoving)return;
-            if (this.parent.mover == this.camp) {// confirm that party line chess
+            if (this.parent.mover == this.camp && this.parent.mover == campOrder) {// confirm that party line chess
                 this.isDragging = true;// drag the pieces
                 this.parent.moveChildToTop(this);// adjust to the uppermost layer
                 this.parent.redraw();// redraw
@@ -597,6 +618,8 @@ function ChessGame(boardId) {
             if (!this._super(pos)) return false;
             var dx = pos.x - this.pos.x,
                 dy = pos.y - this.pos.y;
+            if(pos.x == 6 && pos.y == 5)
+                console.log("wait");
             if (this.parent.isInsideCamp(pos, this.camp) && dx != 0) return false;
             if (this.camp == this.parent.campOrder && dy < 0) return false;
             else if (this.camp != this.parent.campOrder && dy > 0) return false;
@@ -1495,50 +1518,56 @@ function ChessGame(boardId) {
             this.createChesses(this.board);
             this.board.init();
             this.board.show();
+            if(campOrder == 0)
+                this.board.campOrder =1;
+            else this.board.campOrder = 0;
+            myBoard = this.board;
         },
         restore:function(){
             this.board.restore();
         },
         createChesses:function(board) {
             {
-                (new Chariot("車01", board, 0, new Point(0, 9)));
-                (new Chariot("車02", board, 0, new Point(8, 9)));
-                (new Horse("馬01", board, 0, new Point(1, 9)));
-                (new Horse("馬02", board, 0, new Point(7, 9)));
-                (new Elephant("相01", board, 0, new Point(2, 9)));
-                (new Elephant("相02", board, 0, new Point(6, 9)));
-                (new Guard("士01", board, 0, new Point(3, 9)));
-                (new Guard("士02", board, 0, new Point(5, 9)));
-                (new General("帥00", board, 0, new Point(4, 9)));
-                (new Pawn("兵01", board, 0, new Point(0, 6)));
-                (new Pawn("兵02", board, 0, new Point(2, 6)));
-                (new Pawn("兵03", board, 0, new Point(4, 6)));
-                (new Pawn("兵04", board, 0, new Point(6, 6)));
-                (new Pawn("兵05", board, 0, new Point(8, 6)));
-                (new Cannon("炮01", board, 0, new Point(1, 7)));
-                (new Cannon("炮02", board, 0, new Point(7, 7)));
+                (new Chariot("車01", board, campOrder, new Point(0, 9)));
+                (new Chariot("車02", board, campOrder, new Point(8, 9)));
+                (new Horse("馬01", board, campOrder, new Point(1, 9)));
+                (new Horse("馬02", board, campOrder, new Point(7, 9)));
+                (new Elephant("相01", board, campOrder, new Point(2, 9)));
+                (new Elephant("相02", board, campOrder, new Point(6, 9)));
+                (new Guard("士01", board, campOrder, new Point(3, 9)));
+                (new Guard("士02", board, campOrder, new Point(5, 9)));
+                (new General("帥00", board, campOrder, new Point(4, 9)));
+                (new Pawn("兵01", board, campOrder, new Point(0, 6)));
+                (new Pawn("兵02", board, campOrder, new Point(2, 6)));
+                (new Pawn("兵03", board, campOrder, new Point(4, 6)));
+                (new Pawn("兵04", board, campOrder, new Point(6, 6)));
+                (new Pawn("兵05", board, campOrder, new Point(8, 6)));
+                (new Cannon("炮01", board, campOrder, new Point(1, 7)));
+                (new Cannon("炮02", board, campOrder, new Point(7, 7)));
             } {
-                (new Chariot("車11", board, 1, new Point(0, 0)));
-                (new Chariot("車12", board, 1, new Point(8, 0)));
-                (new Horse("馬11", board, 1, new Point(1, 0)));
-                (new Horse("馬12", board, 1, new Point(7, 0)));
-                (new Elephant("象11", board, 1, new Point(2, 0)));
-                (new Elephant("象12", board, 1, new Point(6, 0)));
-                (new Guard("仕11", board, 1, new Point(3, 0)));
-                (new Guard("仕12", board, 1, new Point(5, 0)));
-                (new General("將10", board, 1, new Point(4, 0)));
-                (new Pawn("卒11", board, 1, new Point(0, 3)));
-                (new Pawn("卒12", board, 1, new Point(2, 3)));
-                (new Pawn("卒13", board, 1, new Point(4, 3)));
-                (new Pawn("卒14", board, 1, new Point(6, 3)));
-                (new Pawn("卒15", board, 1, new Point(8, 3)));
-                (new Cannon("砲11", board, 1, new Point(1, 2)));
-                (new Cannon("砲12", board, 1, new Point(7, 2)));
+                (new Chariot("車11", board, 1-campOrder, new Point(0, 0)));
+                (new Chariot("車12", board, 1-campOrder, new Point(8, 0)));
+                (new Horse("馬11", board, 1-campOrder, new Point(1, 0)));
+                (new Horse("馬12", board, 1-campOrder, new Point(7, 0)));
+                (new Elephant("象11", board, 1-campOrder, new Point(2, 0)));
+                (new Elephant("象12", board, 1-campOrder, new Point(6, 0)));
+                (new Guard("仕11", board, 1-campOrder, new Point(3, 0)));
+                (new Guard("仕12", board, 1-campOrder, new Point(5, 0)));
+                (new General("將10", board, 1-campOrder, new Point(4, 0)));
+                (new Pawn("卒11", board, 1-campOrder, new Point(0, 3)));
+                (new Pawn("卒12", board, 1-campOrder, new Point(2, 3)));
+                (new Pawn("卒13", board, 1-campOrder, new Point(4, 3)));
+                (new Pawn("卒14", board, 1-campOrder, new Point(6, 3)));
+                (new Pawn("卒15", board, 1-campOrder, new Point(8, 3)));
+                (new Cannon("砲11", board, 1-campOrder, new Point(1, 2)));
+                (new Cannon("砲12", board, 1-campOrder, new Point(7, 2)));
             }
         }
     });
     return new GameManager(boardId);
 }
+
+
 /**
  * Created by F.U.C.K on 18-Oct-14.
  */
