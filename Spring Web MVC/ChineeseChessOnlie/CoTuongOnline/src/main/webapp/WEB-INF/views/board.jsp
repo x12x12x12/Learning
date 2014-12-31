@@ -46,7 +46,7 @@
                         </div>
                         <div class="send-message">
                             <input type="text" class="write-message" placeholder="Write Message ..." ng-model="yourMessage"
-                                   ng-keypress="sendMessage()">
+                                   ng-keypress="sendMessage($event)">
                         </div>
                     </div>
                 </div>
