@@ -29,9 +29,10 @@ public class ServerEndPoint {
 	private static HashMap<String,String> list_user = new HashMap<String,String>();
 	// 1 entry list_match (ID_A,ID_B)
 	private static HashMap<String, String> list_match = new HashMap<String,String>();
+	private static int movers = 0;
 
-	ApplicationContext context=new ClassPathXmlApplicationContext("servlet-context.xml");
-	AccountServiceImpl accountServiceImpl=(AccountServiceImpl) context.getBean("accountService");
+//	ApplicationContext context=new ClassPathXmlApplicationContext("servlet-context.xml");
+//	AccountServiceImpl accountServiceImpl=(AccountServiceImpl) context.getBean("accountService");
 
 	@OnOpen
 	public void onOpen(Session session) throws IOException{
@@ -52,7 +53,7 @@ public class ServerEndPoint {
 		for(Map.Entry<String,String> entry : list_user.entrySet()){
 			System.out.println("Key :"+entry.getKey()+",Value :"+entry.getValue());
 		}
-		accountServiceImpl.setStatusOffline(clientId);
+//		accountServiceImpl.setStatusOffline(clientId);
 		if(list_match.containsKey(clientId)){
 
 		}else if(list_match.containsValue(clientId)){
@@ -210,13 +211,18 @@ public class ServerEndPoint {
 			case "MOVE":
 				 break;
 			case "PLAY":
-				 System.out.println(data[2]);
-				 String enemy_session_id=findUserSession(data[1]);
-				 for(Session session_1 : list){
-				 	 if(session_1.getId()==enemy_session_id){
-						 session_1.getBasicRemote().sendText("PLAY-|-"+data[2]);
-					 }
-				 }
+//				System.out.println(data[2]);
+				String [] emails = data[1].split(",");
+				String enemy_session_id=findUserSession(emails[0]);
+				for(Session session_1 : list){
+					if(session_1.getId()==enemy_session_id){
+						System.out.println("Receive data and send to " + enemy_session_id + " " + data[2]);
+						movers = 1 - movers;
+						System.out.println("Movers : "+movers);
+						session_1.getBasicRemote().sendText("PLAY-|-"+data[2]);
+						session_1.getBasicRemote().sendText("MOVER-|-"+movers);
+					}
+				}
 				break;
 			case "REPDRAW":
 				 break;
@@ -257,7 +263,7 @@ public class ServerEndPoint {
 			for (String key : list_user.keySet()){
 				if(list_user.get(key).equalsIgnoreCase(data[1])){
 					session_id=key;
-					return;
+					break;
 				}
 			}
 			for(Session sess : list){
