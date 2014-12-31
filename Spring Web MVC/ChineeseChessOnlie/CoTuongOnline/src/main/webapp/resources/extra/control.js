@@ -9,9 +9,19 @@ ws.onmessage = function (message) {
     var data = message.data.split("-|-");
     switch (data[0]) {
         case "REQHANDSHAKE":
+            var scope = angular.element($(document.body)).scope();
             var id_requestHandShake = data[1];
-            console.log(data);
-            // show form yes or no
+            for(var i=0; i<scope.userOnline.length; i++){
+                if(scope.userOnline[i].email==data[1]){
+                    scope.opponent=scope.userOnline[i];
+                    break;
+                }
+            }
+            $('#modalAcceptChallenge').modal({
+                backdrop: 'static',
+                keyboard: false
+            });
+            $('#modalAcceptChallenge').modal('show');
             break;
         case "REPHANDSHAKE":
             var accept = data[1];  // 0 : yes , 1 : no
@@ -63,11 +73,11 @@ ws.onmessage = function (message) {
         case "PLAY":
             console.log(data[1]);
             break;
-
+        default :
+            break;
     }
 };
 ws.onclose =function(message){ ws.close();};
-
 /**
  *
  *
@@ -102,8 +112,8 @@ function repDrawGame(){
     ws.send("REPDRAW-"+response+"-"+ getEmailCurrentPlayer());
 }
 function getEmailCurrentPlayer(){
-    var id="11520616@gm.uit.edu.vn";
-    return id;
+    var scope = angular.element($(document.body)).scope();
+    return scope.opponent.email;
 }
 function playerMove(data){
     console.log(data);
@@ -179,6 +189,7 @@ myApp.controller('MyAppController', function ($scope, $http) {
                 return el.name != $scope.myProfile.name;
             });
         $scope.userOnline = result;
+        userOnlines=result;
     });
 
     /**
@@ -211,10 +222,11 @@ myApp.controller('MyAppController', function ($scope, $http) {
                 /**
                  *
                  */
-                var to_client_id = "11520616@gm.uit.edu.vn";
-                if($scope.myProfile.email=="11520616@gm.uit.edu.vn"){
-                    to_client_id="dominhquan.uit@gmail.com";
-                }
+                //var to_client_id = "11520616@gm.uit.edu.vn";
+                //if($scope.myProfile.email=="11520616@gm.uit.edu.vn"){
+                //    to_client_id="dominhquan.uit@gmail.com";
+                //}
+                var to_client_id=getEmailCurrentPlayer();
                 sendChat("CHAT-"+ to_client_id + "-" + $scope.yourMessage);
                 /**
                  *
@@ -237,7 +249,6 @@ myApp.controller('MyAppController', function ($scope, $http) {
         $('#modalWaitingAcceptChallenge').modal("show");
         $scope.opponent=user;
         $scope.countDown=15;
-        console.log($scope.opponent.email);
         requestHandShake($scope.opponent.email);
         var timeCountDown = setInterval(function(){
             if($scope.countDown>0){
@@ -259,4 +270,21 @@ myApp.controller('MyAppController', function ($scope, $http) {
     $scope.addFriend = function () {
         soundForClick.play();
     };
+    /**
+     *
+     * ACCEPT challenge from opponent
+     *
+     **/
+    $scope.acceptChallenge=function(){
+        acceptHandShake();
+    };
+    /**
+     *
+     * DISACCEPT challenge from opponent
+     *
+     **/
+    $scope.disAcceptChallenge=function(){
+        declineHandShake();
+    };
+
 });

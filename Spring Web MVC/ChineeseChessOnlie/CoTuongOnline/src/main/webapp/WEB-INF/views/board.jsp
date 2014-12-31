@@ -102,7 +102,8 @@
         <!--------------END :Popup for Waiting opponent accept your challenge---------------------->
         
         <!--------------START: Popup for Accept challenge from opponent---------------------->
-        <div class="modal fade" id="modalAcceptChallenge" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal fade" id="modalAcceptChallenge" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+             data-backdrop="static" data-keyboard="false" >
             <div class="modal-dialog">
                 <div class="modal-content" align="center" style="height: 20vh; width: 80vh; margin-top: 40vh;">
                     <div class="modal-header" style="background-color: #5cb85c;">
@@ -113,8 +114,8 @@
                     </div>
                     <div class="modal-body">
                         <div align="center">
-                            <button class="btn btn-lg btn-primary" data-dismiss="modal" style="margin-right: 50px;">Accept</button>
-                            <button class="btn btn-lg btn-danger" data-dismiss="modal">Disaccept</button>
+                            <button class="btn btn-lg btn-primary" data-dismiss="modal" style="margin-right: 50px;"ng-click="acceptChallenge()">Accept</button>
+                            <button class="btn btn-lg btn-danger" data-dismiss="modal" ng-click="disAcceptChallenge()">Disaccept</button>
                         </div>
                     </div>
                 </div>
@@ -122,7 +123,10 @@
         </div>
         <!--------------END :Popup for Accept challenge from opponent---------------------->
         <div><input type="hidden"/></div>
-        
+        <div id="enemy_data">
+
+
+        </div>
         
 
         
