@@ -215,8 +215,8 @@ myApp.controller('MyAppController', function ($scope, $http) {
      * SEND message from CHAT conversation to server
      *
      **/
-    $scope.sendMessage = function () {
-        if (window.event.keyCode == 13) {
+    $scope.sendMessage = function (keyEvent) {
+        if (keyEvent.which == 13) {
             if ($scope.yourMessage != null & $scope.yourMessage != "") {
                 $scope.messages.push({'text': $scope.yourMessage, 'yours': false});
                 /**
