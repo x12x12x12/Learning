@@ -40,9 +40,10 @@ ws.onmessage = function (message) {
         case "REPHANDSHAKE":
             var accept = data[1];  // 0 : yes , 1 : no
             if (accept == "0") {
-                console.log("continue");
+                $('#modalWaitingAcceptChallenge').modal("hide");
             }else{
                 // the enemy decline to accept
+                //$('#modalWaitingAcceptChallenge').modal("hide");
             }
             break;
         case "REQPAUSE":
@@ -109,11 +110,11 @@ function requestHandShake(email){
 }
 
 function acceptHandShake() {
-    ws.send("REPHANDSHAKE-0-" + getEmailCurrentPlayer());
+    ws.send("REPHANDSHAKE-"+ getEmailCurrentPlayer()+"-0");
 }
 
 function declineHandShake() {
-    ws.send("REPHANDSHAKE-1-" + getEmailCurrentPlayer());
+    ws.send("REPHANDSHAKE-" + getEmailCurrentPlayer()+"-1");
 }
 
 function requestPause() {
