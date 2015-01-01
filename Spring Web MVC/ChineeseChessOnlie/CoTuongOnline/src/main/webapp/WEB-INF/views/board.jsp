@@ -27,7 +27,7 @@
                     </div>
                     <div class="col-md-6" style="height: 200px; border: solid 1px; float: right;" ng-hide="opponent==null">
                         <div style="font-weight: bold" align="center">Your Opponent</div>
-                        <img src="opponent.img_url" style="border-radius: 2px;" height="50%;"/>
+                        <img src="{{opponent.img_url}}" style="border-radius: 2px;" height="50%;"/>
                         <div ng-bind="opponent.name" align="center"></div>
                         <div ng-bind-template="Score: {{opponent.point}}"></div>
                     </div>
