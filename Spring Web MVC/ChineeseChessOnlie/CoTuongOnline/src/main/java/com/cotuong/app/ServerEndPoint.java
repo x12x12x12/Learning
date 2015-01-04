@@ -31,8 +31,8 @@ public class ServerEndPoint {
 	private static HashMap<String, String> list_match = new HashMap<String,String>();
 	private static int movers = 0;
 
-//	ApplicationContext context=new ClassPathXmlApplicationContext("servlet-context.xml");
-//	AccountServiceImpl accountServiceImpl=(AccountServiceImpl) context.getBean("accountService");
+	ApplicationContext context=new ClassPathXmlApplicationContext("servlet-context.xml");
+	AccountServiceImpl accountServiceImpl=(AccountServiceImpl) context.getBean("accountService");
 
 	@OnOpen
 	public void onOpen(Session session) throws IOException{
@@ -53,7 +53,7 @@ public class ServerEndPoint {
 		for(Map.Entry<String,String> entry : list_user.entrySet()){
 			System.out.println("Key :"+entry.getKey()+",Value :"+entry.getValue());
 		}
-//		accountServiceImpl.setStatusOffline(clientId);
+		accountServiceImpl.setStatusOffline(clientId);
 		if(list_match.containsKey(clientId)){
 
 		}else if(list_match.containsValue(clientId)){
