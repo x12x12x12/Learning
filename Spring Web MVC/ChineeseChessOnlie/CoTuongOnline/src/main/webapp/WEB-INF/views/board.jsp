@@ -115,7 +115,7 @@
                     <div class="modal-body">
                         <div align="center">
                             <button class="btn btn-lg btn-primary" data-dismiss="modal" style="margin-right: 50px;"ng-click="acceptChallenge()">Accept</button>
-                            <button class="btn btn-lg btn-danger" data-dismiss="modal" ng-click="disAcceptChallenge()">Disaccept</button>
+                            <button class="btn btn-lg btn-danger" data-dismiss="modal" ng-click="declineChallenge()">Decline</button>
                         </div>
                     </div>
                 </div>
@@ -130,14 +130,14 @@
         
 
         
-        <div id="debug" style="position:absolut;top:0px;left:0px;width:400px;"></div>
+        <div id="debug" style="position:absolute;top:0px;left:0px;width:400px;"></div>
         <script src="resources/extra/Board.js"></script>
         <script src="resources/extra/Chess.js"></script>
         <script type='text/javascript'>
-            var chessGame=new ChessGame("board");
-            chessGame.init();
-            document.getElementById("newGame").onclick=function(){chessGame.init()};
-            document.getElementById("restore").onclick=function(){chessGame.restore()};
+            document.getElementById("newGame").onclick=function(){requestNewGame()};
+            //chessGame.init();
+            //document.getElementById("newGame").onclick=function(){chessGame.init()};
+            //document.getElementById("restore").onclick=function(){chessGame.restore()};
         </script>
         <script src="resources/extra/jquery-1.11.0.min.js"></script>
   		<script src="resources/extra/angular.min.js"></script>

@@ -49,7 +49,6 @@ function ChessGame(boardId) {
         // Initialization
         //- Set the location, call the parent class event binding, the parent class calls the parent class implementation Drawing
         init: function () {
-
             this.offsetRect.left = 0;
             this.offsetRect.top = 0;
             this.offsetRect.right = 460;
@@ -162,8 +161,8 @@ function ChessGame(boardId) {
             //  this.computerMoveChess();
             // If the game ends
             if(this.isGameOver()){
-                if(this.mover==1) alert("恭喜，你赢啦！");
-                else alert("输了哦，下次再努力吧～");
+                if(this.mover==1) alert("You win !");
+                else alert("You lose !");
                 this.mover=-1;
                 return;
             }

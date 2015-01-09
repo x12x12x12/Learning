@@ -13,10 +13,8 @@ var ws = new WebSocket("ws://localhost:8080/game");
 
 ws.onopen = function (message) {
     email = user_data.email;
-    if(email=="11520616@gm.uit.edu.vn")
-        campOrder = 0;
-    else campOrder = 1;
     ws.send("REG-" + email);
+    getListUserOnline();
 };
 
 ws.onmessage = function (message) {
@@ -24,7 +22,6 @@ ws.onmessage = function (message) {
     switch (data[0]) {
         case "REQHANDSHAKE":
             var scope = angular.element($(document.body)).scope();
-            var id_requestHandShake = data[1];
             for(var i=0; i<scope.userOnline.length; i++){
                 if(scope.userOnline[i].email==data[1]){
                     scope.opponent=scope.userOnline[i];
@@ -40,10 +37,11 @@ ws.onmessage = function (message) {
         case "REPHANDSHAKE":
             var accept = data[1];  // 0 : yes , 1 : no
             if (accept == "0") {
-                $('#modalWaitingAcceptChallenge').modal("hide");
+                $('#modalWaitingAcceptChallenge').modal('hide');
             }else{
                 // the enemy decline to accept
-                //$('#modalWaitingAcceptChallenge').modal("hide");
+                alert('Player decline');
+                $('#modalWaitingAcceptChallenge').modal('hide');
             }
             break;
         case "REQPAUSE":
@@ -70,12 +68,15 @@ ws.onmessage = function (message) {
             break;
         case "REQNEWGAME":
             var id_enemy=data[1]; // email enemy
-            // get enemy info then show form accept or not
+            alert("req new game");
+            repNewGame(0);
             break;
         case "REPNEWGAME":
             var accept = data[1];
             if (accept == "0") {
-                console.log("continue");
+                campOrder = 0;
+                var chessGame=new ChessGame("board");
+                chessGame.init();
             }else{
                 // the enemy decline to accept
             }
@@ -109,20 +110,33 @@ function requestHandShake(email){
     ws.send("REQHANDSHAKE-"+email);
 }
 
-function acceptHandShake() {
-    ws.send("REPHANDSHAKE-"+ getEmailCurrentPlayer()+"-0");
+function repHandShake(rep){
+    if(rep==0){
+        ws.send("REPHANDSHAKE-"+ getEmailCurrentPlayer()+"-0");
+    }else{
+        ws.send("REPHANDSHAKE-" + getEmailCurrentPlayer()+"-1");
+    }
 }
 
-function declineHandShake() {
-    ws.send("REPHANDSHAKE-" + getEmailCurrentPlayer()+"-1");
+function requestNewGame(){
+    ws.send("REQNEWGAME-"+ getEmailCurrentPlayer());
 }
 
+function repNewGame(rep){
+    if(rep=="0"){
+        ws.send("REPNEWGAME-"+ getEmailCurrentPlayer()+"-0");
+        campOrder=1;
+        var chessGame=new ChessGame("board");
+        chessGame.init();
+    }else{
+        ws.send("REPNEWGAME-" + getEmailCurrentPlayer()+"-1");
+    }
+}
 function requestPause() {
     ws.send("REQPAUSE-" + getEmailCurrentPlayer());
 }
 
-function acceptPause(){
-    var id_requestPause = 1;
+function repPause(rep){
     ws.send("REQPAUSE-" + getEmailCurrentPlayer());
 }
 
@@ -152,6 +166,18 @@ function sendChat(data){
     ws.send(data);
 }
 
+function getListUserOnline(){
+    var scope = angular.element($(document.body)).scope();
+    $.getJSON("http://localhost:8080/rest/online", function (result) {
+        result = result
+            .filter(function (el) {
+                return el.name != scope.myProfile.name;
+            });
+        scope.userOnline = result;
+        scope.$apply();
+    });
+}
+
 myApp.controller('MyAppController', function ($scope, $http) {
 
     soundManager.setup({
@@ -174,14 +200,14 @@ myApp.controller('MyAppController', function ($scope, $http) {
     /**
     * GET list user online from server
     **/
-    $.getJSON("http://localhost:8080/rest/online", function (result) {
-        result = result
-            .filter(function (el) {
-                return el.name != $scope.myProfile.name;
-            });
-        $scope.userOnline = result;
-        userOnlines=result;
-    });
+    //$.getJSON("http://localhost:8080/rest/online", function (result) {
+    //    result = result
+    //        .filter(function (el) {
+    //            return el.name != $scope.myProfile.name;
+    //        });
+    //    $scope.userOnline = result;
+    //    userOnlines=result;
+    //});
 
     /**
      * SHOW list user online
@@ -248,17 +274,15 @@ myApp.controller('MyAppController', function ($scope, $http) {
     $scope.addFriend = function () {
         soundForClick.play();
     };
+
     /**
-     * ACCEPT challenge from opponent
+     * ACCEPT | DECLINE challenge from opponent
      **/
     $scope.acceptChallenge=function(){
-        acceptHandShake();
+        repHandShake(0);
     };
-    /**
-     * DISACCEPT challenge from opponent
-     **/
-    $scope.disAcceptChallenge=function(){
-        declineHandShake();
+    $scope.declineChallenge=function(){
+        repHandShake(1);
     };
 
 });

@@ -135,7 +135,7 @@ public class ServerEndPoint {
 				 * Server : Find ID_A in list_user -> session of user's A -> send to A
 				 * User A : Receive "REPPAUSE-BOOL-ID_B"
 				 */
-				checkAndSendMsgToUser(data,session,"REPAUSE-|-"+data[1]+"-|-");
+				checkAndSendMsgToUser(data,session,"REPAUSE-|-"+data[2]+"-|-");
 				break;
 			case "REQNEWGAME":
 				/**
@@ -149,7 +149,7 @@ public class ServerEndPoint {
 			case "REPNEWGAME":
 				/**
 				 * User B reply to user A : play new game or not
-				 * User B : Send "REPNEWGAME-BOOL-ID_A"
+				 * User B : Send "REPNEWGAME-ID_A-BOOL"
 				 * - BOOL
 				 * 		+ Accept  : 0
 				 * 		+ Decline : 1
@@ -157,7 +157,7 @@ public class ServerEndPoint {
 				 * 	Server : Find ID_A in list_user -> session of user's A -> send to A
 				 * 	 User A : Receive "REPNEWGAME-BOOL-ID_B"
 				 **/
-				checkAndSendMsgToUser(data,session,"REPNEWGAME-|-"+data[1]+"-|-");
+				checkAndSendMsgToUser(data,session,"REPNEWGAME-|-"+data[2]+"-|-");
 				break;
 			case "LOSE":
 				/**
