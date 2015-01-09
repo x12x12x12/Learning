@@ -135,7 +135,7 @@ public class ServerEndPoint {
 				 * Server : Find ID_A in list_user -> session of user's A -> send to A
 				 * User A : Receive "REPPAUSE-BOOL-ID_B"
 				 */
-				checkAndSendMsgToUser(data,session,"REPAUSE-|-"+data[2]+"-|-");
+				checkAndSendMsgToUser(data,session,"REPPAUSE-|-"+data[2]+"-|-");
 				break;
 			case "REQNEWGAME":
 				/**
@@ -208,8 +208,6 @@ public class ServerEndPoint {
 					 System.out.println("Client không online");
 				 }
 				break;
-			case "MOVE":
-				 break;
 			case "PLAY":
 //				System.out.println(data[2]);
 				String [] emails = data[1].split(",");
@@ -224,18 +222,14 @@ public class ServerEndPoint {
 					}
 				}
 				break;
-			case "REPDRAW":
-				 break;
 			case "REQDRAW":
-				/**
-				 * Handle message between 2 player in current match
-				 * User A : Send "REQDRAW-ID_B-ID_A"
-				 * Server : Find ID_B in list_user -> session of user's B -> send to B
-				 * User B : Receive "REQDRAW-ID_A"
-				 */
-				 break;
+				checkAndSendMsgToUser(data,session,"REQDRAW-|-");
+				break;
+			case "REPDRAW":
+				checkAndSendMsgToUser(data,session,"REPDRAW-|-"+data[2]+"-|-");
+				break;
 			default:
-				 break;
+				break;
 		}
 	}
 	public String findUserSession(String email){

@@ -20,10 +20,12 @@
                <div class="row">
                     <div class="col-md-6">
                         <div id="newGame" class="button" >New Game</div>
-                        <div id="restore" class="button" >Turn back</div>
+                        <!--<div id="restore" class="button" >Turn back</div>-->
+                        <div id="pauseGame" class="button" >Pause</div>
+                        <div id="drawGame" class="button" >Draw</div>
+                        <div id="loseGame" class="button" >Lose</div>
+                        <div id="quitGame" class="button" >Quit match</div>
                         <div id="listUser" class="button" ng-click="showListUser()" >List User</div>
-                        <div class="info" >Time：<span id="TimeCost">0</span></div>
-                        <div class="info" >Depth：<span id="depth">0</span></div>
                     </div>
                     <div class="col-md-6" style="height: 200px; border: solid 1px; float: right;" ng-hide="opponent==null">
                         <div style="font-weight: bold" align="center">Your Opponent</div>
@@ -127,17 +129,17 @@
 
 
         </div>
-        
 
-        
-        <div id="debug" style="position:absolute;top:0px;left:0px;width:400px;"></div>
+
+
+        <!-- <div id="debug" style="position:absolute;top:0px;left:0px;width:400px;"></div>---->
         <script src="resources/extra/Board.js"></script>
         <script src="resources/extra/Chess.js"></script>
         <script type='text/javascript'>
             document.getElementById("newGame").onclick=function(){requestNewGame()};
-            //chessGame.init();
-            //document.getElementById("newGame").onclick=function(){chessGame.init()};
-            //document.getElementById("restore").onclick=function(){chessGame.restore()};
+            document.getElementById("pauseGame").onclick=function(){requestPause()};
+            document.getElementById("drawGame").onclick=function(){requestDrawGame()};
+            document.getElementById("loseGame").onclick=function(){acceptLose()};
         </script>
         <script src="resources/extra/jquery-1.11.0.min.js"></script>
   		<script src="resources/extra/angular.min.js"></script>

@@ -2,13 +2,7 @@ var myApp = angular.module('myApp', []);
 var soundForClick = null;
 var email;
 var myBoard;
-/**
- *    The code below is basic function to receive data from game's server
- *    @onOpen
- *    @onMessage
- *    @onClose
- *    0: OK ----- 1: ERROR
- **/
+
 var ws = new WebSocket("ws://localhost:8080/game");
 
 ws.onopen = function (message) {
@@ -45,29 +39,19 @@ ws.onmessage = function (message) {
             }
             break;
         case "REQPAUSE":
-            var id_requestPause = 1;
-            // show form yes or no
+            var accept = data[1];
+            alert("Request pause");
+            repPause(1);
             break;
         case "REPPAUSE":
             var accept = data[1]; // 0 : yes , 1 : no
             if (accept == "0") {
                 console.log("continue");
             }else{
-                // the enemy decline to accept
+                alert("Decline pause");
             }
             break;
-        case "CHAT":
-            var text = data[1].replace("CHAT-|-", ""); // cut 'CHAT-|-' out data[1]
-            var scope = angular.element($(document.body)).scope();
-            scope.$apply(function(){
-                scope.messages.push({'text': text, 'yours': true});
-                scope.yourMessage = "";
-            });
-            document.getElementById("talks").scrollTop = document.getElementById("talks").scrollHeight;
-            soundForClick.play();
-            break;
         case "REQNEWGAME":
-            var id_enemy=data[1]; // email enemy
             alert("req new game");
             repNewGame(0);
             break;
@@ -81,13 +65,17 @@ ws.onmessage = function (message) {
                 // the enemy decline to accept
             }
             break;
+        case "REQDRAW":
+            alert("User request draw game");
+            repDrawGame(1);
+            break;
+        case "REPDRAW":
+
+            break;
         case "LOSE":
-            var id_enemy=data[1]; // email enemy
-            // alert enemy accept lose, then increase your point
+            alert("User "+data[1]+ "accept lose");
             break;
         case "PLAY":
-            console.log("Receiver : "+email);
-            console.log(data[1]);
             var tmp = data[1].split(" ");
             var pos1 = tmp[0].split(",");
             var pos2 = tmp[1].split(",");
@@ -98,6 +86,16 @@ ws.onmessage = function (message) {
             break;
         case "MOVER":
             myBoard.changeMover(data[1]);
+            break;
+        case "CHAT":
+            var text = data[1].replace("CHAT-|-", ""); // cut 'CHAT-|-' out data[1]
+            var scope = angular.element($(document.body)).scope();
+            scope.$apply(function(){
+                scope.messages.push({'text': text, 'yours': true});
+                scope.yourMessage = "";
+            });
+            document.getElementById("talks").scrollTop = document.getElementById("talks").scrollHeight;
+            soundForClick.play();
             break;
         default :
             break;
@@ -111,11 +109,7 @@ function requestHandShake(email){
 }
 
 function repHandShake(rep){
-    if(rep==0){
-        ws.send("REPHANDSHAKE-"+ getEmailCurrentPlayer()+"-0");
-    }else{
-        ws.send("REPHANDSHAKE-" + getEmailCurrentPlayer()+"-1");
-    }
+    ws.send("REPHANDSHAKE-" + getEmailCurrentPlayer()+"-"+rep);
 }
 
 function requestNewGame(){
@@ -124,20 +118,19 @@ function requestNewGame(){
 
 function repNewGame(rep){
     if(rep=="0"){
-        ws.send("REPNEWGAME-"+ getEmailCurrentPlayer()+"-0");
+        //ws.send("REPNEWGAME-"+ getEmailCurrentPlayer()+"-0");
         campOrder=1;
         var chessGame=new ChessGame("board");
         chessGame.init();
-    }else{
-        ws.send("REPNEWGAME-" + getEmailCurrentPlayer()+"-1");
     }
+    ws.send("REPNEWGAME-" + getEmailCurrentPlayer()+"-"+rep);
 }
 function requestPause() {
     ws.send("REQPAUSE-" + getEmailCurrentPlayer());
 }
 
 function repPause(rep){
-    ws.send("REQPAUSE-" + getEmailCurrentPlayer());
+    ws.send("REPPAUSE-" + getEmailCurrentPlayer()+"-"+rep);
 }
 
 function acceptLose() {
@@ -145,12 +138,11 @@ function acceptLose() {
 }
 
 function requestDrawGame() {
-    ws.send("REQDRAW-" + getEmailCurrentPlayer()+"-"+get);
+    ws.send("REQDRAW-" + getEmailCurrentPlayer());
 }
 
-function repDrawGame(){
-    var response=0; // or 1
-    ws.send("REPDRAW-"+response+"-"+ getEmailCurrentPlayer());
+function repDrawGame(rep){
+    ws.send("REPDRAW-" +getEmailCurrentPlayer()+"-"+rep);
 }
 
 function getEmailCurrentPlayer(){
@@ -279,10 +271,12 @@ myApp.controller('MyAppController', function ($scope, $http) {
      * ACCEPT | DECLINE challenge from opponent
      **/
     $scope.acceptChallenge=function(){
+        soundForClick.play();
         repHandShake(0);
     };
     $scope.declineChallenge=function(){
         repHandShake(1);
+        soundForClick.play();
     };
 
 });
