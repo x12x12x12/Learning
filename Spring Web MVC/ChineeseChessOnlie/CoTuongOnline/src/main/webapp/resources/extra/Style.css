@@ -179,6 +179,28 @@ canvas {
     right: -5px;
 }
 
+/* ...................... */
+.fadeIn-setup,.fadeOut-setup {
+  -webkit-transition: 1s linear opacity;
+  -moz-transition: 1s linear opacity;
+  -o-transition: 1s linear opacity;
+  transition: 1s linear opacity;
+}
+.fadeIn-setup{
+  opacity:0;
+}
+.fadeOut-setup{
+  opacity:1;
+}
+.fadeIn-setup.fadeIn-start {
+  opacity: 1;
+}
+.fadeOut-setup.fadeOut-start{
+    opacity:0;
+}
+
+/* ...................... */
+
 ::-webkit-scrollbar {
     width: 8px;
     background-color: #f0f0f0;
