@@ -19,7 +19,7 @@
     <div style="float:right">
         <div class="row">
             <div class="col-md-6">
-                <div id="newGame" class="button" >New Game</div>
+                <div id="newGame" class="btn btn-primary btn-block" >New Game</div>
                 <!--<div id="restore" class="button" >Turn back</div>-->
                 <div id="pauseGame" class="btn btn-primary btn-block" >Pause</div>
                 <div id="drawGame" class="btn btn-primary btn-block " >Draw</div>
