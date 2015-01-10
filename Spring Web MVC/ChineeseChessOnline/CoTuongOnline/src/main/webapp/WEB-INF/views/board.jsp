@@ -9,6 +9,8 @@
     <link rel="stylesheet" type="text/css" href="resources/extra/Style.css">
     <link rel="stylesheet" type="text/css" href="resources/extra/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="resources/extra/bootstrap-theme.min.css">
+    <link href="resources/css/sb-admin-2.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="resources/font-awesome-4.1.0/css/font-awesome.min.css" >
 </head>
 <body ng-controller="MyAppController">
 <div id="main">
@@ -19,44 +21,43 @@
     <div style="float:right">
         <div class="row">
             <div class="col-md-6">
-                <div id="newGame" class="btn btn-circle btn-block" >New Game</div>
-                <!--<div id="restore" class="button" >Turn back</div>-->
-                <div id="pauseGame" class="btn btn-warning btn-block" ng-click="showRepPause()" >Pause</div>
-                <div id="drawGame" class="btn btn-warning btn-block " ng-click="showRepDraw()" >Draw</div>
+                <div id="newGame" class="btn btn-primary btn-block" >New Game</div>
+                <div id="pauseGame" class="btn btn-success btn-block" ng-click="showRepPause()">Pause</div>
+                <div id="drawGame" class="btn btn-warning btn-block " ng-click="showRepDraw()">Draw</div>
                 <div id="loseGame" class="btn btn-danger btn-block" >Lose</div>
                 <div id="quitGame" class="btn btn-danger btn-block" >Quit match</div>
-                <div id="listUser" class="btn btn-circle btn-block" ng-click="showListUser()" >List User</div>
-            </div>
-            <div class="col-md-6" style="height: 200px; border: solid 1px; float: right;" ng-show="opponent" ng-animate="{show: 'fadeIn', hide:'fadeOut'}">
-                <div style="font-weight: bold" align="center">Your Opponent</div>
-                <img src="{{opponent.img_url}}" style="border-radius: 2px;" height="50%;"/>
-                <div ng-bind="opponent.name" align="center" style="font-weight: bold"></div>
-                <div ng-bind-template="Score: {{opponent.point}}" style="font-weight: bold"></div>
-            </div>
-        </div>
-        <br/>
-        <div class="row">
-            <div class="conversation">
-                <div class="title">
-                    <div style="font-weight: bold;" ng-bind="titleOfChatConversation">
-                    </div>
-                </div>
-                <div id="talks">
-                    <div ng-repeat="message in messages track by $index" ng-bind="message.text" class="bubble"
-                         ng-class="{'bubble--alt':message.yours==false}">
-                    </div>
-                </div>
-                <div class="send-message">
-                    <input type="text" class="write-message" placeholder="Write Message ..." ng-model="yourMessage"
-                           ng-keypress="sendMessage($event)">
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+                <div id="listUser" class="btn btn-success btn-block" ng-click="showListUser()" >List User</div>
+             </div>
+             <div class="col-md-6" style="height: 200px; border: solid 1px; float: right;" ng-show="opponent" ng-animate="{show: 'fadeIn', hide:'fadeOut'}">
+                 <div style="font-weight: bold" align="center">Your Opponent</div>
+                 <img src="{{opponent.img_url}}" style="border-radius: 2px;" height="50%;"/>
+                 <div ng-bind="opponent.name" align="center" style="font-weight: bold"></div>
+                 <div ng-bind-template="Score: {{opponent.point}}" style="font-weight: bold"></div>
+             </div>
+         </div>
+         <br/>
+         <div class="row">
+             <div class="conversation">
+                 <div class="title">
+                     <div style="font-weight: bold;" ng-bind="titleOfChatConversation">
+                     </div>
+                 </div>
+                 <div id="talks">
+                     <div ng-repeat="message in messages track by $index" ng-bind="message.text" class="bubble"
+                          ng-class="{'bubble--alt':message.yours==false}">
+                     </div>
+                 </div>
+                 <div class="send-message">
+                     <input type="text" class="write-message" placeholder="Write Message ..." ng-model="yourMessage"
+                            ng-keypress="sendMessage($event)">
+                 </div>
+             </div>
+         </div>
+     </div>
+ </div>
 
 
-<!--------------START: Popup show user online---------------------->
+ <!--------------START: Popup show user online---------------------->
 <div class="modal fade" id="modalListUser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content" style="height: 100vh; width: 150%; margin-left: -22%; overflow-y: scroll;" >
@@ -124,72 +125,6 @@
     </div>
 </div>
 <!--------------END :Popup for Accept challenge from opponent---------------------->
-
-<!--------------START: Popup for Rep Pause Game from opponent---------------------->
-<div class="modal fade" id="modalRepPause" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
-     data-backdrop="static" data-keyboard="false" >
-    <div class="modal-dialog">
-        <div class="modal-content" align="center" style="height: 20vh; width: 80vh; margin-top: 40vh;">
-            <div class="modal-header" style="background-color: #5cb85c;">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title">
-                    REP Pause Game From Opponent
-                </h4>
-            </div>
-            <div class="modal-body">
-                <div align="center">
-                    <button class="btn btn-lg btn-primary" data-dismiss="modal" style="margin-right: 50px;"ng-click="modalRepPause(0)">Accept</button>
-                    <button class="btn btn-lg btn-danger" data-dismiss="modal" ng-click="modalRepPause(1)">Decline</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!--------------END :Popup for Rep Pause Game from opponent---------------------->
-
-<!--------------START: Popup for Rep Draw Game from opponent---------------------->
-<div class="modal fade" id="modalRepDraw" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
-     data-backdrop="static" data-keyboard="false" >
-    <div class="modal-dialog">
-        <div class="modal-content" align="center" style="height: 20vh; width: 80vh; margin-top: 40vh;">
-            <div class="modal-header" style="background-color: #5cb85c;">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title">
-                    REP Draw Game From Opponent
-                </h4>
-            </div>
-            <div class="modal-body">
-                <div align="center">
-                    <button class="btn btn-lg btn-primary" data-dismiss="modal" style="margin-right: 50px;"ng-click="modalRepDraw(0)">Accept</button>
-                    <button class="btn btn-lg btn-danger" data-dismiss="modal" ng-click="modalRepDraw(1)">Decline</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!--------------END :Popup for Rep Draw Game from opponent---------------------->
-
-<!--------------START: Popup for Rep Loose Game from opponent---------------------->
-<div class="modal fade" id="modalRepLoose" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
-     data-backdrop="static" data-keyboard="false" >
-    <div class="modal-dialog">
-        <div class="modal-content" align="center" style="height: 20vh; width: 80vh; margin-top: 40vh;">
-            <div class="modal-header" style="background-color: #5cb85c;">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title">
-                    REP Loose Game From Opponent
-                </h4>
-            </div>
-            <div class="modal-body">
-                <div align="center">
-                    <button class="btn btn-lg btn-primary" data-dismiss="modal" style="margin-right: 50px;"ng-click="modalRepLoose(0)">Accept</button>
-                    <button class="btn btn-lg btn-danger" data-dismiss="modal" ng-click="modalRepLoose(1)">Decline</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!--------------END :Popup for Rep Loose Game from opponent---------------------->
 <div><input type="hidden"/></div>
 <div id="enemy_data">
 
@@ -206,12 +141,6 @@
     document.getElementById("pauseGame").onclick=function(){requestPause()};
     document.getElementById("drawGame").onclick=function(){requestDrawGame()};
     document.getElementById("loseGame").onclick=function(){acceptLose()};
-</script>
-<script src="resources/extra/jquery-1.11.0.min.js"></script>
-<script src="resources/extra/angular.min.js"></script>
-<script src="resources/extra/bootstrap.min.js"></script>
-<script src="resources/extra/soundmanager2.js"></script>
-<script type="text/javascript">
     var user_data={
         "name": "${account.name}",
         "email":"${account.email}",
@@ -219,6 +148,10 @@
         "point": "${account.point}"
     };
 </script>
+<script src="resources/extra/jquery-1.11.0.min.js"></script>
+<script src="resources/extra/angular.min.js"></script>
+<script src="resources/extra/bootstrap.min.js"></script>
+<script src="resources/extra/soundmanager2.js"></script>
 <script src="resources/extra/control.js"></script>
 </body>
 </html>
