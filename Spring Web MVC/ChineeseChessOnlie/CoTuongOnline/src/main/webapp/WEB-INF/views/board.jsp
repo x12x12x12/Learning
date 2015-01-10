@@ -31,8 +31,8 @@
                     ng-animate="{show: 'fadeIn', hide:'fadeOut'}">
                         <div style="font-weight: bold" align="center">Your Opponent</div>
                         <img src="{{opponent.img_url}}" style="border-radius: 2px;" height="50%;"/>
-                        <div ng-bind="opponent.name" align="center"></div>
-                        <div ng-bind-template="Score: {{opponent.point}}"></div>
+                        <div ng-bind="opponent.name" align="center" style="font-weight: bold"></div>
+                        <div ng-bind-template="Score: {{opponent.point}}" style="font-weight: bold"></div>
                     </div>
                 </div>
                  <br/>
