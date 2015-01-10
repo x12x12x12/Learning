@@ -40,6 +40,8 @@ function ChessGame(boardId) {
         auto: false,
         campOrder: 1, //上黑下红 Red on Heixia
         mover: 0,
+        oldmover:0,
+        isLock:false,
         isMoving:false,
         boardMap:null,
         searchEngine:null,
@@ -49,6 +51,7 @@ function ChessGame(boardId) {
         // Initialization
         //- Set the location, call the parent class event binding, the parent class calls the parent class implementation Drawing
         init: function () {
+
             this.offsetRect.left = 0;
             this.offsetRect.top = 0;
             this.offsetRect.right = 460;
@@ -73,6 +76,19 @@ function ChessGame(boardId) {
             this.searchEngine.setEvaluator(new Evaluation());
             this.searchEngine.setSearchDepth(10);
         },
+
+        lockChess: function(){
+            if(!this.isLock){
+                this.oldmover= this.mover;
+                this.changeMover(3);
+                this.isLock = true;
+            }
+            else{
+                this.changeMover(this.oldmover);
+                this.isLock = false;
+            }
+        },
+
 
         changeMover: function (mover1){
             this.mover= mover1;
@@ -161,8 +177,8 @@ function ChessGame(boardId) {
             //  this.computerMoveChess();
             // If the game ends
             if(this.isGameOver()){
-                if(this.mover==1) alert("You win !");
-                else alert("You lose !");
+                if(this.mover==1) alert("恭喜，你赢啦！");
+                else alert("输了哦，下次再努力吧～");
                 this.mover=-1;
                 return;
             }
@@ -1525,6 +1541,10 @@ function ChessGame(boardId) {
         restore:function(){
             this.board.restore();
         },
+        lockChess:function(){
+            this.board.lockChess();
+        }
+        ,
         createChesses:function(board) {
             {
                 (new Chariot("車01", board, campOrder, new Point(0, 9)));
@@ -1565,8 +1585,3 @@ function ChessGame(boardId) {
     });
     return new GameManager(boardId);
 }
-
-
-/**
- * Created by F.U.C.K on 18-Oct-14.
- */

@@ -74,6 +74,8 @@ ws.onmessage = function (message) {
             break;
         case "LOSE":
             alert("User "+data[1]+ "accept lose");
+            var chessGame=new ChessGame("board");
+            chessGame.lockChess();
             break;
         case "PLAY":
             var tmp = data[1].split(" ");
@@ -135,6 +137,8 @@ function repPause(rep){
 
 function acceptLose() {
     ws.send("LOSE-" + getEmailCurrentPlayer());
+    var chessGame=new ChessGame("board");
+    chessGame.lockChess();
 }
 
 function requestDrawGame() {
