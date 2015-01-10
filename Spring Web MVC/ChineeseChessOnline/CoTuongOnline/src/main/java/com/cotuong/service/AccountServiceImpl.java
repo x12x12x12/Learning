@@ -68,12 +68,12 @@ public class AccountServiceImpl implements AccountService{
 	@Override
 	public void updatePoint(String player_win, String player_lose) {
 		query=new Query(Criteria.where("email").is(player_win));
-		Account account=(Account)mongoTemplate.find(query, Account.class);
+		Account account=(Account)mongoTemplate.findOne(query, Account.class);
 		update=new Update();
 		update.set("point",account.getPoint()+10);
 		mongoTemplate.updateFirst(query, update, Account.class);
 		query=new Query(Criteria.where("email").is(player_lose));
-		account=(Account)mongoTemplate.find(query, Account.class);
+		account=(Account)mongoTemplate.findOne(query, Account.class);
 		update=new Update();
 		update.set("point",account.getPoint()-10);
 		mongoTemplate.updateFirst(query, update, Account.class);

@@ -2,7 +2,7 @@ var myApp = angular.module('myApp', []);
 var soundForClick = null;
 var email;
 var myBoard;
-
+var chessGame = new ChessGame("board");
 var ws = new WebSocket("ws://localhost:8080/game");
 
 ws.onopen = function (message) {
@@ -29,37 +29,40 @@ ws.onmessage = function (message) {
             $('#modalAcceptChallenge').modal('show');
             break;
         case "REPHANDSHAKE":
-            var accept = data[1];  // 0 : yes , 1 : no
-            if (accept == "0") {
+            if (data[1] == "0") {
                 $('#modalWaitingAcceptChallenge').modal('hide');
             }else{
-                // the enemy decline to accept
                 alert('Player decline');
                 $('#modalWaitingAcceptChallenge').modal('hide');
             }
             break;
         case "REQPAUSE":
-            var accept = data[1];
             alert("Request pause");
             repPause(1);
             break;
         case "REPPAUSE":
-            var accept = data[1]; // 0 : yes , 1 : no
-            if (accept == "0") {
-                console.log("continue");
+            if (data[1] == "0") {
+                chessGame.lockChess();
             }else{
                 alert("Decline pause");
             }
             break;
+        case "REPUNPAUSE":
+            if (data[1] == "0") {
+                chessGame.lockChess();
+            }else{
+                alert("Decline unpause");
+            }
+            break;
         case "REQNEWGAME":
             alert("req new game");
-            repNewGame(0);
+            repNewGame(0); // accept, 1 : decline
             break;
         case "REPNEWGAME":
-            var accept = data[1];
-            if (accept == "0") {
+            if (data[1] == "0") {
                 campOrder = 0;
-                var chessGame=new ChessGame("board");
+                //chessGame.mover=1;
+                //movers=0;
                 chessGame.init();
             }else{
                 // the enemy decline to accept
@@ -70,11 +73,10 @@ ws.onmessage = function (message) {
             repDrawGame(1);
             break;
         case "REPDRAW":
-
+            alert("User rep draw game "+data[1]);
             break;
         case "LOSE":
             alert("User "+data[1]+ "accept lose");
-            var chessGame=new ChessGame("board");
             chessGame.lockChess();
             break;
         case "PLAY":
@@ -84,7 +86,6 @@ ws.onmessage = function (message) {
             var chessPos1 = new Point(pos1[0],9-pos1[1]);
             var chessPos2 = new Point(pos2[0],9-pos2[1]);
             myBoard.MoveEnemyChess(chessPos1,chessPos2,tmp[3]);
-            //myBoard.changeMover(tmp[3]);
             break;
         case "MOVER":
             myBoard.changeMover(data[1]);
@@ -120,9 +121,9 @@ function requestNewGame(){
 
 function repNewGame(rep){
     if(rep=="0"){
-        //ws.send("REPNEWGAME-"+ getEmailCurrentPlayer()+"-0");
         campOrder=1;
-        var chessGame=new ChessGame("board");
+        movers=1;
+        //chessGame.mover=
         chessGame.init();
     }
     ws.send("REPNEWGAME-" + getEmailCurrentPlayer()+"-"+rep);
@@ -132,12 +133,27 @@ function requestPause() {
 }
 
 function repPause(rep){
+    if(rep==0){
+        //accept request pause => lock chess board.
+        chessGame.lockChess();
+    }
     ws.send("REPPAUSE-" + getEmailCurrentPlayer()+"-"+rep);
+}
+
+function requestUnPause(){
+    ws.send("REQUNPAUSE-" + getEmailCurrentPlayer());
+}
+
+function repUnPause(rep){
+    if(rep==0){
+        //accept request un pause => unlock chess board.
+        chessGame.lockChess();
+    }
+    ws.send("REPUNPAUSE-" + getEmailCurrentPlayer()+"-"+rep);
 }
 
 function acceptLose() {
     ws.send("LOSE-" + getEmailCurrentPlayer());
-    var chessGame=new ChessGame("board");
     chessGame.lockChess();
 }
 
@@ -192,18 +208,6 @@ myApp.controller('MyAppController', function ($scope, $http) {
     $scope.titleOfChatConversation = "TO : ";
     $scope.countDown = 15;
     $scope.opponent = {};
-
-    /**
-    * GET list user online from server
-    **/
-    //$.getJSON("http://localhost:8080/rest/online", function (result) {
-    //    result = result
-    //        .filter(function (el) {
-    //            return el.name != $scope.myProfile.name;
-    //        });
-    //    $scope.userOnline = result;
-    //    userOnlines=result;
-    //});
 
     /**
      * SHOW list user online

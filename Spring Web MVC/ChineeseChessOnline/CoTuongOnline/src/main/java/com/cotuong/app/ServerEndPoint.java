@@ -42,23 +42,21 @@ public class ServerEndPoint {
 	@OnClose
 	public void onClose(Session session, CloseReason closeReason) throws  IOException{
 		list.remove(session);
-		System.out.println(closeReason.getCloseCode());
 		String clientId=list_user.get(session.getId());
-		System.out.println("Client ID Exit : "+clientId);
-		for(Map.Entry<String,String> entry : list_user.entrySet()){
-			System.out.println("Key :"+entry.getKey()+",Value :"+entry.getValue());
-		}
+		String enemyID="";
 		removeCurrentUserInList(session,clientId,list_user);
-		System.out.println("Done removed");
-		for(Map.Entry<String,String> entry : list_user.entrySet()){
-			System.out.println("Key :"+entry.getKey()+",Value :"+entry.getValue());
-		}
 		accountServiceImpl.setStatusOffline(clientId);
 		if(list_match.containsKey(clientId)){
-
+			enemyID=list_match.get(clientId);
 		}else if(list_match.containsValue(clientId)){
-
+			for(Map.Entry<String,String> entry : list_match.entrySet()){
+				if(entry.getValue().equalsIgnoreCase(clientId)){
+					enemyID=entry.getKey();
+					break;
+				}
+			}
 		}
+		accountServiceImpl.updatePoint(enemyID,clientId);
 	}
 	   
 	@OnMessage
@@ -168,8 +166,12 @@ public class ServerEndPoint {
 				 */
 				checkAndSendMsgToUser(data,session,"LOSE-|-");
 				// update point for 2 player
-				String player_win="";
-				String player_lose;
+				for(Session sess : list){
+					if(sess.getId().equalsIgnoreCase(session.getId())){
+						accountServiceImpl.updatePoint(data[1],list_user.get(session.getId()));
+						return;
+					}
+				}
 				break;
 			case "CHAT":
 				/**

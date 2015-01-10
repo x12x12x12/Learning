@@ -92,7 +92,6 @@ function ChessGame(boardId) {
 
         changeMover: function (mover1){
             this.mover= mover1;
-            console.log(" Mover change by Server : " +this.mover);
         },
         // Find the pieces on the board
         findChess: function (pos) {
@@ -105,7 +104,6 @@ function ChessGame(boardId) {
             return null;
         },
         isGameOver: function(){
-            // console.log(this.id+" isGameOver"+ func++);
             var red=false,
                 black=false;
             for (var i = 0; i < this.children.length; i++) {
@@ -124,18 +122,15 @@ function ChessGame(boardId) {
             move.to=pos;
             move.target=this.findChess(pos);
             this.history.push(move);
-            //console.log("PLAY_ID"+" "+chess.pos.x+","+chess.pos.y+" "+pos.x+","+pos.y+" "+chess.type+" "+chess.camp);
             if(!this.auto) {
                 playerMove(chess.pos.x + "," + chess.pos.y + " " + pos.x + "," + pos.y + " " + chess.type + " " + movers);
                 this.mover = 1- this.mover;
-                console.log("Mover Change auto : "+this.mover);
             }
             else {
                 this.auto = false;
             }
         },
         restore:function(){
-            // console.log(this.id+" restore"+ func++);
             if(this.history.length%2==1 ||this.history.length==0)return;
             for(var i=0;i<2;++i){
                 var move=this.history.pop();
@@ -164,9 +159,6 @@ function ChessGame(boardId) {
         },
         // Move the chess pieces, chess party line changed
         moveChess: function (chess, pos) {
-
-            // console.log(this.id+" moveChess"+func++);
-
             this.recordMove(chess,pos);
             this.removeChess(pos);
             this.boardMap[pos.x][pos.y]=chess;
@@ -177,8 +169,8 @@ function ChessGame(boardId) {
             //  this.computerMoveChess();
             // If the game ends
             if(this.isGameOver()){
-                if(this.mover==1) alert("恭喜，你赢啦！");
-                else alert("输了哦，下次再努力吧～");
+                if(this.mover==1) alert("You win！");
+                else alert("You lose!");
                 this.mover=-1;
                 return;
             }
