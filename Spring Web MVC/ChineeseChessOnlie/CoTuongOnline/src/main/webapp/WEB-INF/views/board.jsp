@@ -27,7 +27,8 @@
                         <div id="quitGame" class="button" >Quit match</div>
                         <div id="listUser" class="button" ng-click="showListUser()" >List User</div>
                     </div>
-                    <div class="col-md-6" style="height: 200px; border: solid 1px; float: right;" ng-hide="opponent==null">
+                    <div class="col-md-6" style="height: 200px; border: solid 1px; float: right;" ng-hide="opponent==null"
+                    ng-animate="{show: 'fadeIn', hide:'fadeOut'}">
                         <div style="font-weight: bold" align="center">Your Opponent</div>
                         <img src="{{opponent.img_url}}" style="border-radius: 2px;" height="50%;"/>
                         <div ng-bind="opponent.name" align="center"></div>
