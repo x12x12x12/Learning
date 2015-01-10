@@ -1,18 +1,3 @@
-Skip to content
-This repository
-Explore
-Gist
-Blog
-Help
-Đỗ Minh Quân dominhquan
-
-7  Unwatch
-Unstar 6
-Fork 11dominhquan/Java
-branch: master  Java/Spring Web MVC/ChineeseChessOnline/CoTuongOnline/src/main/webapp/WEB-INF/views/board.jsp
-LinhTruongVanLinhTruongVan 3 minutes ago ng-show opponent
-2 contributors LinhTruongVanĐỗ Minh Quân
-160 lines (150 sloc)  8.185 kb RawBlameHistory
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
@@ -172,5 +157,3 @@ LinhTruongVanLinhTruongVan 3 minutes ago ng-show opponent
 <script src="resources/extra/control.js"></script>
 </body>
 </html>
-Status API Training Shop Blog About
-© 2015 GitHub, Inc. Terms Privacy Security Contact
