@@ -21,8 +21,8 @@
             <div class="col-md-6">
                 <div id="newGame" class="btn btn-circle btn-block" >New Game</div>
                 <!--<div id="restore" class="button" >Turn back</div>-->
-                <div id="pauseGame" class="btn btn-warning btn-block" >Pause</div>
-                <div id="drawGame" class="btn btn-warning btn-block " >Draw</div>
+                <div id="pauseGame" class="btn btn-warning btn-block" ng-click="showRepPause()" >Pause</div>
+                <div id="drawGame" class="btn btn-warning btn-block " ng-click="showRepDraw()" >Draw</div>
                 <div id="loseGame" class="btn btn-danger btn-block" >Lose</div>
                 <div id="quitGame" class="btn btn-danger btn-block" >Quit match</div>
                 <div id="listUser" class="btn btn-circle btn-block" ng-click="showListUser()" >List User</div>
