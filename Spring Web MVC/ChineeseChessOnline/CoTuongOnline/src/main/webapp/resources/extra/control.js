@@ -206,7 +206,7 @@ myApp.controller('MyAppController', function ($scope, $http) {
     $scope.yourMessage = "";
     $scope.titleOfChatConversation = "TO : ";
     $scope.countDown = 15;
-    $scope.opponent = {};
+    //$scope.opponent = {};
 
     /**
      * SHOW list user online
