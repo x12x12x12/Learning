@@ -267,53 +267,7 @@ myApp.controller('MyAppController', function ($scope, $http) {
         },1000);
 
     };
-    
-     /**
-     * Show Popup Rep Pause Game
-     **/
-     $scope.showRepPause = function () {
-        soundForClick.play();
-         $('#modalRepPause').modal({
-                backdrop: 'static',
-                keyboard: false
-            });
-        $('#modalRepPause').modal('show');
-        $scope.countDown=20;
-        var timeCountDown = setInterval(function(){
-            if($scope.countDown>0){
-                $scope.countDown--;
-                $scope.$apply();
-            }else{
-                clearInterval(timeCountDown);
-                $('#modalRepPause').modal("hide");
-                repPause(1);
-            }
-        },1000);
 
-    };
-     /**
-     * Show Popup Rep Draw Game
-     **/
-     $scope.showRepDraw = function () {
-        soundForClick.play();
-         $('#modalRepDraw').modal({
-                backdrop: 'static',
-                keyboard: false
-            });
-        $('#modalRepDraw').modal('show');
-        $scope.countDown=20;
-        var timeCountDown = setInterval(function(){
-            if($scope.countDown>0){
-                $scope.countDown--;
-                $scope.$apply();
-            }else{
-                clearInterval(timeCountDown);
-                $('#modalRepDraw').modal("hide");
-                repDrawGame(1);
-            }
-        },1000);
-
-    };
     /**
      * ADD friend with user in list user online
      **/
@@ -332,26 +286,67 @@ myApp.controller('MyAppController', function ($scope, $http) {
         repHandShake(1);
         soundForClick.play();
     };
-    
     /**
-     * ACCEPT | DECLINE Rep Pause from opponent
-     **/
+     +     * Show Popup Rep Pause Game
+     +     **/
+    $scope.showRepPause = function () {
+        soundForClick.play();
+        $('#modalRepPause').modal({
+            backdrop: 'static',
+            keyboard: false
+        });
+    $('#modalRepPause').modal('show');
+    $scope.countDown=20;
+    var timeCountDown = setInterval(function(){
+        if($scope.countDown>0){
+            $scope.countDown--;
+            $scope.$apply();
+        }else{
+            clearInterval(timeCountDown);
+            $('#modalRepPause').modal("hide");
+            repPause(1);
+        }
+    },1000);
+    };
+    /**
+      * Show Popup Rep Draw Game
+      **/
+    $scope.showRepDraw = function () {
+        soundForClick.play();
+        $('#modalRepDraw').modal({
+            backdrop: 'static',
+            keyboard: false
+        });
+        $('#modalRepDraw').modal('show');
+        $scope.countDown=20;
+        var timeCountDown = setInterval(function(){
+                if($scope.countDown>0){
+                        $scope.countDown--;
+                        $scope.$apply();
+                    }else{
+                        clearInterval(timeCountDown);
+                        $('#modalRepDraw').modal("hide");
+                        repDrawGame(1);
+                    }
+            },1000);
+
+    };
+    /**
+      * ACCEPT | DECLINE Rep Pause from opponent
+      **/
     $scope.modalRepPause=function(rep){
         repPause(rep);
     };
-    
-     /**
-     * ACCEPT | DECLINE Rep Draw from opponent
-     **/
+    /**
+      * ACCEPT | DECLINE Rep Draw from opponent
+      **/
     $scope.modalRepDraw=function(rep){
         repDrawGame(rep);
     };
-    
-     /**
-     * ACCEPT | DECLINE Rep Loose from opponent
-     **/
+    /**
+      * ACCEPT | DECLINE Rep Loose from opponent
+      **/
     $scope.modalRepLoose=function(rep){
-        
-    };
 
+    };
 });
