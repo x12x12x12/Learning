@@ -61,8 +61,8 @@ ws.onmessage = function (message) {
         case "REPNEWGAME":
             if (data[1] == "0") {
                 campOrder = 0;
-                //chessGame.mover=1;
                 chessGame.init();
+                chessGame.mover=0;
                 //movers=0;
             }else{
                 // the enemy decline to accept
@@ -123,6 +123,7 @@ function repNewGame(rep){
     if(rep=="0"){
         campOrder=1;
         chessGame.init();
+        chessGame.mover=1;
         //movers=1;
     }
     ws.send("REPNEWGAME-" + getEmailCurrentPlayer()+"-"+rep);
