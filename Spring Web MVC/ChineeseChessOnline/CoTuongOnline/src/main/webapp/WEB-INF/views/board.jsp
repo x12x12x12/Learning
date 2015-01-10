@@ -124,6 +124,72 @@
     </div>
 </div>
 <!--------------END :Popup for Accept challenge from opponent---------------------->
+
+<!--------------START: Popup for Rep Pause Game from opponent---------------------->
+<div class="modal fade" id="modalRepPause" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+     data-backdrop="static" data-keyboard="false" >
+    <div class="modal-dialog">
+        <div class="modal-content" align="center" style="height: 20vh; width: 80vh; margin-top: 40vh;">
+            <div class="modal-header" style="background-color: #5cb85c;">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">
+                    REP Pause Game From Opponent
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div align="center">
+                    <button class="btn btn-lg btn-primary" data-dismiss="modal" style="margin-right: 50px;"ng-click="modalRepPause(0)">Accept</button>
+                    <button class="btn btn-lg btn-danger" data-dismiss="modal" ng-click="modalRepPause(1)">Decline</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--------------END :Popup for Rep Pause Game from opponent---------------------->
+
+<!--------------START: Popup for Rep Draw Game from opponent---------------------->
+<div class="modal fade" id="modalRepDraw" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+     data-backdrop="static" data-keyboard="false" >
+    <div class="modal-dialog">
+        <div class="modal-content" align="center" style="height: 20vh; width: 80vh; margin-top: 40vh;">
+            <div class="modal-header" style="background-color: #5cb85c;">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">
+                    REP Draw Game From Opponent
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div align="center">
+                    <button class="btn btn-lg btn-primary" data-dismiss="modal" style="margin-right: 50px;"ng-click="modalRepDraw(0)">Accept</button>
+                    <button class="btn btn-lg btn-danger" data-dismiss="modal" ng-click="modalRepDraw(1)">Decline</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--------------END :Popup for Rep Draw Game from opponent---------------------->
+
+<!--------------START: Popup for Rep Loose Game from opponent---------------------->
+<div class="modal fade" id="modalRepLoose" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+     data-backdrop="static" data-keyboard="false" >
+    <div class="modal-dialog">
+        <div class="modal-content" align="center" style="height: 20vh; width: 80vh; margin-top: 40vh;">
+            <div class="modal-header" style="background-color: #5cb85c;">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">
+                    REP Loose Game From Opponent
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div align="center">
+                    <button class="btn btn-lg btn-primary" data-dismiss="modal" style="margin-right: 50px;"ng-click="modalRepLoose(0)">Accept</button>
+                    <button class="btn btn-lg btn-danger" data-dismiss="modal" ng-click="modalRepLoose(1)">Decline</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--------------END :Popup for Rep Loose Game from opponent---------------------->
 <div><input type="hidden"/></div>
 <div id="enemy_data">
 
