@@ -62,8 +62,8 @@ ws.onmessage = function (message) {
             if (data[1] == "0") {
                 campOrder = 0;
                 //chessGame.mover=1;
-                //movers=0;
                 chessGame.init();
+                //movers=0;
             }else{
                 // the enemy decline to accept
             }
@@ -122,9 +122,8 @@ function requestNewGame(){
 function repNewGame(rep){
     if(rep=="0"){
         campOrder=1;
-        movers=1;
-        //chessGame.mover=
         chessGame.init();
+        //movers=1;
     }
     ws.send("REPNEWGAME-" + getEmailCurrentPlayer()+"-"+rep);
 }
