@@ -125,6 +125,132 @@
     </div>
 </div>
 <!--------------END :Popup for Accept challenge from opponent---------------------->
+
+<!--------------START: Popup for Waiting opponent  REP PAUSE---------------------->
+<div class="modal fade" id="modalWaitingRepPause" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" align="center" style="height: 20vh; width: 80vh; margin-top: 40vh;">
+            <div class="modal-header" style="background-color: #5cb85c;">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">
+                    Waiting For Opponent REP PAUSE
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div align="center">
+                    <button class="btn btn-lg btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--------------END :Popup for Waiting opponent REP PAUSE---------------------->
+
+<!--------------START: Popup for REP PAUSE---------------------->
+<div class="modal fade" id="modalRepPause" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+     data-backdrop="static" data-keyboard="false" >
+    <div class="modal-dialog">
+        <div class="modal-content" align="center" style="height: 20vh; width: 80vh; margin-top: 40vh;">
+            <div class="modal-header" style="background-color: #5cb85c;">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">
+                    Accept Request PAUSE
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div align="center">
+                    <button class="btn btn-lg btn-primary" data-dismiss="modal" style="margin-right: 50px;"ng-click="modalRepPause(0)">Accept</button>
+                    <button class="btn btn-lg btn-danger" data-dismiss="modal" ng-click="modalRepPause(1)">Decline</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--------------END : Popup for REP PAUSEt---------------------->
+
+<!--------------START: Popup for Waiting opponent  REP DRAW---------------------->
+<div class="modal fade" id="modalWaitingRepDraw" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" align="center" style="height: 20vh; width: 80vh; margin-top: 40vh;">
+            <div class="modal-header" style="background-color: #5cb85c;">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">
+                    Waiting For Opponent REP DRAW
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div align="center">
+                    <button class="btn btn-lg btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--------------END :Popup for Waiting opponent REP DRAW---------------------->
+
+<!--------------START: Popup for REP DRAW---------------------->
+<div class="modal fade" id="modalRepDraw" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+     data-backdrop="static" data-keyboard="false" >
+    <div class="modal-dialog">
+        <div class="modal-content" align="center" style="height: 20vh; width: 80vh; margin-top: 40vh;">
+            <div class="modal-header" style="background-color: #5cb85c;">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">
+                    Accept Request DRAW
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div align="center">
+                    <button class="btn btn-lg btn-primary" data-dismiss="modal" style="margin-right: 50px;"ng-click="modalRepDraw(0)">Accept</button>
+                    <button class="btn btn-lg btn-danger" data-dismiss="modal" ng-click="modalRepDraw(1)">Decline</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--------------END : Popup for REP DRAW---------------------->
+
+<!--------------START: Popup for Waiting opponent  REP LOOSE---------------------->
+<div class="modal fade" id="modalWaitingRepLoose" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" align="center" style="height: 20vh; width: 80vh; margin-top: 40vh;">
+            <div class="modal-header" style="background-color: #5cb85c;">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">
+                    You're Loose!'
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div align="center">
+                    <button class="btn btn-lg btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--------------END :Popup for Waiting opponent REP LOOSE---------------------->
+
+<!--------------START: Popup for REP LOOSE---------------------->
+<div class="modal fade" id="modalRepLoose" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" align="center" style="height: 20vh; width: 80vh; margin-top: 40vh;">
+            <div class="modal-header" style="background-color: #5cb85c;">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">
+                    You're Win!'
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div align="center">
+                    <button class="btn btn-lg btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--------------END :Popup REP LOOSE---------------------->
+
+
 <div><input type="hidden"/></div>
 <div id="enemy_data">
 
