@@ -1,9 +1,10 @@
 var myApp = angular.module('myApp', []);
+var chessGame = new ChessGame("board");
+var ws = new WebSocket("ws://localhost:8080/game");
 var soundForClick = null;
 var email;
 var myBoard;
-var chessGame = new ChessGame("board");
-var ws = new WebSocket("ws://localhost:8080/game");
+lockControlButton(0,1,1,1,1);
 
 ws.onopen = function (message) {
     email = user_data.email;
@@ -36,28 +37,6 @@ ws.onmessage = function (message) {
                 $('#modalWaitingAcceptChallenge').modal('hide');
             }
             break;
-        case "REQPAUSE":
-            $('#modalRepPause').modal({
-                backdrop: 'static',
-                keyboard: false
-            });
-            $('#modalRepPause').modal('show');
-            break;
-        case "REPPAUSE":
-            if (data[1] == "0") {
-                chessGame.lockChess();
-            }else{
-                alert("Decline pause");
-            }
-            $('#modalWaitingRepPause').modal('hide');
-            break;
-        case "REPUNPAUSE":
-            if (data[1] == "0") {
-                chessGame.lockChess();
-            }else{
-                alert("Decline unpause");
-            }
-            break;
         case "REQNEWGAME":
             $('#modalRepNewGame').modal({
                 backdrop: 'static',
@@ -70,9 +49,42 @@ ws.onmessage = function (message) {
                 campOrder = 0;
                 chessGame.init();
                 chessGame.mover=0;
+                lockControlButton(1,0,1,0,0);
             }else{
-                // the enemy decline to accept
+                lockControlButton(0,1,1,1,1);
             }
+            break;
+        case "REQPAUSE":
+            $('#modalRepPause').modal({
+                backdrop: 'static',
+                keyboard: false
+            });
+            $('#modalRepPause').modal('show');
+            break;
+        case "REPPAUSE":
+            if (data[1] == "0") {
+                chessGame.lockChess();
+                lockControlButton(1,1,0,0,0);
+            }else{
+                alert("Decline pause");
+            }
+            $('#modalWaitingRepPause').modal('hide');
+            break;
+        case "REQUNPAUSE":
+            $('#modalRepUnPause').modal({
+                backdrop: 'static',
+                keyboard: false
+            });
+            $('#modalRepUnPause').modal('show');
+            break;
+        case "REPUNPAUSE":
+            if (data[1] == "0") {
+                chessGame.lockChess();
+                lockControlButton(1,0,1,0,0);
+            }else{
+                alert("Decline unpause");
+            }
+            $('#modalWaitingRepUnPause').modal('hide');
             break;
         case "REQDRAW":
             $('#modalRepDraw').modal({
@@ -85,13 +97,15 @@ ws.onmessage = function (message) {
             if (data[1] == "0") {
                 chessGame.lockChess();
                 alert("Draw ! No point for this match ");
+                lockControlButton(0,1,1,1,1);
             }else{
                 alert("Your enemy decline to draw ");
             }
             $('#modalWaitingRepDraw').modal('hide');
             break;
         case "LOSE":
-            alert("User "+data[1]+ "accept lose");
+            alert("User "+data[1]+ " accept lose");
+            lockControlButton(0,1,1,1,1);
             chessGame.lockChess();
             break;
         case "PLAY":
@@ -115,6 +129,7 @@ ws.onmessage = function (message) {
             document.getElementById("talks").scrollTop = document.getElementById("talks").scrollHeight;
             soundForClick.play();
             break;
+
         default :
             break;
     }
@@ -151,6 +166,7 @@ function repPause(rep){
     if(rep==0){
         //accept request pause => lock chess board.
         chessGame.lockChess();
+        lockControlButton(1,1,0,0,0,0);
     }
     ws.send("REPPAUSE-" + getEmailCurrentPlayer()+"-"+rep);
 }
@@ -163,6 +179,7 @@ function repUnPause(rep){
     if(rep==0){
         //accept request un pause => unlock chess board.
         chessGame.lockChess();
+        lockControlButton(1,0,1,0,0,0);
     }
     ws.send("REPUNPAUSE-" + getEmailCurrentPlayer()+"-"+rep);
 }
@@ -170,6 +187,7 @@ function repUnPause(rep){
 function acceptLose() {
     ws.send("LOSE-" + getEmailCurrentPlayer());
     chessGame.lockChess();
+    lockControlButton(0,1,1,1,1,0);
 }
 
 function requestDrawGame() {
@@ -180,6 +198,7 @@ function repDrawGame(rep){
     if(rep==0){
         //accept request draw => lock chess board.
         chessGame.lockChess();
+        lockControlButton(0,1,1,1,1,0);
     }
     ws.send("REPDRAW-" +getEmailCurrentPlayer()+"-"+rep);
 }
@@ -207,6 +226,40 @@ function getListUserOnline(){
         scope.userOnline = result;
         scope.$apply();
     });
+}
+
+function lockControlButton(btn_newgame,btn_pause,btn_unpause,btn_draw,btn_lose){
+   // 0 : unlock ,1 : lock
+    if(btn_newgame==0){
+
+    }
+    if(btn_newgame==1){
+
+    }
+    if(btn_pause==0){
+
+    }
+    if(btn_pause==1){
+
+    }
+    if(btn_unpause==0){
+
+    }
+    if(btn_unpause==1){
+
+    }
+    if(btn_draw==0){
+
+    }
+    if(btn_draw==1){
+
+    }
+    if(btn_lose==0){
+
+    }
+    if(btn_lose==1){
+
+    }
 }
 
 myApp.controller('MyAppController', function ($scope, $http) {
@@ -340,7 +393,7 @@ myApp.controller('MyAppController', function ($scope, $http) {
         });
         $scope.countDown=20;
         $('#modalWaitingRepUnPause').modal('show');
-        requestPause();
+        requestUnPause();
         var timeCountDown = setInterval(function(){
             if($scope.countDown>0){
                 $scope.countDown--;

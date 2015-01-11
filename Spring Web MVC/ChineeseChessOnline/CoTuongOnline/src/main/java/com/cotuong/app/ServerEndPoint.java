@@ -115,10 +115,10 @@ public class ServerEndPoint {
 				break;
 			case "REQPAUSE":
 				/**
-				 * User A request pause game to user B
+				 * User A request unpause game to user B
 				 * User A : Send "REQPAUSE-ID_B"
 				 * Server : Find ID_B in list_user -> session of user's B -> send to B
-				 * User B : Receive "REQPAUSE-ID_A"
+				 * User B : Receive "REQUNPAUSE-ID_A"
 				 */
 				checkAndSendMsgToUser(data,session,"REQPAUSE-|-");
 				break;
@@ -131,9 +131,31 @@ public class ServerEndPoint {
 				 * 		+ Decline : 1
 				 *  - ID_A 	: Session id of player to response the request handshake
 				 * Server : Find ID_A in list_user -> session of user's A -> send to A
-				 * User A : Receive "REPPAUSE-BOOL-ID_B"
+				 * User A : Receive "REPUNPAUSE-BOOL-ID_B"
 				 */
 				checkAndSendMsgToUser(data,session,"REPPAUSE-|-"+data[2]+"-|-");
+				break;
+			case "REQUNPAUSE":
+				/**
+				 * User A request pause game to user B
+				 * User A : Send "REQPAUSE-ID_B"
+				 * Server : Find ID_B in list_user -> session of user's B -> send to B
+				 * User B : Receive "REQPAUSE-ID_A"
+				 */
+				checkAndSendMsgToUser(data,session,"REQUNPAUSE-|-");
+				break;
+			case "REPUNPAUSE":
+				/**
+				 * User B reply unpause or not
+				 * User B : Send "REPPAUSE-ID_A-BOOL"
+				 *  - BOOL
+				 * 		+ Accept  : 0
+				 * 		+ Decline : 1
+				 *  - ID_A 	: Session id of player to response the request handshake
+				 * Server : Find ID_A in list_user -> session of user's A -> send to A
+				 * User A : Receive "REPPAUSE-BOOL-ID_B"
+				 */
+				checkAndSendMsgToUser(data,session,"REPUNPAUSE-|-"+data[2]+"-|-");
 				break;
 			case "REQNEWGAME":
 				/**
@@ -211,7 +233,6 @@ public class ServerEndPoint {
 				 }
 				break;
 			case "PLAY":
-//				System.out.println(data[2]);
 				String [] emails = data[1].split(",");
 				String enemy_session_id=findUserSession(emails[0]);
 				for(Session session_1 : list){
