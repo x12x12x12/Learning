@@ -22,42 +22,42 @@
         <div class="row">
             <div class="col-md-6">
                 <div id="newGame" class="btn btn-primary btn-block" >New Game</div>
-                <div id="pauseGame" class="btn btn-success btn-block" ng-click="showRepPause()">Pause</div>
-                <div id="drawGame" class="btn btn-warning btn-block " ng-click="showRepDraw()">Draw</div>
+                <div id="pauseGame" class="btn btn-success btn-block" ng-click="sendReqPause()">Pause</div>
+                <div id="drawGame" class="btn btn-warning btn-block " ng-click="sendReqDraw()">Draw</div>
                 <div id="loseGame" class="btn btn-danger btn-block" >Lose</div>
                 <div id="quitGame" class="btn btn-danger btn-block" >Quit match</div>
                 <div id="listUser" class="btn btn-success btn-block" ng-click="showListUser()" >List User</div>
-             </div>
-             <div class="col-md-6" style="height: 200px; border: solid 1px; float: right;" ng-show="opponent" ng-animate="{show: 'fadeIn', hide:'fadeOut'}">
-                 <div style="font-weight: bold" align="center">Your Opponent</div>
-                 <img src="{{opponent.img_url}}" style="border-radius: 2px;" height="50%;"/>
-                 <div ng-bind="opponent.name" align="center" style="font-weight: bold"></div>
-                 <div ng-bind-template="Score: {{opponent.point}}" style="font-weight: bold"></div>
-             </div>
-         </div>
-         <br/>
-         <div class="row">
-             <div class="conversation">
-                 <div class="title">
-                     <div style="font-weight: bold;" ng-bind="titleOfChatConversation">
-                     </div>
-                 </div>
-                 <div id="talks">
-                     <div ng-repeat="message in messages track by $index" ng-bind="message.text" class="bubble"
-                          ng-class="{'bubble--alt':message.yours==false}">
-                     </div>
-                 </div>
-                 <div class="send-message">
-                     <input type="text" class="write-message" placeholder="Write Message ..." ng-model="yourMessage"
-                            ng-keypress="sendMessage($event)">
-                 </div>
-             </div>
-         </div>
-     </div>
- </div>
+            </div>
+            <div class="col-md-6" style="height: 200px; border: solid 1px; float: right;" ng-show="opponent" ng-animate="{show: 'fadeIn', hide:'fadeOut'}">
+                <div style="font-weight: bold" align="center">Your Opponent</div>
+                <img src="{{opponent.img_url}}" style="border-radius: 2px;" height="50%;"/>
+                <div ng-bind="opponent.name" align="center" style="font-weight: bold"></div>
+                <div ng-bind-template="Score: {{opponent.point}}" style="font-weight: bold"></div>
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="conversation">
+                <div class="title">
+                    <div style="font-weight: bold;" ng-bind="titleOfChatConversation">
+                    </div>
+                </div>
+                <div id="talks">
+                    <div ng-repeat="message in messages track by $index" ng-bind="message.text" class="bubble"
+                         ng-class="{'bubble--alt':message.yours==false}">
+                    </div>
+                </div>
+                <div class="send-message">
+                    <input type="text" class="write-message" placeholder="Write Message ..." ng-model="yourMessage"
+                           ng-keypress="sendMessage($event)">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
- <!--------------START: Popup show user online---------------------->
+<!--------------START: Popup show user online---------------------->
 <div class="modal fade" id="modalListUser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content" style="height: 100vh; width: 150%; margin-left: -22%; overflow-y: scroll;" >
@@ -146,6 +146,28 @@
 </div>
 <!--------------END :Popup for Waiting opponent REP PAUSE---------------------->
 
+<!--------------START: Popup for REP NEW GAME---------------------->
+<div class="modal fade" id="modalRepNewGame" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+     data-backdrop="static" data-keyboard="false" >
+    <div class="modal-dialog">
+        <div class="modal-content" align="center" style="height: 20vh; width: 80vh; margin-top: 40vh;">
+            <div class="modal-header" style="background-color: #5cb85c;">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">
+                    Accept game with  ?
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div align="center">
+                    <button class="btn btn-lg btn-primary" data-dismiss="modal" style="margin-right: 50px;"ng-click="modalRepNewGame(0)">Accept</button>
+                    <button class="btn btn-lg btn-danger" data-dismiss="modal" ng-click="modalRepNewGame(1)">Decline</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--------------END : Popup for REP NEW GAME---------------------->
+
 <!--------------START: Popup for REP PAUSE---------------------->
 <div class="modal fade" id="modalRepPause" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
      data-backdrop="static" data-keyboard="false" >
@@ -166,7 +188,7 @@
         </div>
     </div>
 </div>
-<!--------------END : Popup for REP PAUSEt---------------------->
+<!--------------END : Popup for REP PAUSE---------------------->
 
 <!--------------START: Popup for Waiting opponent  REP DRAW---------------------->
 <div class="modal fade" id="modalWaitingRepDraw" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
