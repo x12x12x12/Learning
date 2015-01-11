@@ -330,6 +330,29 @@ myApp.controller('MyAppController', function ($scope, $http) {
     };
 
     /**
+     * Send Request UNPAUSE game
+     **/
+    $scope.sendReqUnPause = function () {
+        soundForClick.play();
+        $('#modalWaitingRepUnPause').modal({
+            backdrop: 'static',
+            keyboard: false
+        });
+        $scope.countDown=20;
+        $('#modalWaitingRepUnPause').modal('show');
+        requestPause();
+        var timeCountDown = setInterval(function(){
+            if($scope.countDown>0){
+                $scope.countDown--;
+                $scope.$apply();
+            }else{
+                clearInterval(timeCountDown);
+                $('#modalWaitingRepUnPause').modal('hide');
+            }
+        },1000);
+    };
+
+    /**
      * Send Request DRAW game
      **/
     $scope.sendReqDraw = function () {
@@ -364,6 +387,12 @@ myApp.controller('MyAppController', function ($scope, $http) {
      **/
     $scope.modalRepPause=function(rep){
         repPause(rep);
+    };
+    /**
+     * ACCEPT | DECLINE Rep UnPause from opponent
+     **/
+    $scope.modalRepUnPause=function(rep){
+        repUnPause(rep);
     };
     /**
      * ACCEPT | DECLINE Rep Draw from opponent
