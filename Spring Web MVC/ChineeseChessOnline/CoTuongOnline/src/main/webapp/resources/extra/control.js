@@ -39,6 +39,12 @@ ws.onmessage = function (message) {
         case "REQPAUSE":
             alert("Request pause");
             repPause(1);
+            
+            $('#modalRepPause').modal({
+                backdrop: 'static',
+                keyboard: false
+            });
+            $('#modalRepPause').modal('show');
             break;
         case "REPPAUSE":
             if (data[1] == "0") {
@@ -46,6 +52,8 @@ ws.onmessage = function (message) {
             }else{
                 alert("Decline pause");
             }
+            
+            $('#modalWaitingRepPause').modal('hide');
             break;
         case "REPUNPAUSE":
             if (data[1] == "0") {
@@ -71,9 +79,17 @@ ws.onmessage = function (message) {
         case "REQDRAW":
             alert("User request draw game");
             repDrawGame(1);
+            
+            $('#modalRepDraw').modal({
+                backdrop: 'static',
+                keyboard: false
+            });
+            $('#modalRepDraw').modal('show');
             break;
         case "REPDRAW":
             alert("User rep draw game "+data[1]);
+            
+            $('#modalWaitingRepDraw').modal('hide');
             break;
         case "LOSE":
             alert("User "+data[1]+ "accept lose");
@@ -286,54 +302,56 @@ myApp.controller('MyAppController', function ($scope, $http) {
         repHandShake(1);
         soundForClick.play();
     };
+    
     /**
-     +     * Show Popup Rep Pause Game
-     +     **/
-    $scope.showRepPause = function () {
+    * Send Request PAUSE game
+    **/
+    $scope.sendReqPause = function () {
         soundForClick.play();
-        $('#modalRepPause').modal({
-            backdrop: 'static',
-            keyboard: false
-        });
-    $('#modalRepPause').modal('show');
-    $scope.countDown=20;
-    var timeCountDown = setInterval(function(){
-        if($scope.countDown>0){
-            $scope.countDown--;
-            $scope.$apply();
-        }else{
-            clearInterval(timeCountDown);
-            $('#modalRepPause').modal("hide");
-            repPause(1);
-        }
-    },1000);
-    };
-    /**
-      * Show Popup Rep Draw Game
-      **/
-    $scope.showRepDraw = function () {
-        soundForClick.play();
-        $('#modalRepDraw').modal({
-            backdrop: 'static',
-            keyboard: false
-        });
-        $('#modalRepDraw').modal('show');
+         $('#modalWaitingRepPause').modal({
+                backdrop: 'static',
+                keyboard: false
+            });
+        $('#modalWaitingRepPause').modal("show");
         $scope.countDown=20;
+        requestPause();
         var timeCountDown = setInterval(function(){
-                if($scope.countDown>0){
-                        $scope.countDown--;
-                        $scope.$apply();
-                    }else{
-                        clearInterval(timeCountDown);
-                        $('#modalRepDraw').modal("hide");
-                        repDrawGame(1);
-                    }
-            },1000);
-
+            if($scope.countDown>0){
+                $scope.countDown--;
+                $scope.$apply();
+            }else{
+                clearInterval(timeCountDown);
+                $('#modalWaitingRepPause').modal("hide");
+            }
+        },1000);
     };
+    
     /**
-      * ACCEPT | DECLINE Rep Pause from opponent
-      **/
+    * Send Request DRAW game
+    **/
+    $scope.sendReqDraw = function () {
+        soundForClick.play();
+         $('#modalWaitingRepDraw').modal({
+                backdrop: 'static',
+                keyboard: false
+            });
+        $('#modalWaitingRepDraw').modal("show");
+        $scope.countDown=20;
+        requestDrawGame();
+        var timeCountDown = setInterval(function(){
+            if($scope.countDown>0){
+                $scope.countDown--;
+                $scope.$apply();
+            }else{
+                clearInterval(timeCountDown);
+                $('#modalWaitingRepDraw').modal("hide");
+            }
+        },1000);
+    };
+    
+    /**
+    * ACCEPT | DECLINE Rep Pause from opponent
+    **/
     $scope.modalRepPause=function(rep){
         repPause(rep);
     };
