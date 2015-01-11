@@ -37,9 +37,6 @@ ws.onmessage = function (message) {
             }
             break;
         case "REQPAUSE":
-            alert("Request pause");
-            repPause(1);
-            
             $('#modalRepPause').modal({
                 backdrop: 'static',
                 keyboard: false
@@ -52,7 +49,6 @@ ws.onmessage = function (message) {
             }else{
                 alert("Decline pause");
             }
-            
             $('#modalWaitingRepPause').modal('hide');
             break;
         case "REPUNPAUSE":
@@ -63,23 +59,22 @@ ws.onmessage = function (message) {
             }
             break;
         case "REQNEWGAME":
-            alert("req new game");
-            repNewGame(0); // accept, 1 : decline
+            $('#modalRepNewGame').modal({
+                backdrop: 'static',
+                keyboard: false
+            });
+            $('#modalRepNewGame').modal('show');
             break;
         case "REPNEWGAME":
             if (data[1] == "0") {
                 campOrder = 0;
                 chessGame.init();
                 chessGame.mover=0;
-                //movers=0;
             }else{
                 // the enemy decline to accept
             }
             break;
         case "REQDRAW":
-            alert("User request draw game");
-            repDrawGame(1);
-            
             $('#modalRepDraw').modal({
                 backdrop: 'static',
                 keyboard: false
@@ -88,7 +83,6 @@ ws.onmessage = function (message) {
             break;
         case "REPDRAW":
             alert("User rep draw game "+data[1]);
-            
             $('#modalWaitingRepDraw').modal('hide');
             break;
         case "LOSE":
@@ -140,10 +134,10 @@ function repNewGame(rep){
         campOrder=1;
         chessGame.init();
         chessGame.mover=1;
-        //movers=1;
     }
     ws.send("REPNEWGAME-" + getEmailCurrentPlayer()+"-"+rep);
 }
+
 function requestPause() {
     ws.send("REQPAUSE-" + getEmailCurrentPlayer());
 }
@@ -302,18 +296,18 @@ myApp.controller('MyAppController', function ($scope, $http) {
         repHandShake(1);
         soundForClick.play();
     };
-    
+
     /**
-    * Send Request PAUSE game
-    **/
+     * Send Request PAUSE game
+     **/
     $scope.sendReqPause = function () {
         soundForClick.play();
-         $('#modalWaitingRepPause').modal({
-                backdrop: 'static',
-                keyboard: false
-            });
-        $('#modalWaitingRepPause').modal("show");
+        $('#modalWaitingRepPause').modal({
+            backdrop: 'static',
+            keyboard: false
+        });
         $scope.countDown=20;
+        $('#modalWaitingRepPause').modal('show');
         requestPause();
         var timeCountDown = setInterval(function(){
             if($scope.countDown>0){
@@ -321,22 +315,22 @@ myApp.controller('MyAppController', function ($scope, $http) {
                 $scope.$apply();
             }else{
                 clearInterval(timeCountDown);
-                $('#modalWaitingRepPause').modal("hide");
+                $('#modalWaitingRepPause').modal('hide');
             }
         },1000);
     };
-    
+
     /**
-    * Send Request DRAW game
-    **/
+     * Send Request DRAW game
+     **/
     $scope.sendReqDraw = function () {
         soundForClick.play();
-         $('#modalWaitingRepDraw').modal({
-                backdrop: 'static',
-                keyboard: false
-            });
-        $('#modalWaitingRepDraw').modal("show");
+        $('#modalWaitingRepDraw').modal({
+            backdrop: 'static',
+            keyboard: false
+        });
         $scope.countDown=20;
+        $('#modalWaitingRepDraw').modal('show');
         requestDrawGame();
         var timeCountDown = setInterval(function(){
             if($scope.countDown>0){
@@ -344,26 +338,33 @@ myApp.controller('MyAppController', function ($scope, $http) {
                 $scope.$apply();
             }else{
                 clearInterval(timeCountDown);
-                $('#modalWaitingRepDraw').modal("hide");
+                $('#modalWaitingRepDraw').modal('hide');
             }
         },1000);
     };
-    
+
     /**
-    * ACCEPT | DECLINE Rep Pause from opponent
-    **/
+     * ACCEPT | DECLINE Rep Pause from opponent
+     **/
+    $scope.modalRepNewGame=function(rep){
+        repNewGame(rep);
+    };
+
+    /**
+     * ACCEPT | DECLINE Rep Pause from opponent
+     **/
     $scope.modalRepPause=function(rep){
         repPause(rep);
     };
     /**
-      * ACCEPT | DECLINE Rep Draw from opponent
-      **/
+     * ACCEPT | DECLINE Rep Draw from opponent
+     **/
     $scope.modalRepDraw=function(rep){
         repDrawGame(rep);
     };
     /**
-      * ACCEPT | DECLINE Rep Loose from opponent
-      **/
+     * ACCEPT | DECLINE Rep Loose from opponent
+     **/
     $scope.modalRepLoose=function(rep){
 
     };
