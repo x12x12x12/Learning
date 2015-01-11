@@ -82,7 +82,12 @@ ws.onmessage = function (message) {
             $('#modalRepDraw').modal('show');
             break;
         case "REPDRAW":
-            alert("User rep draw game "+data[1]);
+            if (data[1] == "0") {
+                chessGame.lockChess();
+                alert("Draw ! No point for this match ");
+            }else{
+                alert("Your enemy decline to draw ");
+            }
             $('#modalWaitingRepDraw').modal('hide');
             break;
         case "LOSE":
@@ -172,6 +177,10 @@ function requestDrawGame() {
 }
 
 function repDrawGame(rep){
+    if(rep==0){
+        //accept request draw => lock chess board.
+        chessGame.lockChess();
+    }
     ws.send("REPDRAW-" +getEmailCurrentPlayer()+"-"+rep);
 }
 

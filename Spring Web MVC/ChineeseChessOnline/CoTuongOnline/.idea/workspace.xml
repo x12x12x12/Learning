@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list id="e8621721-671f-4392-a7a0-2436a85c7c1b" name="Default file change" comment="Update" />
     <list default="true" id="ddae989a-52ea-4672-b5c9-dabfc5388644" name="Core change" comment="Core change">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/board.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/board.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/extra/control.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/extra/control.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -58,14 +57,19 @@
               <file leaf-file-name="control.js" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/extra/control.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state vertical-scroll-proportion="0.5523012" vertical-offset="5238" max-vertical-offset="6246">
-                      <caret line="342" column="16" selection-start-line="0" selection-start-column="0" selection-end-line="370" selection-end-column="3" />
+                    <state vertical-scroll-proportion="0.8800558" vertical-offset="5237" max-vertical-offset="6120">
+                      <caret line="371" column="25" selection-start-line="371" selection-start-column="25" selection-end-line="371" selection-end-column="25" />
                       <folding>
                         <element signature="n#!!block;n#requestHandShake#0" expanded="false" />
                         <element signature="n#!!block;n#repHandShake#0" expanded="false" />
                         <element signature="n#!!block;n#requestNewGame#0" expanded="false" />
                         <element signature="n#!!block;n#repNewGame#0" expanded="false" />
                         <element signature="n#!!block;n#requestPause#0" expanded="false" />
+                        <element signature="n#!!block;n#requestUnPause#0" expanded="false" />
+                        <element signature="n#!!block;n#repUnPause#0" expanded="false" />
+                        <element signature="n#!!block;n#acceptLose#0" expanded="false" />
+                        <element signature="n#!!block;n#requestDrawGame#0" expanded="false" />
+                        <element signature="n#!!block;n#getEmailCurrentPlayer#0" expanded="false" />
                         <element signature="n#!!block;n#playerMove#0" expanded="false" />
                         <element signature="n#!!block;n#sendChat#0" expanded="false" />
                         <element signature="n#!!block;n#getListUserOnline#0" expanded="false" />
@@ -81,8 +85,8 @@
               <file leaf-file-name="board.jsp" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/board.jsp">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state vertical-scroll-proportion="0.39130434" vertical-offset="324" max-vertical-offset="5580">
-                      <caret line="33" column="42" selection-start-line="0" selection-start-column="0" selection-end-line="304" selection-end-column="7" />
+                    <state vertical-scroll-proportion="0.57391304" vertical-offset="594" max-vertical-offset="5598">
+                      <caret line="55" column="9" selection-start-line="55" selection-start-column="9" selection-end-line="55" selection-end-column="9" />
                       <folding />
                     </state>
                   </provider>
@@ -1103,26 +1107,6 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Remote" ALTERNATIVE_JRE_ENABLED="false">
-      <option name="LOCAL" value="false" />
-      <deployment />
-      <server-settings>
-        <data>
-          <option name="transportHostId" />
-        </data>
-      </server-settings>
-      <predefined_log_file id="Tomcat" enabled="true" />
-      <predefined_log_file id="TOMCAT_LOCALHOST_LOG_ID" enabled="true" />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="50604" />
-        <option name="TRANSPORT" value="0" />
-        <option name="LOCAL" value="false" />
-      </RunnerSettings>
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Debug" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
       <module name="" />
       <option name="ACTIVITY_CLASS" value="" />
@@ -1141,6 +1125,26 @@
       <option name="CLEAR_LOGCAT" value="false" />
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
       <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Remote" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="LOCAL" value="false" />
+      <deployment />
+      <server-settings>
+        <data>
+          <option name="transportHostId" />
+        </data>
+      </server-settings>
+      <predefined_log_file id="Tomcat" enabled="true" />
+      <predefined_log_file id="TOMCAT_LOCALHOST_LOG_ID" enabled="true" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="50604" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="false" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
+      <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
     <configuration default="false" name="Tomcat Co Tuong" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 7.0.57" ALTERNATIVE_JRE_ENABLED="false" ALTERNATIVE_JRE_PATH="">
@@ -1330,7 +1334,8 @@
       <workItem from="1420879032373" duration="7316000" />
       <workItem from="1420887461754" duration="4402000" />
       <workItem from="1420896114984" duration="9873000" />
-      <workItem from="1420946873438" duration="2675000" />
+      <workItem from="1420946873438" duration="2722000" />
+      <workItem from="1420949649269" duration="455000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1417370978988</created>
@@ -1590,11 +1595,17 @@
       <option name="project" value="LOCAL" />
       <updated>1420904354120</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="Core change">
+      <created>1420949569366</created>
+      <option name="number" value="00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1420949569366</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="233188000" />
+    <option name="totallyTimeSpent" value="233690000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1847,7 +1858,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.9500805" vertical-offset="4" max-vertical-offset="4248">
           <caret line="33" column="34" selection-start-line="33" selection-start-column="34" selection-end-line="33" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2052,22 +2062,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/board.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.39130434" vertical-offset="324" max-vertical-offset="5580">
-          <caret line="33" column="42" selection-start-line="0" selection-start-column="0" selection-end-line="304" selection-end-column="7" />
+        <state vertical-scroll-proportion="0.57391304" vertical-offset="594" max-vertical-offset="5598">
+          <caret line="55" column="9" selection-start-line="55" selection-start-column="9" selection-end-line="55" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/extra/control.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5523012" vertical-offset="5238" max-vertical-offset="6246">
-          <caret line="342" column="16" selection-start-line="0" selection-start-column="0" selection-end-line="370" selection-end-column="3" />
+        <state vertical-scroll-proportion="0.8800558" vertical-offset="5237" max-vertical-offset="6120">
+          <caret line="371" column="25" selection-start-line="371" selection-start-column="25" selection-end-line="371" selection-end-column="25" />
           <folding>
             <element signature="n#!!block;n#requestHandShake#0" expanded="false" />
             <element signature="n#!!block;n#repHandShake#0" expanded="false" />
             <element signature="n#!!block;n#requestNewGame#0" expanded="false" />
             <element signature="n#!!block;n#repNewGame#0" expanded="false" />
             <element signature="n#!!block;n#requestPause#0" expanded="false" />
+            <element signature="n#!!block;n#requestUnPause#0" expanded="false" />
+            <element signature="n#!!block;n#repUnPause#0" expanded="false" />
+            <element signature="n#!!block;n#acceptLose#0" expanded="false" />
+            <element signature="n#!!block;n#requestDrawGame#0" expanded="false" />
+            <element signature="n#!!block;n#getEmailCurrentPlayer#0" expanded="false" />
             <element signature="n#!!block;n#playerMove#0" expanded="false" />
             <element signature="n#!!block;n#sendChat#0" expanded="false" />
             <element signature="n#!!block;n#getListUserOnline#0" expanded="false" />
