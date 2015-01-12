@@ -1,9 +1,7 @@
 var myApp = angular.module('myApp', []);
 var chessGame = new ChessGame("board");
 var ws = new WebSocket("ws://localhost:8080/game");
-var soundForClick = null;
-var email;
-var myBoard;
+var soundForClick,email,myBoard,counter;
 lockControlButton(0,1,1,1,1);
 
 ws.onopen = function (message) {
@@ -28,6 +26,7 @@ ws.onmessage = function (message) {
                 keyboard: false
             });
             $('#modalAcceptChallenge').modal('show');
+            //countDown(15,"#modalRepPause","timerREQPAUSE");
             break;
         case "REPHANDSHAKE":
             if (data[1] == "0") {
@@ -43,6 +42,7 @@ ws.onmessage = function (message) {
                 keyboard: false
             });
             $('#modalRepNewGame').modal('show');
+            //countDown(15,"#modalRepPause","timerREQPAUSE");
             break;
         case "REPNEWGAME":
             if (data[1] == "0") {
@@ -60,6 +60,7 @@ ws.onmessage = function (message) {
                 keyboard: false
             });
             $('#modalRepPause').modal('show');
+            countDown(15,"#modalRepPause","timerREQPAUSE");
             break;
         case "REPPAUSE":
             if (data[1] == "0") {
@@ -69,6 +70,7 @@ ws.onmessage = function (message) {
                 alert("Decline pause");
             }
             $('#modalWaitingRepPause').modal('hide');
+            clearInterval(counter);
             break;
         case "REQUNPAUSE":
             $('#modalRepUnPause').modal({
@@ -76,6 +78,7 @@ ws.onmessage = function (message) {
                 keyboard: false
             });
             $('#modalRepUnPause').modal('show');
+            countDown(15,"#modalRepUnPause","timerREQUNPAUSE");
             break;
         case "REPUNPAUSE":
             if (data[1] == "0") {
@@ -85,6 +88,7 @@ ws.onmessage = function (message) {
                 alert("Decline unpause");
             }
             $('#modalWaitingRepUnPause').modal('hide');
+            clearInterval(counter);
             break;
         case "REQDRAW":
             $('#modalRepDraw').modal({
@@ -92,6 +96,7 @@ ws.onmessage = function (message) {
                 keyboard: false
             });
             $('#modalRepDraw').modal('show');
+            countDown(15,"#modalRepDraw","timerREQDRAW");
             break;
         case "REPDRAW":
             if (data[1] == "0") {
@@ -102,6 +107,7 @@ ws.onmessage = function (message) {
                 alert("Your enemy decline to draw ");
             }
             $('#modalWaitingRepDraw').modal('hide');
+            clearInterval(counter);
             break;
         case "LOSE":
             alert("User "+data[1]+ " accept lose");
@@ -139,6 +145,7 @@ ws.onclose =function(message){ ws.close();};
 
 function requestHandShake(email){
     ws.send("REQHANDSHAKE-"+email);
+    soundForClick.play();
 }
 
 function repHandShake(rep){
@@ -147,6 +154,7 @@ function repHandShake(rep){
 
 function requestNewGame(){
     ws.send("REQNEWGAME-"+ getEmailCurrentPlayer());
+    soundForClick.play();
 }
 
 function repNewGame(rep){
@@ -160,6 +168,7 @@ function repNewGame(rep){
 
 function requestPause() {
     ws.send("REQPAUSE-" + getEmailCurrentPlayer());
+    soundForClick.play();
 }
 
 function repPause(rep){
@@ -259,6 +268,18 @@ function lockControlButton(btn_newgame,btn_pause,btn_unpause,btn_draw,btn_lose){
     }
     if(btn_lose==1){
 
+    }
+}
+
+function countDown(count,modal,id){
+    counter=setInterval(timer, 1000); //1000 will  run it every 1 second
+    function timer() {
+        document.getElementById(id).innerHTML=count + " secs";
+        count=count-1;
+        if (count <= 0)  {
+            clearInterval(counter);
+            $(modal).modal("hide");
+        }
     }
 }
 
@@ -400,6 +421,7 @@ myApp.controller('MyAppController', function ($scope, $http) {
                 $scope.$apply();
             }else{
                 clearInterval(timeCountDown);
+                alert("Request time out");
                 $('#modalWaitingRepUnPause').modal('hide');
             }
         },1000);
@@ -433,6 +455,7 @@ myApp.controller('MyAppController', function ($scope, $http) {
      **/
     $scope.modalRepNewGame=function(rep){
         repNewGame(rep);
+
     };
 
     /**
@@ -440,23 +463,20 @@ myApp.controller('MyAppController', function ($scope, $http) {
      **/
     $scope.modalRepPause=function(rep){
         repPause(rep);
+        clearInterval(counter);
     };
     /**
      * ACCEPT | DECLINE Rep UnPause from opponent
      **/
     $scope.modalRepUnPause=function(rep){
         repUnPause(rep);
+        clearInterval(counter);
     };
     /**
      * ACCEPT | DECLINE Rep Draw from opponent
      **/
     $scope.modalRepDraw=function(rep){
         repDrawGame(rep);
-    };
-    /**
-     * ACCEPT | DECLINE Rep Loose from opponent
-     **/
-    $scope.modalRepLoose=function(rep){
-
+        clearInterval(counter);
     };
 });

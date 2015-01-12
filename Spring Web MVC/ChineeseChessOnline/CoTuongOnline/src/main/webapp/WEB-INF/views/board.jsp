@@ -22,9 +22,9 @@
         <div class="row">
             <div class="col-md-6">
                 <div id="newGame" class="btn btn-primary btn-block" >New Game</div>
-                <div id="pauseGame" class="btn btn-success btn-block" ng-click="sendReqPause()">Pause</div>
-                <div id="unpauseGame" class="btn btn-success btn-block" ng-click="sendReqUnPause()">UnPause</div>
-                <div id="drawGame" class="btn btn-warning btn-block " ng-click="sendReqDraw()">Draw</div>
+                <div id="pauseGame" class="btn btn-success btn-block" >Pause</div>
+                <div id="unpauseGame" class="btn btn-success btn-block" >UnPause</div>
+                <div id="drawGame" class="btn btn-warning btn-block " >Draw</div>
                 <div id="loseGame" class="btn btn-danger btn-block" >Lose</div>
                 <div id="quitGame" class="btn btn-danger btn-block" >Quit match</div>
                 <div id="listUser" class="btn btn-success btn-block" ng-click="showListUser()" >List User</div>
@@ -113,7 +113,7 @@
             <div class="modal-header" style="background-color: #5cb85c;">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                 <h4 class="modal-title">
-                    Accept Challenge From .....
+                    Wanna play with .. ?
                 </h4>
             </div>
             <div class="modal-body">
@@ -135,7 +135,7 @@
             <div class="modal-header" style="background-color: #5cb85c;">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                 <h4 class="modal-title">
-                    Accept game with  ?
+                    Request start new game -- <span id="timerREPNEWGAME"></span>
                 </h4>
             </div>
             <div class="modal-body">
@@ -157,7 +157,7 @@
             <div class="modal-header" style="background-color: #5cb85c;">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                 <h4 class="modal-title">
-                    Accept Request PAUSE
+                    Request pause game -- <span id="timerREQPAUSE"></span>
                 </h4>
             </div>
             <div class="modal-body">
@@ -178,7 +178,7 @@
             <div class="modal-header" style="background-color: #5cb85c;">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                 <h4 class="modal-title">
-                    Waiting For Opponent REP PAUSE
+                     Waiting Accept Pause From Opponent <span id="timerREPPASUE"></span>
                 </h4>
             </div>
             <div class="modal-body">
@@ -199,7 +199,7 @@
             <div class="modal-header" style="background-color: #5cb85c;">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                 <h4 class="modal-title">
-                    Accept Request UNPAUSE
+                    Resume game ? <span id="timerREQUNPASUE"></span>
                 </h4>
             </div>
             <div class="modal-body">
@@ -261,7 +261,7 @@
             <div class="modal-header" style="background-color: #5cb85c;">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                 <h4 class="modal-title">
-                    Accept Request DRAW
+                    Request draw game --
                 </h4>
             </div>
             <div class="modal-body">
@@ -282,7 +282,7 @@
             <div class="modal-header" style="background-color: #5cb85c;">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                 <h4 class="modal-title">
-                    You're Loose!'
+                    You're Loose!
                 </h4>
             </div>
             <div class="modal-body">
@@ -296,13 +296,13 @@
 <!--------------END :Popup for Waiting opponent REP LOSE---------------------->
 
 <!--------------START: Popup for REP LOSE---------------------->
-<div class="modal fade" id="modalRepLoose" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalRepLose" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content" align="center" style="height: 20vh; width: 80vh; margin-top: 40vh;">
             <div class="modal-header" style="background-color: #5cb85c;">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                 <h4 class="modal-title">
-                    You're Win!'
+                    You're Win!
                 </h4>
             </div>
             <div class="modal-body">
@@ -313,16 +313,7 @@
         </div>
     </div>
 </div>
-<!--------------END :Popup REP LOOSE---------------------->
-
-
-<div><input type="hidden"/></div>
-<div id="enemy_data">
-
-
-</div>
-
-
+<!--------------END :Popup REP LOSE---------------------->
 
 <!-- <div id="debug" style="position:absolute;top:0px;left:0px;width:400px;"></div>---->
 <script src="resources/extra/Board.js"></script>
@@ -332,6 +323,7 @@
     document.getElementById("pauseGame").onclick=function(){requestPause()};
     document.getElementById("drawGame").onclick=function(){requestDrawGame()};
     document.getElementById("loseGame").onclick=function(){acceptLose()};
+    document.getElementById("quitGame").onclick=function(){acceptLose()};
     var user_data={
         "name": "${account.name}",
         "email":"${account.email}",
