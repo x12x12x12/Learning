@@ -169,7 +169,7 @@
 				  var password=$("#passwordReg").val();
 				  var passconfirm=$("#passwordRegConFirm").val();
 				  var img_url=$("#imgReg").val();
-            	  var url= "http://localhost:8080/cotuong/rest/check/";
+            	  var url= "http://localhost:8080/rest/check/";
             	  var json = {"name":name,"email":email,"password":password,"img_url":img_url};
             	  if ($.trim(email).length == 0) {
                       alert('Please enter email address');

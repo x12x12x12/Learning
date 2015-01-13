@@ -46,7 +46,7 @@
                         <h3 class="panel-title">Please Enter Your Code</h3>
                     </div>
                     <div class="panel-body">
-                       <form:form modelAttribute="account" action="/cotuong/active">
+                       <form:form modelAttribute="account" action="/active">
                             <fieldset>
                                 <div class="form-group">
                                    <form:label path="email"  >Email</form:label>
