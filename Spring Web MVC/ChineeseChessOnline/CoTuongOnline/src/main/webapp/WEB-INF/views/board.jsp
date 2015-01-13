@@ -30,7 +30,7 @@
                 <div id="listUser" class="btn btn-success btn-block" ng-click="showListUser()" >List User</div>
             </div>
             <div class="col-md-6" style="height: 200px; border: solid 1px; float: right;" ng-show="opponent" ng-animate="{show: 'fadeIn', hide:'fadeOut'}">
-                <div style="font-weight: bold" align="center">Your Opponent</div>
+                <div style="font-weight: bold" align="center">Enemy</div>
                 <img src="{{opponent.img_url}}" style="border-radius: 2px;" height="50%;"/>
                 <div ng-bind="opponent.name" align="center" style="font-weight: bold"></div>
                 <div ng-bind-template="Score: {{opponent.point}}" style="font-weight: bold"></div>
@@ -113,7 +113,7 @@
             <div class="modal-header" style="background-color: #5cb85c;">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                 <h4 class="modal-title">
-                    Wanna play with .. ?
+                    Wanna play with {{opponent.name}} ?
                 </h4>
             </div>
             <div class="modal-body">
@@ -178,7 +178,7 @@
             <div class="modal-header" style="background-color: #5cb85c;">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                 <h4 class="modal-title">
-                     Waiting Accept Pause From Opponent <span id="timerREPPASUE"></span>
+                    Waiting Accept Pause From Opponent <span id="timerREPPASUE"></span>
                 </h4>
             </div>
             <div class="modal-body">
@@ -277,68 +277,68 @@
 
 <!--------------START: Popup for YOU REQ LOSE---------------------->
 <div class="modal fade" id="modalYouLoseGame" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-            <div class="modal-dialog" align="center">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Finished Game</h4>
-                    </div>
-                    <div class="modal-body">
-                        <img src="{{myProfile.img_url}}" height="100" width="100"
-                                style="border: 3px solid greenyellow; border-radius: 10;">
+    <div class="modal-dialog" align="center">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">Finished Game</h4>
+            </div>
+            <div class="modal-body">
+                <img src="{{myProfile.img_url}}" height="100" width="100"
+                     style="border: 3px solid greenyellow; border-radius:10px;">
                         <span style="margin-left: 20px; font-weight: bold; text-transform: uppercase; color: #000000; background-color:greenyellow">
                             {{myProfile.name}}
                         </span>
                         <span style="margin-left: 50px; font-weight: bold; text-transform: uppercase; color: #000000; background-color:red">
                             Score: -10
                         </span>
-                        <br><br>
-                        <img src="{{opponent.img_url}}" height="100" width="100"
-                                style="border: 3px solid greenyellow; border-radius: 10;">
+                <br><br>
+                <img src="{{opponent.img_url}}" height="100" width="100"
+                     style="border: 3px solid greenyellow; border-radius: 10;">
                         <span style="margin-left: 20px; font-weight: bold; text-transform: uppercase; color: #000000; background-color:greenyellow">
                             {{opponent.name}}
                         </span>
                         <span style="margin-left: 50px; font-weight: bold; text-transform: uppercase; color: #000000; background-color:greenyellow">
                             Score: +10
                         </span>
-                        <br><br>
-                    </div>
-
-                </div>
+                <br><br>
             </div>
+
+        </div>
+    </div>
 </div>
 <!--------------END : Popup for YOU REQ LOSE---------------------->
 
 <!--------------START: Popup for OPPONENT REQ LOSE---------------------->
 <div class="modal fade" id="modalOpponentLoseGame" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-            <div class="modal-dialog" align="center">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Finished Game</h4>
-                    </div>
-                    <div class="modal-body">
-                        <img src="{{myProfile.img_url}}" height="100" width="100"
-                                style="border: 3px solid greenyellow; border-radius: 10;">
+    <div class="modal-dialog" align="center">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">Finished Game</h4>
+            </div>
+            <div class="modal-body">
+                <img src="{{myProfile.img_url}}" height="100" width="100"
+                     style="border: 3px solid greenyellow; border-radius: 10;">
                         <span style="margin-left: 20px; font-weight: bold; text-transform: uppercase; color: #000000; background-color:greenyellow">
                             {{myProfile.name}}
                         </span>
                         <span style="margin-left: 50px; font-weight: bold; text-transform: uppercase; color: #000000; background-color:greenyellow">
                             Score: +10
                         </span>
-                        <br><br>
-                        <img src="{{opponent.img_url}}" height="100" width="100"
-                                style="border: 3px solid greenyellow; border-radius: 10;">
+                <br><br>
+                <img src="{{opponent.img_url}}" height="100" width="100"
+                     style="border: 3px solid greenyellow; border-radius: 10;">
                         <span style="margin-left: 20px; font-weight: bold; text-transform: uppercase; color: #000000; background-color:greenyellow">
                             {{opponent.name}}
                         </span>
                         <span style="margin-left: 50px; font-weight: bold; text-transform: uppercase; color: #000000; background-color:red">
                             Score: -10
                         </span>
-                        <br><br>
-                    </div>
-                </div>
+                <br><br>
             </div>
+        </div>
+    </div>
 </div>
 <!--------------END : Popup for OPPONENT REQ LOSE---------------------->
 
@@ -349,33 +349,10 @@
 <script type='text/javascript'>
     document.getElementById("newGame").onclick=function(){requestNewGame()};
     document.getElementById("pauseGame").onclick=function(){requestPause()};
+    document.getElementById("unpauseGame").onclick=function(){requestUnPause()};
     document.getElementById("drawGame").onclick=function(){requestDrawGame()};
-    document.getElementById("loseGame").onclick=function(){
-        acceptLose();
-        $('#modalYouLoseGame').modal({
-                backdrop: 'static',
-                keyboard: false
-            });
-        $('#modalYouLoseGame').modal('show');
-        
-        var scope = angular.element($(document.body)).scope();
-        scope.$apply(function(){
-           scope.opponent.point+=10; 
-        });
-    };
-    document.getElementById("quitGame").onclick=function(){
-        acceptLose()
-        $('#modalYouLoseGame').modal({
-            backdrop: 'static',
-            keyboard: false
-        });
-        $('#modalYouLoseGame').modal('show');
-        
-        var scope = angular.element($(document.body)).scope();
-        scope.$apply(function(){
-           scope.opponent.point+=10; 
-        });
-    };
+    document.getElementById("loseGame").onclick=function(){ acceptLose()};
+    document.getElementById("quitGame").onclick=function(){ acceptLose()};
     var user_data={
         "name": "${account.name}",
         "email":"${account.email}",
