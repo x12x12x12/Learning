@@ -1,7 +1,9 @@
 var myApp = angular.module('myApp', []);
 var chessGame = new ChessGame("board");
 var ws = new WebSocket("ws://localhost:8080/game");
-var soundForClick,email,myBoard,counter;
+var soundForClick,email,myBoard,counter,myVar;
+//var time=10;
+//var sidemove=0;
 
 ws.onopen = function (message) {
     email = user_data.email;
@@ -18,6 +20,7 @@ ws.onmessage = function (message) {
             for(var i=0; i<scope.userOnline.length; i++){
                 if(scope.userOnline[i].email==data[1]){
                     scope.opponent=scope.userOnline[i];
+                    scope.$apply();
                     break;
                 }
             }
@@ -49,8 +52,9 @@ ws.onmessage = function (message) {
             if (data[1] == "0") {
                 campOrder = 0;
                 chessGame.init();
-                chessGame.mover=0;
+                //chessGame.mover=0;
                 lockControlButton(1,0,1,0,0,0);
+                //myVar = setInterval(function(){ myTimer() }, 1000);
             }else{
                 lockControlButton(0,1,1,1,1,0);
             }
@@ -111,10 +115,12 @@ ws.onmessage = function (message) {
             clearInterval(counter);
             break;
         case "LOSE":
-            alert("User "+data[1]+ " accept lose");
             lockControlButton(0,1,1,1,1,0);
             chessGame.lockChess();
-            
+            var scope = angular.element($(document.body)).scope();
+            scope.$apply(function(){
+                scope.opponent.point-=10;
+            });
             $('#modalOpponentLoseGame').modal({
                 backdrop: 'static',
                 keyboard: false
@@ -171,7 +177,7 @@ function repNewGame(rep){
     if(rep=="0"){
         campOrder=1;
         chessGame.init();
-        chessGame.mover=1;
+        //chessGame.mover=1;
         lockControlButton(1,0,1,0,0,0);
     }
     ws.send("REPNEWGAME-" + getEmailCurrentPlayer()+"-"+rep);
@@ -208,6 +214,15 @@ function acceptLose() {
     ws.send("LOSE-" + getEmailCurrentPlayer());
     chessGame.lockChess();
     lockControlButton(0,1,1,1,1,0);
+    var scope = angular.element($(document.body)).scope();
+    scope.$apply(function(){
+        scope.opponent.point+=10;
+    });
+    $('#modalYouLoseGame').modal({
+        backdrop: 'static',
+        keyboard: false
+    });
+    $('#modalYouLoseGame').modal('show');
 }
 
 function requestDrawGame() {
@@ -300,6 +315,45 @@ function countDown(count,modal,id){
         }
     }
 }
+
+//function resetTimer(move) {
+//    if(mover != move){
+//        document.getElementById("demo3").innerHTML = "Chua toi luot ban";
+//        return;
+//    }
+//    if(mover == 0) {
+//        document.getElementById("demo3").innerHTML = "A da di co , tuoi luot B";
+//    }
+//    else {
+//        document.getElementById("demo3").innerHTML = "B da di co , tuoi luot A";
+//    }
+//    mover = 1 - mover;
+//    clearInterval(myVar);
+//    t1=10;
+//    document.getElementById("demo1").innerHTML = t1;
+//    document.getElementById("demo2").innerHTML = t1;
+//    myVar = setInterval(function(){myTimer()}, 1000);
+//}
+//
+//function myTimer() {
+//    document.getElementById("demo1").innerHTML = t1;
+//    document.getElementById("demo2").innerHTML = t1;
+//    t1--;
+//    if(t1 == 0 && mover == 0 ){
+//
+//        alert("A lose");
+//        clearInterval(myVar);
+//        document.getElementById("demo1").innerHTML = t1;
+//        document.getElementById("demo2").innerHTML = t1;
+//    } else if (t1 ==0 && mover == 1){
+//        alert("A Win");
+//        clearInterval(myVar);
+//        document.getElementById("demo1").innerHTML = t1;
+//        document.getElementById("demo2").innerHTML = t1;
+//    }
+//
+//
+//}
 
 myApp.controller('MyAppController', function ($scope, $http) {
 
