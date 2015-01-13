@@ -275,8 +275,8 @@
 </div>
 <!--------------END : Popup for REP DRAW---------------------->
 
-<!--------------START: Popup for YOU REQ LOOSE---------------------->
-<div class="modal fade" id="modalYouLooseGame" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+<!--------------START: Popup for YOU REQ LOSE---------------------->
+<div class="modal fade" id="modalYouLoseGame" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
             <div class="modal-dialog" align="center">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -295,10 +295,10 @@
                 </div>
             </div>
 </div>
-<!--------------END : Popup for YOU REQ LOOSE---------------------->
+<!--------------END : Popup for YOU REQ LOSE---------------------->
 
-<!--------------START: Popup for OPPONENT REQ LOOSE---------------------->
-<div class="modal fade" id="modalOpponentLooseGame" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+<!--------------START: Popup for OPPONENT REQ LOSE---------------------->
+<div class="modal fade" id="modalOpponentLoseGame" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
             <div class="modal-dialog" align="center">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -317,7 +317,7 @@
                 </div>
             </div>
 </div>
-<!--------------END : Popup for OPPONENT REQ LOOSE---------------------->
+<!--------------END : Popup for OPPONENT REQ LOSE---------------------->
 
 
 <!-- <div id="debug" style="position:absolute;top:0px;left:0px;width:400px;"></div>---->
@@ -329,11 +329,11 @@
     document.getElementById("drawGame").onclick=function(){requestDrawGame()};
     document.getElementById("loseGame").onclick=function(){
         acceptLose();modalFinished
-        $('#modalYouLooseGame').modal({
+        $('#modalYouLoseGame').modal({
                 backdrop: 'static',
                 keyboard: false
             });
-        $('#modalYouLooseGame').modal('show');
+        $('#modalYouLoseGame').modal('show');
     };
     document.getElementById("quitGame").onclick=function(){acceptLose()};
     var user_data={
