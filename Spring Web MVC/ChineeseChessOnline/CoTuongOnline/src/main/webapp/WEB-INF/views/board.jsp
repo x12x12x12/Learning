@@ -26,7 +26,7 @@
                 <div id="unpauseGame" class="btn btn-success btn-block" ng-disabled="isDisabled.btn_unpause" >UnPause</div>
                 <div id="drawGame" class="btn btn-warning btn-block " ng-disabled="isDisabled.btn_draw" >Draw</div>
                 <div id="loseGame" class="btn btn-danger btn-block" ng-disabled="isDisabled.btn_lose" >Lose</div>
-                <div id="quitGame" class="btn btn-danger btn-block" ng-disabled="" >Quit match</div>
+                <div id="quitGame" class="btn btn-danger btn-block" ng-disabled="isDisabled.btn_quit" >Quit match</div>
                 <div id="listUser" class="btn btn-success btn-block" ng-click="showListUser()" >List User</div>
             </div>
             <div class="col-md-6" style="height: 200px; border: solid 1px; float: right;" ng-show="opponent" ng-animate="{show: 'fadeIn', hide:'fadeOut'}">
@@ -284,10 +284,10 @@
                         <h4 class="modal-title" id="myModalLabel">Finished Game</h4>
                     </div>
                     <div class="modal-body">
-                        <img src="{{myProfile.img_url}}" style="border-radius: 5px;>
-                        <span style="margin-left: 20px;">Score: -10 </span>
+                        <img src="{{myProfile.img_url}}" style="border-radius: 5px;">
+                        <span style="margin-left: 20px" >Score: -10 </span>
                         <span style="margin-left: 50px;">Email: {{myProfile.email}} </span><br><br>
-                        <img src="{{opponent.img_url}}" style="border-radius: 5px;>
+                        <img src="{{opponent.img_url}}" style="border-radius: 5px;">
                         <span style="margin-left: 20px;">Score: +10 </span>
                         <span style="margin-left: 50px;">Email: {{opponent.email}} </span><br>
                     </div>
@@ -306,10 +306,10 @@
                         <h4 class="modal-title" id="myModalLabel">Finished Game</h4>
                     </div>
                     <div class="modal-body">
-                        <img src="{{myProfile.img_url}}" style="border-radius: 5px;>
+                        <img src="{{myProfile.img_url}}" style="border-radius: 5px;">
                         <span style="margin-left: 20px;">Score: +10 </span>
                         <span style="margin-left: 50px;">Email: {{myProfile.email}} </span><br><br>
-                        <img src="{{opponent.img_url}}" style="border-radius: 5px;>
+                        <img src="{{opponent.img_url}}" style="border-radius: 5px;">
                         <span style="margin-left: 20px;">Score: -10 </span>
                         <span style="margin-left: 50px;">Email: {{opponent.email}} </span><br>
                     </div>
@@ -328,14 +328,21 @@
     document.getElementById("pauseGame").onclick=function(){requestPause()};
     document.getElementById("drawGame").onclick=function(){requestDrawGame()};
     document.getElementById("loseGame").onclick=function(){
-        acceptLose();modalFinished
+        acceptLose();
         $('#modalYouLoseGame').modal({
                 backdrop: 'static',
                 keyboard: false
             });
         $('#modalYouLoseGame').modal('show');
     };
-    document.getElementById("quitGame").onclick=function(){acceptLose()};
+    document.getElementById("quitGame").onclick=function(){
+        acceptLose()
+        $('#modalYouLoseGame').modal({
+            backdrop: 'static',
+            keyboard: false
+        });
+        $('#modalYouLoseGame').modal('show');
+    };
     var user_data={
         "name": "${account.name}",
         "email":"${account.email}",

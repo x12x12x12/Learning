@@ -2,12 +2,12 @@ var myApp = angular.module('myApp', []);
 var chessGame = new ChessGame("board");
 var ws = new WebSocket("ws://localhost:8080/game");
 var soundForClick,email,myBoard,counter;
-lockControlButton(0,1,1,1,1);
 
 ws.onopen = function (message) {
     email = user_data.email;
     ws.send("REG-" + email);
     getListUserOnline();
+    lockControlButton(1,1,1,1,1,1);
 };
 
 ws.onmessage = function (message) {
@@ -31,6 +31,7 @@ ws.onmessage = function (message) {
         case "REPHANDSHAKE":
             if (data[1] == "0") {
                 $('#modalWaitingAcceptChallenge').modal('hide');
+                lockControlButton(0,1,1,1,1,0);
             }else{
                 alert('Player decline');
                 $('#modalWaitingAcceptChallenge').modal('hide');
@@ -49,9 +50,9 @@ ws.onmessage = function (message) {
                 campOrder = 0;
                 chessGame.init();
                 chessGame.mover=0;
-                lockControlButton(1,0,1,0,0);
+                lockControlButton(1,0,1,0,0,0);
             }else{
-                lockControlButton(0,1,1,1,1);
+                lockControlButton(0,1,1,1,1,0);
             }
             break;
         case "REQPAUSE":
@@ -65,7 +66,7 @@ ws.onmessage = function (message) {
         case "REPPAUSE":
             if (data[1] == "0") {
                 chessGame.lockChess();
-                lockControlButton(1,1,0,0,0);
+                lockControlButton(1,1,0,0,0,0);
             }else{
                 alert("Decline pause");
             }
@@ -83,7 +84,7 @@ ws.onmessage = function (message) {
         case "REPUNPAUSE":
             if (data[1] == "0") {
                 chessGame.lockChess();
-                lockControlButton(1,0,1,0,0);
+                lockControlButton(1,0,1,0,0,0);
             }else{
                 alert("Decline unpause");
             }
@@ -102,7 +103,7 @@ ws.onmessage = function (message) {
             if (data[1] == "0") {
                 chessGame.lockChess();
                 alert("Draw ! No point for this match ");
-                lockControlButton(0,1,1,1,1);
+                lockControlButton(0,1,1,1,1,0);
             }else{
                 alert("Your enemy decline to draw ");
             }
@@ -111,7 +112,7 @@ ws.onmessage = function (message) {
             break;
         case "LOSE":
             alert("User "+data[1]+ " accept lose");
-            lockControlButton(0,1,1,1,1);
+            lockControlButton(0,1,1,1,1,0);
             chessGame.lockChess();
             
             $('#modalOpponentLoseGame').modal({
@@ -155,6 +156,9 @@ function requestHandShake(email){
 }
 
 function repHandShake(rep){
+    if(rep==0){
+        lockControlButton(0,1,1,1,1,0);
+    }
     ws.send("REPHANDSHAKE-" + getEmailCurrentPlayer()+"-"+rep);
 }
 
@@ -168,6 +172,7 @@ function repNewGame(rep){
         campOrder=1;
         chessGame.init();
         chessGame.mover=1;
+        lockControlButton(1,0,1,0,0,0);
     }
     ws.send("REPNEWGAME-" + getEmailCurrentPlayer()+"-"+rep);
 }
@@ -243,9 +248,9 @@ function getListUserOnline(){
     });
 }
 
-function lockControlButton(btn_newgame,btn_pause,btn_unpause,btn_draw,btn_lose){
+function lockControlButton(btn_newgame,btn_pause,btn_unpause,btn_draw,btn_lose,btn_quit){
     var scope = angular.element($(document.body)).scope();
-    if(btn_newgame==0){
+        if(btn_newgame==0){
             scope.isDisabled.btn_newGame=false;
         }
         if(btn_newgame==1){
@@ -274,39 +279,14 @@ function lockControlButton(btn_newgame,btn_pause,btn_unpause,btn_draw,btn_lose){
         }
         if(btn_lose==1){
             scope.isDisabled.btn_lose=true;
-        } 
+        }
+        if(btn_quit==0){
+            scope.isDisabled.btn_quit=false;
+        }
+        if(btn_quit==1){
+            scope.isDisabled.btn_quit=true;
+        }
     scope.$apply();
-   // 0 : unlock ,1 : lock
-    // if(btn_newgame==0){
-
-    // }
-    // if(btn_newgame==1){
-
-    // }
-    // if(btn_pause==0){
-
-    // }
-    // if(btn_pause==1){
-
-    // }
-    // if(btn_unpause==0){
-
-    // }
-    // if(btn_unpause==1){
-
-    // }
-    // if(btn_draw==0){
-
-    // }
-    // if(btn_draw==1){
-
-    // }
-    // if(btn_lose==0){
-
-    // }
-    // if(btn_lose==1){
-
-    // }
 }
 
 function countDown(count,modal,id){
