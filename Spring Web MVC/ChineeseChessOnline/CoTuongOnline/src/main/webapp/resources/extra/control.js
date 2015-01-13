@@ -114,11 +114,11 @@ ws.onmessage = function (message) {
             lockControlButton(0,1,1,1,1);
             chessGame.lockChess();
             
-            $('#modalOpponentLooseGame').modal({
+            $('#modalOpponentLoseGame').modal({
                 backdrop: 'static',
                 keyboard: false
             });
-            $('#modalOpponentLooseGame').modal('show');
+            $('#modalOpponentLoseGame').modal('show');
             break;
         case "PLAY":
             var tmp = data[1].split(" ");
