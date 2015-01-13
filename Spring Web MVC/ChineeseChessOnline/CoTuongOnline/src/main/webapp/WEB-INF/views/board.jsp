@@ -276,7 +276,7 @@
 <!--------------END : Popup for REP DRAW---------------------->
 
 <!--------------START: Popup for YOU REQ LOOSE---------------------->
-<div class="modal fade" id="modalFinished" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+<div class="modal fade" id="modalYouLooseGame" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
             <div class="modal-dialog" align="center">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -295,7 +295,29 @@
                 </div>
             </div>
 </div>
-<!--------------END : Popup for REP DRAW---------------------->
+<!--------------END : Popup for YOU REQ LOOSE---------------------->
+
+<!--------------START: Popup for OPPONENT REQ LOOSE---------------------->
+<div class="modal fade" id="modalOpponentLooseGame" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+            <div class="modal-dialog" align="center">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Finished Game</h4>
+                    </div>
+                    <div class="modal-body">
+                        <img src="{{myProfile.img_url}}" style="border-radius: 5px;>
+                        <span style="margin-left: 20px;">Score: +10 </span>
+                        <span style="margin-left: 50px;">Email: {{myProfile.email}} </span><br><br>
+                        <img src="{{opponent.img_url}}" style="border-radius: 5px;>
+                        <span style="margin-left: 20px;">Score: -10 </span>
+                        <span style="margin-left: 50px;">Email: {{opponent.email}} </span><br>
+                    </div>
+
+                </div>
+            </div>
+</div>
+<!--------------END : Popup for OPPONENT REQ LOOSE---------------------->
 
 
 <!-- <div id="debug" style="position:absolute;top:0px;left:0px;width:400px;"></div>---->
@@ -307,11 +329,11 @@
     document.getElementById("drawGame").onclick=function(){requestDrawGame()};
     document.getElementById("loseGame").onclick=function(){
         acceptLose();modalFinished
-        document.getElementById('modalFinished').modal({
+        document.getElementById('modalYouLooseGame').modal({
                 backdrop: 'static',
                 keyboard: false
             });
-        document.getElementById("modalFinished").modal('show');
+        document.getElementById('modalYouLooseGame').modal('show');
     };
     document.getElementById("quitGame").onclick=function(){acceptLose()};
     var user_data={
