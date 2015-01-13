@@ -245,8 +245,7 @@ function getListUserOnline(){
 
 function lockControlButton(btn_newgame,btn_pause,btn_unpause,btn_draw,btn_lose){
     var scope = angular.element($(document.body)).scope();
-    scope.$apply(function(){
-        if(btn_newgame==0){
+    if(btn_newgame==0){
             scope.isDisabled.btn_newGame=false;
         }
         if(btn_newgame==1){
@@ -276,7 +275,7 @@ function lockControlButton(btn_newgame,btn_pause,btn_unpause,btn_draw,btn_lose){
         if(btn_lose==1){
             scope.isDisabled.btn_lose=true;
         } 
-    });
+    scope.$apply();
    // 0 : unlock ,1 : lock
     // if(btn_newgame==0){
 
