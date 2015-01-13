@@ -284,12 +284,24 @@
                         <h4 class="modal-title" id="myModalLabel">Finished Game</h4>
                     </div>
                     <div class="modal-body">
-                        <img src="{{myProfile.img_url}}" style="border-radius: 5px;">
-                        <span style="margin-left: 20px" >Score: -10 </span>
-                        <span style="margin-left: 50px;">Email: {{myProfile.email}} </span><br><br>
-                        <img src="{{opponent.img_url}}" style="border-radius: 5px;">
-                        <span style="margin-left: 20px;">Score: +10 </span>
-                        <span style="margin-left: 50px;">Email: {{opponent.email}} </span><br>
+                        <img src="{{myProfile.img_url}}" height="100" width="100"
+                                style="border: 3px solid greenyellow; border-radius: 10;">
+                        <span style="margin-left: 20px; font-weight: bold; text-transform: uppercase; color: #000000; background-color:greenyellow">
+                            {{myProfile.name}}
+                        </span>
+                        <span style="margin-left: 50px; font-weight: bold; text-transform: uppercase; color: #000000; background-color:red">
+                            Score: -10
+                        </span>
+                        <br><br>
+                        <img src="{{opponent.img_url}}" height="100" width="100"
+                                style="border: 3px solid greenyellow; border-radius: 10;">
+                        <span style="margin-left: 20px; font-weight: bold; text-transform: uppercase; color: #000000; background-color:greenyellow">
+                            {{opponent.name}}
+                        </span>
+                        <span style="margin-left: 50px; font-weight: bold; text-transform: uppercase; color: #000000; background-color:greenyellow">
+                            Score: +10
+                        </span>
+                        <br><br>
                     </div>
 
                 </div>
@@ -306,14 +318,25 @@
                         <h4 class="modal-title" id="myModalLabel">Finished Game</h4>
                     </div>
                     <div class="modal-body">
-                        <img src="{{myProfile.img_url}}" style="border-radius: 5px;">
-                        <span style="margin-left: 20px;">Score: +10 </span>
-                        <span style="margin-left: 50px;">Email: {{myProfile.email}} </span><br><br>
-                        <img src="{{opponent.img_url}}" style="border-radius: 5px;">
-                        <span style="margin-left: 20px;">Score: -10 </span>
-                        <span style="margin-left: 50px;">Email: {{opponent.email}} </span><br>
+                        <img src="{{myProfile.img_url}}" height="100" width="100"
+                                style="border: 3px solid greenyellow; border-radius: 10;">
+                        <span style="margin-left: 20px; font-weight: bold; text-transform: uppercase; color: #000000; background-color:greenyellow">
+                            {{myProfile.name}}
+                        </span>
+                        <span style="margin-left: 50px; font-weight: bold; text-transform: uppercase; color: #000000; background-color:greenyellow">
+                            Score: +10
+                        </span>
+                        <br><br>
+                        <img src="{{opponent.img_url}}" height="100" width="100"
+                                style="border: 3px solid greenyellow; border-radius: 10;">
+                        <span style="margin-left: 20px; font-weight: bold; text-transform: uppercase; color: #000000; background-color:greenyellow">
+                            {{opponent.name}}
+                        </span>
+                        <span style="margin-left: 50px; font-weight: bold; text-transform: uppercase; color: #000000; background-color:red">
+                            Score: -10
+                        </span>
+                        <br><br>
                     </div>
-
                 </div>
             </div>
 </div>
