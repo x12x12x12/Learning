@@ -275,45 +275,28 @@
 </div>
 <!--------------END : Popup for REP DRAW---------------------->
 
-<!--------------START: Popup for Waiting opponent  REP LOSE---------------------->
-<div class="modal fade" id="modalWaitingRepLoose" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content" align="center" style="height: 20vh; width: 80vh; margin-top: 40vh;">
-            <div class="modal-header" style="background-color: #5cb85c;">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title">
-                    You're Loose!
-                </h4>
-            </div>
-            <div class="modal-body">
-                <div align="center">
-                    <button class="btn btn-lg btn-danger" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!--------------END :Popup for Waiting opponent REP LOSE---------------------->
+<!--------------START: Popup for YOU REQ LOOSE---------------------->
+<div class="modal fade" id="modalFinished" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+            <div class="modal-dialog" align="center">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Finished Game</h4>
+                    </div>
+                    <div class="modal-body">
+                        <img src="{{myProfile.img_url}}" style="border-radius: 5px;>
+                        <span style="margin-left: 20px;">Score: -10 </span>
+                        <span style="margin-left: 50px;">Email: {{myProfile.email}} </span><br><br>
+                        <img src="{{opponent.img_url}}" style="border-radius: 5px;>
+                        <span style="margin-left: 20px;">Score: +10 </span>
+                        <span style="margin-left: 50px;">Email: {{opponent.email}} </span><br>
+                    </div>
 
-<!--------------START: Popup for REP LOSE---------------------->
-<div class="modal fade" id="modalRepLose" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content" align="center" style="height: 20vh; width: 80vh; margin-top: 40vh;">
-            <div class="modal-header" style="background-color: #5cb85c;">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title">
-                    You're Win!
-                </h4>
-            </div>
-            <div class="modal-body">
-                <div align="center">
-                    <button class="btn btn-lg btn-danger" data-dismiss="modal">Close</button>
                 </div>
             </div>
-        </div>
-    </div>
 </div>
-<!--------------END :Popup REP LOSE---------------------->
+<!--------------END : Popup for REP DRAW---------------------->
+
 
 <!-- <div id="debug" style="position:absolute;top:0px;left:0px;width:400px;"></div>---->
 <script src="resources/extra/Board.js"></script>
@@ -322,7 +305,14 @@
     document.getElementById("newGame").onclick=function(){requestNewGame()};
     document.getElementById("pauseGame").onclick=function(){requestPause()};
     document.getElementById("drawGame").onclick=function(){requestDrawGame()};
-    document.getElementById("loseGame").onclick=function(){acceptLose()};
+    document.getElementById("loseGame").onclick=function(){
+        acceptLose();modalFinished
+        document.getElementById('modalFinished').modal({
+                backdrop: 'static',
+                keyboard: false
+            });
+        document.getElementById("modalFinished").modal('show');
+    };
     document.getElementById("quitGame").onclick=function(){acceptLose()};
     var user_data={
         "name": "${account.name}",
