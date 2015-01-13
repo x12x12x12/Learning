@@ -238,37 +238,70 @@ function getListUserOnline(){
 }
 
 function lockControlButton(btn_newgame,btn_pause,btn_unpause,btn_draw,btn_lose){
+    var scope = angular.element($(document.body)).scope();
+    scope.$apply(function(){
+        if(btn_newgame==0){
+            scope.isDisabled.btn_newGame=false;
+        }
+        if(btn_newgame==1){
+            scope.isDisabled.btn_newGame=true;
+        }
+        if(btn_pause==0){
+            scope.isDisabled.btn_pause=false;
+        }
+        if(btn_pause==1){
+            scope.isDisabled.btn_pause=true;
+        }
+        if(btn_unpause==0){
+            scope.isDisabled.btn_unpause=false;
+        }
+        if(btn_unpause==1){
+            scope.isDisabled.btn_unpause=true;
+        }
+        if(btn_draw==0){
+            scope.isDisabled.btn_draw=false;
+        }
+        if(btn_draw==1){
+            scope.isDisabled.btn_draw=true;
+        }
+        if(btn_lose==0){
+            scope.isDisabled.btn_lose=false;
+        }
+        if(btn_lose==1){
+            scope.isDisabled.btn_lose=true;
+        } 
+    });
    // 0 : unlock ,1 : lock
-    if(btn_newgame==0){
+    // if(btn_newgame==0){
 
-    }
-    if(btn_newgame==1){
+    // }
+    // if(btn_newgame==1){
 
-    }
-    if(btn_pause==0){
+    // }
+    // if(btn_pause==0){
 
-    }
-    if(btn_pause==1){
+    // }
+    // if(btn_pause==1){
 
-    }
-    if(btn_unpause==0){
+    // }
+    // if(btn_unpause==0){
 
-    }
-    if(btn_unpause==1){
+    // }
+    // if(btn_unpause==1){
 
-    }
-    if(btn_draw==0){
+    // }
+    // if(btn_draw==0){
 
-    }
-    if(btn_draw==1){
+    // }
+    // if(btn_draw==1){
 
-    }
-    if(btn_lose==0){
+    // }
+    // if(btn_lose==0){
 
-    }
-    if(btn_lose==1){
+    // }
+    // if(btn_lose==1){
 
-    }
+    // }
 }
 
 function countDown(count,modal,id){
@@ -301,6 +334,11 @@ myApp.controller('MyAppController', function ($scope, $http) {
     $scope.titleOfChatConversation = "TO : ";
     $scope.countDown = 15;
     //$scope.opponent = {};
+    
+     /**
+     * Variables for set DISABLE button
+     **/
+     $scope.isDisabled={};
 
     /**
      * SHOW list user online
