@@ -90,7 +90,7 @@ ws.onmessage = function (message) {
                 chessGame.lockChess();
                 lockControlButton(1,0,1,0,0,0);
             }else{
-                alert("Decline unpause");
+                alert("Decline resume");
             }
             $('#modalWaitingRepUnPause').modal('hide');
             clearInterval(counter);
