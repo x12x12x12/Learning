@@ -21,12 +21,12 @@
     <div style="float:right">
         <div class="row">
             <div class="col-md-6">
-                <div id="newGame" class="btn btn-primary btn-block" >New Game</div>
-                <div id="pauseGame" class="btn btn-success btn-block" >Pause</div>
-                <div id="unpauseGame" class="btn btn-success btn-block" >UnPause</div>
-                <div id="drawGame" class="btn btn-warning btn-block " >Draw</div>
-                <div id="loseGame" class="btn btn-danger btn-block" >Lose</div>
-                <div id="quitGame" class="btn btn-danger btn-block" >Quit match</div>
+                <div id="newGame" class="btn btn-primary btn-block" ng-disabled="isDisabled.btn_newGame" >New Game</div>
+                <div id="pauseGame" class="btn btn-success btn-block" ng-disabled="isDisabled.btn_pause" >Pause</div>
+                <div id="unpauseGame" class="btn btn-success btn-block" ng-disabled="isDisabled.btn_unpause" >UnPause</div>
+                <div id="drawGame" class="btn btn-warning btn-block " ng-disabled="isDisabled.btn_draw" >Draw</div>
+                <div id="loseGame" class="btn btn-danger btn-block" ng-disabled="isDisabled.btn_lose" >Lose</div>
+                <div id="quitGame" class="btn btn-danger btn-block" ng-disabled="" >Quit match</div>
                 <div id="listUser" class="btn btn-success btn-block" ng-click="showListUser()" >List User</div>
             </div>
             <div class="col-md-6" style="height: 200px; border: solid 1px; float: right;" ng-show="opponent" ng-animate="{show: 'fadeIn', hide:'fadeOut'}">
