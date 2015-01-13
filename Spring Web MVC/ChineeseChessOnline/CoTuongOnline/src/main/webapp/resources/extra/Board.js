@@ -169,8 +169,9 @@ function ChessGame(boardId) {
             //  this.computerMoveChess();
             // If the game ends
             if(this.isGameOver()){
-                if(this.mover==1) alert("You win！");
-                else alert("You lose!");
+                if(this.mover!=1){
+                    acceptLose();
+                }
                 this.mover=-1;
                 return;
             }
