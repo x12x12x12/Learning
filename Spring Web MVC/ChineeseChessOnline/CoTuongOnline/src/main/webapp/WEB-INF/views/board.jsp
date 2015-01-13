@@ -357,6 +357,11 @@
                 keyboard: false
             });
         $('#modalYouLoseGame').modal('show');
+        
+        var scope = angular.element($(document.body)).scope();
+        scope.$apply(function(){
+           scope.opponent.point+=10; 
+        });
     };
     document.getElementById("quitGame").onclick=function(){
         acceptLose()
@@ -365,6 +370,11 @@
             keyboard: false
         });
         $('#modalYouLoseGame').modal('show');
+        
+        var scope = angular.element($(document.body)).scope();
+        scope.$apply(function(){
+           scope.opponent.point+=10; 
+        });
     };
     var user_data={
         "name": "${account.name}",
