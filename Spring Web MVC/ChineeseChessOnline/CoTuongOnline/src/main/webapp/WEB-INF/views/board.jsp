@@ -329,11 +329,11 @@
     document.getElementById("drawGame").onclick=function(){requestDrawGame()};
     document.getElementById("loseGame").onclick=function(){
         acceptLose();modalFinished
-        document.getElementById('modalYouLooseGame').modal({
+        $('#modalYouLooseGame').modal({
                 backdrop: 'static',
                 keyboard: false
             });
-        document.getElementById('modalYouLooseGame').modal('show');
+        $('#modalYouLooseGame').modal('show');
     };
     document.getElementById("quitGame").onclick=function(){acceptLose()};
     var user_data={
