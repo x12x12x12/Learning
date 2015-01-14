@@ -11,6 +11,7 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.support.SessionStatus;
 
 import javax.servlet.http.HttpSession;
@@ -31,6 +32,11 @@ public class LoginController {
 			model.addAttribute("account",result_login);
 			return "index";
 		}
+		String expired=httpSession.getAttribute("sessionExpired")!=null ? httpSession.getAttribute("sessionExpired").toString() : "";
+		if(expired.equalsIgnoreCase("true")){
+			model.addAttribute("sessionExpired","User session expired please login again !!!!");
+			httpSession.removeAttribute("sessionExpired");
+		}
 		model.addAttribute("account",new Account());
 		return "login";
 	}
@@ -41,8 +47,8 @@ public class LoginController {
 			model.addAttribute("account",result_login);
 			return "index";
 		}
-		model.addAttribute("account",new Account());
-		return "login";
+		httpSession.setAttribute("sessionExpired","true");
+		return "redirect:/login";
 	}
 
 	@RequestMapping(value ={"/login"}, method= RequestMethod.POST)

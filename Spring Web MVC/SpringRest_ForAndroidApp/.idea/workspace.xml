@@ -7,22 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="71c5ea47-541b-4ce4-9d4d-38d41e301b38" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ProjectManagement/src/main/java/com/project/app/RestController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ProjectManagement/src/main/webapp/WEB-INF/views/index.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ProjectManagement/src/main/webapp/WEB-INF/views/project_detail.jsp" />
-      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Spring Web MVC\ProjectManagement\src\main\webapp\WEB-INF\views\dashboard.jsp" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Spring Web MVC\ProjectManagement\src\main\webapp\WEB-INF\views\tables.jsp" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ProjectManagement/src/main/java/com/project/model/Account.java" afterPath="$PROJECT_DIR$/../ProjectManagement/src/main/java/com/project/model/Account.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ProjectManagement/src/main/java/com/project/service/AccountServiceImpl.java" afterPath="$PROJECT_DIR$/../ProjectManagement/src/main/java/com/project/service/AccountServiceImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ProjectManagement/src/main/java/com/project/app/LoginController.java" afterPath="$PROJECT_DIR$/../ProjectManagement/src/main/java/com/project/app/LoginController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ProjectManagement/src/main/java/com/project/model/Project.java" afterPath="$PROJECT_DIR$/../ProjectManagement/src/main/java/com/project/model/Project.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ProjectManagement/src/main/java/com/project/app/ProjectController.java" afterPath="$PROJECT_DIR$/../ProjectManagement/src/main/java/com/project/app/ProjectController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ProjectManagement/src/main/java/com/project/service/ProjectService.java" afterPath="$PROJECT_DIR$/../ProjectManagement/src/main/java/com/project/service/ProjectService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ProjectManagement/src/main/java/com/project/service/ProjectServiceImpl.java" afterPath="$PROJECT_DIR$/../ProjectManagement/src/main/java/com/project/service/ProjectServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ProjectManagement/src/main/java/com/project/model/Task.java" afterPath="$PROJECT_DIR$/../ProjectManagement/src/main/java/com/project/model/Task.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ProjectManagement/src/main/webapp/WEB-INF/views/login.jsp" afterPath="$PROJECT_DIR$/../ProjectManagement/src/main/webapp/WEB-INF/views/login.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ProjectManagement/src/main/webapp/WEB-INF/views/navbar.jsp" afterPath="$PROJECT_DIR$/../ProjectManagement/src/main/webapp/WEB-INF/views/navbar.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ProjectManagement/src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml" afterPath="$PROJECT_DIR$/../ProjectManagement/src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ProjectManagement/src/main/webapp/WEB-INF/views/index.jsp" afterPath="$PROJECT_DIR$/../ProjectManagement/src/main/webapp/WEB-INF/views/index.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="app.iws" />
@@ -132,8 +119,8 @@
       <file leaf-file-name="ServiceController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/dominhquan/app/ServiceController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.3338954" vertical-offset="145" max-vertical-offset="1224">
-              <caret line="65" column="5" selection-start-line="65" selection-start-column="5" selection-end-line="65" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.24114671" vertical-offset="145" max-vertical-offset="1224">
+              <caret line="29" column="8" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="92" />
               <folding />
             </state>
           </provider>
@@ -1038,12 +1025,12 @@
       <workItem from="1421236914065" duration="6756000" />
       <workItem from="1421250142085" duration="39000" />
       <workItem from="1421250439236" duration="2808000" />
-      <workItem from="1421257552869" duration="164000" />
+      <workItem from="1421257552869" duration="994000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42067000" />
+    <option name="totallyTimeSpent" value="42897000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1504,8 +1491,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/dominhquan/app/ServiceController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.3338954" vertical-offset="145" max-vertical-offset="1224">
-          <caret line="65" column="5" selection-start-line="65" selection-start-column="5" selection-end-line="65" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.24114671" vertical-offset="145" max-vertical-offset="1224">
+          <caret line="29" column="8" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="92" />
           <folding />
         </state>
       </provider>

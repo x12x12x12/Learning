@@ -1,6 +1,7 @@
 package com.project.app;
 
 import com.project.model.Account;
+import com.project.model.Task;
 import com.project.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 public class ProjectController {
@@ -32,11 +34,17 @@ public class ProjectController {
     @RequestMapping(value="/project/{id}", method = RequestMethod.GET)
     public String taskInProject(Model model,HttpSession httpSession,@PathVariable("id") String parent) {
         if(validateSession(httpSession)){
-            Account account= ((httpSession.getAttribute("account")!=null) ? (Account) httpSession.getAttribute("account")  :new Account());
-            model.addAttribute("account",account);
-            model.addAttribute("project",parent);
-            return "project_detail";
+            List<Task> list=projectService.getListTask(parent);
+            if(!list.isEmpty()){
+                Account account= ((httpSession.getAttribute("account")!=null) ? (Account) httpSession.getAttribute("account")  :new Account());
+                model.addAttribute("account",account);
+                model.addAttribute("project",parent);
+                model.addAttribute("task",list);
+                return "project_detail";
+            }
+            return "redirect:/index";
         }
+        httpSession.setAttribute("sessionExpired","true");
         return "redirect:/login";
     }
 
