@@ -1,6 +1,6 @@
 package com.project.service;
 
-import com.dominhquan.model.Account;
+import com.project.model.Account;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +10,7 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 public class AccountServiceImpl implements AccountService{
-	
-	private static final Logger logger = LoggerFactory.getLogger(ItemServiceImpl.class);
+
 	@Autowired
 	PasswordEncoder passwordEncoder;
 	@Autowired
@@ -24,12 +23,10 @@ public class AccountServiceImpl implements AccountService{
 	@Override
 	public void add(Account account) {
 		account.setPassword(passwordEncoder.encode(account.getPassword()));
-		account.setCode(Integer.toString(Math.abs(account.getEmail().hashCode())));
 		if(!mongoTemplate.collectionExists(Account.class)){
 			mongoTemplate.createCollection(Account.class);
 		}
 		mongoTemplate.insert(account);
-		logger.info("Save account successfully, Details : "+ account.getEmail());
 	}
 
 	@Override

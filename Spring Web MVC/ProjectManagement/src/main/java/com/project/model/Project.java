@@ -8,6 +8,7 @@ import java.util.List;
 public class Project {
     private String id;
     private String name;
+    private String accountOwner;
     private List<Task> taskList;
 
     public String getId() {
@@ -24,6 +25,14 @@ public class Project {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getAccountOwner() {
+        return accountOwner;
+    }
+
+    public void setAccountOwner(String accountOwner) {
+        this.accountOwner = accountOwner;
     }
 
     public List<Task> getTaskList() {

@@ -5,6 +5,8 @@ import java.util.List;
 public class Task {
     private String id;
     private String name;
+    private String rootProject;
+    private String parent;
     private List<Task> taskChild;
 
     public String getId() {
@@ -21,6 +23,22 @@ public class Task {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getRootProject() {
+        return rootProject;
+    }
+
+    public void setRootProject(String rootProject) {
+        this.rootProject = rootProject;
+    }
+
+    public String getParent() {
+        return parent;
+    }
+
+    public void setParent(String parent) {
+        this.parent = parent;
     }
 
     public List<Task> getTaskChild() {

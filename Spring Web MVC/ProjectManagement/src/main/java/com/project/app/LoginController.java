@@ -27,7 +27,19 @@ public class LoginController {
 	@RequestMapping(value = {"/*","/login*"}, method = RequestMethod.GET)
 	public String home(Model model,HttpSession httpSession) {
 		if(validateSession(httpSession)){
-			return "redirect:order";
+			Account result_login=(Account) httpSession.getAttribute("account");
+			model.addAttribute("account",result_login);
+			return "index";
+		}
+		model.addAttribute("account",new Account());
+		return "login";
+	}
+	@RequestMapping(value = {"/index*"}, method = RequestMethod.GET)
+	public String index(Model model,HttpSession httpSession) {
+		if(validateSession(httpSession)){
+			Account result_login=(Account) httpSession.getAttribute("account");
+			model.addAttribute("account",result_login);
+			return "index";
 		}
 		model.addAttribute("account",new Account());
 		return "login";
@@ -56,6 +68,7 @@ public class LoginController {
 				}
 				account.setPassword("");
 				httpSession.setAttribute("account", result_login);
+				model.addAttribute("account",result_login);
 				return "index";
 			}
 		}

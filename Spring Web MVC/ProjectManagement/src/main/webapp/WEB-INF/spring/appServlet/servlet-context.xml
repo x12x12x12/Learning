@@ -36,15 +36,21 @@
 
 	<!-- Configure bean to convert JSON to POJO and vice versa -->
 	<beans:bean id="jsonMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"> </beans:bean>
+
+	<!-- Service Class -->
 	<beans:bean id="accountService" class="com.project.service.AccountServiceImpl">
 		<beans:constructor-arg name="mongoTemplate" ref="mongoTemplate"/>
 	</beans:bean>
+	<beans:bean id="projectService" class="com.project.service.ProjectServiceImpl">
+		<beans:constructor-arg name="mongoTemplate" ref="mongoTemplate"/>
+	</beans:bean>
+
 	<!-- Mongo Template -->
 	<beans:bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
 		<beans:constructor-arg  name="mongoDbFactory" ref="mongoDbFactory"/>
 	</beans:bean>
 	<!-- Mongo Config -->
-	<mongo:db-factory host="localhost" port="27017" dbname="shopStore" />
+	<mongo:db-factory host="localhost" port="27017" dbname="project" />
 	<!-- Crypto For Login-->
 	<beans:bean id="encoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
 		<beans:constructor-arg name="strength" value="10" />

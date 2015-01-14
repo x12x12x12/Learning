@@ -124,10 +124,6 @@
 					                               <div class="form-group">
 			                                    		<input class="form-control" placeholder="Confirm Password" name="password" type="password" value="" id="passwordRegConFirm">
 			                              		  </div>
-			                              		  <div class="form-group">
-					                                      <form:label path="img_url">Link Avatar </form:label>
-					     							  	  <form:input path="img_url" cssClass="form-control" placeholder="Image URL" id="imgReg"/>
-					                               </div>
 					                             <input type="hidden" name="${_csrf.parameterName}"value="${_csrf.token}" />
 					                            </fieldset>
                       					 </form:form>	
@@ -168,9 +164,8 @@
 				  var name=$("#nameReg").val();
 				  var password=$("#passwordReg").val();
 				  var passconfirm=$("#passwordRegConFirm").val();
-				  var img_url=$("#imgReg").val();
             	  var url= "http://localhost:8080/rest/check/";
-            	  var json = {"name":name,"email":email,"password":password,"img_url":img_url};
+            	  var json = {"name":name,"email":email,"password":password};
             	  if ($.trim(email).length == 0) {
                       alert('Please enter email address');
                       e.preventDefault();
@@ -191,8 +186,9 @@
                     	            xhr.setRequestHeader("Accept", "application/json");
                     	            xhr.setRequestHeader("Content-Type", "application/json");
                     	        },
-                    	        success: function(account) {
-                    	        	if(account.email=='fail'){
+                    	        success: function(result) {
+                                    console.log(result);
+                    	        	if(result=="fail"){
                         	            alert("Email đã tồn tại !! ");
                     	        	}else{
                     	        		alert("Đăng ký thành công !! ");
