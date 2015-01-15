@@ -65,15 +65,16 @@
                                                 <li ><a href="#${listChild.id}" data-toggle="tab">${listChild.name}</a></li>
                                                     <!-- Tab panes -->
                                             </c:forEach>
-                                            <div class="tab-content">
-                                                <c:forEach var="listChild" items="${listValue.taskChild}">
-                                                    <div class="tab-pane fade" id="${listChild.id}">
-                                                        <h4>Task name : ${listChild.name}</h4>
-                                                        <p>Task cha :${listChild.parent}</p>
-                                                    </div>
-                                                </c:forEach>
-                                            </div>
+
                                         </ul>
+                                        <div class="tab-content">
+                                            <c:forEach var="listChild" items="${listValue.taskChild}">
+                                                <div class="tab-pane fade" id="${listChild.id}">
+                                                    <h4>Task name : ${listChild.name}</h4>
+                                                    <h4>Task parent :${listChild.parent}</h4>
+                                                </div>
+                                            </c:forEach>
+                                        </div>
                                     </div>
                                 </c:if>
                                 <!-- /.panel-body -->
@@ -94,7 +95,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <h4 class="modal-title" id="myModalLabel">Project Detail</h4>
+                            <h4 class="modal-title" id="myModalLabel">New Task</h4>
                         </div>
                         <div class="modal-body">
                             <div>
