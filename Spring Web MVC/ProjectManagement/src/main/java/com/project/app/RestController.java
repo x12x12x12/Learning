@@ -36,6 +36,17 @@ public class RestController {
         List<Project> list=projectService.getListProject(accountOwner);
         return list;
     }
+    @RequestMapping(value="/rest/project/create",method=RequestMethod.POST)
+    public @ResponseBody Project createProject(@RequestBody Project project){
+        try{
+            if(project.getAccountOwner()!=null && project.getName()!=null){
+                projectService.addProject(project);
+            }
+        }catch(Exception ex){
+            project.setId("fail");
+        }
+        return project;
+    }
 
     @RequestMapping(value="/rest/task/{parent}",method=RequestMethod.GET)
     public @ResponseBody List<Task> getListTask(@PathVariable("parent") String parent){
@@ -43,5 +54,16 @@ public class RestController {
         return list;
     }
 
+    @RequestMapping(value="/rest/task/create",method=RequestMethod.POST)
+    public @ResponseBody Task createTask(@RequestBody Task task){
+        try{
+            if(task.getParent()!=null && task.getName()!=null){
+                projectService.addTask(task);
+            }
+        }catch(Exception ex){
+            task.setId("fail");
+        }
+        return task;
+    }
 
 }

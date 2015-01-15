@@ -10,6 +10,7 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 
+import java.util.Date;
 import java.util.List;
 
 public class ProjectServiceImpl implements ProjectService {
@@ -25,6 +26,8 @@ public class ProjectServiceImpl implements ProjectService {
         if(!mongoTemplate.collectionExists(Project.class)){
             mongoTemplate.createCollection(Project.class);
         }
+        String id=project.getAccountOwner()+project.getName()+new Date().toString();
+        project.setId("PROJ-"+Integer.toString(Math.abs(id.hashCode())));
         mongoTemplate.insert(project);
     }
 
@@ -33,12 +36,15 @@ public class ProjectServiceImpl implements ProjectService {
         if(!mongoTemplate.collectionExists(Task.class)){
             mongoTemplate.createCollection(Task.class);
         }
+        String id_task=task.getName()+task.getParent()+task.getRootProject()+new Date().toString();
+        task.setId("TASK-"+Integer.toString(Math.abs(id_task.hashCode())));
         mongoTemplate.insert(task);
     }
 
     @Override
     public Project getProject(String id) {
-        return null;
+        query=new Query(Criteria.where("id").is(id));
+        return mongoTemplate.findOne(query,Project.class);
     }
 
     @Override
@@ -52,7 +58,7 @@ public class ProjectServiceImpl implements ProjectService {
         query=new Query(Criteria.where("parent").is(parent));
         List<Task> list=mongoTemplate.find(query,Task.class);
         for(Task task : list){
-            task.setTaskChild(getListTask(task.getName()));
+            task.setTaskChild(getListTask(task.getId()));
         }
         return list;
     }

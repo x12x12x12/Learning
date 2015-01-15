@@ -1,7 +1,10 @@
 package com.project.model;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.util.List;
 
+@Document(collection="task")
 public class Task {
     private String id;
     private String name;

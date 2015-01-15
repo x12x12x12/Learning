@@ -1,6 +1,7 @@
 package com.project.app;
 
 import com.project.model.Account;
+import com.project.model.Project;
 import com.project.model.Task;
 import com.project.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,12 +35,13 @@ public class ProjectController {
     @RequestMapping(value="/project/{id}", method = RequestMethod.GET)
     public String taskInProject(Model model,HttpSession httpSession,@PathVariable("id") String parent) {
         if(validateSession(httpSession)){
-            List<Task> list=projectService.getListTask(parent);
-            if(!list.isEmpty()){
+            Project project=projectService.getProject(parent);
+            if(project!=null){
+                List<Task> list=projectService.getListTask(parent);
                 Account account= ((httpSession.getAttribute("account")!=null) ? (Account) httpSession.getAttribute("account")  :new Account());
                 model.addAttribute("account",account);
-                model.addAttribute("project",parent);
-                model.addAttribute("task",list);
+                model.addAttribute("project",project);
+                model.addAttribute("listTask",list);
                 return "project_detail";
             }
             return "redirect:/index";
