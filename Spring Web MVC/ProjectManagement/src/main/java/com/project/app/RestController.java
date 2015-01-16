@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -36,11 +38,24 @@ public class RestController {
         List<Project> list=projectService.getListProject(accountOwner);
         return list;
     }
+
     @RequestMapping(value="/rest/project/create",method=RequestMethod.POST)
     public @ResponseBody Project createProject(@RequestBody Project project){
         try{
             if(project.getAccountOwner()!=null && project.getName()!=null){
                 projectService.addProject(project);
+            }
+        }catch(Exception ex){
+            project.setId("fail");
+        }
+        return project;
+    }
+
+    @RequestMapping(value="/rest/project/update",method=RequestMethod.POST)
+    public @ResponseBody Project updateProject(@RequestBody Project project){
+        try{
+            if(project.getName()!=null){
+                projectService.updateProject(project);
             }
         }catch(Exception ex){
             project.setId("fail");
@@ -59,6 +74,18 @@ public class RestController {
         try{
             if(task.getParent()!=null && task.getName()!=null){
                 projectService.addTask(task);
+            }
+        }catch(Exception ex){
+            task.setId("fail");
+        }
+        return task;
+    }
+
+    @RequestMapping(value="/rest/task/update",method=RequestMethod.POST)
+    public @ResponseBody Task updateTask(@RequestBody Task task){
+        try{
+            if(task.getName()!=null &&task.getId()!=null){
+                projectService.updateTask(task);
             }
         }catch(Exception ex){
             task.setId("fail");

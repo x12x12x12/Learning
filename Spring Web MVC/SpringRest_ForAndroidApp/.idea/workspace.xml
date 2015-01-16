@@ -7,8 +7,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="71c5ea47-541b-4ce4-9d4d-38d41e301b38" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ProjectManagement/src/main/webapp/resources/jquery-ui.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ProjectManagement/src/main/webapp/resources/jquery-ui.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ProjectManagement/src/main/java/com/project/model/Project.java" afterPath="$PROJECT_DIR$/../ProjectManagement/src/main/java/com/project/model/Project.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ProjectManagement/src/main/java/com/project/service/ProjectService.java" afterPath="$PROJECT_DIR$/../ProjectManagement/src/main/java/com/project/service/ProjectService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ProjectManagement/src/main/java/com/project/service/ProjectServiceImpl.java" afterPath="$PROJECT_DIR$/../ProjectManagement/src/main/java/com/project/service/ProjectServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ProjectManagement/src/main/java/com/project/app/RestController.java" afterPath="$PROJECT_DIR$/../ProjectManagement/src/main/java/com/project/app/RestController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ProjectManagement/src/main/java/com/project/model/Task.java" afterPath="$PROJECT_DIR$/../ProjectManagement/src/main/java/com/project/model/Task.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ProjectManagement/src/main/webapp/WEB-INF/views/index.jsp" afterPath="$PROJECT_DIR$/../ProjectManagement/src/main/webapp/WEB-INF/views/index.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ProjectManagement/src/main/webapp/WEB-INF/views/project_detail.jsp" afterPath="$PROJECT_DIR$/../ProjectManagement/src/main/webapp/WEB-INF/views/project_detail.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="app.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -37,9 +45,13 @@
       <file leaf-file-name="ItemServiceImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/dominhquan/service/ItemServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1296" max-vertical-offset="2430">
-              <caret line="115" column="41" selection-start-line="115" selection-start-column="41" selection-end-line="115" selection-end-column="41" />
-              <folding />
+            <state vertical-scroll-proportion="0.0" vertical-offset="471" max-vertical-offset="2430">
+              <caret line="65" column="5" selection-start-line="65" selection-start-column="5" selection-end-line="65" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#823#824#0" expanded="false" />
+                <element signature="e#862#863#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -47,9 +59,11 @@
       <file leaf-file-name="RestController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/dominhquan/app/RestController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1699" max-vertical-offset="3960">
+            <state vertical-scroll-proportion="0.0" vertical-offset="2763" max-vertical-offset="3960">
               <caret line="137" column="32" selection-start-line="137" selection-start-column="32" selection-end-line="137" selection-end-column="32" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -57,18 +71,20 @@
       <file leaf-file-name="ItemService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/dominhquan/service/ItemService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="468">
-              <caret line="9" column="9" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
-              <folding />
+            <state vertical-scroll-proportion="0.0" vertical-offset="126" max-vertical-offset="468">
+              <caret line="11" column="34" selection-start-line="11" selection-start-column="34" selection-end-line="11" selection-end-column="34" />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AppRestUri.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AppRestUri.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/dominhquan/uri/AppRestUri.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="486">
-              <caret line="14" column="27" selection-start-line="14" selection-start-column="27" selection-end-line="14" selection-end-column="27" />
+            <state vertical-scroll-proportion="0.5777027" vertical-offset="0" max-vertical-offset="592">
+              <caret line="19" column="64" selection-start-line="19" selection-start-column="64" selection-end-line="19" selection-end-column="64" />
               <folding />
             </state>
           </provider>
@@ -79,27 +95,67 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="632" max-vertical-offset="1332">
               <caret line="54" column="23" selection-start-line="54" selection-start-column="23" selection-end-line="54" selection-end-column="23" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AccountService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/dominhquan/service/AccountService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="108" max-vertical-offset="288">
-              <caret line="6" column="22" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tables.jsp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="tables.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/tables.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.4920354" vertical-offset="4259" max-vertical-offset="5220">
-              <caret line="127" column="20" selection-start-line="75" selection-start-column="4" selection-end-line="127" selection-end-column="20" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="4259" max-vertical-offset="5220">
+              <caret line="267" column="51" selection-start-line="267" selection-start-column="51" selection-end-line="267" selection-end-column="51" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Order.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/dominhquan/model/Order.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="72" max-vertical-offset="756">
+              <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#390#391#0" expanded="false" />
+                <element signature="e#406#407#0" expanded="false" />
+                <element signature="e#438#439#0" expanded="false" />
+                <element signature="e#457#458#0" expanded="false" />
+                <element signature="e#493#494#0" expanded="false" />
+                <element signature="e#520#521#0" expanded="false" />
+                <element signature="e#574#575#0" expanded="false" />
+                <element signature="e#615#616#0" expanded="false" />
+                <element signature="e#643#644#0" expanded="false" />
+                <element signature="e#662#663#0" expanded="false" />
+                <element signature="e#700#701#0" expanded="false" />
+                <element signature="e#725#726#0" expanded="false" />
+                <element signature="e#755#756#0" expanded="false" />
+                <element signature="e#776#777#0" expanded="false" />
+                <element signature="e#818#819#0" expanded="false" />
+                <element signature="e#847#848#0" expanded="false" />
+                <element signature="e#879#880#0" expanded="false" />
+                <element signature="e#902#903#0" expanded="false" />
+                <element signature="e#948#949#0" expanded="false" />
+                <element signature="e#981#982#0" expanded="false" />
+                <element signature="e#1007#1008#0" expanded="false" />
+                <element signature="e#1027#1028#0" expanded="false" />
+                <element signature="e#1064#1065#0" expanded="false" />
+                <element signature="e#1091#1092#0" expanded="false" />
+                <element signature="e#1122#1123#0" expanded="false" />
+                <element signature="e#1146#1147#0" expanded="false" />
+                <element signature="e#1192#1193#0" expanded="false" />
+                <element signature="e#1227#1228#0" expanded="false" />
+                <element signature="e#1260#1261#0" expanded="false" />
+                <element signature="e#1284#1285#0" expanded="false" />
+                <element signature="e#1332#1333#0" expanded="false" />
+                <element signature="e#1367#1368#0" expanded="false" />
+                <element signature="e#1405#1406#0" expanded="false" />
+                <element signature="e#1434#1435#0" expanded="false" />
+                <element signature="e#1492#1493#0" expanded="false" />
+                <element signature="e#1537#1538#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -107,9 +163,31 @@
       <file leaf-file-name="Account.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/dominhquan/model/Account.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="576">
+            <state vertical-scroll-proportion="0.0" vertical-offset="180" max-vertical-offset="576">
               <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#433#434#0" expanded="false" />
+                <element signature="e#451#452#0" expanded="false" />
+                <element signature="e#487#488#0" expanded="false" />
+                <element signature="e#510#511#0" expanded="false" />
+                <element signature="e#538#539#0" expanded="false" />
+                <element signature="e#557#558#0" expanded="false" />
+                <element signature="e#595#596#0" expanded="false" />
+                <element signature="e#620#621#0" expanded="false" />
+                <element signature="e#651#652#0" expanded="false" />
+                <element signature="e#673#674#0" expanded="false" />
+                <element signature="e#717#718#0" expanded="false" />
+                <element signature="e#748#749#0" expanded="false" />
+                <element signature="e#775#776#0" expanded="false" />
+                <element signature="e#793#794#0" expanded="false" />
+                <element signature="e#829#830#0" expanded="false" />
+                <element signature="e#852#853#0" expanded="false" />
+                <element signature="e#882#883#0" expanded="false" />
+                <element signature="e#903#904#0" expanded="false" />
+                <element signature="e#945#946#0" expanded="false" />
+                <element signature="e#974#975#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -119,7 +197,45 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="162" max-vertical-offset="1278">
               <caret line="16" column="17" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="27" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#593#594#0" expanded="false" />
+                <element signature="e#609#610#0" expanded="false" />
+                <element signature="e#643#644#0" expanded="false" />
+                <element signature="e#662#663#0" expanded="false" />
+                <element signature="e#691#692#0" expanded="false" />
+                <element signature="e#709#710#0" expanded="false" />
+                <element signature="e#747#748#0" expanded="false" />
+                <element signature="e#770#771#0" expanded="false" />
+                <element signature="e#810#811#0" expanded="false" />
+                <element signature="e#839#840#0" expanded="false" />
+                <element signature="e#899#900#0" expanded="false" />
+                <element signature="e#944#945#0" expanded="false" />
+                <element signature="e#976#977#0" expanded="false" />
+                <element signature="e#997#998#0" expanded="false" />
+                <element signature="e#1041#1042#0" expanded="false" />
+                <element signature="e#1070#1071#0" expanded="false" />
+                <element signature="e#1102#1103#0" expanded="false" />
+                <element signature="e#1123#1124#0" expanded="false" />
+                <element signature="e#1167#1168#0" expanded="false" />
+                <element signature="e#1196#1197#0" expanded="false" />
+                <element signature="e#1273#1274#0" expanded="false" />
+                <element signature="e#1297#1298#0" expanded="false" />
+                <element signature="e#1345#1346#0" expanded="false" />
+                <element signature="e#1380#1381#0" expanded="false" />
+                <element signature="e#1457#1458#0" expanded="false" />
+                <element signature="e#1481#1482#0" expanded="false" />
+                <element signature="e#1529#1530#0" expanded="false" />
+                <element signature="e#1564#1565#0" expanded="false" />
+                <element signature="e#1594#1595#0" expanded="false" />
+                <element signature="e#1613#1614#0" expanded="false" />
+                <element signature="e#1653#1654#0" expanded="false" />
+                <element signature="e#1678#1679#0" expanded="false" />
+                <element signature="e#1706#1707#0" expanded="false" />
+                <element signature="e#1726#1727#0" expanded="false" />
+                <element signature="e#1765#1766#0" expanded="false" />
+                <element signature="e#1792#1793#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -129,7 +245,9 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="145" max-vertical-offset="1224">
               <caret line="29" column="8" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="92" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -179,8 +297,8 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-434" />
-    <option name="y" value="5" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
     <option name="width" value="1936" />
     <option name="height" value="1056" />
   </component>
@@ -212,6 +330,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -261,14 +380,6 @@
               <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WEB-INF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -288,123 +399,15 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
+              <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="WEB-INF" />
+              <option name="myItemId" value="dominhquan" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SpringRest_ForAndroidApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WEB-INF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="spring" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SpringRest_ForAndroidApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WEB-INF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="spring" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="appServlet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SpringRest_ForAndroidApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SpringRest_ForAndroidApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
+              <option name="myItemId" value="uri" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -490,36 +493,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SpringRest_ForAndroidApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dominhquan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -527,7 +500,6 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1064,12 +1036,14 @@
       <workItem from="1421250142085" duration="39000" />
       <workItem from="1421250439236" duration="2808000" />
       <workItem from="1421257552869" duration="994000" />
-      <workItem from="1421289696187" duration="4129000" />
+      <workItem from="1421289696187" duration="4130000" />
+      <workItem from="1421402815696" duration="2540000" />
+      <workItem from="1421416125488" duration="634000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47026000" />
+    <option name="totallyTimeSpent" value="50201000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1092,8 +1066,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-434" y="5" width="1936" height="1056" extended-state="1" />
-    <editor active="false" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1432,7 +1406,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="3356" max-vertical-offset="3960">
           <caret line="193" column="20" selection-start-line="193" selection-start-column="20" selection-end-line="193" selection-end-column="40" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1447,11 +1420,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="149" max-vertical-offset="900">
           <caret line="39" column="7" selection-start-line="39" selection-start-column="6" selection-end-line="39" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#841#842#0" expanded="false" />
-            <element signature="e#880#881#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1459,7 +1427,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="288">
           <caret line="6" column="22" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1467,7 +1434,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="632" max-vertical-offset="1332">
           <caret line="54" column="23" selection-start-line="54" selection-start-column="23" selection-end-line="54" selection-end-column="23" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1475,15 +1444,29 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="576">
           <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dominhquan/model/Order.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.12162162" vertical-offset="0" max-vertical-offset="756">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#433#434#0" expanded="false" />
+            <element signature="e#451#452#0" expanded="false" />
+            <element signature="e#487#488#0" expanded="false" />
+            <element signature="e#510#511#0" expanded="false" />
+            <element signature="e#538#539#0" expanded="false" />
+            <element signature="e#557#558#0" expanded="false" />
+            <element signature="e#595#596#0" expanded="false" />
+            <element signature="e#620#621#0" expanded="false" />
+            <element signature="e#651#652#0" expanded="false" />
+            <element signature="e#673#674#0" expanded="false" />
+            <element signature="e#717#718#0" expanded="false" />
+            <element signature="e#748#749#0" expanded="false" />
+            <element signature="e#775#776#0" expanded="false" />
+            <element signature="e#793#794#0" expanded="false" />
+            <element signature="e#829#830#0" expanded="false" />
+            <element signature="e#852#853#0" expanded="false" />
+            <element signature="e#882#883#0" expanded="false" />
+            <element signature="e#903#904#0" expanded="false" />
+            <element signature="e#945#946#0" expanded="false" />
+            <element signature="e#974#975#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1491,31 +1474,45 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="162" max-vertical-offset="1278">
           <caret line="16" column="17" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dominhquan/uri/AppRestUri.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="486">
-          <caret line="14" column="27" selection-start-line="14" selection-start-column="27" selection-end-line="14" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dominhquan/app/RestController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1699" max-vertical-offset="3960">
-          <caret line="137" column="32" selection-start-line="137" selection-start-column="32" selection-end-line="137" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dominhquan/service/ItemService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="468">
-          <caret line="9" column="9" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#593#594#0" expanded="false" />
+            <element signature="e#609#610#0" expanded="false" />
+            <element signature="e#643#644#0" expanded="false" />
+            <element signature="e#662#663#0" expanded="false" />
+            <element signature="e#691#692#0" expanded="false" />
+            <element signature="e#709#710#0" expanded="false" />
+            <element signature="e#747#748#0" expanded="false" />
+            <element signature="e#770#771#0" expanded="false" />
+            <element signature="e#810#811#0" expanded="false" />
+            <element signature="e#839#840#0" expanded="false" />
+            <element signature="e#899#900#0" expanded="false" />
+            <element signature="e#944#945#0" expanded="false" />
+            <element signature="e#976#977#0" expanded="false" />
+            <element signature="e#997#998#0" expanded="false" />
+            <element signature="e#1041#1042#0" expanded="false" />
+            <element signature="e#1070#1071#0" expanded="false" />
+            <element signature="e#1102#1103#0" expanded="false" />
+            <element signature="e#1123#1124#0" expanded="false" />
+            <element signature="e#1167#1168#0" expanded="false" />
+            <element signature="e#1196#1197#0" expanded="false" />
+            <element signature="e#1273#1274#0" expanded="false" />
+            <element signature="e#1297#1298#0" expanded="false" />
+            <element signature="e#1345#1346#0" expanded="false" />
+            <element signature="e#1380#1381#0" expanded="false" />
+            <element signature="e#1457#1458#0" expanded="false" />
+            <element signature="e#1481#1482#0" expanded="false" />
+            <element signature="e#1529#1530#0" expanded="false" />
+            <element signature="e#1564#1565#0" expanded="false" />
+            <element signature="e#1594#1595#0" expanded="false" />
+            <element signature="e#1613#1614#0" expanded="false" />
+            <element signature="e#1653#1654#0" expanded="false" />
+            <element signature="e#1678#1679#0" expanded="false" />
+            <element signature="e#1706#1707#0" expanded="false" />
+            <element signature="e#1726#1727#0" expanded="false" />
+            <element signature="e#1765#1766#0" expanded="false" />
+            <element signature="e#1792#1793#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1523,22 +1520,102 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="145" max-vertical-offset="1224">
           <caret line="29" column="8" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="92" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dominhquan/service/ItemServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1296" max-vertical-offset="2430">
-          <caret line="115" column="41" selection-start-line="115" selection-start-column="41" selection-end-line="115" selection-end-column="41" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/tables.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.4920354" vertical-offset="4259" max-vertical-offset="5220">
-          <caret line="127" column="20" selection-start-line="75" selection-start-column="4" selection-end-line="127" selection-end-column="20" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="4259" max-vertical-offset="5220">
+          <caret line="267" column="51" selection-start-line="267" selection-start-column="51" selection-end-line="267" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dominhquan/model/Order.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="756">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#390#391#0" expanded="false" />
+            <element signature="e#406#407#0" expanded="false" />
+            <element signature="e#438#439#0" expanded="false" />
+            <element signature="e#457#458#0" expanded="false" />
+            <element signature="e#493#494#0" expanded="false" />
+            <element signature="e#520#521#0" expanded="false" />
+            <element signature="e#574#575#0" expanded="false" />
+            <element signature="e#615#616#0" expanded="false" />
+            <element signature="e#643#644#0" expanded="false" />
+            <element signature="e#662#663#0" expanded="false" />
+            <element signature="e#700#701#0" expanded="false" />
+            <element signature="e#725#726#0" expanded="false" />
+            <element signature="e#755#756#0" expanded="false" />
+            <element signature="e#776#777#0" expanded="false" />
+            <element signature="e#818#819#0" expanded="false" />
+            <element signature="e#847#848#0" expanded="false" />
+            <element signature="e#879#880#0" expanded="false" />
+            <element signature="e#902#903#0" expanded="false" />
+            <element signature="e#948#949#0" expanded="false" />
+            <element signature="e#981#982#0" expanded="false" />
+            <element signature="e#1007#1008#0" expanded="false" />
+            <element signature="e#1027#1028#0" expanded="false" />
+            <element signature="e#1064#1065#0" expanded="false" />
+            <element signature="e#1091#1092#0" expanded="false" />
+            <element signature="e#1122#1123#0" expanded="false" />
+            <element signature="e#1146#1147#0" expanded="false" />
+            <element signature="e#1192#1193#0" expanded="false" />
+            <element signature="e#1227#1228#0" expanded="false" />
+            <element signature="e#1260#1261#0" expanded="false" />
+            <element signature="e#1284#1285#0" expanded="false" />
+            <element signature="e#1332#1333#0" expanded="false" />
+            <element signature="e#1367#1368#0" expanded="false" />
+            <element signature="e#1405#1406#0" expanded="false" />
+            <element signature="e#1434#1435#0" expanded="false" />
+            <element signature="e#1492#1493#0" expanded="false" />
+            <element signature="e#1537#1538#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dominhquan/service/ItemService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="468">
+          <caret line="11" column="34" selection-start-line="11" selection-start-column="34" selection-end-line="11" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dominhquan/service/ItemServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="471" max-vertical-offset="2430">
+          <caret line="65" column="5" selection-start-line="65" selection-start-column="5" selection-end-line="65" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#823#824#0" expanded="false" />
+            <element signature="e#862#863#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dominhquan/app/RestController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2763" max-vertical-offset="3960">
+          <caret line="137" column="32" selection-start-line="137" selection-start-column="32" selection-end-line="137" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dominhquan/uri/AppRestUri.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5777027" vertical-offset="0" max-vertical-offset="592">
+          <caret line="19" column="64" selection-start-line="19" selection-start-column="64" selection-end-line="19" selection-end-column="64" />
           <folding />
         </state>
       </provider>

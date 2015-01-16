@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -28,7 +30,19 @@ public class ProjectServiceImpl implements ProjectService {
         }
         String id=project.getAccountOwner()+project.getName()+new Date().toString();
         project.setId("PROJ-"+Integer.toString(Math.abs(id.hashCode())));
+        project.setCreateDate(new Date());
         mongoTemplate.insert(project);
+    }
+
+    @Override
+    public void updateProject(Project project) throws MongoException {
+        query = new Query();
+        query.addCriteria(Criteria.where("_id").is(project.getId()));
+        Update update = new Update();
+        update.set("name",project.getName());
+        update.set("startDate",project.getStartDate());
+        update.set("dueDate",project.getDueDate());
+        mongoTemplate.updateFirst(query,update,Project.class);
     }
 
     @Override
@@ -38,11 +52,23 @@ public class ProjectServiceImpl implements ProjectService {
         }
         String id_task=task.getName()+task.getParent()+task.getRootProject()+new Date().toString();
         task.setId("TASK-"+Integer.toString(Math.abs(id_task.hashCode())));
+        task.setCreateDate(new Date());
         mongoTemplate.insert(task);
     }
 
     @Override
-    public Project getProject(String id) {
+    public void updateTask(Task task)throws MongoException {
+        query = new Query();
+        query.addCriteria(Criteria.where("_id").is(task.getId()));
+        Update update = new Update();
+        update.set("name",task.getName());
+        update.set("startDate",task.getStartDate());
+        update.set("dueDate",task.getDueDate());
+        mongoTemplate.updateFirst(query,update,Task.class);
+    }
+
+    @Override
+    public Project getProject(String id) throws MongoException {
         query=new Query(Criteria.where("id").is(id));
         return mongoTemplate.findOne(query,Project.class);
     }
@@ -54,7 +80,7 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public List<Task> getListTask(String parent) {   // 1st param is rootProject
+    public List<Task> getListTask(String parent) throws MongoException {   // 1st param is rootProject
         query=new Query(Criteria.where("parent").is(parent));
         List<Task> list=mongoTemplate.find(query,Task.class);
         for(Task task : list){
