@@ -53,8 +53,8 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                         ${listValue.name}
-                                        <button type="button" onclick="formUpdateTask('${listValue.id}','${listValue.name}','${listValue.startDate}','${listValue.dueDate}')" class="btn btn-primary btn-circle"><i class="fa fa-list"></i></button>
-                                        <button style="float: right" type="button" onclick="formMiniTask('${listValue.id}')" data-toggle="tooltip" data-placement="top" title="" data-original-title="Create Mini Task" class="btn btn-info btn-circle"><i class="fa fa-check"></i></button>
+                                        <button type="button" onclick="formUpdateTask('${listValue.id}','${listValue.name}','${listValue.startDate}','${listValue.dueDate}')" data-toggle="tooltip" data-placement="top" title="" data-original-title="Update Task" class="btn btn-primary btn-circle"><i class="fa fa-list"></i></button>
+                                        <button style="float: right" type="button" onclick="formMiniTask('${listValue.id}')" data-toggle="tooltip" data-placement="top" title="" data-original-title="Create Child Task" class="btn btn-info btn-circle"><i class="fa fa-check"></i></button>
                                 </div>
                                 <!-- /.panel-heading -->
                                 <c:if test="${not empty listValue.taskChild}">
@@ -70,7 +70,7 @@
                                         <div class="tab-content">
                                             <c:forEach var="listChild" items="${listValue.taskChild}">
                                                 <div class="tab-pane fade" id="${listChild.id}">
-                                                    <h4>Task name : ${listChild.name}</h4>  <button style="float: right" type="button" onclick="formUpdateTask('${listChild.id}','${listChild.name}','${listChild.startDate}','${listChild.dueDate}')" data-toggle="tooltip" data-placement="top" title="" data-original-title="Create Mini Task" class="btn btn-success">Update</button>
+                                                    <h4>Task name : ${listChild.name}</h4>  <button style="float: right" type="button" onclick="formUpdateTask('${listChild.id}','${listChild.name}','${listChild.startDate}','${listChild.dueDate}')" data-toggle="tooltip" data-placement="top" title="" data-original-title="Update Child Task" class="btn btn-success">Update</button>
                                                     <h4>Create date :${listChild.createDate}</h4>
                                                     <h4>Start date :${listChild.startDate}</h4>
                                                     <h4>Due date :${listChild.dueDate}</h4>
@@ -285,7 +285,7 @@
                 }
             });
             $("#myModal").modal("hide");
-            location.reload();
+            document.location.reload(true);
             clearModal();
         }
 
@@ -313,7 +313,7 @@
                 }
             });
             $("#myMiniModal").modal("hide");
-            location.reload();
+            document.location.reload(true);
             clearModal();
         }
 
@@ -341,7 +341,7 @@
                 }
             });
             $("#myModal").modal("hide");
-            location.reload();
+            document.location.reload(true);
             clearModal();
         }
 

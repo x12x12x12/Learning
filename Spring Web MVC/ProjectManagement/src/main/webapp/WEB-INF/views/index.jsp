@@ -205,7 +205,7 @@
                 }
             });
             $("#myModal").modal("hide");
-            location.reload();
+            document.location.reload(true);
             clearModal();
         }
 
@@ -243,7 +243,7 @@
                 }
             });
             $("#myModal").modal("hide");
-            location.reload();
+            document.location.reload(true);
             clearModal();
         }
 
