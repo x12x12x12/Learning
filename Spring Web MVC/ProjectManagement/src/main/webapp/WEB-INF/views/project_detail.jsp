@@ -252,12 +252,8 @@
             clearModal();
             $("#idTask").val(id_task);
             $("#updatenameTask").val(name_task);
-//            start_date = new Date(start_date);
-//            due_date = new Date(due_date);
-//            $("#updateduedateTask").val(due_date.getFullYear()+"-"+due_date.getMonth()+1+"-"+due_date.getDate());
-//            $("#updatestrdateTask").val(start_date.getFullYear()+"-"+start_date.getMonth()+1+"-"+start_date.getDate());
-            $("#updateduedateTask").val(due_date);
-            $("#updatestrdateTask").val(start_date);
+            $("#updateduedateTask").val(parseDate(due_date));
+            $("#updatestrdateTask").val(parseDate(start_date));
             $("#myUpdateModal").modal("show");
         }
 
@@ -359,6 +355,51 @@
             $("#updateduedateTask").val("");
             $("#updatenameTask").val("");
             $("#updatestrdateTask").val("");
+        }
+
+        function parseDate(date){
+            var data=date.split(' ');
+            switch (data[1]) {
+                case 'Jan':
+                    data[1]=1;
+                    break;
+                case 'Feb':
+                    data[1]=2;
+                    break;
+                case 'Mar':
+                    data[1]=3;
+                    break;
+                case 'Apr':
+                    data[1]=4;
+                    break;
+                case 'May':
+                    data[1]=5;
+                    break;
+                case 'Jun':
+                    data[1]=6;
+                    break;
+                case 'Jul':
+                    data[1]=7;
+                    break;
+                case 'Aug':
+                    data[1]=8;
+                    break;
+                case 'Sep':
+                    data[1]=9;
+                    break;
+                case 'Oct':
+                    data[1]=10;
+                    break;
+                case 'Nov':
+                    data[1]=11;
+                    break;
+                case 'Dec':
+                    data[1]=12;
+                    break;
+                default :
+                    break;
+            }
+            return data[5]+"-"+data[1]+"-"+data[2];
         }
 
         $('.row').tooltip({

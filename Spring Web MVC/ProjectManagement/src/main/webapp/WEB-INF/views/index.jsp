@@ -148,6 +148,8 @@
     <link rel="stylesheet" href="/resources/jquery-ui.css">
     <!-- jQuery Version 1.11.0 -->
     <script src="/resources/js/jquery-1.11.0.js"></script>
+    <script src="/resources/moment.js"></script>
+    <script src="/resources/moment-with-locales.js"></script>
     <script src="/resources/jquery-ui.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="/resources/js/bootstrap.min.js"></script>
@@ -211,8 +213,8 @@
             clearModal();
             $("#id_project").val(id);
             $("#updatenameProject").val(name);
-            $("#updatestartProject").val(start);
-            $("#updatedueProject").val(due);
+            $("#updatestartProject").val(parseDate(start));
+            $("#updatedueProject").val(parseDate(due));
             $("#myUpdateModal").modal("show");
         }
 
@@ -254,6 +256,52 @@
             $("#updatestartProject").val("");
             $("#updatedueProject").val("");
         }
+
+        function parseDate(date){
+            var data=date.split(' ');
+            switch (data[1]) {
+                case 'Jan':
+                    data[1]=1;
+                    break;
+                case 'Feb':
+                    data[1]=2;
+                    break;
+                case 'Mar':
+                    data[1]=3;
+                    break;
+                case 'Apr':
+                    data[1]=4;
+                    break;
+                case 'May':
+                    data[1]=5;
+                    break;
+                case 'Jun':
+                    data[1]=6;
+                    break;
+                case 'Jul':
+                    data[1]=7;
+                    break;
+                case 'Aug':
+                    data[1]=8;
+                    break;
+                case 'Sep':
+                    data[1]=9;
+                    break;
+                case 'Oct':
+                    data[1]=10;
+                    break;
+                case 'Nov':
+                    data[1]=11;
+                    break;
+                case 'Dec':
+                    data[1]=12;
+                    break;
+                default :
+                    break;
+            }
+            return data[5]+"-"+data[1]+"-"+data[2];
+        }
+
     </script>
 </body>
 </html>
