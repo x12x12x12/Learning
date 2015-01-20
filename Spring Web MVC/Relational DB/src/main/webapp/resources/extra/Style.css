@@ -1,0 +1,197 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%
+}
+
+body {
+    background: #eee
+}
+
+#main {
+    margin: 50px auto 0px auto;
+    width: 850px
+}
+
+canvas {
+    margin: 0 50px;
+    width: auto;
+    border: 2px solid #ddd
+}
+
+.button {
+    margin: 2px;
+    width: 100px;
+    padding: 5px;
+    text-align: center;
+    font: 24px Button;
+    border: 1px solid #ddd;
+    background: #ffc;
+    cursor: pointer;
+}
+
+.button:hover {
+    padding: 4px;
+    border: 2px solid #ddd;
+    background: #ffa;
+}
+
+.info {
+    font: 18px InFo;
+}
+
+.conversation {
+    width: 270px;
+    height: 300px;
+    border: solid 1px;
+}
+
+.conversation .title {
+    background-color: #5bc0de;
+    width: 100%;
+    height: 10%;
+}
+
+.conversation #talks {
+    width: 100%;
+    height: 78%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.conversation .send-message {
+    width: 100%;
+    height: 12%;
+    border-top: solid 1px;
+    border-top: solid 1px;
+}
+
+.conversation .send-message .write-message {
+    width: 95%;
+    height: 75%;
+    margin: 5px 5px;
+    background-color: #c7cbd5;
+    color: #eee;
+    float: left;
+}
+
+.userInListUsers {
+    border: 1px solid;
+    height: 230px;
+    margin: 0% 0% 5% 6%;
+    border-radius: 10px;
+}
+
+.my-form {
+   margin-top: 10%;
+   border: 1px solid;
+   border-radius: 10px;
+   background-color: #eee;
+}
+
+.my-form #my-form-title {
+    font-weight: bold;
+}
+.my-form #my-form-body {
+}
+
+.bubble {
+    background-image: linear-gradient(bottom, rgb(210, 244, 254) 25%, rgb(149, 194, 253) 100%);
+    background-image: -o-linear-gradient(bottom, rgb(210, 244, 254) 25%, rgb(149, 194, 253) 100%);
+    background-image: -moz-linear-gradient(bottom, rgb(210, 244, 254) 25%, rgb(149, 194, 253) 100%);
+    background-image: -webkit-linear-gradient(bottom, rgb(210, 244, 254) 25%, rgb(149, 194, 253) 100%);
+    background-image: -ms-linear-gradient(bottom, rgb(210, 244, 254) 25%, rgb(149, 194, 253) 100%);
+    background-image: -webkit-gradient(
+            linear,
+            left bottom,
+            left top,
+            color-stop(0.25, rgb(210, 244, 254)),
+            color-stop(1, rgb(149, 194, 253))
+    );
+    border: solid 1px rgba(0, 0, 0, 0.5);
+    /* vendor rules */
+    border-radius: 20px;
+    /* vendor rules */
+    box-shadow: inset 0 5px 5px rgba(255, 255, 255, 0.4), 0 1px 3px rgba(0, 0, 0, 0.2);
+    /* vendor rules */
+    box-sizing: border-box;
+    clear: both;
+    float: left;
+    margin-bottom: 20px;
+    padding: 8px 30px;
+    position: relative;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);
+    width: auto;
+    max-width: 100%;
+    word-wrap: break-word;
+}
+
+.bubble:before, .bubble:after {
+    border-radius: 20px / 10px;
+    content: '';
+    display: block;
+    position: absolute;
+}
+
+.bubble:before {
+    border: 10px solid transparent;
+    border-bottom-color: rgba(0, 0, 0, 0.5);
+    bottom: 0;
+    left: -7px;
+    z-index: -2;
+}
+
+.bubble:after {
+    border: 8px solid transparent;
+    border-bottom-color: #d2f4fe;
+    bottom: 1px;
+    left: -5px;
+}
+
+.bubble--alt {
+    background-image: linear-gradient(bottom, rgb(172, 228, 75) 25%, rgb(122, 205, 71) 100%);
+    background-image: -o-linear-gradient(bottom, rgb(172, 228, 75) 25%, rgb(122, 205, 71) 100%);
+    background-image: -moz-linear-gradient(bottom, rgb(172, 228, 75) 25%, rgb(122, 205, 71) 100%);
+    background-image: -webkit-linear-gradient(bottom, rgb(172, 228, 75) 25%, rgb(122, 205, 71) 100%);
+    background-image: -ms-linear-gradient(bottom, rgb(172, 228, 75) 25%, rgb(122, 205, 71) 100%);
+    background-image: -webkit-gradient(
+            linear,
+            left bottom,
+            left top,
+            color-stop(0.25, rgb(172, 228, 75)),
+            color-stop(1, rgb(122, 205, 71))
+    );
+    float: right;
+}
+
+.bubble--alt:before {
+    border-bottom-color: rgba(0, 0, 0, 0.5);
+    border-radius: 20px / 10px;
+    left: auto;
+    right: -7px;
+}
+
+.bubble--alt:after {
+    border-bottom-color: #ace44b;
+    border-radius: 20px / 10px;
+    left: auto;
+    right: -5px;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #f0f0f0;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #C7CBD5;
+    border-radius: 4px;
+    /*border: 1px solid white;*/
+}

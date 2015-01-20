@@ -15,6 +15,7 @@ public class AccountServiceImpl implements AccountService{
 	PasswordEncoder passwordEncoder;
 	@Autowired
 	private MongoTemplate mongoTemplate;
+
 	private Query query;
 	
 	public AccountServiceImpl (MongoTemplate mongoTemplate){

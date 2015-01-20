@@ -11,6 +11,7 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 
+import javax.annotation.Resource;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -71,6 +72,7 @@ public class ProjectServiceImpl implements ProjectService {
     public Project getProject(String id) throws MongoException {
         query=new Query(Criteria.where("id").is(id));
         return mongoTemplate.findOne(query,Project.class);
+//          return projectRepo.findOne(Integer.parseInt(id));
     }
 
     @Override

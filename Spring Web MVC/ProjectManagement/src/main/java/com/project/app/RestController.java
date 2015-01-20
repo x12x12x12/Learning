@@ -33,6 +33,12 @@ public class RestController {
         return account;
     }
 
+    @RequestMapping(value="/rest/{project}",method=RequestMethod.GET)
+    public @ResponseBody Project getProject(@PathVariable("project") String project){
+        return projectService.getProject(project);
+    }
+
+
     @RequestMapping(value="/rest/project/{name}",method=RequestMethod.GET)
     public @ResponseBody List<Project> getListProject(@PathVariable("name") String accountOwner){
         List<Project> list=projectService.getListProject(accountOwner);
