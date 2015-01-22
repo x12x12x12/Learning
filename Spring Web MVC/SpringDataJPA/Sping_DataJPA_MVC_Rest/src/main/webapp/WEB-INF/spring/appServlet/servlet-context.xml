@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans:beans xmlns="http://www.springframework.org/schema/mvc"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:beans="http://www.springframework.org/schema/beans"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+			 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			 xmlns:beans="http://www.springframework.org/schema/beans"
+			 xmlns:context="http://www.springframework.org/schema/context"
+			 xmlns:tx="http://www.springframework.org/schema/mvc"
+			 xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+			 xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
@@ -23,6 +25,32 @@
 	
 	<context:component-scan base-package="com.proj.app" />
 	
+	<beans:bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<beans:property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+		<beans:property name="url" value="jdbc:mysql://localhost:3306/springdatajpa"/>
+		<beans:property name="username" value="root"/>
+		<beans:property name="password" value="root"/>
+	</beans:bean>
+
+	<beans:bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<beans:property name="dataSource" ref="dataSource"/>
+		<beans:property name="jpaVendorAdapter" ref="hibernateJpaVendorAdapter"/>
+		<beans:property name="persistenceUnitName" value="project"/>
+		<beans:property name="packagesToScan" value="com.proj.model"/>
+		<beans:property name="sharedCacheMode" value="ENABLE_SELECTIVE"/>
+		<beans:property name="validationMode" value="NONE"/>
+	</beans:bean>
+
+	<beans:bean id="hibernateJpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
+
+	<beans:bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<beans:property name="entityManagerFactory" ref="entityManagerFactory"/>
+	</beans:bean>
 	
-	
+	<jpa:repositories base-package="com.proj.repository"/>
+
+	<beans:bean id="projectService" class="com.proj.service.ProjectServiceImpl"/>
+
+	<tx:annotation-driven/>
+
 </beans:beans>
