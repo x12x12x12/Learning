@@ -7,9 +7,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import java.util.List;
 
-/**
- * Created by F.U.C.K on 23-Jan-15.
- */
 @Entity
 @Table(name = "task")
 public class Task {
@@ -22,7 +19,7 @@ public class Task {
     @Column(name = "name",nullable = false)
     private String name;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "project_id",referencedColumnName = "project_id")
     private Project project;
 

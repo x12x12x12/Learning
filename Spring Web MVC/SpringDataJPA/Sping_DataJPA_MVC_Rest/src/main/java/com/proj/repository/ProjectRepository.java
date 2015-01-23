@@ -7,9 +7,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-/**
- * Created by F.U.C.K on 23-Jan-15.
- */
 public interface ProjectRepository extends CrudRepository<Project,Integer> {
 
     @Query("select project from Project project where project.name like ?1")
@@ -17,6 +14,5 @@ public interface ProjectRepository extends CrudRepository<Project,Integer> {
 
     List<Project> findByAccountOwner(String accountOwner);
 
-//    List<Task>
 }
 
