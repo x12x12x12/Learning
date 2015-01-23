@@ -1,6 +1,7 @@
 package com.proj.app;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -44,25 +45,42 @@ public class HomeController {
 		for (int i = 0; i <4 ; i++) {
 			Project project=new Project();
 			project.setName("IOS-"+i);
-			project.setAccountOwner("Do Minh Quan-" + i);
+			project.setAccountOwner("Do Minh Quan");
 			projectRepository.save(project);
-			Task task=new Task();
-			task.setName("Requirement-"+i);
-			task.setProjectRoot(project);
-			taskRepository.save(task);
+			for (int j = 0; j < 5; j++) {
+				Task task=new Task();
+				task.setName("IOS-"+i+"-"+j);
+				task.setProject(project);
+				taskRepository.save(task);
+			}
 		}
-//		Iterable<Project> list=projectRepository.findAll();
-//
-//		for (Project entry : list) {
-//			entry.getName();
-//		}
-//
+
+		/**
+		 * Test method : OK
+		 */
+		Project project_find = projectRepository.findOne(1);
+		project_find.setAccountOwner("Test update bla bla bla");
+		projectRepository.save(project_find);
+//		Long count= projectRepository.count();
 
 
-		Project project_find=projectRepository.findOne(1);
-		Task task_find=taskRepository.findOne(1);
-		Project proj_name=projectRepository.findByName("IOS-1");
-		projectRepository.count();
+//		Iterable<Project> list_project=projectRepository.findAll();
+//		Iterable<Task> list_task=taskRepository.findAll();
+//
+//		List<Project> list = projectRepository.findByAccountOwner("Do Minh Quan");
+//		List<Project> list_fail=projectRepository.findByAccountOwner("ABC");
+//
+//		List<Project> list_findByNameOK_1=projectRepository.findByName("IOS%");
+//		List<Project> list_findByNameOK_2=projectRepository.findByName("%1");
+//		List<Project> list_findByNameOK_3=projectRepository.findByName("%O%");
+//		List<Project> list_findByNameFail=projectRepository.findByName("%abc%");
+
+
+
+		/*
+		 * Test method : testing
+		 */
+
 		return "home";
 	}
 	
