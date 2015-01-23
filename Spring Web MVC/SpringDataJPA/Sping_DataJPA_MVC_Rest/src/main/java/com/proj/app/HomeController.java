@@ -78,7 +78,11 @@ public class HomeController {
 //		List<Project> list_findByNameOK_3=projectRepository.findByName("%O%");
 //		List<Project> list_findByNameFail=projectRepository.findByName("%abc%");
 
-		Page<Project> list_project_paging=pagingAndSortingProject.findAll(new PageRequest(0,5));
+//		Page<Project> list_project_paging=pagingAndSortingProject.findAll(new PageRequest(0,5));
+//		list_project_paging.getTotalPages();
+//		list_project_paging.getTotalElements();
+//		list_project_paging.getNumber();
+
 
 //		Project project_find = projectRepository.findOne(1);
 //		project_find.setAccountOwner("Test update bla bla bla");
