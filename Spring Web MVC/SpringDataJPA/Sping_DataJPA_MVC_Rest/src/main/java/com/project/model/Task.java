@@ -5,6 +5,7 @@ import javax.persistence.*;
 import javax.persistence.Column;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import java.util.List;
 
 @Entity
 @Table(name = "task")
@@ -21,6 +22,13 @@ public class Task {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "project_id",referencedColumnName = "project_id")
     private Project project;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="parent_task_id",referencedColumnName = "task_id")
+    private Task taskParent;
+
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "taskParent",cascade = CascadeType.ALL,targetEntity = Task.class)
+    private List<Task> taskChild;
 
     public Integer getTaskId() {
         return taskId;
@@ -44,6 +52,22 @@ public class Task {
 
     public Project getProject() {
         return project;
+    }
+
+    public Task getTaskParent() {
+        return taskParent;
+    }
+
+    public void setTaskParent(Task taskParent) {
+        this.taskParent = taskParent;
+    }
+
+    public List<Task> getTaskChild() {
+        return taskChild;
+    }
+
+    public void setTaskChild(List<Task> taskChild) {
+        this.taskChild = taskChild;
     }
 
     @Override

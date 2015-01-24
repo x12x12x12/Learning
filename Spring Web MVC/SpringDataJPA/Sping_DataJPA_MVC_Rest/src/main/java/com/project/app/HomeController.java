@@ -66,9 +66,16 @@ public class HomeController {
 			projectRepository.save(project);
 			for (int j = 0; j < 5; j++) {
 				Task task=new Task();
-				task.setName("IOS-"+i+"-"+j);
+				task.setName("IOS-Main Task"+i+"-"+j);
 				task.setProject(project);
 				taskRepository.save(task);
+				for (int k = 0; k <3 ; k++) {
+					Task task_child=new Task();
+					task_child.setName("IOS-Child Task"+i+"-"+j);
+					task_child.setProject(project);
+					task_child.setTaskParent(task);
+					taskRepository.save(task_child);
+				}
 			}
 		}
 
