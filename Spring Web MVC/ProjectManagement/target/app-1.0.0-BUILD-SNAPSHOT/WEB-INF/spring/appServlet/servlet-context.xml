@@ -44,7 +44,7 @@
 	<beans:bean id="projectService" class="com.project.service.ProjectServiceImpl">
 		<beans:constructor-arg name="mongoTemplate" ref="mongoTemplate"/>
 	</beans:bean>
-	
+
 	<!-- Mongo Template -->
 	<beans:bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
 		<beans:constructor-arg  name="mongoDbFactory" ref="mongoDbFactory"/>
@@ -55,4 +55,5 @@
 	<beans:bean id="encoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
 		<beans:constructor-arg name="strength" value="10" />
 	</beans:bean>
+	<mongo:repositories base-package="com.project.repository"/>
 </beans:beans>

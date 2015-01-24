@@ -10,6 +10,7 @@
 	<properties>
 		<org.springframework-version>4.1.2.RELEASE</org.springframework-version>
 		<spring-data-rest-version>2.2.1.RELEASE</spring-data-rest-version>
+		<org.springframework.data-version>1.7.1.RELEASE</org.springframework.data-version>
 		<org.aspectj-version>1.7.4</org.aspectj-version>
 		<org.slf4j-version>1.7.5</org.slf4j-version>
 		<jackson.databind-version>2.2.3</jackson.databind-version>
@@ -44,13 +45,8 @@
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-jpa</artifactId>
-			<version>1.7.1.RELEASE</version>
+			<version>${org.springframework.data-version}</version>
 		</dependency>
-		<!--<dependency>-->
-			<!--<groupId>org.springframework.data</groupId>-->
-			<!--<artifactId>spring-data-rest-webmvc</artifactId>-->
-			<!--<version>2.2.1.RELEASE</version>-->
-		<!--</dependency>-->
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-rest-webmvc</artifactId>

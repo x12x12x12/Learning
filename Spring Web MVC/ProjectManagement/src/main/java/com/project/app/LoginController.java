@@ -2,6 +2,7 @@ package com.project.app;
 
 import com.project.model.Account;
 import com.project.model.Project;
+import com.project.repository.ProjectRepository;
 import com.project.service.AccountService;
 import com.project.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +14,9 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.support.SessionStatus;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
@@ -29,17 +30,22 @@ public class LoginController {
 	@Autowired
 	PasswordEncoder passwordEncoder;
 
+	@Resource
+	ProjectRepository projectRepository;
+
 	@RequestMapping(value = {"/*","/login*"}, method = RequestMethod.GET)
 	public String home(Model model,HttpSession httpSession) {
-		if(validateSession(httpSession)){
-			return "redirect:/index";
-		}
-		String expired=httpSession.getAttribute("sessionExpired")!=null ? httpSession.getAttribute("sessionExpired").toString() : "";
-		if(expired.equalsIgnoreCase("true")){
-			model.addAttribute("sessionExpired","User session expired please login again !!!!");
-			httpSession.removeAttribute("sessionExpired");
-		}
-		model.addAttribute("account",new Account());
+
+//		if(validateSession(httpSession)){
+//			return "redirect:/index";
+//		}
+//		String expired=httpSession.getAttribute("sessionExpired")!=null ? httpSession.getAttribute("sessionExpired").toString() : "";
+//		if(expired.equalsIgnoreCase("true")){
+//			model.addAttribute("sessionExpired","User session expired please login again !!!!");
+//			httpSession.removeAttribute("sessionExpired");
+//		}
+//		model.addAttribute("account",new Account());
+		projectRepository.findAll();
 		return "login";
 	}
 	@RequestMapping(value = {"/index*"}, method = RequestMethod.GET)
