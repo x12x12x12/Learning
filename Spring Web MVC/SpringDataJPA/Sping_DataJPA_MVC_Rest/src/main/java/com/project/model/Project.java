@@ -1,8 +1,6 @@
-package com.proj.model;
+package com.project.model;
 
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -12,15 +10,16 @@ public class Project{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="project_id")
-    Integer projectId;
+    private Integer projectId;
 
     @Column(name = "name",nullable = false,length = 300)
-    String name;
+    private String name;
 
-    @Column(name="owner",nullable = false,length = 100)
-    String accountOwner;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "account_id",referencedColumnName = "account_id")
+    private Account accountOwner;
 
-    @OneToMany(mappedBy = "project",cascade = CascadeType.ALL,targetEntity = Task.class,fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "project",cascade = CascadeType.ALL,targetEntity = Task.class,fetch = FetchType.LAZY)
     private List<Task> listOfTask;
 
     public Integer getProjectId() {
@@ -39,11 +38,11 @@ public class Project{
         this.name = name;
     }
 
-    public String getAccountOwner() {
+    public Account getAccountOwner() {
         return accountOwner;
     }
 
-    public void setAccountOwner(String accountOwner) {
+    public void setAccountOwner(Account accountOwner) {
         this.accountOwner = accountOwner;
     }
 

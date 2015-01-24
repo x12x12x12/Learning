@@ -1,11 +1,10 @@
-package com.proj.model;
+package com.project.model;
 
 
 import javax.persistence.*;
 import javax.persistence.Column;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import java.util.List;
 
 @Entity
 @Table(name = "task")

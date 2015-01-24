@@ -9,6 +9,7 @@
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
 		<org.springframework-version>4.1.2.RELEASE</org.springframework-version>
+		<spring-data-rest-version>2.2.1.RELEASE</spring-data-rest-version>
 		<org.aspectj-version>1.7.4</org.aspectj-version>
 		<org.slf4j-version>1.7.5</org.slf4j-version>
 		<jackson.databind-version>2.2.3</jackson.databind-version>
@@ -45,11 +46,22 @@
 			<artifactId>spring-data-jpa</artifactId>
 			<version>1.7.1.RELEASE</version>
 		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>org.springframework.data</groupId>-->
+			<!--<artifactId>spring-data-rest-webmvc</artifactId>-->
+			<!--<version>2.2.1.RELEASE</version>-->
+		<!--</dependency>-->
 		<dependency>
 			<groupId>org.springframework.data</groupId>
-			<artifactId>spring-data-jpa</artifactId>
-			<version>1.2.0.RELEASE</version>
+			<artifactId>spring-data-rest-webmvc</artifactId>
+			<version>${spring-data-rest-version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>4.1.4.RELEASE</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
@@ -66,11 +78,6 @@
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>${hibernate.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.6</version>
-		</dependency>
 		<!-- Spring ORM -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -80,7 +87,7 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
-			<version>3.2.0.RELEASE</version>
+			<version>${org.springframework-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>mysql</groupId>

@@ -1,4 +1,4 @@
-package com.proj.service;
+package com.project.service;
 
 /**
  * Created by F.U.C.K on 23-Jan-15.

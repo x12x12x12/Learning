@@ -1,6 +1,6 @@
-package com.proj.repository;
+package com.project.repository;
 
-import com.proj.model.Task;
+import com.project.model.Task;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 public interface PagingAndSortingTask extends PagingAndSortingRepository <Task,Integer>{

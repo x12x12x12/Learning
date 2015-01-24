@@ -23,7 +23,7 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="com.proj.app" />
+	<context:component-scan base-package="com.project.app" />
 	
 	<beans:bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<beans:property name="driverClassName" value="com.mysql.jdbc.Driver"/>
@@ -36,7 +36,7 @@
 		<beans:property name="dataSource" ref="dataSource"/>
 		<beans:property name="jpaVendorAdapter" ref="hibernateJpaVendorAdapter"/>
 		<beans:property name="persistenceUnitName" value="project"/>
-		<beans:property name="packagesToScan" value="com.proj.model"/>
+		<beans:property name="packagesToScan" value="com.project.model"/>
 		<beans:property name="sharedCacheMode" value="ENABLE_SELECTIVE"/>
 		<beans:property name="validationMode" value="NONE"/>
 	</beans:bean>
@@ -47,11 +47,11 @@
 		<beans:property name="entityManagerFactory" ref="entityManagerFactory"/>
 	</beans:bean>
 	
-	<jpa:repositories base-package="com.proj.repository"/>
+	<jpa:repositories base-package="com.project.repository"/>
 
-	<beans:bean id="projectService" class="com.proj.service.ProjectServiceImpl"/>
+	<beans:bean id="projectService" class="com.project.service.ProjectServiceImpl"/>
 
-	<beans:bean id="taskService" class="com.proj.service.TaskServiceImpl"/>
+	<beans:bean id="taskService" class="com.project.service.TaskServiceImpl"/>
 
 	<tx:annotation-driven/>
 
