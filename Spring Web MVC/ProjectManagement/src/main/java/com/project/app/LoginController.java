@@ -46,6 +46,7 @@ public class LoginController {
 //		}
 //		model.addAttribute("account",new Account());
 		projectRepository.findAll();
+		projectRepository.delete("PROJ-859838451");
 		return "login";
 	}
 	@RequestMapping(value = {"/index*"}, method = RequestMethod.GET)
