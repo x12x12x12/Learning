@@ -20,5 +20,8 @@ public interface ProjectRepository extends CrudRepository<Project,Integer> {
     @Query("select task from Task  task where task.project.projectId =?1")
     List<Task> getListOfTaskById(Integer projectId);
 
+//    @Query("select account from Account account,Project project where account.id=project.accountOwner.id and project.projectId=?1 ")
+//    Account getAccountOwner(Integer projectId);
+
 }
 

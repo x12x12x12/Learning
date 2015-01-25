@@ -8,7 +8,7 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/spring/root-context.xml</param-value>
 	</context-param>
-	
+
 	<!-- Creates the Spring Container shared by all Servlets and Filters -->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
@@ -24,10 +24,21 @@
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
-		
+
 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+
+	<!--<servlet>-->
+		<!--<servlet-name>rest-exporter</servlet-name>-->
+		<!--<servlet-class>org.springframework.data.rest.webmvc.RepositoryRestDispatcherServlet</servlet-class>-->
+		<!--<load-on-startup>1</load-on-startup>-->
+	<!--</servlet>-->
+
+	<!--<servlet-mapping>-->
+		<!--<servlet-name>rest-exporter</servlet-name>-->
+		<!--<url-pattern>/api/*</url-pattern>-->
+	<!--</servlet-mapping>-->
 
 </web-app>

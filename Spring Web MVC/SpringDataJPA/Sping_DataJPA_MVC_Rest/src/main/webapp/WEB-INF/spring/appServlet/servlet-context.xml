@@ -55,4 +55,22 @@
 
 	<tx:annotation-driven/>
 
+	<!--<beans:bean id="baseURI" class="java.net.URI">-->
+
+	<!--</beans:bean>-->
+	<!---->
+	<!--<beans:bean id="config" class="org.springframework.data.rest.webmvc.RepositoryRestConfiguration"-->
+		  <!--p:jsonpParamName="callback"-->
+		  <!--p:jsonpOnErrParamName="errback"-->
+		  <!--p:baseUri-ref="baseUri">-->
+		<!--<property name="domainTypeToRepositoryMappings">-->
+			<!--<map key-type="java.lang.Class" value-type="java.lang.Class">-->
+				<!--<entry key="org.krams.domain.User"-->
+					   <!--value="org.krams.repository.UserRepository"/>-->
+				<!--<entry key="org.krams.domain.Role"-->
+					   <!--value="org.krams.repository.RoleRepository"/>-->
+			<!--</map>-->
+		<!--</property>-->
+	<!--</beans:bean>-->
+
 </beans:beans>
