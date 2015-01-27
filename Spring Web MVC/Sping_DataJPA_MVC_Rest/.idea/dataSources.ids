@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - springdatajpa@localhost" uuid="f4014ae5-2044-49e0-8338-93fe9e45721c">
+    <database-info product="MySQL" version="5.6.21" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.34 ( Revision: jess.balint@oracle.com-20141014163213-wqbwpf1ok2kvo1om )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="springdatajpa"/>
+    <table name="account" schema="" catalog="springdatajpa" type="TABLE">
+      <column name="account_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="account_name" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="dob" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="account_id"/>
+      <exported-key name="FK_ov77173sh8ak5jffn1wq1ei6r" table="project" schema="" catalog="springdatajpa" columns="account_id"/>
+    </table>
+    <table name="project" schema="" catalog="springdatajpa" type="TABLE">
+      <column name="project_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="300" scale="0" nullable="false" jdbcType="12"/>
+      <column name="account_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="project_id"/>
+      <foreign-key name="FK_ov77173sh8ak5jffn1wq1ei6r" columns="account_id" ref-table="account" ref-schema="" ref-catalog="springdatajpa" ref-columns="account_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="FK_b7i81l1tk1ph95xnhtoftyv53" table="task" schema="" catalog="springdatajpa" columns="project_id"/>
+      <index name="FK_ov77173sh8ak5jffn1wq1ei6r" unique="false" columns="account_id"/>
+    </table>
+    <table name="task" schema="" catalog="springdatajpa" type="TABLE">
+      <column name="task_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="project_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="task_id"/>
+      <foreign-key name="FK_b7i81l1tk1ph95xnhtoftyv53" columns="project_id" ref-table="project" ref-schema="" ref-catalog="springdatajpa" ref-columns="project_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_b7i81l1tk1ph95xnhtoftyv53" unique="false" columns="project_id"/>
+    </table>
+  </data-source>
+</component>
