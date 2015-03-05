@@ -1,0 +1,1779 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="23c62f06-441c-48cb-ad10-53836b175f98" name="Default" comment="">
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\.classpath" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\.project" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\.settings\org.eclipse.jdt.core.prefs" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\AndroidManifest.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\AndroidBuildingMusicPlayer.apk" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\AndroidManifest.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\AndroidMusicPlayer.apk" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\classes.dex" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\classes\com\app\musicplayer\AndroidMusicPlayer$1.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\classes\com\app\musicplayer\AndroidMusicPlayer$2.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\classes\com\app\musicplayer\AndroidMusicPlayer$3.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\classes\com\app\musicplayer\AndroidMusicPlayer$4.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\classes\com\app\musicplayer\AndroidMusicPlayer$5.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\classes\com\app\musicplayer\AndroidMusicPlayer$6.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\classes\com\app\musicplayer\AndroidMusicPlayer$7.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\classes\com\app\musicplayer\AndroidMusicPlayer$8.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\classes\com\app\musicplayer\AndroidMusicPlayer$9.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\classes\com\app\musicplayer\AndroidMusicPlayer.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\classes\com\app\musicplayer\BuildConfig.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\classes\com\app\musicplayer\PlayListActivity$1.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\classes\com\app\musicplayer\PlayListActivity.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\classes\com\app\musicplayer\R$attr.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\classes\com\app\musicplayer\R$drawable.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\classes\com\app\musicplayer\R$id.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\classes\com\app\musicplayer\R$layout.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\classes\com\app\musicplayer\R$string.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\classes\com\app\musicplayer\R.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\classes\com\app\musicplayer\SongsManager$FileExtensionFilter.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\classes\com\app\musicplayer\SongsManager.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\classes\com\app\musicplayer\Utilities.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\res\crunch\drawable-hdpi\bg.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\res\crunch\drawable-hdpi\ic_launcher.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\res\crunch\drawable-hdpi\img_btn_backward.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\res\crunch\drawable-hdpi\img_btn_backward_pressed.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\res\crunch\drawable-hdpi\img_btn_forward.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\res\crunch\drawable-hdpi\img_btn_forward_pressed.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\res\crunch\drawable-hdpi\img_btn_next.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\res\crunch\drawable-hdpi\img_btn_next_pressed.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\res\crunch\drawable-hdpi\img_btn_pause.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\res\crunch\drawable-hdpi\img_btn_pause_pressed.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\res\crunch\drawable-hdpi\img_btn_play.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\res\crunch\drawable-hdpi\img_btn_play_pressed.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\res\crunch\drawable-hdpi\img_btn_playlist.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\res\crunch\drawable-hdpi\img_btn_playlist_pressed.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\res\crunch\drawable-hdpi\img_btn_previous.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\res\crunch\drawable-hdpi\img_btn_previous_pressed.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\res\crunch\drawable-hdpi\img_btn_repeat.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\res\crunch\drawable-hdpi\img_btn_repeat_pressed.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\res\crunch\drawable-hdpi\img_btn_shuffle.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\res\crunch\drawable-hdpi\img_btn_shuffle_pressed.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\res\crunch\drawable-hdpi\img_seekbar_bg.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\res\crunch\drawable-hdpi\img_seekbar_progress_blue.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\res\crunch\drawable-hdpi\seek_handler.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\res\crunch\drawable-hdpi\track_info_bg.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\res\crunch\drawable-ldpi\ic_launcher.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\res\crunch\drawable-mdpi\ic_launcher.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\res\drawable-hdpi\bg.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\res\drawable-hdpi\ic_launcher.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\res\drawable-hdpi\img_btn_backward.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\res\drawable-hdpi\img_btn_backward_pressed.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\res\drawable-hdpi\img_btn_forward.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\res\drawable-hdpi\img_btn_forward_pressed.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\res\drawable-hdpi\img_btn_next.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\res\drawable-hdpi\img_btn_next_pressed.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\res\drawable-hdpi\img_btn_pause.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\res\drawable-hdpi\img_btn_pause_pressed.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\res\drawable-hdpi\img_btn_play.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\res\drawable-hdpi\img_btn_play_pressed.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\res\drawable-hdpi\img_btn_playlist.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\res\drawable-hdpi\img_btn_playlist_pressed.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\res\drawable-hdpi\img_btn_previous.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\res\drawable-hdpi\img_btn_previous_pressed.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\res\drawable-hdpi\img_btn_repeat.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\res\drawable-hdpi\img_btn_repeat_pressed.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\res\drawable-hdpi\img_btn_shuffle.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\res\drawable-hdpi\img_btn_shuffle_pressed.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\res\drawable-hdpi\img_seekbar_bg.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\res\drawable-hdpi\img_seekbar_progress_blue.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\res\drawable-hdpi\seek_handler.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\res\drawable-hdpi\track_info_bg.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\res\drawable-ldpi\ic_launcher.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\res\drawable-mdpi\ic_launcher.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\bin\resources.ap_" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\gen\com\app\musicplayer\BuildConfig.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\gen\com\app\musicplayer\R.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\proguard.cfg" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\project.properties" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\res\drawable-hdpi\adele.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\res\drawable-hdpi\bg.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\res\drawable-hdpi\btn_backward.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\res\drawable-hdpi\btn_forward.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\res\drawable-hdpi\btn_next.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\res\drawable-hdpi\btn_pause.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\res\drawable-hdpi\btn_play.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\res\drawable-hdpi\btn_playlist.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\res\drawable-hdpi\btn_previous.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\res\drawable-hdpi\btn_repeat.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\res\drawable-hdpi\btn_repeat_focused.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\res\drawable-hdpi\btn_shuffle.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\res\drawable-hdpi\btn_shuffle_focused.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\res\drawable-hdpi\gradient_bg.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\res\drawable-hdpi\gradient_bg_hover.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\res\drawable-hdpi\ic_launcher.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\res\drawable-hdpi\img_btn_backward.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\res\drawable-hdpi\img_btn_backward_pressed.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\res\drawable-hdpi\img_btn_forward.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\res\drawable-hdpi\img_btn_forward_pressed.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\res\drawable-hdpi\img_btn_next.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\res\drawable-hdpi\img_btn_next_pressed.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\res\drawable-hdpi\img_btn_pause.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\res\drawable-hdpi\img_btn_pause_pressed.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\res\drawable-hdpi\img_btn_play.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\res\drawable-hdpi\img_btn_play_pressed.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\res\drawable-hdpi\img_btn_playlist.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\res\drawable-hdpi\img_btn_playlist_pressed.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\res\drawable-hdpi\img_btn_previous.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\res\drawable-hdpi\img_btn_previous_pressed.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\res\drawable-hdpi\img_btn_repeat.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\res\drawable-hdpi\img_btn_repeat_pressed.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\res\drawable-hdpi\img_btn_shuffle.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\res\drawable-hdpi\img_btn_shuffle_pressed.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\res\drawable-hdpi\img_seekbar_bg.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\res\drawable-hdpi\img_seekbar_progress_blue.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\res\drawable-hdpi\list_selector.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\res\drawable-hdpi\seek_handler.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\res\drawable-hdpi\seekbar_progress.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\res\drawable-hdpi\seekbar_progress_bg.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\res\drawable-hdpi\track_info_bg.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\res\drawable-ldpi\ic_launcher.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\res\drawable-mdpi\ic_launcher.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\res\layout\bg_player_footer.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\res\layout\bg_player_header.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\res\layout\main.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\res\layout\player.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\res\layout\playlist.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\res\layout\playlist_item.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\res\layout\rounded_corner.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\res\values\strings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\src\com\app\musicplayer\AndroidMusicPlayer.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\src\com\app\musicplayer\PlayListActivity.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\src\com\app\musicplayer\SongsManager.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\AndroidMusicPlayer\src\com\app\musicplayer\Utilities.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\ContactList\.gitignore" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\ContactList\.idea\.name" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\ContactList\.idea\compiler.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\ContactList\.idea\copyright\profiles_settings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\ContactList\.idea\encodings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\ContactList\.idea\gradle.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\ContactList\.idea\misc.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\ContactList\.idea\modules.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\ContactList\.idea\scopes\scope_settings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\ContactList\.idea\vcs.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\ContactList\ContactList.iml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\ContactList\app\.gitignore" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\ContactList\app\app.iml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\ContactList\app\build.gradle" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\ContactList\app\proguard-rules.pro" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\ContactList\app\src\androidTest\java\com\quan616\contactlist\ApplicationTest.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\ContactList\app\src\main\AndroidManifest.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\ContactList\app\src\main\java\com\quan616\contactlist\MainActivity.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\ContactList\app\src\main\java\com\quan616\contactlist\SendSMSActivity.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\ContactList\app\src\main\res\drawable-hdpi\ic_launcher.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\ContactList\app\src\main\res\drawable-mdpi\ic_launcher.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\ContactList\app\src\main\res\drawable-xhdpi\ic_launcher.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\ContactList\app\src\main\res\drawable-xxhdpi\ic_launcher.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\ContactList\app\src\main\res\layout\activity_main.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\ContactList\app\src\main\res\layout\activity_send_sms.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\ContactList\app\src\main\res\layout\listitem.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\ContactList\app\src\main\res\menu\menu_main.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\ContactList\app\src\main\res\values-w820dp\dimens.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\ContactList\app\src\main\res\values\dimens.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\ContactList\app\src\main\res\values\strings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\ContactList\app\src\main\res\values\styles.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\ContactList\build.gradle" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\ContactList\gradle.properties" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\ContactList\gradle\wrapper\gradle-wrapper.jar" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\ContactList\gradle\wrapper\gradle-wrapper.properties" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\ContactList\gradlew" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\ContactList\gradlew.bat" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\ContactList\settings.gradle" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\WhereAmI_11520616\.gitignore" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\WhereAmI_11520616\.idea\.name" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\WhereAmI_11520616\.idea\compiler.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\WhereAmI_11520616\.idea\copyright\profiles_settings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\WhereAmI_11520616\.idea\encodings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\WhereAmI_11520616\.idea\gradle.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\WhereAmI_11520616\.idea\misc.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\WhereAmI_11520616\.idea\modules.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\WhereAmI_11520616\.idea\scopes\scope_settings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\WhereAmI_11520616\.idea\vcs.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\WhereAmI_11520616\WhereAmI_11520616.iml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\WhereAmI_11520616\app\.gitignore" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\WhereAmI_11520616\app\app.iml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\WhereAmI_11520616\app\build.gradle" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\WhereAmI_11520616\app\proguard-rules.pro" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\WhereAmI_11520616\app\src\androidTest\java\com\quan616\whereami_11520616\ApplicationTest.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\WhereAmI_11520616\app\src\debug\res\values\google_maps_api.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\WhereAmI_11520616\app\src\main\AndroidManifest.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\WhereAmI_11520616\app\src\main\java\com\quan616\whereami_11520616\MapsActivity.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\WhereAmI_11520616\app\src\main\res\drawable-hdpi\ic_launcher.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\WhereAmI_11520616\app\src\main\res\drawable-mdpi\ic_launcher.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\WhereAmI_11520616\app\src\main\res\drawable-xhdpi\ic_launcher.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\WhereAmI_11520616\app\src\main\res\drawable-xxhdpi\ic_launcher.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\WhereAmI_11520616\app\src\main\res\layout\activity_maps.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\WhereAmI_11520616\app\src\main\res\values\strings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\WhereAmI_11520616\app\src\main\res\values\styles.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\WhereAmI_11520616\app\src\release\res\values\google_maps_api.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\WhereAmI_11520616\build.gradle" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\WhereAmI_11520616\gradle.properties" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\WhereAmI_11520616\gradle\wrapper\gradle-wrapper.jar" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\WhereAmI_11520616\gradle\wrapper\gradle-wrapper.properties" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\WhereAmI_11520616\gradlew" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\WhereAmI_11520616\gradlew.bat" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Android\WhereAmI_11520616\settings.gradle" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Console\.classpath" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Console\.gitignore" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Console\.project" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Console\.settings\org.eclipse.jdt.core.prefs" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Console\.settings\org.eclipse.m2e.core.prefs" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Console\pom.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Console\src\main\java\datastructure\SelectionSort.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Console\src\main\java\hackerrank\GemStones.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Console\src\main\java\hackerrank\InsertionSort.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Console\src\main\java\hackerrank\LoveLetter.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Console\src\main\java\hackerrank\ServiceLane.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Console\src\main\java\hackerrank\UtopianTree.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Easy_CTF\.idea\.name" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Easy_CTF\.idea\Easy_CTF.iml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Easy_CTF\.idea\encodings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Easy_CTF\.idea\misc.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Easy_CTF\.idea\modules.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Easy_CTF\.idea\scopes\scope_settings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Easy_CTF\.idea\vcs.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Easy_CTF\.idea\workspace.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\Easy_CTF\main.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\UIT_Project\Android Lab\Lab3-ToDoList\.gitignore" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\UIT_Project\Android Lab\Lab3-ToDoList\.idea\.name" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\UIT_Project\Android Lab\Lab3-ToDoList\.idea\compiler.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\UIT_Project\Android Lab\Lab3-ToDoList\.idea\copyright\profiles_settings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\UIT_Project\Android Lab\Lab3-ToDoList\.idea\encodings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\UIT_Project\Android Lab\Lab3-ToDoList\.idea\gradle.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\UIT_Project\Android Lab\Lab3-ToDoList\.idea\misc.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\UIT_Project\Android Lab\Lab3-ToDoList\.idea\modules.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\UIT_Project\Android Lab\Lab3-ToDoList\.idea\scopes\scope_settings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\UIT_Project\Android Lab\Lab3-ToDoList\.idea\vcs.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\UIT_Project\Android Lab\Lab3-ToDoList\Lab3-ToDoList.iml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\UIT_Project\Android Lab\Lab3-ToDoList\app\.gitignore" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\UIT_Project\Android Lab\Lab3-ToDoList\app\app.iml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\UIT_Project\Android Lab\Lab3-ToDoList\app\build.gradle" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\UIT_Project\Android Lab\Lab3-ToDoList\app\proguard-rules.pro" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\UIT_Project\Android Lab\Lab3-ToDoList\app\src\androidTest\java\com\dominhquan\lab3_todolist\ApplicationTest.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\UIT_Project\Android Lab\Lab3-ToDoList\app\src\main\AndroidManifest.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\UIT_Project\Android Lab\Lab3-ToDoList\app\src\main\java\com\dominhquan\lab3_todolist\MainActivity.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\UIT_Project\Android Lab\Lab3-ToDoList\app\src\main\java\com\dominhquan\lab3_todolist\db\Note.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\UIT_Project\Android Lab\Lab3-ToDoList\app\src\main\java\com\dominhquan\lab3_todolist\db\NoteSQLDB.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\UIT_Project\Android Lab\Lab3-ToDoList\app\src\main\res\drawable-hdpi\ic_launcher.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\UIT_Project\Android Lab\Lab3-ToDoList\app\src\main\res\drawable-mdpi\ic_launcher.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\UIT_Project\Android Lab\Lab3-ToDoList\app\src\main\res\drawable-xhdpi\ic_launcher.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\UIT_Project\Android Lab\Lab3-ToDoList\app\src\main\res\drawable-xxhdpi\ic_launcher.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\UIT_Project\Android Lab\Lab3-ToDoList\app\src\main\res\layout\main.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\UIT_Project\Android Lab\Lab3-ToDoList\app\src\main\res\layout\task_view.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\UIT_Project\Android Lab\Lab3-ToDoList\app\src\main\res\menu\main.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\UIT_Project\Android Lab\Lab3-ToDoList\app\src\main\res\values-w820dp\dimens.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\UIT_Project\Android Lab\Lab3-ToDoList\app\src\main\res\values\dimens.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\UIT_Project\Android Lab\Lab3-ToDoList\app\src\main\res\values\strings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\UIT_Project\Android Lab\Lab3-ToDoList\app\src\main\res\values\styles.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\UIT_Project\Android Lab\Lab3-ToDoList\build.gradle" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\UIT_Project\Android Lab\Lab3-ToDoList\gradle.properties" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\UIT_Project\Android Lab\Lab3-ToDoList\gradle\wrapper\gradle-wrapper.jar" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\UIT_Project\Android Lab\Lab3-ToDoList\gradle\wrapper\gradle-wrapper.properties" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\UIT_Project\Android Lab\Lab3-ToDoList\gradlew" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\UIT_Project\Android Lab\Lab3-ToDoList\gradlew.bat" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\F.U.C.K\Documents\GitHub\Java\UIT_Project\Android Lab\Lab3-ToDoList\settings.gradle" afterPath="" />
+    </list>
+    <ignored path="c.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <ignored path="$PROJECT_DIR$/target/" />
+    <ignored path=".idea/dataSources.local.xml" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="DaemonCodeAnalyzer">
+    <disable_hints />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="c" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="LoginController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/project/app/LoginController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="193" max-vertical-offset="1764">
+              <caret line="70" column="40" selection-start-line="70" selection-start-column="40" selection-end-line="70" selection-end-column="40" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Account.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/project/model/Account.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.10033445" vertical-offset="0" max-vertical-offset="897">
+              <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ProjectRepository.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/project/repository/ProjectRepository.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="144" max-vertical-offset="252">
+              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RestController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/project/app/RestController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="324" max-vertical-offset="1746">
+              <caret line="29" column="40" selection-start-line="29" selection-start-column="40" selection-end-line="29" selection-end-column="40" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MongoRepository.java" pinned="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-mongodb/1.5.2.RELEASE/spring-data-mongodb-1.5.2.RELEASE-sources.jar!/org/springframework/data/mongodb/repository/MongoRepository.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="198" max-vertical-offset="666">
+              <caret line="30" column="17" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="servlet-context.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="747" max-vertical-offset="1170">
+              <caret line="57" column="63" selection-start-line="57" selection-start-column="63" selection-end-line="57" selection-end-column="63" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/main/java/com/project/com/project/service/ProjectService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/project/com/project/service/ProjectServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/project/app/Controller.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/project/service/AccountService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/project/app/Rest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/project/model/Account.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/navbar.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/project/app/ProjectController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/project/model/Task.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/project_detail.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/project/service/ProjectRepo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/project/service/ProjectService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/project/app/RestController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/project/service/ProjectServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/project/service/AccountServiceImpl.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/project/repository/ProjectRepositry.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/project/model/Project.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/project/repository/ProjectRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/project/app/LoginController.java" />
+      </list>
+    </option>
+  </component>
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <OptionsSetting value="true" id="Undo Check Out" />
+    <OptionsSetting value="true" id="Get Latest Version" />
+    <ConfirmationsSetting value="2" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="c" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="c" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProjectManagement" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="c" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProjectManagement" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="c" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProjectManagement" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WEB-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="c" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProjectManagement" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WEB-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spring" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="c" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProjectManagement" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WEB-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spring" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="appServlet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="c" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProjectManagement" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="c" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProjectManagement" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="c" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProjectManagement" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="c" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProjectManagement" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="repository" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="c" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProjectManagement" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="c" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProjectManagement" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="GoToClass.includeLibraries" value="false" />
+    <property name="GoToClass.toSaveIncludeLibraries" value="false" />
+    <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="MemberChooser.sorted" value="false" />
+    <property name="MemberChooser.showClasses" value="true" />
+    <property name="MemberChooser.copyJavadoc" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../SpringRest_ForAndroidApp" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="options.lastSelected" value="preferences.general" />
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="recentsLimit" value="5" />
+    <property name="restartRequiresConfirmation" value="true" />
+    <property name="OverrideImplement.combined" value="true" />
+    <property name="OverrideImplement.overriding.sorted" value="false" />
+    <property name="FullScreen" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.project.model" />
+      <recent name="com.project.app" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\F.U.C.K\Documents\GitHub\Java\Spring Web MVC\ProjectManagement\src\main\webapp\resources" />
+      <recent name="C:\Users\F.U.C.K\Documents\GitHub\Java\Spring Web MVC\ProjectManagement\src\main\webapp\WEB-INF\views" />
+      <recent name="C:\Users\F.U.C.K\Documents\GitHub\Java\Spring Web MVC\ProjectManagement\src\main\java\com\project\service" />
+      <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF/views" />
+      <recent name="$PROJECT_DIR$/src/main/webapp/resources" />
+    </key>
+  </component>
+  <component name="RestClientSettings">
+    <option name="REQUEST_HISTORY">
+      <list>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://localhost:8080" />
+          <option name="urlPath" value="/rest/project/create" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="accountOwner" />
+                <option name="value" value="dominhquan.uit@gmail.com" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="name" />
+                <option name="value" value="IOS" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Tomcat Server.Tomcat ">
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" ALTERNATIVE_JRE_ENABLED="false">
+      <deployment />
+      <server-settings />
+      <predefined_log_file id="Tomcat" enabled="true" />
+      <predefined_log_file id="Tomcat Catalina" enabled="true" />
+      <predefined_log_file id="Tomcat Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Host Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Localhost Access" enabled="false" />
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
+      <module name="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="DEPLOY" value="true" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="USE_COMMAND_LINE" value="true" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
+      <method />
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <method />
+    </configuration>
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
+      <module name="" />
+      <setting name="vmparams" value="" />
+      <setting name="cmdLine" value="run-app" />
+      <setting name="depsClasspath" value="false" />
+      <setting name="passParentEnv" value="true" />
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <setting name="launchBrowser" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JarApplication" factoryName="JAR Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <pass-parent-envs>true</pass-parent-envs>
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="FlexUnitRunConfigurationType" factoryName="FlexUnit" appDescriptorForEmulator="Android" class_name="" emulatorAdlOptions="" method_name="" package_name="" scope="Class">
+      <option name="BCName" value="" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="/usr/bin/flashplayerdebugger" />
+        </LauncherParameters>
+      </option>
+      <option name="moduleName" value="" />
+      <option name="trusted" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="FlashRunConfigurationType" factoryName="Flash App">
+      <option name="BCName" value="" />
+      <option name="IOSSimulatorSdkPath" value="" />
+      <option name="adlOptions" value="" />
+      <option name="airProgramParameters" value="" />
+      <option name="appDescriptorForEmulator" value="Android" />
+      <option name="debugTransport" value="USB" />
+      <option name="debuggerSdkRaw" value="BC SDK" />
+      <option name="emulator" value="NexusOne" />
+      <option name="emulatorAdlOptions" value="" />
+      <option name="fastPackaging" value="true" />
+      <option name="fullScreenHeight" value="0" />
+      <option name="fullScreenWidth" value="0" />
+      <option name="launchUrl" value="false" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="/usr/bin/flashplayerdebugger" />
+        </LauncherParameters>
+      </option>
+      <option name="mobileRunTarget" value="Emulator" />
+      <option name="moduleName" value="" />
+      <option name="overriddenMainClass" value="" />
+      <option name="overriddenOutputFileName" value="" />
+      <option name="overrideMainClass" value="false" />
+      <option name="runTrusted" value="true" />
+      <option name="screenDpi" value="0" />
+      <option name="screenHeight" value="0" />
+      <option name="screenWidth" value="0" />
+      <option name="url" value="http://" />
+      <option name="usbDebugPort" value="7936" />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
+      <module name="" />
+      <option name="TESTING_TYPE" value="0" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="USE_COMMAND_LINE" value="true" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list />
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
+    <configuration default="true" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="myFilePath" />
+      <option name="GLUE" />
+      <option name="myNameFilter" />
+      <option name="myGeneratedName" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="Tomcat " type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 7.0.57" ALTERNATIVE_JRE_ENABLED="false" ALTERNATIVE_JRE_PATH="">
+      <option name="OPEN_IN_BROWSER" value="false" />
+      <option name="BROWSER_ID" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment>
+        <artifact name="c:war">
+          <settings>
+            <option name="CONTEXT_PATH" value="/" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="Unnamed_c_2" />
+      </server-settings>
+      <predefined_log_file id="Tomcat" enabled="false" />
+      <predefined_log_file id="Tomcat Catalina" enabled="false" />
+      <predefined_log_file id="Tomcat Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Host Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Localhost Access" enabled="false" />
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <RunnerSettings RunnerId="Cover" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="52420" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method>
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="c:war" />
+        </option>
+      </method>
+    </configuration>
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="Tomcat Server.Tomcat " />
+    </list>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="23c62f06-441c-48cb-ad10-53836b175f98" name="Default" comment="" />
+      <created>1421221467543</created>
+      <option name="number" value="Default" />
+      <updated>1421221467543</updated>
+      <workItem from="1421221470377" duration="465000" />
+      <workItem from="1421221948140" duration="3587000" />
+      <workItem from="1421236493723" duration="9883000" />
+      <workItem from="1421250177830" duration="8871000" />
+      <workItem from="1421289739827" duration="14435000" />
+      <workItem from="1421402850494" duration="8533000" />
+      <workItem from="1421416159468" duration="9778000" />
+      <workItem from="1421426877149" duration="4636000" />
+      <workItem from="1421469389289" duration="5252000" />
+      <workItem from="1421494094570" duration="675000" />
+      <workItem from="1421518015794" duration="697000" />
+      <workItem from="1421520772320" duration="256000" />
+      <workItem from="1421672359998" duration="2114000" />
+      <workItem from="1421686843560" duration="126000" />
+      <workItem from="1421754853197" duration="832000" />
+      <workItem from="1421763816872" duration="245000" />
+      <workItem from="1421768324960" duration="795000" />
+      <workItem from="1421770742583" duration="1755000" />
+      <workItem from="1421772747239" duration="24000" />
+      <workItem from="1421939796993" duration="1208000" />
+      <workItem from="1422128686078" duration="793000" />
+      <workItem from="1422149545899" duration="664000" />
+      <workItem from="1422370290333" duration="1791000" />
+      <workItem from="1422374401336" duration="42000" />
+      <workItem from="1422457678820" duration="463000" />
+      <workItem from="1425569722753" duration="27000" />
+    </task>
+    <task id="LOCAL-00001" summary="update">
+      <created>1421240003619</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1421240003619</updated>
+    </task>
+    <task id="LOCAL-00002" summary="update">
+      <created>1421257726206</created>
+      <option name="number" value="00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1421257726206</updated>
+    </task>
+    <task id="LOCAL-00003" summary="update">
+      <created>1421258981852</created>
+      <option name="number" value="00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1421258981852</updated>
+    </task>
+    <task id="LOCAL-00004" summary="update">
+      <created>1421302700194</created>
+      <option name="number" value="00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1421302700194</updated>
+    </task>
+    <task id="LOCAL-00005" summary="update">
+      <created>1421305130625</created>
+      <option name="number" value="00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1421305130625</updated>
+    </task>
+    <task id="LOCAL-00006" summary="update">
+      <created>1421431559709</created>
+      <option name="number" value="00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1421431559709</updated>
+    </task>
+    <task id="LOCAL-00007" summary="update">
+      <created>1421477570397</created>
+      <option name="number" value="00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1421477570397</updated>
+    </task>
+    <task id="LOCAL-00008" summary="update">
+      <created>1421478101954</created>
+      <option name="number" value="00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1421478101954</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="77947000" />
+  </component>
+  <component name="TodoView" selected-index="3">
+    <todo-panel id="selected-file">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="default-changelist">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="false" />
+    <layout>
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2972973" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39935064" sideWeight="0.3848614" order="11" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28837952" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977098" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21748401" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.48593074" sideWeight="0.6151386" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" x="92" y="92" width="1736" height="856" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32467532" sideWeight="0.8502132" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.267316" sideWeight="0.7729211" order="16" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4512987" sideWeight="0.66364604" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39935064" sideWeight="0.3848614" order="11" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977098" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21748401" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2943723" sideWeight="0.6151386" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" x="92" y="92" width="1736" height="856" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32467532" sideWeight="0.8502132" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.267316" sideWeight="0.7729211" order="16" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17316018" sideWeight="0.66364604" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2249467" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+    </layout-to-restore>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="myTodoPanelSettings">
+      <TodoPanelSettings />
+    </option>
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/project/app/LoginController.java</url>
+          <line>47</line>
+          <properties />
+          <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/project/app/LoginController.java</url>
+          <line>49</line>
+          <properties />
+          <option name="timeStamp" value="34" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="35" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/project_detail.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3332" max-vertical-offset="4194">
+          <caret line="216" column="18" selection-start-line="216" selection-start-column="18" selection-end-line="216" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2052" max-vertical-offset="2592">
+          <caret line="114" column="0" selection-start-line="114" selection-start-column="0" selection-end-line="114" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/project/app/RestController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="293" max-vertical-offset="936">
+          <caret line="40" column="70" selection-start-line="40" selection-start-column="70" selection-end-line="40" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/project/service/AccountServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="311" max-vertical-offset="972">
+          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3888">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2788">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/css/plugins/metisMenu/metisMenu.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6692913" vertical-offset="0" max-vertical-offset="1156">
+          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/extra/Style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.13385826" vertical-offset="51" max-vertical-offset="3434">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/c.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1548">
+          <caret line="34" column="56" selection-start-line="34" selection-start-column="56" selection-end-line="34" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.project">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="954">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.springBeans">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="543">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/artifacts/c_war.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="543">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.1.2.RELEASE/spring-webmvc-4.1.2.RELEASE-sources.jar!/org/springframework/web/servlet/mvc/method/annotation/ServletInvocableHandlerMethod.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1665" max-vertical-offset="4212">
+          <caret line="135" column="0" selection-start-line="135" selection-start-column="0" selection-end-line="135" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.1.2.RELEASE/spring-webmvc-4.1.2.RELEASE-sources.jar!/org/springframework/web/servlet/mvc/method/annotation/RequestMappingHandlerAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="10701" max-vertical-offset="14526">
+          <caret line="720" column="0" selection-start-line="720" selection-start-column="0" selection-end-line="720" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.1.2.RELEASE/spring-webmvc-4.1.2.RELEASE-sources.jar!/org/springframework/web/servlet/mvc/method/AbstractHandlerMethodAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="851" max-vertical-offset="1764">
+          <caret line="82" column="0" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.1.2.RELEASE/spring-webmvc-4.1.2.RELEASE-sources.jar!/org/springframework/web/servlet/DispatcherServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="14603" max-vertical-offset="22896">
+          <caret line="886" column="0" selection-start-line="886" selection-start-column="0" selection-end-line="886" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.1.2.RELEASE/spring-webmvc-4.1.2.RELEASE-sources.jar!/org/springframework/web/servlet/FrameworkServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="13473" max-vertical-offset="19152">
+          <caret line="843" column="5" selection-start-line="843" selection-start-column="5" selection-end-line="843" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/3.2.5.RELEASE/spring-security-core-3.2.5.RELEASE-sources.jar!/org/springframework/security/crypto/bcrypt/BCryptPasswordEncoder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="743" max-vertical-offset="1332">
+          <caret line="74" column="0" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/3.2.5.RELEASE/spring-security-core-3.2.5.RELEASE-sources.jar!/org/springframework/security/crypto/bcrypt/BCrypt.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33206832" vertical-offset="13019" max-vertical-offset="13968">
+          <caret line="748" column="0" selection-start-line="748" selection-start-column="0" selection-end-line="748" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/spring/root-context.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="896">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.1.2.RELEASE/spring-web-4.1.2.RELEASE-sources.jar!/org/springframework/web/bind/annotation/ResponseBody.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="540">
+          <caret line="39" column="18" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-mongodb/1.5.2.RELEASE/spring-data-mongodb-1.5.2.RELEASE-sources.jar!/org/springframework/data/mongodb/core/query/Criteria.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="688" max-vertical-offset="11376">
+          <caret line="83" column="0" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/navbar.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="7.6225047" vertical-offset="102" max-vertical-offset="4554">
+          <caret line="239" column="29" selection-start-line="239" selection-start-column="29" selection-end-line="239" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-22.333334" vertical-offset="2799" max-vertical-offset="3906">
+          <caret line="189" column="56" selection-start-line="189" selection-start-column="56" selection-end-line="189" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-mongodb/1.5.2.RELEASE/spring-data-mongodb-1.5.2.RELEASE-sources.jar!/org/springframework/data/mongodb/core/query/Query.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="337" max-vertical-offset="5418">
+          <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-core/4.1.2.RELEASE/spring-core-4.1.2.RELEASE-sources.jar!/org/springframework/util/Assert.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1705" max-vertical-offset="6966">
+          <caret line="123" column="0" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-commons/1.8.2.RELEASE/spring-data-commons-1.8.2.RELEASE-sources.jar!/org/springframework/data/mapping/context/AbstractMappingContext.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="139" max-vertical-offset="9648">
+          <caret line="66" column="0" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-mongodb/1.5.2.RELEASE/spring-data-mongodb-1.5.2.RELEASE-sources.jar!/org/springframework/data/mongodb/core/MongoTemplate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-35.854336" vertical-offset="36361" max-vertical-offset="36972">
+          <caret line="970" column="0" selection-start-line="970" selection-start-column="0" selection-end-line="970" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-commons/1.8.2.RELEASE/spring-data-commons-1.8.2.RELEASE-sources.jar!/org/springframework/data/util/ClassTypeInformation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33224222" vertical-offset="607" max-vertical-offset="1998">
+          <caret line="74" column="0" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/project/app/ProjectController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.48913044" vertical-offset="108" max-vertical-offset="954">
+          <caret line="39" column="55" selection-start-line="39" selection-start-column="55" selection-end-line="39" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/jquery-ui.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334" vertical-offset="87059" max-vertical-offset="298512">
+          <caret line="4853" column="4" selection-start-line="4853" selection-start-column="4" selection-end-line="4853" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/moment.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="54810">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/project_detail.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.10535117" vertical-offset="927" max-vertical-offset="7506">
+          <caret line="55" column="254" selection-start-line="55" selection-start-column="254" selection-end-line="55" selection-end-column="254" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.5852842" vertical-offset="2778" max-vertical-offset="5634">
+          <caret line="207" column="43" selection-start-line="207" selection-start-column="43" selection-end-line="207" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.45211932" vertical-offset="0" max-vertical-offset="702">
+          <caret line="16" column="33" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/project/service/ProjectServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1836">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/project/service/AccountServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="900">
+          <caret line="17" column="4" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/project/service/AccountService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="288">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/project/service/ProjectService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.16071428" vertical-offset="0" max-vertical-offset="896">
+          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/project/model/Task.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.37781352" vertical-offset="71" max-vertical-offset="990">
+          <caret line="22" column="21" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7524116" vertical-offset="918" max-vertical-offset="4356">
+          <caret line="77" column="20" selection-start-line="77" selection-start-column="20" selection-end-line="77" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.1.2.RELEASE/spring-web-4.1.2.RELEASE-sources.jar!/org/springframework/web/method/support/InvocableHandlerMethod.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33258426" vertical-offset="3308" max-vertical-offset="4500">
+          <caret line="223" column="0" selection-start-line="223" selection-start-column="0" selection-end-line="223" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/project/model/Project.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.171123" vertical-offset="172" max-vertical-offset="882">
+          <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-commons/1.8.2.RELEASE/spring-data-commons-1.8.2.RELEASE-sources.jar!/org/springframework/data/repository/CrudRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.3243847" vertical-offset="1255" max-vertical-offset="1926">
+          <caret line="26" column="17" selection-start-line="26" selection-start-column="17" selection-end-line="26" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="747" max-vertical-offset="1170">
+          <caret line="57" column="63" selection-start-line="57" selection-start-column="63" selection-end-line="57" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-mongodb/1.5.2.RELEASE/spring-data-mongodb-1.5.2.RELEASE-sources.jar!/org/springframework/data/mongodb/repository/MongoRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="211" max-vertical-offset="666">
+          <caret line="30" column="17" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/project/repository/ProjectRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="252">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-context/4.1.2.RELEASE/spring-context-4.1.2.RELEASE-sources.jar!/org/springframework/stereotype/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5555556" vertical-offset="90" max-vertical-offset="738">
+          <caret line="43" column="18" selection-start-line="43" selection-start-column="18" selection-end-line="43" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/project/app/RestController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1944">
+          <caret line="29" column="40" selection-start-line="29" selection-start-column="40" selection-end-line="29" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/project/app/LoginController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="193" max-vertical-offset="1764">
+          <caret line="70" column="40" selection-start-line="70" selection-start-column="40" selection-end-line="70" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/project/model/Account.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.10033445" vertical-offset="0" max-vertical-offset="897">
+          <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.7</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.29113925" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
