@@ -3,6 +3,8 @@ package app.com.augmentedreality.util;
 import android.content.Context;
 import android.location.Address;
 import android.location.Geocoder;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Environment;
 import android.util.Log;
 import android.widget.Toast;
@@ -22,7 +24,7 @@ import app.com.augmentedreality.core.AugmentedCamera;
 /**
  * Created by HeavyRain on 4/1/2015.
  */
-public class utilFunctions {
+public class UtilFunctions {
 
     // GPSTracker class
     public static GPSTracker gps;
@@ -127,6 +129,16 @@ public class utilFunctions {
     * STOP: Auto taking photo
     * */
 
+    /*checks whether mobile is connected to internet*/
+    public static void isNetworkConnected(Context context) {
+        ConnectivityManager cm = (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo ni = cm.getActiveNetworkInfo();
+        if (ni == null) {
+            // There are no active networks.
+            Log.i("My logs:","mobile is'nt connecting internet");
+        } else
+            Log.i("My logs:","mobile is connecting internet");
+    }
 }
 
 

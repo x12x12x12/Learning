@@ -38,7 +38,6 @@
             android:layout_weight="0.7"
             android:id="@+id/btnGoogleSearch"
             android:text="Google Search" />
-
     </LinearLayout>
 
 
