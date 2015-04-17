@@ -71,6 +71,7 @@ public class MainActivity  extends ActionBarActivity implements
     private ArrayAdapter<String> listAdapter;
 
     private Boolean                usingDetect = false;
+    private Boolean                loadCache = false;
     private Mat                    mRgba;
     private Mat                    mGray;
     private MatOfRect              faces;
@@ -80,11 +81,15 @@ public class MainActivity  extends ActionBarActivity implements
     private int                    mDetectorType       = JAVA_DETECTOR;
     private String[]               mDetectorName;
 
+    private Rect[]                 facesArrayCache;
     private float                  mRelativeFaceSize   = 0.2f;
     private int                    mAbsoluteFaceSize   = 1;
+    private int                    count               = 0;
     public static final int        JAVA_DETECTOR       = 0;
     private static final Scalar    FACE_RECT_COLOR        = new Scalar(0, 255, 0, 255);
 
+    public static final String DATA_PATH =
+            Environment.getExternalStorageDirectory().toString() + "/AndroidOCR/";
     /**
      * Load open cv lib && cascade file
      */
@@ -102,7 +107,7 @@ public class MainActivity  extends ActionBarActivity implements
                         InputStream is = getResources().openRawResource(R.raw.lbpcascade_frontalface);
                         File cascadeDir = getDir("cascade", Context.MODE_PRIVATE);
 //                        mCascadeFile = new File(cascadeDir, "cascade.xml");
-                        File mCascadeFile = new File(cascadeDir, "lbpcascade_frontalface.xml");
+                        mCascadeFile = new File(cascadeDir, "lbpcascade_frontalface.xml");
                         FileOutputStream os = new FileOutputStream(mCascadeFile);
 
                         byte[] buffer = new byte[4096];
@@ -133,9 +138,6 @@ public class MainActivity  extends ActionBarActivity implements
             }
         }
     };
-
-    public static final String DATA_PATH = Environment
-            .getExternalStorageDirectory().toString() + "/AndroidOCR/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -247,22 +249,20 @@ public class MainActivity  extends ActionBarActivity implements
             }
             faces = new MatOfRect();
             if (mDetectorType == JAVA_DETECTOR) {
-                if (mJavaDetector != null){
+                if (mJavaDetector != null ){
                     mJavaDetector.detectMultiScale(mGray, faces, 1.1, 2, 2,
                             new org.opencv.core.Size(mAbsoluteFaceSize, mAbsoluteFaceSize), new org.opencv.core.Size());
+                    Rect[] facesArray = faces.toArray();
+                    if(facesArray.length>0){
+                        for (int i = 0; i < facesArray.length; i++){
+                            Core.rectangle(mRgba, facesArray[i].tl(), facesArray[i].br(), FACE_RECT_COLOR, 3);
+                            StringBuilder sb = new StringBuilder();
+                            sb.append("");
+                            sb.append(facesArray[i].height);
+                        }
+                    }
                 }
             }
-            Rect[] facesArray = faces.toArray();
-            if(facesArray.length>0){
-                for (int i = 0; i < facesArray.length; i++){
-                    Core.rectangle(mRgba, facesArray[i].tl(), facesArray[i].br(), FACE_RECT_COLOR, 3);
-                    StringBuilder sb = new StringBuilder();
-                    sb.append("");
-                    sb.append(facesArray[i].height);
-                }
-            }
-//            AsyncTaskRunner asyncTaskRunner = new AsyncTaskRunner();
-//            asyncTaskRunner.execute("bla");
         }
         return mRgba;
     }
@@ -272,13 +272,9 @@ public class MainActivity  extends ActionBarActivity implements
         try {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
             String timeStamp = sdf.format(new Date());
-            String fileName = Environment.getExternalStorageDirectory().getPath() +
-                    "/AndroidOCR/picture_" + timeStamp + ".jpg";
-            Toast.makeText(this, fileName, Toast.LENGTH_SHORT).show();
+            String fileName = "picture_" + timeStamp + ".png";
 //            mOpenCvCameraView.takePicture(fileName);
             imageProcessing = new ImageProcessing();
-//            String text = imageProcessing.execute(fileName).get();
-//            String text = imageProcessing.ocrWithTess4j(fileName);
             String text = imageProcessing.ocrImage(fileName);
             if(!text.isEmpty()){
                 Toast.makeText(MainActivity.this, text, Toast.LENGTH_SHORT).show();

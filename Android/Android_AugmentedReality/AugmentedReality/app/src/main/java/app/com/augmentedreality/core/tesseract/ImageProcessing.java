@@ -10,6 +10,10 @@ import android.os.Environment;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.googlecode.leptonica.android.Binarize;
+import com.googlecode.leptonica.android.Convert;
+import com.googlecode.leptonica.android.GrayQuant;
+import com.googlecode.leptonica.android.Pix;
 import com.googlecode.leptonica.android.ReadFile;
 import com.googlecode.tesseract.android.TessBaseAPI;
 
@@ -27,64 +31,73 @@ public class ImageProcessing extends AsyncTask<String,String,String> {
     public String ocrImage(String paths){
         String result = null;
         BitmapFactory.Options options = new BitmapFactory.Options();
-        options.inSampleSize = 4;
-        String path = Environment.getExternalStorageDirectory().toString() + "/AndroidOCR/text.png";
-//        String path = Environment.getExternalStorageDirectory().toString() + "/AndroidOCR/text.tiff";
-        File imgFile = new File(path);
-        if (imgFile.canRead()) {
-            Bitmap bitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath(), options);
-            if(bitmap!=null){
-                try {
-                    ExifInterface exif = new ExifInterface(paths);
-                    int exifOrientation = exif.getAttributeInt
-                            (ExifInterface.TAG_ORIENTATION,ExifInterface.ORIENTATION_NORMAL);
-                    int rotate = 0;
-                    switch (exifOrientation){
-                        case ExifInterface.ORIENTATION_ROTATE_90:
-                            rotate = 90;
-                            break;
-                        case ExifInterface.ORIENTATION_ROTATE_180:
-                            rotate = 180;
-                            break;
-                        case ExifInterface.ORIENTATION_ROTATE_270:
-                            rotate = 270;
-                            break;
+        options.inSampleSize = 1;
+        File folder = new File(DATA_PATH);
+        if(folder.isDirectory()) {
+            String[] list_path = folder.list();
+            for (String child : list_path){
+                if(child.endsWith("png")|| child.endsWith("PNG")){
+                    File imgFile = new File(DATA_PATH+"/"+child);
+                    if (imgFile.canRead()) {
+                        Bitmap bitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath(), options);
+                        if(bitmap!=null){
+                            try {
+                                ExifInterface exif = new ExifInterface(paths);
+                                int exifOrientation = exif.getAttributeInt
+                                        (ExifInterface.TAG_ORIENTATION,ExifInterface.ORIENTATION_NORMAL);
+                                int rotate = 0;
+                                switch (exifOrientation){
+                                    case ExifInterface.ORIENTATION_ROTATE_90:
+                                        rotate = 90;
+                                        break;
+                                    case ExifInterface.ORIENTATION_ROTATE_180:
+                                        rotate = 180;
+                                        break;
+                                    case ExifInterface.ORIENTATION_ROTATE_270:
+                                        rotate = 270;
+                                        break;
+                                }
+                                if(rotate!=0){
+                                    int w = bitmap.getWidth();
+                                    int h = bitmap.getHeight();
+                                    Matrix mtx = new Matrix();
+                                    mtx.preRotate(rotate);
+                                    bitmap = Bitmap.createBitmap(bitmap, 0, 0, w, h, mtx, false);
+                                }
+                                bitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true);
+                                TessBaseAPI baseAPI = new TessBaseAPI();
+                                baseAPI.init(DATA_PATH, GeneralConst.eng_lang);
+                                baseAPI.setVariable("tessedit_char_whitelist", "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ");
+                                baseAPI.setImage(processing(bitmap));
+                                result = baseAPI.getUTF8Text();
+                                baseAPI.end();
+                                result = result.replaceAll("[^a-zA-Z0-9]+", " ");
+                                result = result.trim();
+                            }catch (Exception ex) {
+                                Log.d("Debug", ex.toString());
+                            }
+                        }
                     }
-                    if(rotate!=0){
-                        int w = bitmap.getWidth();
-                        int h = bitmap.getHeight();
-                        Matrix mtx = new Matrix();
-                        mtx.preRotate(rotate);
-                        bitmap = Bitmap.createBitmap(bitmap, 0, 0, w, h, mtx, false);
-                    }
-                    // Convert to ARGB_8888, required by tess
-                    bitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true);
-                    TessBaseAPI baseAPI = new TessBaseAPI();
-                    baseAPI.init(DATA_PATH, GeneralConst.eng_lang);
-                    baseAPI.setImage(ReadFile.readBitmap(bitmap));
-                    result = baseAPI.getUTF8Text();
-                    baseAPI.end();
-                    result = result.replaceAll("[^a-zA-Z0-9]+", " ");
-                    result = result.trim();
-                }catch (Exception ex) {
-                    Log.d("Debug", ex.toString());
                 }
             }
         }
+
         return result;
     }
 
+    public Pix processing(Bitmap bitmap) {
+        Pix pix = ReadFile.readBitmap(bitmap);
+        pix = Binarize.otsuAdaptiveThreshold(pix);
+        pix = Convert.convertTo8(pix);
+        return pix;
+    }
+
 //    //Resize
-//    public Bitmap Resize(Bitmap bmp, int newWidth, int newHeight)
-//    {
-//
+//    public Bitmap Resize(Bitmap bmp, int newWidth, int newHeight){
 //        Bitmap temp = (Bitmap)bmp;
-//
 //        Bitmap bmap = new Bitmap(newWidth, newHeight, temp.PixelFormat);
-//
 //        double nWidthFactor = (double)temp.getWidth() / (double)newWidth;
 //        double nHeightFactor = (double)temp.Height / (double)newHeight;
-//
 //        double fx, fy, nx, ny;
 //        int cx, cy, fr_x, fr_y;
 //        Color color1 = new Color();
@@ -140,12 +153,8 @@ public class ImageProcessing extends AsyncTask<String,String,String> {
 //                        (255, nRed, nGreen, nBlue));
 //            }
 //        }
-//
-//
-//
 //        bmap = SetGrayscale(bmap);
 //        bmap = RemoveNoise(bmap);
-//
 //        return bmap;
 //
 //    }
@@ -193,20 +202,6 @@ public class ImageProcessing extends AsyncTask<String,String,String> {
 //
 //        return bmap;
 //    }
-
-    public String ocrWithTess4j(String paths){
-        Tesseract instance = Tesseract.getInstance();
-        String result = null;
-        instance.setLanguage("eng");
-        String path = Environment.getExternalStorageDirectory().toString() + "/AndroidOCR/eurotext.tiff";
-        File imgFile = new File(path);
-//        try {
-//            result = instance.doOCR(imgFile);
-//        } catch (TesseractException ex) {
-//            Log.d("Debug", ex.toString());
-//        }
-        return result;
-    }
 
     @Override
     protected String doInBackground(String... paths) {
