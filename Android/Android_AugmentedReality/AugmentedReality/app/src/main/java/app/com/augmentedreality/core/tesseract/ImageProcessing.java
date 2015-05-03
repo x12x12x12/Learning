@@ -26,7 +26,9 @@ import java.io.IOException;
 import app.com.augmentedreality.util.GeneralConst;
 
 public class ImageProcessing extends AsyncTask<String,String,String> {
-    public static final String DATA_PATH = Environment.getExternalStorageDirectory().toString() + "/AndroidOCR/";
+
+    public static final String DATA_PATH =
+            Environment.getExternalStorageDirectory().toString() + "/AndroidOCR/";
 
     public String ocrImage(String paths){
         String result = null;
@@ -37,48 +39,50 @@ public class ImageProcessing extends AsyncTask<String,String,String> {
             String[] list_path = folder.list();
             for (String child : list_path){
                 if(child.endsWith("png")|| child.endsWith("PNG")){
-                    File imgFile = new File(DATA_PATH+"/"+child);
-                    if (imgFile.canRead()) {
-                        Bitmap bitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath(), options);
-                        if(bitmap!=null){
-                            try {
-                                ExifInterface exif = new ExifInterface(paths);
-                                int exifOrientation = exif.getAttributeInt
-                                        (ExifInterface.TAG_ORIENTATION,ExifInterface.ORIENTATION_NORMAL);
-                                int rotate = 0;
-                                switch (exifOrientation){
-                                    case ExifInterface.ORIENTATION_ROTATE_90:
-                                        rotate = 90;
-                                        break;
-                                    case ExifInterface.ORIENTATION_ROTATE_180:
-                                        rotate = 180;
-                                        break;
-                                    case ExifInterface.ORIENTATION_ROTATE_270:
-                                        rotate = 270;
-                                        break;
-                                }
-                                if(rotate!=0){
-                                    int w = bitmap.getWidth();
-                                    int h = bitmap.getHeight();
-                                    Matrix mtx = new Matrix();
-                                    mtx.preRotate(rotate);
-                                    bitmap = Bitmap.createBitmap(bitmap, 0, 0, w, h, mtx, false);
-                                }
-                                bitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true);
-                                TessBaseAPI baseAPI = new TessBaseAPI();
-                                baseAPI.init(DATA_PATH, GeneralConst.eng_lang);
-                                baseAPI.setVariable("tessedit_char_whitelist", "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ");
-                                baseAPI.setImage(processing(bitmap));
-                                result = baseAPI.getUTF8Text();
-                                baseAPI.end();
-                                result = result.replaceAll("[^a-zA-Z0-9]+", " ");
-                                result = result.trim();
-                            }catch (Exception ex) {
-                                Log.d("Debug", ex.toString());
-                            }
+//            paths = DATA_PATH + paths;
+//            File imgFile = new File(paths);
+                    File imgFile = new File(DATA_PATH+child);
+            if (imgFile.canRead()) {
+                Bitmap bitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath(), options);
+                if (bitmap != null) {
+                    try {
+                        ExifInterface exif = new ExifInterface(paths);
+                        int exifOrientation = exif.getAttributeInt
+                                (ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL);
+                        int rotate = 0;
+                        switch (exifOrientation) {
+                            case ExifInterface.ORIENTATION_ROTATE_90:
+                                rotate = 90;
+                                break;
+                            case ExifInterface.ORIENTATION_ROTATE_180:
+                                rotate = 180;
+                                break;
+                            case ExifInterface.ORIENTATION_ROTATE_270:
+                                rotate = 270;
+                                break;
                         }
+                        if (rotate != 0) {
+                            int w = bitmap.getWidth();
+                            int h = bitmap.getHeight();
+                            Matrix mtx = new Matrix();
+                            mtx.preRotate(rotate);
+                            bitmap = Bitmap.createBitmap(bitmap, 0, 0, w, h, mtx, false);
+                        }
+                        bitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true);
+                        TessBaseAPI baseAPI = new TessBaseAPI();
+                        baseAPI.init(DATA_PATH, GeneralConst.eng_lang);
+                        baseAPI.setVariable("tessedit_char_whitelist", "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ");
+                        baseAPI.setImage(processing(bitmap));
+                        result = baseAPI.getUTF8Text();
+                        baseAPI.end();
+                        result = result.replaceAll("[^a-zA-Z0-9]+", " ");
+                        result = result.trim();
+                    } catch (Exception ex) {
+                        Log.d("Debug", ex.toString());
                     }
                 }
+            }
+        }
             }
         }
 

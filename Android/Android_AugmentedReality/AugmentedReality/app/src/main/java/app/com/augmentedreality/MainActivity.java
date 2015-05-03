@@ -31,12 +31,14 @@ import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.CameraBridgeViewBase;
 import org.opencv.android.LoaderCallbackInterface;
 import org.opencv.android.OpenCVLoader;
+import org.opencv.core.MatOfPoint;
 import org.opencv.core.Size;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfRect;
 import org.opencv.core.Rect;
 import org.opencv.core.Scalar;
+import org.opencv.imgproc.Imgproc;
 import org.opencv.objdetect.CascadeClassifier;
 
 import java.io.File;
@@ -86,7 +88,7 @@ public class MainActivity  extends ActionBarActivity implements
     private int                    mAbsoluteFaceSize   = 1;
     private int                    count               = 0;
     public static final int        JAVA_DETECTOR       = 0;
-    private static final Scalar    FACE_RECT_COLOR        = new Scalar(0, 255, 0, 255);
+    private static final Scalar    FACE_RECT_COLOR     = new Scalar(0, 255, 0, 255);
 
     public static final String DATA_PATH =
             Environment.getExternalStorageDirectory().toString() + "/AndroidOCR/";
@@ -191,7 +193,7 @@ public class MainActivity  extends ActionBarActivity implements
     @Override
     public void onResume(){
         super.onResume();
-        OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION_2_4_3, this, mLoaderCallback);
+        OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION_2_4_9, this, mLoaderCallback);
     }
 
     @Override
@@ -239,6 +241,8 @@ public class MainActivity  extends ActionBarActivity implements
     public Mat onCameraFrame(CameraBridgeViewBase.CvCameraViewFrame inputFrame) {
         mRgba = inputFrame.rgba();
         mGray = inputFrame.gray();
+//        List<MatOfPoint> contours = new ArrayList<MatOfPoint>();
+//        Imgproc.findContours(mGray,contours,new Mat(),Imgproc.RETR_LIST, Imgproc.CHAIN_APPROX_SIMPLE);
         if(usingDetect) {
             if (mAbsoluteFaceSize == 0) {
                 int height = mGray.rows();
@@ -255,7 +259,7 @@ public class MainActivity  extends ActionBarActivity implements
                     Rect[] facesArray = faces.toArray();
                     if(facesArray.length>0){
                         for (int i = 0; i < facesArray.length; i++){
-                            Core.rectangle(mRgba, facesArray[i].tl(), facesArray[i].br(), FACE_RECT_COLOR, 3);
+                            Core.rectangle(mRgba, facesArray[i].tl(), facesArray[i].br(), FACE_RECT_COLOR, 1);
                             StringBuilder sb = new StringBuilder();
                             sb.append("");
                             sb.append(facesArray[i].height);
@@ -273,7 +277,7 @@ public class MainActivity  extends ActionBarActivity implements
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
             String timeStamp = sdf.format(new Date());
             String fileName = "picture_" + timeStamp + ".png";
-//            mOpenCvCameraView.takePicture(fileName);
+            mOpenCvCameraView.takePicture(DATA_PATH+fileName);
             imageProcessing = new ImageProcessing();
             String text = imageProcessing.ocrImage(fileName);
             if(!text.isEmpty()){
