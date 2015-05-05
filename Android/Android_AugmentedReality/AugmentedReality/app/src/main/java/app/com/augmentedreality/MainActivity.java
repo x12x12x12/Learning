@@ -27,11 +27,17 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.zxing.Reader;
+import com.google.zxing.multi.qrcode.QRCodeMultiReader;
+
 import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.CameraBridgeViewBase;
 import org.opencv.android.LoaderCallbackInterface;
 import org.opencv.android.OpenCVLoader;
+import org.opencv.core.CvType;
 import org.opencv.core.MatOfPoint;
+import org.opencv.core.MatOfPoint2f;
+import org.opencv.core.Point;
 import org.opencv.core.Size;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
@@ -52,6 +58,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.Vector;
 import java.util.concurrent.ExecutionException;
 
 import app.com.augmentedreality.core.AugmentedCamera;
@@ -73,6 +80,7 @@ public class MainActivity  extends ActionBarActivity implements
     private ArrayAdapter<String> listAdapter;
 
     private Boolean                usingDetect = false;
+    private Boolean                findContours = false;
     private Boolean                loadCache = false;
     private Mat                    mRgba;
     private Mat                    mGray;
@@ -119,7 +127,6 @@ public class MainActivity  extends ActionBarActivity implements
                         }
                         is.close();
                         os.close();
-
                         mJavaDetector = new CascadeClassifier(mCascadeFile.getAbsolutePath());
                         if (mJavaDetector.empty()) {
                             Log.e(TAG, "Failed to load cascade classifier");
@@ -216,13 +223,20 @@ public class MainActivity  extends ActionBarActivity implements
         switch (id){
             case R.id.detect:
                 usingDetect = true;
-                return true;
+                break;
             case R.id.no:
                 usingDetect = false;
-                return true;
+                break;
+            case R.id.yes_contours:
+                findContours = true;
+                break;
+            case R.id.no_contours:
+                findContours = false;
+                break;
             default:
                 return super.onOptionsItemSelected(item);
         }
+        return true;
     }
 
     @Override
@@ -241,8 +255,10 @@ public class MainActivity  extends ActionBarActivity implements
     public Mat onCameraFrame(CameraBridgeViewBase.CvCameraViewFrame inputFrame) {
         mRgba = inputFrame.rgba();
         mGray = inputFrame.gray();
-//        List<MatOfPoint> contours = new ArrayList<MatOfPoint>();
-//        Imgproc.findContours(mGray,contours,new Mat(),Imgproc.RETR_LIST, Imgproc.CHAIN_APPROX_SIMPLE);
+//        Reader reader = new QRCodeMultiReader();
+        if(findContours){
+            mRgba = findContours(mRgba, mGray);
+        }
         if(usingDetect) {
             if (mAbsoluteFaceSize == 0) {
                 int height = mGray.rows();
@@ -271,13 +287,64 @@ public class MainActivity  extends ActionBarActivity implements
         return mRgba;
     }
 
+    public Mat detectTextArea(Mat img, Mat img_gray) {
+        Rect[] boundRect;
+        Mat img_sobel = new Mat();
+        Mat img_threshold = new Mat(), element;
+        Imgproc.Sobel(img_gray,img_sobel, CvType.CV_8U, 0, 3, 1, 0,Imgproc.BORDER_DEFAULT);
+        Imgproc.threshold(img_sobel, img_threshold, 0, 255, Imgproc.THRESH_OTSU+Imgproc.THRESH_BINARY);
+        element = Imgproc.getStructuringElement(Imgproc.MORPH_RECT, new Size(17, 3));
+        Imgproc.morphologyEx(img_threshold,img_threshold,Imgproc.MORPH_CLOSE,element);
+        List<MatOfPoint> contours = new ArrayList<MatOfPoint>();
+        Imgproc.findContours(img_threshold, contours, new Mat(), 0, 1);
+        MatOfPoint2f approxCurve = new MatOfPoint2f();
+        //For each contour found
+        for (int i=0; i<contours.size(); i++){
+            //Convert contours(i) from MatOfPoint to MatOfPoint2f
+            MatOfPoint2f contour2f = new MatOfPoint2f( contours.get(i).toArray() );
+            //Processing on mMOP2f1 which is in type MatOfPoint2f
+            double approxDistance = Imgproc.arcLength(contour2f, true)*0.02;
+            Imgproc.approxPolyDP(contour2f, approxCurve, approxDistance, true);
+            //Convert back to MatOfPoint
+            MatOfPoint points = new MatOfPoint( approxCurve.toArray() );
+            // Get bounding rect of contour
+            Rect rect = Imgproc.boundingRect(points);
+            // draw enclosing rectangle (all same color, but you could use variable i to make them unique)
+            Core.rectangle(img, rect.tl(), rect.br(), new Scalar(255, 0, 0),1, 8,0);
+        }
+        return img;
+    }
+
+    public Mat findContours(Mat mRgba, Mat mGray){
+        List<MatOfPoint> contours = new ArrayList<MatOfPoint>();
+        Imgproc.threshold(mGray, mGray, 100, 255, Imgproc.THRESH_BINARY);
+        Imgproc.findContours(mGray,contours,new Mat(),Imgproc.RETR_LIST, Imgproc.CHAIN_APPROX_SIMPLE);
+        MatOfPoint2f approxCurve = new MatOfPoint2f();
+
+        //For each contour found
+        for (int i=0; i<contours.size(); i++){
+            //Convert contours(i) from MatOfPoint to MatOfPoint2f
+            MatOfPoint2f contour2f = new MatOfPoint2f( contours.get(i).toArray() );
+            //Processing on mMOP2f1 which is in type MatOfPoint2f
+            double approxDistance = Imgproc.arcLength(contour2f, true)*0.02;
+            Imgproc.approxPolyDP(contour2f, approxCurve, approxDistance, true);
+            //Convert back to MatOfPoint
+            MatOfPoint points = new MatOfPoint( approxCurve.toArray() );
+            // Get bounding rect of contour
+            Rect rect = Imgproc.boundingRect(points);
+            // draw enclosing rectangle (all same color, but you could use variable i to make them unique)
+            Core.rectangle(mRgba, rect.tl(), rect.br(), new Scalar(255, 0, 0),1, 8,0);
+        }
+        return mRgba;
+    }
+
     @Override
     public boolean onTouch(View view, MotionEvent motionEvent) {
         try {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
             String timeStamp = sdf.format(new Date());
             String fileName = "picture_" + timeStamp + ".png";
-            mOpenCvCameraView.takePicture(DATA_PATH+fileName);
+//            mOpenCvCameraView.takePicture(DATA_PATH+fileName);
             imageProcessing = new ImageProcessing();
             String text = imageProcessing.ocrImage(fileName);
             if(!text.isEmpty()){

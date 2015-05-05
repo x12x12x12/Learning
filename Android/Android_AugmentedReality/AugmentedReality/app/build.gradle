@@ -1,5 +1,11 @@
 apply plugin: 'com.android.application'
+repositories {
+    mavenCentral()
 
+    maven {
+        url "https://dl.bintray.com/journeyapps/maven"
+    }
+}
 android {
     compileSdkVersion 21
     buildToolsVersion "22.0.0"
@@ -28,4 +34,6 @@ dependencies {
     compile 'com.android.support:appcompat-v7:22.0.0'
     compile 'com.android.support:support-v4:22.0.0'
     compile files('libs/tess4j.jar')
+    compile 'com.journeyapps:zxing-android-embedded:2.3.0@aar'
+    compile 'com.google.zxing:core:3.2.0'
 }

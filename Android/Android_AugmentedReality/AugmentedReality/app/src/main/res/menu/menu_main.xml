@@ -6,4 +6,8 @@
                 android:title="Using detect"/>
             <item android:id="@+id/no"
                 android:title="Disable detect" />
+            <item android:id="@+id/yes_contours"
+                android:title="Find contours" />
+            <item android:id="@+id/no_contours"
+                android:title="Disable find contours" />
 </menu>
