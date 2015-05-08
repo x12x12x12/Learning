@@ -29,6 +29,7 @@ import android.widget.Toast;
 
 import com.google.zxing.Reader;
 import com.google.zxing.multi.qrcode.QRCodeMultiReader;
+import com.googlecode.tesseract.android.TessBaseAPI;
 
 import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.CameraBridgeViewBase;
@@ -66,6 +67,7 @@ import app.com.augmentedreality.core.DetectionBasedTracker;
 import app.com.augmentedreality.core.tesseract.ImageProcessing;
 import app.com.augmentedreality.util.AppData;
 import app.com.augmentedreality.util.GeneralConst;
+import app.com.augmentedreality.util.OcrResult;
 
 
 public class MainActivity  extends ActionBarActivity implements
@@ -73,8 +75,9 @@ public class MainActivity  extends ActionBarActivity implements
 
     private static final String TAG = "APP :: ";
     private AugmentedCamera mOpenCvCameraView;
-    private ImageProcessing imageProcessing;
+    private OcrResult ocrResult;
     private Camera mCamera;
+    public TessBaseAPI baseAPI;
     private Button btnGoogleSearch;
     private ListView mainListView;
     private ArrayAdapter<String> listAdapter;
@@ -160,7 +163,14 @@ public class MainActivity  extends ActionBarActivity implements
         mOpenCvCameraView.setCvCameraViewListener(this);
 
         /**
-         * Testing
+         * Init OCR engine
+         */
+        baseAPI = new TessBaseAPI();
+        baseAPI.init(DATA_PATH, GeneralConst.eng_lang);
+        baseAPI.setVariable("tessedit_char_whitelist", "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ");
+
+        /**
+         * Testing section
          */
         btnGoogleSearch =(Button)findViewById(R.id.btnGoogleSearch);
         btnGoogleSearch.setOnClickListener(new View.OnClickListener() {
@@ -171,14 +181,12 @@ public class MainActivity  extends ActionBarActivity implements
                 startActivity(nextScreen);
             }
         });
-
         mainListView = (ListView)findViewById(R.id.mainListView);
         String[] keyWords= new String[]{"UIT VN","TIKI.VN","DANTRI","TUOITRE"};
         ArrayList<String> keyWordList= new ArrayList<String>();
         keyWordList.addAll(Arrays.asList(keyWords));
         listAdapter = new ArrayAdapter<String>(this, R.layout.simple_row, keyWordList);
         mainListView.setAdapter(listAdapter);
-
         mainListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -208,6 +216,7 @@ public class MainActivity  extends ActionBarActivity implements
         super.onDestroy();
         if (mOpenCvCameraView != null)
             mOpenCvCameraView.disableView();
+        baseAPI.end();
     }
 
     @Override
@@ -343,13 +352,10 @@ public class MainActivity  extends ActionBarActivity implements
         try {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
             String timeStamp = sdf.format(new Date());
-            String fileName = "picture_" + timeStamp + ".png";
+//            String fileName = "picture_" + timeStamp + ".png";
 //            mOpenCvCameraView.takePicture(DATA_PATH+fileName);
-            imageProcessing = new ImageProcessing();
-            String text = imageProcessing.ocrImage(fileName);
-            if(!text.isEmpty()){
-                Toast.makeText(MainActivity.this, text, Toast.LENGTH_SHORT).show();
-            }
+            String fileName = "cv_8s.PNG";
+            new ImageProcessing(this,baseAPI,DATA_PATH+fileName).execute();
         }catch (Exception ex) {
             Log.e(TAG, ex.toString());
         }
@@ -398,37 +404,13 @@ public class MainActivity  extends ActionBarActivity implements
         }
     }
 
-    private class AsyncTaskRunner extends AsyncTask<String, String, String> {
-        @Override
-        protected String doInBackground(String... params) {
-            try {
-                if (mAbsoluteFaceSize == 0) {
-                    int height = mGray.rows();
-                    if (Math.round(height * mRelativeFaceSize) > 0) {
-                        mAbsoluteFaceSize = Math.round(height * mRelativeFaceSize);
-                    }
-                    mNativeDetector.setMinFaceSize(mAbsoluteFaceSize);
-                }
-                faces = new MatOfRect();
-                if (mDetectorType == JAVA_DETECTOR) {
-                    if (mJavaDetector != null){
-                        mJavaDetector.detectMultiScale(mGray, faces, 1.1, 2, 2,
-                                new org.opencv.core.Size(mAbsoluteFaceSize, mAbsoluteFaceSize), new org.opencv.core.Size());
-                    }
-                }
-                Rect[] facesArray = faces.toArray();
-                if(facesArray.length>0){
-                    for (int i = 0; i < facesArray.length; i++){
-                        Core.rectangle(mRgba, facesArray[i].tl(), facesArray[i].br(), FACE_RECT_COLOR, 3);
-                        StringBuilder sb = new StringBuilder();
-                        sb.append("");
-                        sb.append(facesArray[i].height);
-                    }
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            return null;
+    public void setOcrResult(OcrResult ocrResult) {
+        this.ocrResult = ocrResult;
+        String text = ocrResult.getText();
+        Log.d(TAG, text);
+        if(!text.isEmpty()){
+            Toast.makeText(MainActivity.this, text, Toast.LENGTH_SHORT).show();
         }
     }
+
 }
