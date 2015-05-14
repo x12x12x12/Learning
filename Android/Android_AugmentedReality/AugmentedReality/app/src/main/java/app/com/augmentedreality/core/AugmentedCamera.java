@@ -8,18 +8,23 @@ import android.hardware.Camera.Size;
 import android.util.AttributeSet;
 import android.util.Log;
 
+import com.googlecode.tesseract.android.TessBaseAPI;
+
 import org.opencv.android.JavaCameraView;
 
 import java.io.FileOutputStream;
 import java.util.List;
+
+import app.com.augmentedreality.MainActivity;
+import app.com.augmentedreality.core.tesseract.ImageProcessing;
 
 /**
  * Created by F.U.C.K on 30-Mar-15.
  */
 public class AugmentedCamera extends JavaCameraView implements PictureCallback {
 
-    private static final String TAG = "Augmented Reality :: ";
-    private String mPictureFileName;
+    private MainActivity mainActivity;
+    private TessBaseAPI baseAPI;
 
     /**
      * Default constructor
@@ -30,23 +35,18 @@ public class AugmentedCamera extends JavaCameraView implements PictureCallback {
         super(context, attrs);
     }
 
-    public void takePicture(final String fileName) {
-        this.mPictureFileName = fileName;
+    public void takePicture(MainActivity mainActivity) {
+        this.mainActivity = mainActivity;
         mCamera.setPreviewCallback(null);
         mCamera.takePicture(null, null, this);
     }
 
     @Override
     public void onPictureTaken(byte[] data, Camera camera) {
+        Log.i("AugmentedCamera::", "onPictureTaken");
         mCamera.startPreview();
         mCamera.setPreviewCallback(this);
-        try {
-            FileOutputStream fos = new FileOutputStream(mPictureFileName);
-            fos.write(data);
-            fos.close();
-        } catch (java.io.IOException e) {
-            Log.e(TAG, "Exception in photoCallback", e);
-        }
-
+        this.mainActivity.setImageByte(data);
+        Log.i("AugmentedCamera::", "finish set image byte");
     }
 }

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.hardware.Camera;
 import android.media.Image;
 import android.os.AsyncTask;
@@ -35,6 +36,7 @@ import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.CameraBridgeViewBase;
 import org.opencv.android.LoaderCallbackInterface;
 import org.opencv.android.OpenCVLoader;
+import org.opencv.android.Utils;
 import org.opencv.core.CvType;
 import org.opencv.core.MatOfPoint;
 import org.opencv.core.MatOfPoint2f;
@@ -45,6 +47,7 @@ import org.opencv.core.Mat;
 import org.opencv.core.MatOfRect;
 import org.opencv.core.Rect;
 import org.opencv.core.Scalar;
+import org.opencv.highgui.Highgui;
 import org.opencv.imgproc.Imgproc;
 import org.opencv.objdetect.CascadeClassifier;
 
@@ -57,6 +60,7 @@ import java.lang.reflect.Field;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Vector;
@@ -68,12 +72,13 @@ import app.com.augmentedreality.core.tesseract.ImageProcessing;
 import app.com.augmentedreality.util.AppData;
 import app.com.augmentedreality.util.GeneralConst;
 import app.com.augmentedreality.util.OcrResult;
+import app.com.augmentedreality.util.UtilFunctions;
 
 
 public class MainActivity  extends ActionBarActivity implements
         CameraBridgeViewBase.CvCameraViewListener2, View.OnTouchListener {
 
-    private static final String TAG = "APP :: ";
+    public static final String TAG = "APP :: ";
     private AugmentedCamera mOpenCvCameraView;
     private OcrResult ocrResult;
     private Camera mCamera;
@@ -92,7 +97,6 @@ public class MainActivity  extends ActionBarActivity implements
     private CascadeClassifier      mJavaDetector;
     private DetectionBasedTracker  mNativeDetector;
     private int                    mDetectorType       = JAVA_DETECTOR;
-    private String[]               mDetectorName;
 
     private Rect[]                 facesArrayCache;
     private float                  mRelativeFaceSize   = 0.2f;
@@ -101,8 +105,8 @@ public class MainActivity  extends ActionBarActivity implements
     public static final int        JAVA_DETECTOR       = 0;
     private static final Scalar    FACE_RECT_COLOR     = new Scalar(0, 255, 0, 255);
 
-    public static final String DATA_PATH =
-            Environment.getExternalStorageDirectory().toString() + "/AndroidOCR/";
+    public static final String DATA_PATH = Environment.getExternalStorageDirectory().toString() + "/AndroidOCR/";
+
     /**
      * Load open cv lib && cascade file
      */
@@ -135,8 +139,7 @@ public class MainActivity  extends ActionBarActivity implements
                             Log.e(TAG, "Failed to load cascade classifier");
                             mJavaDetector = null;
                         } else{
-                            Log.i(TAG, "Loaded cascade classifier from "
-                                    + mCascadeFile.getAbsolutePath());
+                            Log.i(TAG, "Loaded cascade classifier from "+ mCascadeFile.getAbsolutePath());
                         }
                         cascadeDir.delete();
                     } catch (IOException e) {
@@ -154,7 +157,8 @@ public class MainActivity  extends ActionBarActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initFolderData();
+        AppData appData = new AppData(this);
+        appData.initFolderData();
         releaseCameraAndPreview();
         setContentView(R.layout.activity_main);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
@@ -172,30 +176,30 @@ public class MainActivity  extends ActionBarActivity implements
         /**
          * Testing section
          */
-        btnGoogleSearch =(Button)findViewById(R.id.btnGoogleSearch);
-        btnGoogleSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Starting a new Intent
-                Intent nextScreen = new Intent(getApplicationContext(), GoogleSearchActivity.class);
-                startActivity(nextScreen);
-            }
-        });
-        mainListView = (ListView)findViewById(R.id.mainListView);
-        String[] keyWords= new String[]{"UIT VN","TIKI.VN","DANTRI","TUOITRE"};
-        ArrayList<String> keyWordList= new ArrayList<String>();
-        keyWordList.addAll(Arrays.asList(keyWords));
-        listAdapter = new ArrayAdapter<String>(this, R.layout.simple_row, keyWordList);
-        mainListView.setAdapter(listAdapter);
-        mainListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent nextScreen = new Intent(getApplicationContext(), GoogleSearchActivity.class);
-                nextScreen.putExtra("searching","true");
-                nextScreen.putExtra("stringForSearch",(String)mainListView.getItemAtPosition(position));
-                startActivity(nextScreen);
-            }
-        });
+//        btnGoogleSearch =(Button)findViewById(R.id.btnGoogleSearch);
+//        btnGoogleSearch.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                //Starting a new Intent
+//                Intent nextScreen = new Intent(getApplicationContext(), GoogleSearchActivity.class);
+//                startActivity(nextScreen);
+//            }
+//        });
+//        mainListView = (ListView)findViewById(R.id.mainListView);
+//        String[] keyWords= new String[]{"UIT VN","TIKI.VN","DANTRI","TUOITRE"};
+//        ArrayList<String> keyWordList= new ArrayList<String>();
+//        keyWordList.addAll(Arrays.asList(keyWords));
+//        listAdapter = new ArrayAdapter<String>(this, R.layout.simple_row, keyWordList);
+//        mainListView.setAdapter(listAdapter);
+//        mainListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                Intent nextScreen = new Intent(getApplicationContext(), GoogleSearchActivity.class);
+//                nextScreen.putExtra("searching","true");
+//                nextScreen.putExtra("stringForSearch",(String)mainListView.getItemAtPosition(position));
+//                startActivity(nextScreen);
+//            }
+//        });
     }
 
     @Override
@@ -264,9 +268,9 @@ public class MainActivity  extends ActionBarActivity implements
     public Mat onCameraFrame(CameraBridgeViewBase.CvCameraViewFrame inputFrame) {
         mRgba = inputFrame.rgba();
         mGray = inputFrame.gray();
-//        Reader reader = new QRCodeMultiReader();
         if(findContours){
-            mRgba = findContours(mRgba, mGray);
+//            mRgba = findContours(mRgba, mGray);
+            mRgba = detectTextArea(mRgba);
         }
         if(usingDetect) {
             if (mAbsoluteFaceSize == 0) {
@@ -296,105 +300,21 @@ public class MainActivity  extends ActionBarActivity implements
         return mRgba;
     }
 
-    public Mat detectTextArea(Mat img, Mat img_gray) {
-        Rect[] boundRect;
-        Mat img_sobel = new Mat();
-        Mat img_threshold = new Mat(), element;
-        Imgproc.Sobel(img_gray,img_sobel, CvType.CV_8U, 0, 3, 1, 0,Imgproc.BORDER_DEFAULT);
-        Imgproc.threshold(img_sobel, img_threshold, 0, 255, Imgproc.THRESH_OTSU+Imgproc.THRESH_BINARY);
-        element = Imgproc.getStructuringElement(Imgproc.MORPH_RECT, new Size(17, 3));
-        Imgproc.morphologyEx(img_threshold,img_threshold,Imgproc.MORPH_CLOSE,element);
-        List<MatOfPoint> contours = new ArrayList<MatOfPoint>();
-        Imgproc.findContours(img_threshold, contours, new Mat(), 0, 1);
-        MatOfPoint2f approxCurve = new MatOfPoint2f();
-        //For each contour found
-        for (int i=0; i<contours.size(); i++){
-            //Convert contours(i) from MatOfPoint to MatOfPoint2f
-            MatOfPoint2f contour2f = new MatOfPoint2f( contours.get(i).toArray() );
-            //Processing on mMOP2f1 which is in type MatOfPoint2f
-            double approxDistance = Imgproc.arcLength(contour2f, true)*0.02;
-            Imgproc.approxPolyDP(contour2f, approxCurve, approxDistance, true);
-            //Convert back to MatOfPoint
-            MatOfPoint points = new MatOfPoint( approxCurve.toArray() );
-            // Get bounding rect of contour
-            Rect rect = Imgproc.boundingRect(points);
-            // draw enclosing rectangle (all same color, but you could use variable i to make them unique)
-            Core.rectangle(img, rect.tl(), rect.br(), new Scalar(255, 0, 0),1, 8,0);
-        }
-        return img;
-    }
-
-    public Mat findContours(Mat mRgba, Mat mGray){
-        List<MatOfPoint> contours = new ArrayList<MatOfPoint>();
-        Imgproc.threshold(mGray, mGray, 100, 255, Imgproc.THRESH_BINARY);
-        Imgproc.findContours(mGray,contours,new Mat(),Imgproc.RETR_LIST, Imgproc.CHAIN_APPROX_SIMPLE);
-        MatOfPoint2f approxCurve = new MatOfPoint2f();
-
-        //For each contour found
-        for (int i=0; i<contours.size(); i++){
-            //Convert contours(i) from MatOfPoint to MatOfPoint2f
-            MatOfPoint2f contour2f = new MatOfPoint2f( contours.get(i).toArray() );
-            //Processing on mMOP2f1 which is in type MatOfPoint2f
-            double approxDistance = Imgproc.arcLength(contour2f, true)*0.02;
-            Imgproc.approxPolyDP(contour2f, approxCurve, approxDistance, true);
-            //Convert back to MatOfPoint
-            MatOfPoint points = new MatOfPoint( approxCurve.toArray() );
-            // Get bounding rect of contour
-            Rect rect = Imgproc.boundingRect(points);
-            // draw enclosing rectangle (all same color, but you could use variable i to make them unique)
-            Core.rectangle(mRgba, rect.tl(), rect.br(), new Scalar(255, 0, 0),1, 8,0);
-        }
-        return mRgba;
-    }
-
     @Override
     public boolean onTouch(View view, MotionEvent motionEvent) {
         try {
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
-            String timeStamp = sdf.format(new Date());
+            mOpenCvCameraView.takePicture(this);
+//            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
+//            String timeStamp = sdf.format(new Date());
 //            String fileName = "picture_" + timeStamp + ".png";
-//            mOpenCvCameraView.takePicture(DATA_PATH+fileName);
-            String fileName = "cv_8s.PNG";
-            new ImageProcessing(this,baseAPI,DATA_PATH+fileName).execute();
+//            if(result){
+//                Toast.makeText(this, "Save ok", Toast.LENGTH_SHORT).show();
+//                new ImageProcessing(this,baseAPI,DATA_PATH+fileName).execute();
+//            }
         }catch (Exception ex) {
             Log.e(TAG, ex.toString());
         }
         return false;
-    }
-
-    private void initFolderData(){
-        String[] paths = new String[] { DATA_PATH, DATA_PATH + "tessdata/" };
-        for (String path : paths) {
-            File dir = new File(path);
-            if (!dir.exists()) {
-                if (!dir.mkdirs()) {
-                    return;
-                }
-            }
-        }
-        List<String> allow_lang = new ArrayList<>();
-        allow_lang.add(GeneralConst.eng_lang);
-        allow_lang.add(GeneralConst.vie_lang);
-        for(String lang : allow_lang){
-            String file_path = DATA_PATH + "tessdata/" + lang + ".traineddata";
-            if (!(new File(file_path)).exists()) {
-                try {
-                    AssetManager assetManager = getAssets();
-                    InputStream in = assetManager.open("tessdata/" + lang + ".traineddata");
-                    OutputStream out = new FileOutputStream(file_path);
-                    byte[] buf = new byte[1024];
-                    int len;
-                    while ((len = in.read(buf)) > 0) {
-                        out.write(buf, 0, len);
-                    }
-                    in.close();
-                    out.close();
-                } catch (IOException ex) {
-                    Log.e(TAG, ex.getMessage().toString());
-                }
-            }
-        }
-
     }
 
     private void releaseCameraAndPreview() {
@@ -407,10 +327,65 @@ public class MainActivity  extends ActionBarActivity implements
     public void setOcrResult(OcrResult ocrResult) {
         this.ocrResult = ocrResult;
         String text = ocrResult.getText();
+        Date d = new Date(ocrResult.getRecognitionTimeRequired());
+        long timestamp = d.getTime();
+        Log.i(TAG, "--- Got OCR result ---");
         Log.d(TAG, text);
+        Log.i(TAG, "Time required :" + timestamp);
+        Log.i(TAG, "--- End OCR result ---");
         if(!text.isEmpty()){
-            Toast.makeText(MainActivity.this, text, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, text, Toast.LENGTH_LONG).show();
         }
     }
 
+    public void setImageByte(byte[] data){
+        Log.i(TAG, "Got image data here");
+        if(data.length>0) {
+            String fileName = "cv_8s.PNG";
+            new ImageProcessing(this, baseAPI, data, DATA_PATH + fileName).execute();
+        }
+    }
+
+    public Mat detectTextArea(Mat mRgba) {
+        Mat gray = new Mat();
+        Mat edges = new Mat();
+        List<MatOfPoint> contours = new ArrayList<MatOfPoint>();
+        MatOfPoint2f approxCurve = new MatOfPoint2f();
+        Imgproc.cvtColor(mRgba, gray, Imgproc.COLOR_BGR2GRAY);
+        Imgproc.GaussianBlur(gray, gray, new Size(5, 5), 0);
+        Imgproc.Canny(gray, edges, 75, 200);
+        Imgproc.findContours(gray, contours, new Mat(), Imgproc.RETR_LIST, Imgproc.CHAIN_APPROX_SIMPLE);
+        Collections.sort(contours,Collections.reverseOrder());
+        for(MatOfPoint contour : contours) {
+            MatOfPoint2f contour2f = new MatOfPoint2f(contour);
+            double approxDistance = Imgproc.arcLength(contour2f, true)*0.02;
+            Imgproc.approxPolyDP(contour2f, approxCurve, approxDistance, true);
+            if(approxDistance==4) {
+                // Convert back to MatOfPoint
+                MatOfPoint points = new MatOfPoint( approxCurve.toArray() );
+                // Get bounding rect of contour
+                Rect rect = Imgproc.boundingRect(points);
+                // Draw enclosing rectangle
+                Core.rectangle(mRgba, rect.tl(), rect.br(), new Scalar(255, 0, 0),1, 8,0);
+                break;
+            }
+        }
+        return mRgba;
+    }
+
+    public Mat findContours(Mat mRgba, Mat mGray) {
+        List<MatOfPoint> contours = new ArrayList<MatOfPoint>();
+        Imgproc.threshold(mGray, mGray, 100, 255, Imgproc.THRESH_BINARY);
+        Imgproc.findContours(mGray,contours,new Mat(),Imgproc.RETR_LIST, Imgproc.CHAIN_APPROX_SIMPLE);
+        MatOfPoint2f approxCurve = new MatOfPoint2f();
+        for (int i=0; i<contours.size(); i++){
+            MatOfPoint2f contour2f = new MatOfPoint2f( contours.get(i).toArray() );
+            double approxDistance = Imgproc.arcLength(contour2f, true)*0.02;
+            Imgproc.approxPolyDP(contour2f, approxCurve, approxDistance, true);
+            MatOfPoint points = new MatOfPoint( approxCurve.toArray() );
+            Rect rect = Imgproc.boundingRect(points);
+            Core.rectangle(mRgba, rect.tl(), rect.br(), new Scalar(255, 0, 0),1, 8,0);
+        }
+        return mRgba;
+    }
 }

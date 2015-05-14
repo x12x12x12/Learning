@@ -10,6 +10,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.List;
+
+import app.com.augmentedreality.MainActivity;
 
 /**
  * Created by F.U.C.K on 03-Apr-15.
@@ -35,21 +39,26 @@ public class AppData {
                 }
             }
         }
-        String file_path = DATA_PATH + "tessdata/" + GeneralConst.eng_lang + ".traineddata";
-        if (!(new File(file_path)).exists()) {
-            try {
-                AssetManager assetManager = context.getAssets();
-                InputStream in = assetManager.open("tessdata/" + GeneralConst.eng_lang + ".traineddata");
-                OutputStream out = new FileOutputStream(file_path);
-                byte[] buf = new byte[1024];
-                int len;
-                while ((len = in.read(buf)) > 0) {
-                    out.write(buf, 0, len);
+        List<String> allow_lang = new ArrayList<>();
+        allow_lang.add(GeneralConst.eng_lang);
+        allow_lang.add(GeneralConst.vie_lang);
+        for(String lang : allow_lang){
+            String file_path = DATA_PATH + "tessdata/" + lang + ".traineddata";
+            if (!(new File(file_path)).exists()) {
+                try {
+                    AssetManager assetManager = context.getAssets();
+                    InputStream in = assetManager.open("tessdata/" + lang + ".traineddata");
+                    OutputStream out = new FileOutputStream(file_path);
+                    byte[] buf = new byte[1024];
+                    int len;
+                    while ((len = in.read(buf)) > 0) {
+                        out.write(buf, 0, len);
+                    }
+                    in.close();
+                    out.close();
+                } catch (IOException ex) {
+                    Log.e(MainActivity.TAG, ex.getMessage().toString());
                 }
-                in.close();
-                out.close();
-            } catch (IOException ex) {
-//                Log.e(TAG, ex.getMessage().toString());
             }
         }
     }

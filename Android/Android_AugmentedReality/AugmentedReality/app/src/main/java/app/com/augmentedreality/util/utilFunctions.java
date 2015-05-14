@@ -1,6 +1,7 @@
 package app.com.augmentedreality.util;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.location.Address;
 import android.location.Geocoder;
 import android.net.ConnectivityManager;
@@ -9,7 +10,10 @@ import android.os.Environment;
 import android.util.Log;
 import android.widget.Toast;
 
+import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -32,11 +36,9 @@ public class UtilFunctions {
     public static final ScheduledExecutorService worker = Executors.newSingleThreadScheduledExecutor();
 
     /*Function for delete a file with file path*/
-    public static void deleteFile(String filePath, Context context){
+    public static boolean deleteFile(String filePath){
         File file = new File(filePath);
-        boolean deleted = file.delete();
-        Toast.makeText(context,"Deleted file "+filePath,Toast.LENGTH_SHORT).show();
-
+        return file.delete();
     }
 
     /*Function for delete files and folders recursively*/
@@ -105,11 +107,11 @@ public class UtilFunctions {
 
             public void run() {
 
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
-                String currentDateandTime = sdf.format(new Date());
-                String fileName = Environment.getExternalStorageDirectory().getPath() +
-                        "/sample_picture_" + currentDateandTime + ".png";
-                mOpenCvCameraView.takePicture(fileName);
+//                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
+//                String currentDateandTime = sdf.format(new Date());
+//                String fileName = Environment.getExternalStorageDirectory().getPath() +
+//                        "/sample_picture_" + currentDateandTime + ".png";
+//                mOpenCvCameraView.takePicture(fileName);
 
             }
         };
@@ -139,6 +141,21 @@ public class UtilFunctions {
         } else
             Log.i("My logs:","mobile is connecting internet");
     }
+
+    public static boolean storeImage(Bitmap imageData, String filePath) {
+        try {
+            FileOutputStream fileOutputStream = new FileOutputStream(filePath);
+            BufferedOutputStream bos = new BufferedOutputStream(fileOutputStream);
+            imageData.compress(Bitmap.CompressFormat.PNG, 100, bos);
+            bos.flush();
+            bos.close();
+        } catch (Exception e) {
+            Log.w("TAG", "Error saving image file: " + e.getMessage());
+            return false;
+        }
+        return true;
+    }
+
 }
 
 

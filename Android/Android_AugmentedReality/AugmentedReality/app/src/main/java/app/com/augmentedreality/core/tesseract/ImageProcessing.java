@@ -30,17 +30,12 @@ public class ImageProcessing extends AsyncTask<Void, Void, Boolean> {
     private TessBaseAPI baseApi;
     private OcrResult ocrResult;
     private String path;
+    private byte[] data;
 
-    public Pix processing(Bitmap bitmap) {
-        Pix pix = ReadFile.readBitmap(bitmap);
-        pix = Binarize.otsuAdaptiveThreshold(pix);
-        pix = Convert.convertTo8(pix);
-        return pix;
-    }
-
-    public ImageProcessing(MainActivity mainActivity,TessBaseAPI baseApi,String path) {
+    public ImageProcessing(MainActivity mainActivity,TessBaseAPI baseApi,byte[] data,String path) {
         this.mainActivity = mainActivity;
         this.baseApi = baseApi;
+        this.data = data;
         this.path = path;
     }
 
@@ -92,12 +87,41 @@ public class ImageProcessing extends AsyncTask<Void, Void, Boolean> {
                     ocrResult.setTextlineBoundingBoxes(baseApi.getTextlines().getBoxRects());
                     ocrResult.setWordBoundingBoxes(baseApi.getWords().getBoxRects());
                     ocrResult.setStripBoundingBoxes(baseApi.getStrips().getBoxRects());
+                    ocrResult.setRecognitionTimeRequired(timeRequired);
                 }catch (Exception ex) {
                     baseApi.clear();
                 }
             }
         }
         return true;
+//        long start = System.currentTimeMillis();
+//        long timeRequired;
+//        String textResult;
+//        BitmapFactory.Options options = new BitmapFactory.Options();
+//        options.inSampleSize = 1;
+//        try {
+//            Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
+//            if (bitmap != null) {
+//                baseApi.setImage(processing(bitmap));
+//                textResult = baseApi.getUTF8Text();
+//                timeRequired = System.currentTimeMillis() - start;
+//                if (textResult == null || textResult.equals("")) {
+//                    return false;
+//                }
+//                ocrResult = new OcrResult();
+//                ocrResult.setText(textResult);
+//                ocrResult.setWordConfidences(baseApi.wordConfidences());
+//                ocrResult.setMeanConfidence(baseApi.meanConfidence());
+//                ocrResult.setRecognitionTimeRequired(timeRequired);
+//                ocrResult.setRegionBoundingBoxes(baseApi.getRegions().getBoxRects());
+//                ocrResult.setTextlineBoundingBoxes(baseApi.getTextlines().getBoxRects());
+//                ocrResult.setWordBoundingBoxes(baseApi.getWords().getBoxRects());
+//                ocrResult.setStripBoundingBoxes(baseApi.getStrips().getBoxRects());
+//            }
+//        }catch(Exception ex){
+//            baseApi.clear();
+//        }
+//        return true;
     }
 
     @Override
@@ -107,5 +131,12 @@ public class ImageProcessing extends AsyncTask<Void, Void, Boolean> {
         if (baseApi != null) {
             baseApi.clear();
         }
+    }
+
+    public Pix processing(Bitmap bitmap) {
+        Pix pix = ReadFile.readBitmap(bitmap);
+        pix = Binarize.otsuAdaptiveThreshold(pix);
+        pix = Convert.convertTo8(pix);
+        return pix;
     }
 }
