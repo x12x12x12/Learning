@@ -1,6 +1,8 @@
 package app.com.augmentedreality.core;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.hardware.Camera;
 import android.hardware.Camera.Parameters;
 import android.hardware.Camera.PictureCallback;
@@ -25,6 +27,8 @@ public class AugmentedCamera extends JavaCameraView implements PictureCallback {
 
     private MainActivity mainActivity;
     private TessBaseAPI baseAPI;
+    private String mPictureFileName;
+
 
     /**
      * Default constructor
@@ -35,8 +39,42 @@ public class AugmentedCamera extends JavaCameraView implements PictureCallback {
         super(context, attrs);
     }
 
-    public void takePicture(MainActivity mainActivity) {
-        this.mainActivity = mainActivity;
+    public List<String> getEffectList() {
+        return mCamera.getParameters().getSupportedColorEffects();
+    }
+
+    public boolean isEffectSupported() {
+        return (mCamera.getParameters().getColorEffect() != null);
+    }
+
+    public String getEffect() {
+        return mCamera.getParameters().getColorEffect();
+    }
+
+    public void setEffect(String effect) {
+        Camera.Parameters params = mCamera.getParameters();
+        params.setColorEffect(effect);
+        mCamera.setParameters(params);
+    }
+
+    public List<Size> getResolutionList() {
+        return mCamera.getParameters().getSupportedPreviewSizes();
+    }
+
+    public void setResolution(Size resolution) {
+        disconnectCamera();
+        mMaxHeight = resolution.height;
+        mMaxWidth = resolution.width;
+        connectCamera(getWidth(), getHeight());
+    }
+
+    public Size getResolution() {
+        return mCamera.getParameters().getPreviewSize();
+    }
+
+    public void takePicture(final String fileName) {
+        this.mPictureFileName = fileName;
+        this.mPictureFileName = fileName;
         mCamera.setPreviewCallback(null);
         mCamera.takePicture(null, null, this);
     }
@@ -46,7 +84,12 @@ public class AugmentedCamera extends JavaCameraView implements PictureCallback {
         Log.i("AugmentedCamera::", "onPictureTaken");
         mCamera.startPreview();
         mCamera.setPreviewCallback(this);
-        this.mainActivity.setImageByte(data);
-        Log.i("AugmentedCamera::", "finish set image byte");
+        try {
+            FileOutputStream fos = new FileOutputStream(mPictureFileName);
+            fos.write(data);
+            fos.close();
+        } catch (java.io.IOException e) {
+            Log.e("PictureDemo", "Exception in photoCallback", e);
+        }
     }
 }

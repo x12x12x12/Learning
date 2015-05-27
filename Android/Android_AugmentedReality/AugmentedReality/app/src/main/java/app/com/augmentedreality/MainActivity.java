@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.hardware.Camera;
 import android.media.Image;
@@ -75,7 +76,7 @@ import app.com.augmentedreality.util.OcrResult;
 import app.com.augmentedreality.util.UtilFunctions;
 
 
-public class MainActivity  extends ActionBarActivity implements
+public class MainActivity extends ActionBarActivity implements
         CameraBridgeViewBase.CvCameraViewListener2, View.OnTouchListener {
 
     public static final String TAG = "APP :: ";
@@ -162,6 +163,9 @@ public class MainActivity  extends ActionBarActivity implements
         releaseCameraAndPreview();
         setContentView(R.layout.activity_main);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         mOpenCvCameraView = (AugmentedCamera) findViewById(R.id.augmented_activity_java_surface_view);
         mOpenCvCameraView.setVisibility(SurfaceView.VISIBLE);
         mOpenCvCameraView.setCvCameraViewListener(this);
@@ -303,19 +307,30 @@ public class MainActivity  extends ActionBarActivity implements
     @Override
     public boolean onTouch(View view, MotionEvent motionEvent) {
         try {
-            mOpenCvCameraView.takePicture(this);
-//            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
-//            String timeStamp = sdf.format(new Date());
-//            String fileName = "picture_" + timeStamp + ".png";
-//            if(result){
-//                Toast.makeText(this, "Save ok", Toast.LENGTH_SHORT).show();
-//                new ImageProcessing(this,baseAPI,DATA_PATH+fileName).execute();
-//            }
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
+            String timeStamp = sdf.format(new Date());
+            String fileName = Environment.getExternalStorageDirectory().getPath() + "openCV_" + timeStamp + ".jpg";
+            mOpenCvCameraView.takePicture(fileName);
+            Toast.makeText(this, fileName + " saved", Toast.LENGTH_SHORT).show();
+            readingImage(fileName);
         }catch (Exception ex) {
             Log.e(TAG, ex.toString());
         }
         return false;
     }
+
+    public void readingImage(String filePath){
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inSampleSize = 1;
+        File imgFile = new File(filePath);
+        if (imgFile.canRead()) {
+            Bitmap bitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath(), options);
+            if (bitmap != null) {
+                Toast.makeText(this,"Test Reading Image",Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
 
     private void releaseCameraAndPreview() {
         if (mCamera != null) {

@@ -39,7 +39,7 @@ public class AppData {
                 }
             }
         }
-        List<String> allow_lang = new ArrayList<>();
+        List<String> allow_lang = new ArrayList<String>();
         allow_lang.add(GeneralConst.eng_lang);
         allow_lang.add(GeneralConst.vie_lang);
         for(String lang : allow_lang){
